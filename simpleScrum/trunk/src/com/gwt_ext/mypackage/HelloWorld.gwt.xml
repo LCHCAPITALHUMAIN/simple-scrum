@@ -1,0 +1,19 @@
+<module>
+
+    <!-- Inherit the core Web Toolkit stuff.                  -->
+    <inherits name='com.google.gwt.user.User'/>
+    <!--<inherits name="com.gwtext.GwtExt"/>
+    <inherits name="com.gwtext.Pagebus"/>-->
+
+    <!-- Specify the app entry point class.                   -->
+    <!--<entry-point class='easyscrum.client.EasyScrum'/>-->
+    <!--<entry-point class='com.gwt_ext.mypackage.client.HelloWorld'/>-->
+    <entry-point class='com.gwt_ext.mypackage.client.EditableGridSample'/>
+
+    <stylesheet src="js/ext/resources/css/ext-all.css" />
+    <script src="js/ext/adapter/ext/ext-base.js" />
+    <script src="js/ext/ext-all.js" />
+
+    <servlet path='/com.gwt_ext.mypackage.HelloWorld/SprintBacklogService' class='com.gwt_ext.mypackage.server.SprintBacklogServiceImpl'/>
+
+</module>

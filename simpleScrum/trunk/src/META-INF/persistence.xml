@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
+
+    <persistence-unit name="persistenceUnit">
+        <class>com.gwt_ext.mypackage.client.model.SprintbacklogEntity</class>
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE"/>
+            <property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver"/>
+            <property name="hibernate.connection.username" value="crds"/>
+            <property name="hibernate.connection.password" value="crds"/>
+        </properties>
+    </persistence-unit>
+</persistence>
