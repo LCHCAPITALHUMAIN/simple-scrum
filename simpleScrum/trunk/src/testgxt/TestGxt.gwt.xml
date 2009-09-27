@@ -1,0 +1,15 @@
+<module>
+
+    <!-- Inherit the core Web Toolkit stuff.                  -->
+    <inherits name='com.google.gwt.user.User'/>
+    <inherits name='com.extjs.gxt.ui.GXT'/>
+    
+    <!-- Specify the app entry point class.                   -->
+    <entry-point class='testgxt.client.TestGxt'/>
+
+    <!-- Specify the app servlets.                   -->
+    <servlet path='/testgxt.TestGxt/TestGxtService' class='testgxt.server.TestGxtServiceImpl'/>
+    <servlet path='/testgxt.TestGxt/SprintBacklogService' class='testgxt.server.SprintBacklogServiceImpl'/>
+    <servlet path="/testgxt.TestGxt/LoginService" class="testgxt.server.loginServiceImpl"/>
+
+</module>
