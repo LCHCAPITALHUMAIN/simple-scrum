@@ -1,0 +1,19 @@
+
+- mix GWT and EXT
+- mix my own model classes using JPA with GXT classes
+- ensure detached object way works well
+- plug entities into selected grid
+- edit some fields in UI
+- transfer changes to server side
++ automate deploy in war
++ integrate GWT, EXT, SPRING, JPA
++ add versioning management using JPA and transfer the message to user
+- add refresh button
+- render all fields, editable
+- remove not needed html parts
++ specify display param per field, configurably
++ provide authentication system
++ search using default sprint no and current user's team no (and all rows without team no)
++ test excel export to keep burndown
+
+

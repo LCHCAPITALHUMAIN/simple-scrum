@@ -1,0 +1,226 @@
+<?xml version="1.0"?>
+<project name="LoginApplication" default="init" basedir=".">
+
+ <property name="gwtpath" value="C:/Tools/gwt-windows-1.4.62" />
+
+ <property name="web.inf" value="${basedir}/WebContent/WEB-INF" />
+
+ <property name="gwt.module" value="org.mypackage.Login" />
+
+
+
+ <property name="dest.dir" value="${basedir}/dest"/>
+
+ <property name="dest.classes.dir" value="${basedir}/dest/classes"/>
+
+ <property name="www.dir" value="${dest.dir}/www"/>
+
+ <property name="src.dir" value="${basedir}/src"/>
+
+ <property name="lib.dir" value="${web.inf}/lib" />
+
+ <property name="classes.dir" value="${web.inf}/classes" />
+
+
+<!-- -->
+ <path id="classpath">
+
+    <pathelement location="${gwtpath}/gwt-user.jar"/>
+
+    <pathelement location="${gwtpath}/gwt-dev-windows.jar"/>
+
+    <pathelement location="${src.dir}"/>
+
+    <fileset dir="${lib.dir}">
+
+       <include name="**/*.jar" />
+
+    </fileset>
+
+ </path>
+
+
+  <!-- Target responsible for cleaning up  -->
+
+
+ <target name="clean">
+
+    <tstamp>
+
+       <format property="now" pattern="d-MM-yyyy hh:mm aa"/>
+
+    </tstamp>
+
+
+
+    <echo message="===========================================" />
+
+    <echo message="Creating new build: ${now}"  />
+
+    <echo message="                                        " />
+
+    <echo message="——————————————-" />
+
+    <echo message="Cleaning current directory…                     " />
+
+    <echo message="===========================================" />
+
+
+
+    <delete dir="${dest.dir}" />
+
+    <delete dir="${classes.dir}" />
+
+
+
+    <delete>
+
+       <fileset dir="${basedir}/WebContent" includes="*.*"/>
+
+    </delete>
+
+ </target>
+
+
+
+ <!-- Target creates required directories. -->
+
+ <target name="init" depends="clean">
+
+    <echo message="==========================================" />
+
+    <echo message="OS Name: ${os.name}                       " />
+
+    <echo message="Java Home: ${java.home}                   " />
+
+    <echo message="Ant java version: ${ant.java.version}     " />
+
+    <echo message="Java vendor: ${java.vendor}               " />
+
+    <echo message="Java Version: ${java.version}             " />
+
+    <echo message="==========================================" />
+
+
+
+    <mkdir dir="${dest.dir}" />
+
+    <mkdir dir="${dest.classes.dir}" />
+
+    <mkdir dir="${www.dir}" />
+
+       <mkdir dir="${classes.dir}" />
+
+ </target>
+
+
+
+ <!-- Target compiles all the gwt files and convert them into Java Script and all other files. -->
+
+ <target name="compile-gwt" depends="init">
+
+    <java classname="com.google.gwt.dev.GWTCompiler" fork="true">
+
+       <classpath refid="classpath" />
+
+       <jvmarg value="-Xmx256M" />
+
+       <arg value="-out" />
+
+       <arg value="${www.dir}"/>
+
+       <arg value="${gwt.module}"/>
+
+    </java>
+
+ </target>
+
+
+
+ <!-- Target responsible for compiling all java sources except the client package -->
+
+ <target name="compile" depends="compile-gwt">
+
+    <echo message="==========================================" />
+
+    <echo message="Compiling source files…                 " />
+
+    <echo message="==========================================" />
+
+
+
+    <javac destdir="${dest.classes.dir}"
+
+       excludes="**/client/*.java"
+
+       classpathref="classpath"
+
+       verbose="off"
+
+       debug="on"
+
+       deprecation="true">
+
+       <src path="${src.dir}" />
+
+    </javac>
+
+
+
+    <echo message="==========================================" />
+
+    <echo message="Copying needed files…                   " />
+
+    <echo message="==========================================" />
+
+
+
+    <copy todir="${dest.classes.dir}">
+
+       <fileset dir="${src.dir}" includes="**/*.dtd"/>
+
+    </copy>
+
+ </target>
+
+ <!-- Target responsible for deploying files on server -->
+ <target name="deploy" depends="compile">
+
+    <echo message="==========================================" />
+
+    <echo message="Deploying sources…                      " />
+
+    <echo message="==========================================" />
+
+    <copy todir="${classes.dir}">
+
+       <fileset dir="${dest.classes.dir}"/>
+
+       <fileset dir="${classes.dir}" includes="**/*.dtd" />
+
+       <fileset dir="${classes.dir}" includes="**/*.xml" />
+
+    </copy>
+
+
+
+    <echo message="==========================================" />
+
+    <echo message="Deploying GWT resources                   " />
+
+    <echo message="==========================================" />
+
+    <copy todir="${basedir}/WebContent">
+
+       <fileset dir="${www.dir}/${gwt.module}">
+
+       </fileset>
+
+    </copy>
+
+ </target>
+
+
+
+   </project>
+
