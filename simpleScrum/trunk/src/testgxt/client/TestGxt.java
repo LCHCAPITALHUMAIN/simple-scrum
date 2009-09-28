@@ -17,7 +17,7 @@ public class TestGxt implements EntryPoint {
     SprintGrid grid = new SprintGrid();
     MainPanel mainPanel = new MainPanel();
     LoginPanel loginScreen = new LoginPanel(mainPanel, grid);
-    mainPanel.setFirstContent(loginScreen);
+    mainPanel.setFirstContent(grid);
     RootPanel.get("slot3").add(mainPanel);
     System.out.println("Main launched");
   }

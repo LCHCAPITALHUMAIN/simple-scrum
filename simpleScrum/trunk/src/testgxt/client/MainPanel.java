@@ -25,7 +25,6 @@ public class MainPanel extends LayoutContainer {
     contentPanel.setFrame(true);
     contentPanel.setSize(1200, 400);
     contentPanel.setLayout(new RowLayout(Orientation.HORIZONTAL));
-    contentPanel.add(new Text("youyou"));
     contentPanel.add(firstContent);
 
     super.add(contentPanel);
