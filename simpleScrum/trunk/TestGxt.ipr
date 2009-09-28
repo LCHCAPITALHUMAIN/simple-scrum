@@ -41,7 +41,7 @@
     <connections />
   </component>
   <component name="DBNavigator.Project.DataEditorManager">
-    <record-editor-column-sorting value="" />
+    <record-editor-column-sorting value="INDEXED" />
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
@@ -447,6 +447,20 @@
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_5" assert-keyword="true" jdk-15="true" project-jdk-name="1.5" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
+  <component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="Launch login screen" type="GWT.ConfigurationType" factoryName="GWT Configuration">
+      <module name="TestGxt" />
+      <option name="VM_PARAMETERS" value="-Xmx512m" />
+      <option name="SHELL_PARAMETERS" value="" />
+      <option name="RUN_PAGE" value="testgxt.TestGxt/TestGxt.html" />
+      <option name="CUSTOM_WEB_XML" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method>
+        <option name="Make" value="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="ResourceManagerContainer">
     <option name="myResourceBundles">
       <value>
@@ -465,7 +479,7 @@
     <option name="mySupportsUserInfoFilter" value="true" />
   </component>
   <component name="VcsDirectoryMappings">
-    <mapping directory="" vcs="" />
+    <mapping directory="" vcs="svn" />
   </component>
   <component name="WebServicesPlugin" addRequiredLibraries="true" />
   <component name="libraryTable">
