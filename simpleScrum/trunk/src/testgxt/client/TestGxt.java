@@ -8,17 +8,15 @@ import com.google.gwt.user.client.ui.RootPanel;
  */
 public class TestGxt implements EntryPoint {
 
-  /**
-   * This is the entry point method.
-   */
-  public void onModuleLoad() {
-    // temp to speed up the dev
-    // SprintGrid grid = new SprintGrid();
-    SprintGrid grid = new SprintGrid();
-    MainPanel mainPanel = new MainPanel();
-    LoginPanel loginScreen = new LoginPanel(mainPanel, grid);
-    mainPanel.setFirstContent(grid);
-    RootPanel.get("slot3").add(mainPanel);
-    System.out.println("Main launched");
-  }
+    /**
+     * This is the entry point method.
+     */
+    public void onModuleLoad() {
+        SprintGrid grid = new SprintGrid();
+        MainPanel mainPanel = new MainPanel();
+        LoginPanel loginScreen = new LoginPanel(mainPanel, grid);
+        mainPanel.setFirstContent(grid);
+        RootPanel.get("slot3").add(mainPanel);
+        System.out.println("Main launched");
+    }
 }

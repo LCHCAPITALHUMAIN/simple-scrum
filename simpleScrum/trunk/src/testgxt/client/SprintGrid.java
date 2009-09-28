@@ -40,7 +40,7 @@ public class SprintGrid extends LayoutContainer {
 
     cp.setHeading("Form Bindings");
     cp.setFrame(true);
-    cp.setSize(1200, 400);
+    cp.setSize(1200, 200);
     cp.setLayout(new RowLayout(Orientation.HORIZONTAL));
 
     final Grid<SprintBacklogEntity> grid = createGrid();
