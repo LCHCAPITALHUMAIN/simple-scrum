@@ -52,4 +52,8 @@ class ProductBacklogItem {
     customRole(nullable: true)
     feature(nullable: true)
   }
+
+  String toString(){
+    label
+  }
 }

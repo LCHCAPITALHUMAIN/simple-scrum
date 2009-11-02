@@ -20,4 +20,8 @@ class Task {
   static belongsTo = [creator: User, productBacklogItem: ProductBacklogItem]
   static constraints = {
   }
+
+  String toString(){
+    label
+  }
 }

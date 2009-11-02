@@ -33,6 +33,11 @@ class CustomRole {
   String satisficationCriteria
   ExpertnessLevel expertiseLevel
   UsageFrequency usageFrequency
+
+  String toString(){
+    name 
+  }
+
   static hasMany = [productBacklogItems: ProductBacklogItem]
   static constraints = {
   }

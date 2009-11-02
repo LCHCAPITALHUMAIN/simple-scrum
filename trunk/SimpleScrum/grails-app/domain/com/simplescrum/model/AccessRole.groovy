@@ -18,4 +18,8 @@ class AccessRole {
 		authority(blank: false, unique: true)
 		description()
 	}
+
+  String toString(){
+     authority
+  }
 }

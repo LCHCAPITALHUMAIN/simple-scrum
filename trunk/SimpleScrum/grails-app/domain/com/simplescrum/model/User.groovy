@@ -22,4 +22,8 @@ class User {
     email(email: true,nullable: true, blank: true)
     userRealName(nullable: true, blank: true)
   }
+
+  String toString(){
+    userRealName
+  }
 }

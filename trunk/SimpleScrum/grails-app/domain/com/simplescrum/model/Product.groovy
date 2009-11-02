@@ -6,6 +6,10 @@ class Product {
   Date startDate
   Integer planningPokerGameType = 0
 
+  String toString(){
+    name 
+  }
+
   static hasMany = [releases: Release]
   static constraints = {
   }
