@@ -35,6 +35,11 @@ class Release {
   Integer releaseVelocity
   Integer estimatedSprintDuration
   Double defaultEstimatedVelocity
+
+  String toString(){
+    name 
+  }
+
   static hasMany = [sprints: Sprint]
   static belongsTo = [product: Product]
   static constraints = {

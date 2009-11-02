@@ -21,6 +21,11 @@ class Problem {
   Date creationDate
   Date modificationDate
   Date closedDate
+
+  String toString(){
+    name  
+  }
+
   static belongsTo = [poster: User, product: Product]
   static constraints = {
   }

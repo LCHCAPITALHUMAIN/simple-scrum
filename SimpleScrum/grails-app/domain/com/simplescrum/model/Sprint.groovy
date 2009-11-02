@@ -27,4 +27,7 @@ class Sprint {
 
   static constraints = {
   }
+  String toString(){
+    "${number}# ${goal}"
+  }
 }
