@@ -240,6 +240,59 @@
     <option name="ADDITIONAL_OPTIONS_STRING" value="" />
   </component>
   <component name="SvnBranchConfigurationManager">
+    <option name="myConfigurationMap">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchMap">
+                <map>
+                  <entry key="https://simple-scrum.googlecode.com/svn/branches">
+                    <value>
+                      <list />
+                    </value>
+                  </entry>
+                  <entry key="https://simple-scrum.googlecode.com/svn/simpleScrum">
+                    <value>
+                      <list>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1254177963207" />
+                          <option name="revision" value="35" />
+                          <option name="url" value="https://simple-scrum.googlecode.com/svn/simpleScrum/trunk" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1254077446714" />
+                          <option name="revision" value="5" />
+                          <option name="url" value="https://simple-scrum.googlecode.com/svn/simpleScrum/tags" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1254077431023" />
+                          <option name="revision" value="4" />
+                          <option name="url" value="https://simple-scrum.googlecode.com/svn/simpleScrum/branches" />
+                        </SvnBranchItem>
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="https://simple-scrum.googlecode.com/svn/tags">
+                    <value>
+                      <list />
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://simple-scrum.googlecode.com/svn/branches" />
+                  <option value="https://simple-scrum.googlecode.com/svn/simpleScrum" />
+                  <option value="https://simple-scrum.googlecode.com/svn/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://simple-scrum.googlecode.com/svn/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="mySupportsUserInfoFilter" value="true" />
   </component>
   <component name="VcsDirectoryMappings">
