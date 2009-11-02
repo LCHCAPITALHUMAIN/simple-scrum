@@ -67,6 +67,9 @@
 					<input type='submit' value='Login' />
 				</p>
 			</form>
+           <p>
+			  New to Simple Scrum? <g:link controller="register">Create an account</g:link>
+			</p>
 		</div>
 	</div>
 <script type='text/javascript'>
