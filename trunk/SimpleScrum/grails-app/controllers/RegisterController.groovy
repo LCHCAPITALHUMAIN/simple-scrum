@@ -19,13 +19,6 @@ class RegisterController {
    * User Registration Top page.
    */
   def index = {
-
-    // skip if already logged in
-    if (authenticateService.isLoggedIn()) {
-      redirect action: show
-      return
-    }
-
     if (session.id) {
       def person = new User()
       person.properties = params
@@ -36,12 +29,16 @@ class RegisterController {
   }
 
   /**
-   * User Information page for current user.
+   * User Information page for a given user or current user if none.
    */
   def show = {
-
-    // get user id from session's domain class.
     def user = authenticateService.userDomain()
+
+    if (params.id) {
+      user = User.get(params.id)
+    }
+    // get user id from session's domain class.
+
     if (user) {
       render view: 'show', model: [person: User.get(user.id)]
     }
@@ -51,12 +48,16 @@ class RegisterController {
   }
 
   /**
-   * Edit page for current user.
+   * Edit page for a given user or current user if none.
    */
   def edit = {
 
     def person
     def user = authenticateService.userDomain()
+
+    if (params.id) {
+      user = User.get(params.id)
+    }
     if (user) {
       person = User.get(user.id)
     }
@@ -77,6 +78,10 @@ class RegisterController {
 
     def person
     def user = authenticateService.userDomain()
+
+    if (params.id) {
+      user = User.get(params.id)
+    }
     if (user) {
       person = User.get(user.id)
     }
@@ -115,7 +120,7 @@ class RegisterController {
     }
 
     if (person.save()) {
-      redirect action: show, id: person.id
+      redirect controller: 'user', action: show, id: person.id
     }
     else {
       render view: 'edit', model: [person: person]
@@ -126,12 +131,6 @@ class RegisterController {
    * Person save action.
    */
   def save = {
-
-    // skip if already logged in
-    if (authenticateService.isLoggedIn()) {
-      redirect action: show
-      return
-    }
 
     def person = new User()
     person.properties = params
@@ -169,7 +168,7 @@ class RegisterController {
     person.password = pass
     person.enabled = true
     person.emailShow = true
-    
+
     if (person.save()) {
       role.addToPeople(person)
       if (config.security.useMail) {
@@ -194,11 +193,15 @@ class RegisterController {
       }
 
       person.save(flush: true)
-
-      def auth = new AuthToken(person.login, params.password)
-      def authtoken = daoAuthenticationProvider.authenticate(auth)
-      SCH.context.authentication = authtoken
-      redirect uri: '/'
+      // skip if already logged in
+      if (authenticateService.isLoggedIn()) {
+        redirect controller: 'user', action: show, id: person.id
+      } else {
+        def auth = new AuthToken(person.login, params.password)
+        def authtoken = daoAuthenticationProvider.authenticate(auth)
+        SCH.context.authentication = authtoken
+        redirect uri: '/'
+      }
     }
     else {
       person.password = ''
