@@ -8,9 +8,9 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
+            <span class="menuButton"><g:link class="home" controller="product">Home</g:link></span>
             <span class="menuButton"><g:link class="list" action="list">Product List</g:link></span>
-            <span class="menuButton"><g:link class="create" action="create">New Product</g:link></span>
+            <span class="menuButton"><g:link class="create" controller="productBacklogItem" action="create" params="['product.id':productInstance?.id]">New Item</g:link></span>
         </div>
         <div class="body">
             <h1>Show Product</h1>
@@ -37,16 +37,22 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name">Name:</td>
+                            <td valign="top" class="name">Items:</td>
                             
-                            <td valign="top" class="value">${fieldValue(bean:productInstance, field:'name')}</td>
+                            <td  valign="top" style="text-align:left;" class="value">
+                                <ul>
+                                <g:each var="i" in="${productInstance.items}">
+                                    <li><g:link controller="productBacklogItem" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></li>
+                                </g:each>
+                                </ul>
+                            </td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name">Planning Poker Game Type:</td>
+                            <td valign="top" class="name">Name:</td>
                             
-                            <td valign="top" class="value">${fieldValue(bean:productInstance, field:'planningPokerGameType')}</td>
+                            <td valign="top" class="value">${fieldValue(bean:productInstance, field:'name')}</td>
                             
                         </tr>
                     

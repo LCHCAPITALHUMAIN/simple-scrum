@@ -5,8 +5,8 @@ class RemainingEstimation {
   Double remainingPoints
   Date date
 
-  String toString(){
-    Sring.format('%tA %<te %<tB %<ty - %s', date,remainingPoints)
+  String toString() {
+    Sring.format('%tA %<te %<tB %<ty - %s', date, remainingPoints)
   }
 
   static belongsTo = [Task]

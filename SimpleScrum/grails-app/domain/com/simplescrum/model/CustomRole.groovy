@@ -34,8 +34,8 @@ class CustomRole {
   ExpertnessLevel expertiseLevel
   UsageFrequency usageFrequency
 
-  String toString(){
-    name 
+  String toString() {
+    name
   }
 
   static hasMany = [productBacklogItems: ProductBacklogItem]

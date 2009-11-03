@@ -8,8 +8,8 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Product List</g:link></span>
+            <span class="menuButton"><g:link class="home" controller="product">Home</g:link></span>
+            <span class="menuButton"><g:link class="list" action="list">Products</g:link></span>
             <span class="menuButton"><g:link class="create" action="create">New Product</g:link></span>
         </div>
         <div class="body">
@@ -40,19 +40,23 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="name">Name:</label>
+                                    <label for="items">Items:</label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean:productInstance,field:'name','errors')}">
-                                    <input type="text" id="name" name="name" value="${fieldValue(bean:productInstance,field:'name')}"/>
+                                <td valign="top" class="value ${hasErrors(bean:productInstance,field:'items','errors')}">
+                                    <g:select name="items"
+from="${com.simplescrum.model.ProductBacklogItem.list()}"
+size="5" multiple="yes" optionKey="id"
+value="${productInstance?.items}" />
+
                                 </td>
                             </tr> 
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="planningPokerGameType">Planning Poker Game Type:</label>
+                                    <label for="name">Name:</label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean:productInstance,field:'planningPokerGameType','errors')}">
-                                    <input type="text" id="planningPokerGameType" name="planningPokerGameType" value="${fieldValue(bean:productInstance,field:'planningPokerGameType')}" />
+                                <td valign="top" class="value ${hasErrors(bean:productInstance,field:'name','errors')}">
+                                    <input type="text" id="name" name="name" value="${fieldValue(bean:productInstance,field:'name')}"/>
                                 </td>
                             </tr> 
                         

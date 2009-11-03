@@ -7,19 +7,19 @@ package com.simplescrum.model
  */
 class AccessRole {
 
-	static hasMany = [people: User]
+  static hasMany = [people: User]
 
-	/** description */
-	String description
-	/** ROLE String */
-	String authority
+  /** description   */
+  String description
+  /** ROLE String   */
+  String authority
 
-	static constraints = {
-		authority(blank: false, unique: true)
-		description()
-	}
+  static constraints = {
+    authority(blank: false, unique: true)
+    description()
+  }
 
-  String toString(){
-     authority
+  String toString() {
+    authority
   }
 }

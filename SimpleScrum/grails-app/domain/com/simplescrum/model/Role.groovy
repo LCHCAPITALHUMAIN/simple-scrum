@@ -16,8 +16,8 @@ enum RoleType {
 class Role {
   RoleType name
 
-  String toString(){
-    name  
+  String toString() {
+    name
   }
 
   static belongsTo = [user: User, product: Product]

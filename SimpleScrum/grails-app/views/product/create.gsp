@@ -46,15 +46,6 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="planningPokerGameType">Planning Poker Game Type:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:productInstance,field:'planningPokerGameType','errors')}">
-                                    <input type="text" id="planningPokerGameType" name="planningPokerGameType" value="${fieldValue(bean:productInstance,field:'planningPokerGameType')}" />
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
                                     <label for="startDate">Start Date:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:productInstance,field:'startDate','errors')}">

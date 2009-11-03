@@ -21,7 +21,7 @@ class Task {
   static constraints = {
   }
 
-  String toString(){
+  String toString() {
     label
   }
 }

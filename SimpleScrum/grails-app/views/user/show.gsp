@@ -9,8 +9,8 @@
     <body>
         <div class="nav">
             <span class="menuButton"><g:link class="home" controller="user">Home</g:link></span>
-            <span class="menuButton"><g:link class="list" action="list">User List</g:link></span>
-            <span class="menuButton"><g:link class="create" controller="register">Register New User</g:link></span>
+            <span class="menuButton"><g:link class="list" action="list">Users</g:link></span>
+            <span class="menuButton"><g:link class="create" controller="register">Register New</g:link></span>
         </div>
         <div class="body">
             <h1>Show User</h1>
@@ -127,10 +127,7 @@
                 <g:form>
                     <input type="hidden" name="id" value="${userInstance?.id}" />
                     <span class="button"><g:link class="edit" controller="register" action="edit" id="${userInstance?.id}">Edit Access Credentials</g:link></span>
-                    <g:if test="${userInstance.roles.size()==0}">
-                      <span class="button"><g:link class="create" controller="role" action="create" params="['user.id':userInstance?.id]">Assign Role</g:link></span>
-                    </g:if>
-
+                    <span class="button"><g:link class="create" controller="role" action="create" params="['user.id':userInstance?.id]">Assign Role</g:link></span>
                     <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
                 </g:form>
             </div>
