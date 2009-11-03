@@ -9,7 +9,7 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Task List</g:link></span>
+            <span class="menuButton"><g:link class="list" action="list">Tasks</g:link></span>
         </div>
         <div class="body">
             <h1>Create Task</h1>
@@ -28,28 +28,46 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="creator">Creator:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'creator','errors')}">
-                                    <g:select optionKey="id" from="${com.simplescrum.model.User.list()}" name="creator.id" value="${taskInstance?.creator?.id}" ></g:select>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="elapsedTime">Elapsed Time:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'elapsedTime','errors')}">
-                                    <input type="text" id="elapsedTime" name="elapsedTime" value="${fieldValue(bean:taskInstance,field:'elapsedTime')}" />
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
                                     <label for="label">Label:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'label','errors')}">
                                     <input type="text" id="label" name="label" value="${fieldValue(bean:taskInstance,field:'label')}"/>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="state">State:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'state','errors')}">
+                                    <g:select  from="${com.simplescrum.model.TaskStatus?.values()}" value="${taskInstance?.state}" name="state" ></g:select>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="type">Type:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'type','errors')}">
+                                    <g:select  from="${com.simplescrum.model.TaskType?.values()}" value="${taskInstance?.type}" name="type" ></g:select>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="team">Team:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'team','errors')}">
+                                    <g:select optionKey="id" from="${com.simplescrum.model.Team.list()}" name="team.id" value="${taskInstance?.team?.id}" noSelection="['null':'']"></g:select>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="sprint">Sprint:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'sprint','errors')}">
+                                    <g:select optionKey="id" from="${com.simplescrum.model.Sprint.list()}" name="sprint.id" value="${taskInstance?.sprint?.id}" ></g:select>
                                 </td>
                             </tr> 
                         
@@ -64,19 +82,19 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="productBacklogItem">Product Backlog Item:</label>
+                                    <label for="creator">Creator:</label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'productBacklogItem','errors')}">
-                                    <g:select optionKey="id" from="${com.simplescrum.model.ProductBacklogItem.list()}" name="productBacklogItem.id" value="${taskInstance?.productBacklogItem?.id}" ></g:select>
+                                <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'creator','errors')}">
+                                    <g:select optionKey="id" from="${com.simplescrum.model.User.list()}" name="creator.id" value="${taskInstance?.creator?.id}" ></g:select>
                                 </td>
                             </tr> 
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="state">State:</label>
+                                    <label for="productBacklogItem">Product Backlog Item:</label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'state','errors')}">
-                                    <g:select  from="${com.simplescrum.model.TaskStatus?.values()}" value="${taskInstance?.state}" name="state" ></g:select>
+                                <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'productBacklogItem','errors')}">
+                                    <g:select optionKey="id" from="${com.simplescrum.model.ProductBacklogItem.list()}" name="productBacklogItem.id" value="${taskInstance?.productBacklogItem?.id}" ></g:select>
                                 </td>
                             </tr> 
                         

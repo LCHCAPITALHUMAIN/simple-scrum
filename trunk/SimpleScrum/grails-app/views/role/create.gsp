@@ -9,7 +9,7 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Role List</g:link></span>
+            <span class="menuButton"><g:link class="list" action="list">Roles</g:link></span>
         </div>
         <div class="body">
             <h1>Create Role</h1>

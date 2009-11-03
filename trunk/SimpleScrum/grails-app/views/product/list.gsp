@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
-        <title>Product List</title>
+        <title>Products</title>
     </head>
     <body>
         <div class="nav">
@@ -12,7 +12,7 @@
             <span class="menuButton"><g:link class="create" action="create">New</g:link></span>
         </div>
         <div class="body">
-            <h1>Product List</h1>
+            <h1>Products</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>

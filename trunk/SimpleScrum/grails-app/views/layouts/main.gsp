@@ -15,7 +15,7 @@
   <div id="header">
 
     <g:isLoggedIn>
-      <dl style="">
+      <dl style="margin-right:10px;margin-top:10px;">
         <dt>User</dt>
         <dd><g:loggedInUserInfo field="userRealName">Guest</g:loggedInUserInfo> -  <g:link controller="logout" action="index">sign out</g:link>
       </dl>

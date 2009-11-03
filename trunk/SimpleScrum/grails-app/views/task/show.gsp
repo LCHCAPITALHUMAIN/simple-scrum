@@ -9,7 +9,7 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Task List</g:link></span>
+            <span class="menuButton"><g:link class="list" action="list">Tasks</g:link></span>
             <span class="menuButton"><g:link class="create" action="create">New Task</g:link></span>
         </div>
         <div class="body">
@@ -30,50 +30,9 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name">Creator:</td>
-                            
-                            <td valign="top" class="value"><g:link controller="user" action="show" id="${taskInstance?.creator?.id}">${taskInstance?.creator?.encodeAsHTML()}</g:link></td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Elapsed Time:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:taskInstance, field:'elapsedTime')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
                             <td valign="top" class="name">Label:</td>
                             
                             <td valign="top" class="value">${fieldValue(bean:taskInstance, field:'label')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Notes:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:taskInstance, field:'notes')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Product Backlog Item:</td>
-                            
-                            <td valign="top" class="value"><g:link controller="productBacklogItem" action="show" id="${taskInstance?.productBacklogItem?.id}">${taskInstance?.productBacklogItem?.encodeAsHTML()}</g:link></td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Remaining Estimations:</td>
-                            
-                            <td  valign="top" style="text-align:left;" class="value">
-                                <ul>
-                                <g:each var="r" in="${taskInstance.remainingEstimations}">
-                                    <li><g:link controller="remainingEstimation" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
-                                </g:each>
-                                </ul>
-                            </td>
                             
                         </tr>
                     
@@ -85,12 +44,67 @@
                         </tr>
                     
                         <tr class="prop">
+                            <td valign="top" class="name">Type:</td>
+                            
+                            <td valign="top" class="value">${taskInstance?.type?.encodeAsHTML()}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Team:</td>
+                            
+                            <td valign="top" class="value"><g:link controller="team" action="show" id="${taskInstance?.team?.id}">${taskInstance?.team?.encodeAsHTML()}</g:link></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Sprint:</td>
+                            
+                            <td valign="top" class="value"><g:link controller="sprint" action="show" id="${taskInstance?.sprint?.id}">${taskInstance?.sprint?.encodeAsHTML()}</g:link></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Notes:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:taskInstance, field:'notes')}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Creator:</td>
+                            
+                            <td valign="top" class="value"><g:link controller="user" action="show" id="${taskInstance?.creator?.id}">${taskInstance?.creator?.encodeAsHTML()}</g:link></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Product Backlog Item:</td>
+                            
+                            <td valign="top" class="value"><g:link controller="productBacklogItem" action="show" id="${taskInstance?.productBacklogItem?.id}">${taskInstance?.productBacklogItem?.encodeAsHTML()}</g:link></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
                             <td valign="top" class="name">Task Actuals:</td>
                             
                             <td  valign="top" style="text-align:left;" class="value">
                                 <ul>
                                 <g:each var="t" in="${taskInstance.taskActuals}">
                                     <li><g:link controller="taskActual" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
+                                </g:each>
+                                </ul>
+                            </td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Remaining Estimations:</td>
+                            
+                            <td  valign="top" style="text-align:left;" class="value">
+                                <ul>
+                                <g:each var="r" in="${taskInstance.remainingEstimations}">
+                                    <li><g:link controller="remainingEstimation" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
                                 </g:each>
                                 </ul>
                             </td>

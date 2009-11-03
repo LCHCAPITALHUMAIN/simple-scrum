@@ -9,7 +9,7 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">ProductBacklogItem List</g:link></span>
+            <span class="menuButton"><g:link class="list" action="list">ProductBacklogItems</g:link></span>
             <span class="menuButton"><g:link class="create" action="create">New ProductBacklogItem</g:link></span>
         </div>
         <div class="body">
@@ -80,15 +80,6 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'product','errors')}">
                                     <g:select optionKey="id" from="${com.simplescrum.model.Product.list()}" name="product.id" value="${productBacklogItemInstance?.product?.id}" ></g:select>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="sprint">Sprint:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'sprint','errors')}">
-                                    <g:select optionKey="id" from="${com.simplescrum.model.Sprint.list()}" name="sprint.id" value="${productBacklogItemInstance?.sprint?.id}" noSelection="['null':'']"></g:select>
                                 </td>
                             </tr> 
                         
