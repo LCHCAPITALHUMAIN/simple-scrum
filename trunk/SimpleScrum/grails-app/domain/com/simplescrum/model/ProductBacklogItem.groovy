@@ -18,6 +18,7 @@ enum ProductBacklogItemStatus {
 enum ProductBacklogItemType {
   USER_STORY("User Story"),
   FEATURE("Feature"),
+  TEAM_MANAGEMENT("Team Management"),
   TECHNICAL_STORY("Technical Story"),
   DEFECT("Defect");
 
@@ -34,26 +35,33 @@ class ProductBacklogItem {
   ProductBacklogItemType type
   String notes
   Integer estimatedPoints
-  Integer executionFrequency
   Integer rank
   ProductBacklogItemStatus state
   Date creationDate
   Date estimationDate
-  Boolean insertedOnActiveRelease
   CustomRole customRole
   Feature feature
   Sprint sprint
   User ownerUser
 
-  static belongsTo = [Product]
+  static belongsTo = [product:Product]
   static hasMany = [tasks: Task]
 
   static constraints = {
+    label()
+    description()
+    type()
+    rank()
+    notes()
+    product()
+    sprint(nullable: true)
+    estimatedPoints(nullable: true)
+    estimationDate(nullable: true)
     customRole(nullable: true)
     feature(nullable: true)
   }
 
-  String toString(){
+  String toString() {
     label
   }
 }

@@ -28,6 +28,87 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                    <label for="label">Label:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'label','errors')}">
+                                    <input type="text" id="label" name="label" value="${fieldValue(bean:productBacklogItemInstance,field:'label')}"/>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="description">Description:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'description','errors')}">
+                                    <input type="text" id="description" name="description" value="${fieldValue(bean:productBacklogItemInstance,field:'description')}"/>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="type">Type:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'type','errors')}">
+                                    <g:select  from="${com.simplescrum.model.ProductBacklogItemType?.values()}" value="${productBacklogItemInstance?.type}" name="type" ></g:select>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="rank">Rank:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'rank','errors')}">
+                                    <input type="text" id="rank" name="rank" value="${fieldValue(bean:productBacklogItemInstance,field:'rank')}" />
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="notes">Notes:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'notes','errors')}">
+                                    <input type="text" id="notes" name="notes" value="${fieldValue(bean:productBacklogItemInstance,field:'notes')}"/>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="product">Product:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'product','errors')}">
+                                    <g:select optionKey="id" from="${com.simplescrum.model.Product.list()}" name="product.id" value="${productBacklogItemInstance?.product?.id}" ></g:select>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="sprint">Sprint:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'sprint','errors')}">
+                                    <g:select optionKey="id" from="${com.simplescrum.model.Sprint.list()}" name="sprint.id" value="${productBacklogItemInstance?.sprint?.id}" noSelection="['null':'']"></g:select>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="estimatedPoints">Estimated Points:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'estimatedPoints','errors')}">
+                                    <input type="text" id="estimatedPoints" name="estimatedPoints" value="${fieldValue(bean:productBacklogItemInstance,field:'estimatedPoints')}" />
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="estimationDate">Estimation Date:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'estimationDate','errors')}">
+                                    <g:datePicker name="estimationDate" value="${productBacklogItemInstance?.estimationDate}" precision="minute" noSelection="['':'']"></g:datePicker>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                     <label for="customRole">Custom Role:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'customRole','errors')}">
@@ -55,69 +136,6 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="description">Description:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'description','errors')}">
-                                    <input type="text" id="description" name="description" value="${fieldValue(bean:productBacklogItemInstance,field:'description')}"/>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="estimatedPoints">Estimated Points:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'estimatedPoints','errors')}">
-                                    <input type="text" id="estimatedPoints" name="estimatedPoints" value="${fieldValue(bean:productBacklogItemInstance,field:'estimatedPoints')}" />
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="estimationDate">Estimation Date:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'estimationDate','errors')}">
-                                    <g:datePicker name="estimationDate" value="${productBacklogItemInstance?.estimationDate}" precision="minute" ></g:datePicker>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="executionFrequency">Execution Frequency:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'executionFrequency','errors')}">
-                                    <input type="text" id="executionFrequency" name="executionFrequency" value="${fieldValue(bean:productBacklogItemInstance,field:'executionFrequency')}" />
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="insertedOnActiveRelease">Inserted On Active Release:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'insertedOnActiveRelease','errors')}">
-                                    <g:checkBox name="insertedOnActiveRelease" value="${productBacklogItemInstance?.insertedOnActiveRelease}" ></g:checkBox>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="label">Label:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'label','errors')}">
-                                    <input type="text" id="label" name="label" value="${fieldValue(bean:productBacklogItemInstance,field:'label')}"/>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="notes">Notes:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'notes','errors')}">
-                                    <input type="text" id="notes" name="notes" value="${fieldValue(bean:productBacklogItemInstance,field:'notes')}"/>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
                                     <label for="ownerUser">Owner User:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'ownerUser','errors')}">
@@ -127,37 +145,10 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="rank">Rank:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'rank','errors')}">
-                                    <input type="text" id="rank" name="rank" value="${fieldValue(bean:productBacklogItemInstance,field:'rank')}" />
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="sprint">Sprint:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'sprint','errors')}">
-                                    <g:select optionKey="id" from="${com.simplescrum.model.Sprint.list()}" name="sprint.id" value="${productBacklogItemInstance?.sprint?.id}" ></g:select>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
                                     <label for="state">State:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'state','errors')}">
                                     <g:select  from="${com.simplescrum.model.ProductBacklogItemStatus?.values()}" value="${productBacklogItemInstance?.state}" name="state" ></g:select>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="type">Type:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'type','errors')}">
-                                    <g:select  from="${com.simplescrum.model.ProductBacklogItemType?.values()}" value="${productBacklogItemInstance?.type}" name="type" ></g:select>
                                 </td>
                             </tr> 
                         

@@ -8,8 +8,8 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="create" action="create">New Product</g:link></span>
+            <span class="menuButton"><g:link class="home" controller="product">Home</g:link></span>
+            <span class="menuButton"><g:link class="create" action="create">New</g:link></span>
         </div>
         <div class="body">
             <h1>Product List</h1>
@@ -27,8 +27,6 @@
                         
                    	        <g:sortableColumn property="name" title="Name" />
                         
-                   	        <g:sortableColumn property="planningPokerGameType" title="Planning Poker Game Type" />
-                        
                    	        <g:sortableColumn property="startDate" title="Start Date" />
                         
                         </tr>
@@ -42,8 +40,6 @@
                             <td>${fieldValue(bean:productInstance, field:'description')}</td>
                         
                             <td>${fieldValue(bean:productInstance, field:'name')}</td>
-                        
-                            <td>${fieldValue(bean:productInstance, field:'planningPokerGameType')}</td>
                         
                             <td>${fieldValue(bean:productInstance, field:'startDate')}</td>
                         

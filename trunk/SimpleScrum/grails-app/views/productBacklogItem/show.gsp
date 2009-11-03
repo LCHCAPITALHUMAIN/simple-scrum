@@ -30,6 +30,69 @@
                         </tr>
                     
                         <tr class="prop">
+                            <td valign="top" class="name">Label:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:productBacklogItemInstance, field:'label')}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Description:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:productBacklogItemInstance, field:'description')}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Type:</td>
+                            
+                            <td valign="top" class="value">${productBacklogItemInstance?.type?.encodeAsHTML()}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Rank:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:productBacklogItemInstance, field:'rank')}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Notes:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:productBacklogItemInstance, field:'notes')}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Product:</td>
+                            
+                            <td valign="top" class="value"><g:link controller="product" action="show" id="${productBacklogItemInstance?.product?.id}">${productBacklogItemInstance?.product?.encodeAsHTML()}</g:link></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Sprint:</td>
+                            
+                            <td valign="top" class="value"><g:link controller="sprint" action="show" id="${productBacklogItemInstance?.sprint?.id}">${productBacklogItemInstance?.sprint?.encodeAsHTML()}</g:link></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Estimated Points:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:productBacklogItemInstance, field:'estimatedPoints')}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Estimation Date:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:productBacklogItemInstance, field:'estimationDate')}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
                             <td valign="top" class="name">Custom Role:</td>
                             
                             <td valign="top" class="value"><g:link controller="customRole" action="show" id="${productBacklogItemInstance?.customRole?.id}">${productBacklogItemInstance?.customRole?.encodeAsHTML()}</g:link></td>
@@ -51,72 +114,9 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name">Description:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:productBacklogItemInstance, field:'description')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Estimated Points:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:productBacklogItemInstance, field:'estimatedPoints')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Estimation Date:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:productBacklogItemInstance, field:'estimationDate')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Execution Frequency:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:productBacklogItemInstance, field:'executionFrequency')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Inserted On Active Release:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:productBacklogItemInstance, field:'insertedOnActiveRelease')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Label:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:productBacklogItemInstance, field:'label')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Notes:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:productBacklogItemInstance, field:'notes')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
                             <td valign="top" class="name">Owner User:</td>
                             
                             <td valign="top" class="value"><g:link controller="user" action="show" id="${productBacklogItemInstance?.ownerUser?.id}">${productBacklogItemInstance?.ownerUser?.encodeAsHTML()}</g:link></td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Rank:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:productBacklogItemInstance, field:'rank')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Sprint:</td>
-                            
-                            <td valign="top" class="value"><g:link controller="sprint" action="show" id="${productBacklogItemInstance?.sprint?.id}">${productBacklogItemInstance?.sprint?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     
@@ -137,13 +137,6 @@
                                 </g:each>
                                 </ul>
                             </td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Type:</td>
-                            
-                            <td valign="top" class="value">${productBacklogItemInstance?.type?.encodeAsHTML()}</td>
                             
                         </tr>
                     

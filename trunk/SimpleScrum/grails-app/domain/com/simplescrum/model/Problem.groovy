@@ -22,8 +22,8 @@ class Problem {
   Date modificationDate
   Date closedDate
 
-  String toString(){
-    name  
+  String toString() {
+    name
   }
 
   static belongsTo = [poster: User, product: Product]

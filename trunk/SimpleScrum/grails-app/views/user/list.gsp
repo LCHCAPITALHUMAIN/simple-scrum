@@ -9,7 +9,7 @@
     <body>
         <div class="nav">
             <span class="menuButton"><g:link class="home" controller="user">Home</g:link></span>
-            <span class="menuButton"><g:link class="create" controller="register">Register New User</g:link></span>
+            <span class="menuButton"><g:link class="create" controller="register">Register New</g:link></span>
         </div>
         <div class="body">
             <h1>User List</h1>

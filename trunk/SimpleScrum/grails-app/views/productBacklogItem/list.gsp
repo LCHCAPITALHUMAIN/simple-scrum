@@ -23,15 +23,15 @@
                         
                    	        <g:sortableColumn property="id" title="Id" />
                         
-                   	        <th>Custom Role</th>
-                   	    
-                   	        <th>Feature</th>
-                   	    
-                   	        <g:sortableColumn property="creationDate" title="Creation Date" />
+                   	        <g:sortableColumn property="label" title="Label" />
                         
                    	        <g:sortableColumn property="description" title="Description" />
                         
-                   	        <g:sortableColumn property="estimatedPoints" title="Estimated Points" />
+                   	        <th>Type</th>
+                   	    
+                   	        <g:sortableColumn property="rank" title="Rank" />
+                        
+                   	        <g:sortableColumn property="notes" title="Notes" />
                         
                         </tr>
                     </thead>
@@ -41,15 +41,15 @@
                         
                             <td><g:link action="show" id="${productBacklogItemInstance.id}">${fieldValue(bean:productBacklogItemInstance, field:'id')}</g:link></td>
                         
-                            <td>${fieldValue(bean:productBacklogItemInstance, field:'customRole')}</td>
-                        
-                            <td>${fieldValue(bean:productBacklogItemInstance, field:'feature')}</td>
-                        
-                            <td>${fieldValue(bean:productBacklogItemInstance, field:'creationDate')}</td>
+                            <td>${fieldValue(bean:productBacklogItemInstance, field:'label')}</td>
                         
                             <td>${fieldValue(bean:productBacklogItemInstance, field:'description')}</td>
                         
-                            <td>${fieldValue(bean:productBacklogItemInstance, field:'estimatedPoints')}</td>
+                            <td>${fieldValue(bean:productBacklogItemInstance, field:'type')}</td>
+                        
+                            <td>${fieldValue(bean:productBacklogItemInstance, field:'rank')}</td>
+                        
+                            <td>${fieldValue(bean:productBacklogItemInstance, field:'notes')}</td>
                         
                         </tr>
                     </g:each>

@@ -36,8 +36,8 @@ class Release {
   Integer estimatedSprintDuration
   Double defaultEstimatedVelocity
 
-  String toString(){
-    name 
+  String toString() {
+    name
   }
 
   static hasMany = [sprints: Sprint]

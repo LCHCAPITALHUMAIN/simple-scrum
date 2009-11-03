@@ -4,13 +4,12 @@ class Product {
   String name
   String description
   Date startDate
-  Integer planningPokerGameType = 0
 
-  String toString(){
-    name 
+  String toString() {
+    name
   }
 
-  static hasMany = [releases: Release]
+  static hasMany = [releases: Release, items: ProductBacklogItem]
   static constraints = {
   }
 }
