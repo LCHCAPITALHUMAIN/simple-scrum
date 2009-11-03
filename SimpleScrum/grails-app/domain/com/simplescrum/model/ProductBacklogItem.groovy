@@ -29,19 +29,31 @@ enum ProductBacklogItemType {
   }
 }
 
+enum EstimationType {
+  HIGH("High"),
+  MEDIUM("Medium"),
+  LOW("Low");
+
+  final String id;
+
+  EstimationType(String id) {
+    this.id = id;
+  }
+}
+
 class ProductBacklogItem {
   String label
   String description
   ProductBacklogItemType type
   String notes
   Integer estimatedPoints
+  EstimationType estimationType=EstimationType.HIGH
   Integer rank
   ProductBacklogItemStatus state
   Date creationDate
   Date estimationDate
   CustomRole customRole
   Feature feature
-  Sprint sprint
   User ownerUser
 
   static belongsTo = [product:Product]
@@ -49,13 +61,13 @@ class ProductBacklogItem {
 
   static constraints = {
     label()
-    description()
+    description(nullable: true)
     type()
     rank()
-    notes()
+    notes(nullable: true)
     product()
-    sprint(nullable: true)
     estimatedPoints(nullable: true)
+    estimationType()
     estimationDate(nullable: true)
     customRole(nullable: true)
     feature(nullable: true)

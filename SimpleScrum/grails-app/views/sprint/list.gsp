@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
-        <title>Sprint List</title>
+        <title>Sprints</title>
     </head>
     <body>
         <div class="nav">
@@ -12,7 +12,7 @@
             <span class="menuButton"><g:link class="create" action="create">New Sprint</g:link></span>
         </div>
         <div class="body">
-            <h1>Sprint List</h1>
+            <h1>Sprints</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>

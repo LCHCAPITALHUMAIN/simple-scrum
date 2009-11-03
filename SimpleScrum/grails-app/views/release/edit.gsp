@@ -9,7 +9,7 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Release List</g:link></span>
+            <span class="menuButton"><g:link class="list" action="list">Releases</g:link></span>
             <span class="menuButton"><g:link class="create" action="create">New Release</g:link></span>
         </div>
         <div class="body">

@@ -1,24 +1,24 @@
 
-<%@ page import="com.simplescrum.model.RemainingEstimation" %>
+<%@ page import="com.simplescrum.model.TeamComposition" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
-        <title>Create RemainingEstimation</title>         
+        <title>Create TeamComposition</title>         
     </head>
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">RemainingEstimations</g:link></span>
+            <span class="menuButton"><g:link class="list" action="list">TeamCompositions</g:link></span>
         </div>
         <div class="body">
-            <h1>Create RemainingEstimation</h1>
+            <h1>Create TeamComposition</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${remainingEstimationInstance}">
+            <g:hasErrors bean="${teamCompositionInstance}">
             <div class="errors">
-                <g:renderErrors bean="${remainingEstimationInstance}" as="list" />
+                <g:renderErrors bean="${teamCompositionInstance}" as="list" />
             </div>
             </g:hasErrors>
             <g:form action="save" method="post" >
@@ -28,28 +28,28 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="date">Date:</label>
+                                    <label for="team">Team:</label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean:remainingEstimationInstance,field:'date','errors')}">
-                                    <g:datePicker name="date" value="${remainingEstimationInstance?.date}" precision="minute" ></g:datePicker>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="remainingPoints">Remaining Points:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:remainingEstimationInstance,field:'remainingPoints','errors')}">
-                                    <input type="text" id="remainingPoints" name="remainingPoints" value="${fieldValue(bean:remainingEstimationInstance,field:'remainingPoints')}" />
+                                <td valign="top" class="value ${hasErrors(bean:teamCompositionInstance,field:'team','errors')}">
+                                    <g:select optionKey="id" from="${com.simplescrum.model.Team.list()}" name="team.id" value="${teamCompositionInstance?.team?.id}" ></g:select>
                                 </td>
                             </tr> 
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="task">Task:</label>
+                                    <label for="user">User:</label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean:remainingEstimationInstance,field:'task','errors')}">
-                                    <g:select optionKey="id" from="${com.simplescrum.model.Task.list()}" name="task.id" value="${remainingEstimationInstance?.task?.id}" ></g:select>
+                                <td valign="top" class="value ${hasErrors(bean:teamCompositionInstance,field:'user','errors')}">
+                                    <g:select optionKey="id" from="${com.simplescrum.model.User.list()}" name="user.id" value="${teamCompositionInstance?.user?.id}" ></g:select>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="sprint">Sprint:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:teamCompositionInstance,field:'sprint','errors')}">
+                                    <g:select optionKey="id" from="${com.simplescrum.model.Sprint.list()}" name="sprint.id" value="${teamCompositionInstance?.sprint?.id}" ></g:select>
                                 </td>
                             </tr> 
                         

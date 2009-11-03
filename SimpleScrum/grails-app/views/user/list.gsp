@@ -4,15 +4,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
-        <title>User List</title>
+        <title>Users</title>
     </head>
     <body>
         <div class="nav">
             <span class="menuButton"><g:link class="home" controller="user">Home</g:link></span>
             <span class="menuButton"><g:link class="create" controller="register">Register New</g:link></span>
+            <span class="menuButton"><g:link class="list" controller="team">Teams</g:link></span>
         </div>
         <div class="body">
-            <h1>User List</h1>
+            <h1>Users</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>

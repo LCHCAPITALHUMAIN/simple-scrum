@@ -9,7 +9,7 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">ProductBacklogItem List</g:link></span>
+            <span class="menuButton"><g:link class="list" action="list">ProductBacklogItems</g:link></span>
             <span class="menuButton"><g:link class="create" action="create">New ProductBacklogItem</g:link></span>
         </div>
         <div class="body">
@@ -68,13 +68,6 @@
                             <td valign="top" class="name">Product:</td>
                             
                             <td valign="top" class="value"><g:link controller="product" action="show" id="${productBacklogItemInstance?.product?.id}">${productBacklogItemInstance?.product?.encodeAsHTML()}</g:link></td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Sprint:</td>
-                            
-                            <td valign="top" class="value"><g:link controller="sprint" action="show" id="${productBacklogItemInstance?.sprint?.id}">${productBacklogItemInstance?.sprint?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     

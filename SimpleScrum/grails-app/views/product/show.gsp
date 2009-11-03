@@ -9,7 +9,7 @@
     <body>
         <div class="nav">
             <span class="menuButton"><g:link class="home" controller="product">Home</g:link></span>
-            <span class="menuButton"><g:link class="list" action="list">Product List</g:link></span>
+            <span class="menuButton"><g:link class="list" action="list">Products</g:link></span>
             <span class="menuButton"><g:link class="create" controller="productBacklogItem" action="create" params="['product.id':productInstance?.id]">New Item</g:link></span>
         </div>
         <div class="body">

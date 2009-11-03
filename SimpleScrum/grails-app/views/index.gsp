@@ -9,8 +9,10 @@
     <br/>
     <hr/>
     <br/>
+  <g:isNotLoggedIn>
     <p>
       New user? <g:link controller="register">Create an account</g:link>
     </p>
+   </g:isNotLoggedIn> 
   </body>
 </html>
