@@ -31,6 +31,13 @@
                         </tr>
                     
                         <tr class="prop">
+                            <td valign="top" class="name">Number:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:productBacklogItemInstance, field:'number')}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
                             <td valign="top" class="name">Label:</td>
                             
                             <td valign="top" class="value">${fieldValue(bean:productBacklogItemInstance, field:'label')}</td>
