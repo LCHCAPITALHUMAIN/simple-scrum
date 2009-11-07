@@ -1,4 +1,4 @@
-<%@ page import="com.simplescrum.model.AuditLogEvent" %>
+<%@ page import="com.simplescrum.model.AuditLog" %>
 
 <html>
     <head>
@@ -8,9 +8,8 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${createLinkTo(dir:'')}">Home</a></span>
+            <span class="menuButton"><g:link class="home">Home</g:link></span>
             <span class="menuButton"><g:link class="list" action="list">AuditLogEvent List</g:link></span>
-            <span class="menuButton"><g:link class="create" action="create">New AuditLogEvent</g:link></span>
         </div>
         <div class="body">
             <h1>Show AuditLogEvent</h1>
@@ -112,8 +111,6 @@
             <div class="buttons">
                 <g:form>
                     <input type="hidden" name="id" value="${auditLogEvent?.id}" />
-                    <span class="button"><g:actionSubmit class="edit" value="Edit" /></span>
-                    <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
                 </g:form>
             </div>
         </div>
