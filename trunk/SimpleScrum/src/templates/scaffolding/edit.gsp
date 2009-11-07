@@ -29,7 +29,7 @@
                         <tbody>
                         <%
                             excludedProps = ['version',
-                                             'id',
+                                             'id','auditable',
                                                Events.ONLOAD_EVENT,
                                                Events.BEFORE_DELETE_EVENT,
                                                Events.BEFORE_INSERT_EVENT,
@@ -55,7 +55,7 @@
                 </div>
                 <div class="buttons">
                     <span class="button"><g:actionSubmit class="save" value="Update" /></span>
-                    <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
+                    <span class="button"><g:link class="cancel" action="show" id="\${${propertyName}?.id}">Cancel</g:link></span>
                 </div>
             </g:form>
         </div>

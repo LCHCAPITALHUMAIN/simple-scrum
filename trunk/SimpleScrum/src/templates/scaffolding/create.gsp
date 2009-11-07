@@ -28,7 +28,7 @@
                         <%
 
                             excludedProps = ['version',
-                                             'id',
+                                             'id','auditable',
                                                Events.ONLOAD_EVENT,
                                                Events.BEFORE_DELETE_EVENT,
                                                Events.BEFORE_INSERT_EVENT,
@@ -55,6 +55,7 @@
                 </div>
                 <div class="buttons">
                     <span class="button"><input class="save" type="submit" value="Create" /></span>
+                    <span class="button"><g:link class="cancel" action="list">Cancel</g:link></span>
                 </div>
             </g:form>
         </div>

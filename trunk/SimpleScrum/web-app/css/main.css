@@ -278,3 +278,9 @@ th.desc a {
     color: #333;
     padding-left: 25px;
 }
+
+.buttons a.cancel {
+    background: url(../images/skin/database_delete.png) center left no-repeat;
+    color: #333;
+    padding-left: 25px;
+}
