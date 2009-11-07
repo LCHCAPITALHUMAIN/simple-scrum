@@ -21,7 +21,7 @@
                     <thead>
                         <tr>
                         <%
-                            excludedProps = ['version',
+                            excludedProps = ['version','auditable',
                                                Events.ONLOAD_EVENT,
                                                Events.BEFORE_DELETE_EVENT,
                                                Events.BEFORE_INSERT_EVENT,
@@ -43,7 +43,8 @@
                         <tr class="\${(i % 2) == 0 ? 'odd' : 'even'}">
                         <%  props.eachWithIndex { p,i ->
                                 if(i == 0) { %>
-                            <td><g:link action="show" id="\${${propertyName}.id}">\${fieldValue(bean:${propertyName}, field:'${p.name}')}</g:link></td>
+
+                            <td>\${fieldValue(bean:${propertyName}, field:'${p.name}')}-><g:link action="show" id="\${${propertyName}.id}">show</g:link>|<g:link action="edit" id="\${${propertyName}.id}">edit</g:link></td>
                         <%      } else if(i < 6) { %>
                             <td>\${fieldValue(bean:${propertyName}, field:'${p.name}')}</td>
                         <%  }   } %>
