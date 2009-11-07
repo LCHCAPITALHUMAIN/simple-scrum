@@ -1,5 +1,5 @@
 
-<%@ page import="com.simplescrum.model.AuditLogEvent" %>
+<%@ page import="com.simplescrum.model.AuditLog" %>
 
 <html>
     <head>
@@ -9,8 +9,7 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${createLinkTo(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="create" action="create">New AuditLogEvent</g:link></span>
+          <span class="menuButton"><g:link class="home">Home</g:link></span>
         </div>
         <div class="body">
             <h1>AuditLogEvent List</h1>
@@ -26,39 +25,43 @@
                         
                    	        <g:sortableColumn property="actor" title="Actor" />
                         
-                   	        <g:sortableColumn property="uri" title="Uri" />
-                        
                    	        <g:sortableColumn property="className" title="Class Name" />
                         
-                   	        <g:sortableColumn property="persistedObjectId" title="Persisted Object Id" />
+                   	        <g:sortableColumn property="persistedObjectId" title="Object Id" />
                         
-                   	        <g:sortableColumn property="persistedObjectVersion" title="Persisted Object Version" />
-                        
+                   	        <g:sortableColumn property="eventName" title="Operation" />
+
+                   	        <g:sortableColumn property="dateCreated" title="Date Created" />
+
+                   	        <g:sortableColumn property="lastUpdated" title="Last Updated" />
+
                         </tr>
                     </thead>
                     <tbody>
-                    <g:each in="${auditLogEventList}" status="i" var="auditLogEvent">
+                    <g:each in="${auditLogEventList}" status="i" var="varAuditLog">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${auditLogEvent.id}">${auditLogEvent.id?.encodeAsHTML()}</g:link></td>
+                            <td><g:link action="show" id="${varAuditLog.id}">${varAuditLog.id?.encodeAsHTML()}</g:link></td>
                         
-                            <td>${auditLogEvent.actor?.encodeAsHTML()}</td>
+                            <td>${varAuditLog.actor?.encodeAsHTML()}</td>
                         
-                            <td>${auditLogEvent.uri?.encodeAsHTML()}</td>
+                            <td>${varAuditLog.simpleclassName()?.encodeAsHTML()}</td>
                         
-                            <td>${auditLogEvent.className?.encodeAsHTML()}</td>
+                            <td>${varAuditLog.persistedObjectId?.encodeAsHTML()}</td>
                         
-                            <td>${auditLogEvent.persistedObjectId?.encodeAsHTML()}</td>
-                        
-                            <td>${auditLogEvent.persistedObjectVersion?.encodeAsHTML()}</td>
-                        
+                            <td>${varAuditLog.eventName?.encodeAsHTML()}</td>
+
+                            <td>${fieldValue(bean:varAuditLog, field:'dateCreated')}</td>
+
+                            <td>${fieldValue(bean:varAuditLog, field:'lastUpdated')}</td>
+
                         </tr>
                     </g:each>
                     </tbody>
                 </table>
             </div>
             <div class="paginateButtons">
-                <g:paginate total="${AuditLogEvent.count()}" />
+                <g:paginate total="${AuditLog.count()}" />
             </div>
         </div>
     </body>

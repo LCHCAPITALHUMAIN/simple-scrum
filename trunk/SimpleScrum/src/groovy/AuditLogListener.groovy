@@ -1,10 +1,11 @@
 package com.simplescrum
 
-import com.simplescrum.model.AuditLogEvent
+import com.simplescrum.model.AuditLog
 import org.hibernate.HibernateException
 import org.hibernate.cfg.Configuration
 import org.springframework.web.context.request.RequestContextHolder
 import org.hibernate.event.*
+import com.simplescrum.model.AuditLog
 
 /**
  * @author shawn hartsock
@@ -314,7 +315,7 @@ public class AuditLogListener implements PreDeleteEventListener,
 		if(newMap && oldMap) {
 			newMap.each({key,val->
 					if(val != oldMap[key]) {
-						def audit = new AuditLogEvent(
+						def audit = new AuditLog(
 							actor:this.getActor(),
 							uri: this.getUri(),
 							className:className,
@@ -333,7 +334,7 @@ public class AuditLogListener implements PreDeleteEventListener,
 		}
 		else if(newMap && verbose) {
 			newMap.each({key,val->
-					def audit = new AuditLogEvent(
+					def audit = new AuditLog(
 							actor:this.getActor(),
 							uri: this.getUri(),
 							className:className,
@@ -351,7 +352,7 @@ public class AuditLogListener implements PreDeleteEventListener,
 		}
 		else if(oldMap && verbose) {
 			oldMap.each({key,val->
-					def audit = new AuditLogEvent(
+					def audit = new AuditLog(
 							actor:this.getActor(),
 							uri: this.getUri(),
 							className:className,
@@ -368,7 +369,7 @@ public class AuditLogListener implements PreDeleteEventListener,
 			})
 		}
 		else {
-			def audit = new AuditLogEvent(
+			def audit = new AuditLog(
 					actor:this.getActor(),
 					uri: this.getUri(),
 					className:className,
