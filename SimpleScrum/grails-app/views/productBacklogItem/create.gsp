@@ -37,6 +37,15 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                    <label for="number">Number:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'number','errors')}">
+                                    <input type="text" id="number" name="number" value="${fieldValue(bean:productBacklogItemInstance,field:'number')}" />
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                     <label for="label">Label:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'label','errors')}">
@@ -113,6 +122,15 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'estimationDate','errors')}">
                                     <g:datePicker name="estimationDate" value="${productBacklogItemInstance?.estimationDate}" precision="day" noSelection="['':'']"></g:datePicker>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="customRole">Custom Role:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'customRole','errors')}">
+                                    <g:select optionKey="id" from="${com.simplescrum.model.CustomRole.list()}" name="customRole.id" value="${productBacklogItemInstance?.customRole?.id}" noSelection="['null':'']"></g:select>
                                 </td>
                             </tr> 
                         

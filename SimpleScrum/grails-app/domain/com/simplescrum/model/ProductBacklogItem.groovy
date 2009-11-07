@@ -43,6 +43,7 @@ enum EstimationType {
 
 class ProductBacklogItem {
   final Boolean auditable=true
+  Integer number
   String label
   String description
   ProductBacklogItemType type
@@ -66,6 +67,7 @@ class ProductBacklogItem {
 
   static constraints = {
     product()
+    number()
     label()
     description(nullable: true,maxSize:1000)
     type()
@@ -82,6 +84,6 @@ class ProductBacklogItem {
   }
 
   String toString() {
-    label
+    "${number}->${label}"
   }
 }

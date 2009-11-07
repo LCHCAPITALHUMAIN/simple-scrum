@@ -39,6 +39,15 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                    <label for="number">Number:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'number','errors')}">
+                                    <input type="text" id="number" name="number" value="${fieldValue(bean:productBacklogItemInstance,field:'number')}" />
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                     <label for="label">Label:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'label','errors')}">
@@ -187,12 +196,12 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'tasks','errors')}">
                                     
-                                    <ul>
-                                    <g:each var="t" in="${productBacklogItemInstance?.tasks?}">
-                                        <li><g:link controller="task" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
-                                    </g:each>
-                                    </ul>
-                                    <g:link controller="task" params="['productBacklogItem.id':productBacklogItemInstance?.id]" action="create">Add Task</g:link>
+<ul>
+<g:each var="t" in="${productBacklogItemInstance?.tasks?}">
+    <li><g:link controller="task" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
+</g:each>
+</ul>
+<g:link controller="task" params="['productBacklogItem.id':productBacklogItemInstance?.id]" action="create">Add Task</g:link>
 
                                 </td>
                             </tr> 

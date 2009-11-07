@@ -25,6 +25,8 @@
                         
                    	        <th>Product</th>
                    	    
+                   	        <g:sortableColumn property="number" title="Number" />
+
                    	        <g:sortableColumn property="label" title="Label" />
                         
                    	        <g:sortableColumn property="description" title="Description" />
@@ -32,7 +34,7 @@
                    	        <th>Type</th>
                    	    
                    	        <g:sortableColumn property="rank" title="Rank" />
-                        
+
                         </tr>
                     </thead>
                     <tbody>
@@ -44,6 +46,8 @@
                         
                             <td>${fieldValue(bean:productBacklogItemInstance, field:'product')}</td>
                         
+                            <td>${fieldValue(bean:productBacklogItemInstance, field:'number')}</td>
+                        
                             <td>${fieldValue(bean:productBacklogItemInstance, field:'label')}</td>
                         
                             <td>${fieldValue(bean:productBacklogItemInstance, field:'description')}</td>
@@ -51,7 +55,7 @@
                             <td>${fieldValue(bean:productBacklogItemInstance, field:'type')}</td>
                         
                             <td>${fieldValue(bean:productBacklogItemInstance, field:'rank')}</td>
-                        
+
                         </tr>
                     </g:each>
                     </tbody>
