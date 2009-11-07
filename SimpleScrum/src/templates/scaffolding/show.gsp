@@ -11,7 +11,7 @@
             <span class="menuButton"><g:link class="home">Home</g:link></span>
             <span class="menuButton"><g:link class="list" action="list">${className}s</g:link></span>
             <span class="menuButton"><g:link class="create" action="create">New ${className}</g:link></span>
-            <span class="menuButton"><g:link class="list" controller="auditLog" action="query" params="['auditLogEvent.className':${propertyName}?.class.name,'id':'\${${propertyName}?.id}']">Audit Trail</g:link></span>
+            <span class="menuButton"><g:link class="list" controller="auditLog" action="query" params="['auditLogEvent.className':${propertyName}?.class.name,'auditLogEvent.persistedObjectId':${propertyName}?.id]">Audit Trail</g:link></span>
         </div>
         <div class="body">
             <h1>Show ${className}</h1>
