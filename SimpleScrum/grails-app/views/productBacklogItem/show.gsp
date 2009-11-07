@@ -8,9 +8,10 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
+            <span class="menuButton"><g:link class="home">Home</g:link></span>
             <span class="menuButton"><g:link class="list" action="list">ProductBacklogItems</g:link></span>
             <span class="menuButton"><g:link class="create" action="create">New ProductBacklogItem</g:link></span>
+            <span class="menuButton"><g:link class="list" controller="auditLog" action="query" params="['auditLogEvent.className':productBacklogItemInstance?.class.name,'auditLogEvent.persistedObjectId':productBacklogItemInstance?.id]">Audit Trail</g:link></span>
         </div>
         <div class="body">
             <h1>Show ProductBacklogItem</h1>
@@ -23,9 +24,9 @@
 
                     
                         <tr class="prop">
-                            <td valign="top" class="name">Id:</td>
+                            <td valign="top" class="name">Product:</td>
                             
-                            <td valign="top" class="value">${fieldValue(bean:productBacklogItemInstance, field:'id')}</td>
+                            <td valign="top" class="value"><g:link controller="product" action="show" id="${productBacklogItemInstance?.product?.id}">${productBacklogItemInstance?.product?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     
@@ -65,9 +66,9 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name">Product:</td>
+                            <td valign="top" class="name">How To Test:</td>
                             
-                            <td valign="top" class="value"><g:link controller="product" action="show" id="${productBacklogItemInstance?.product?.id}">${productBacklogItemInstance?.product?.encodeAsHTML()}</g:link></td>
+                            <td valign="top" class="value">${fieldValue(bean:productBacklogItemInstance, field:'howToTest')}</td>
                             
                         </tr>
                     
@@ -75,6 +76,13 @@
                             <td valign="top" class="name">Estimated Points:</td>
                             
                             <td valign="top" class="value">${fieldValue(bean:productBacklogItemInstance, field:'estimatedPoints')}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Estimation Type:</td>
+                            
+                            <td valign="top" class="value">${productBacklogItemInstance?.estimationType?.encodeAsHTML()}</td>
                             
                         </tr>
                     
@@ -96,6 +104,20 @@
                             <td valign="top" class="name">Feature:</td>
                             
                             <td valign="top" class="value"><g:link controller="feature" action="show" id="${productBacklogItemInstance?.feature?.id}">${productBacklogItemInstance?.feature?.encodeAsHTML()}</g:link></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Planned Release:</td>
+                            
+                            <td valign="top" class="value"><g:link controller="release" action="show" id="${productBacklogItemInstance?.plannedRelease?.id}">${productBacklogItemInstance?.plannedRelease?.encodeAsHTML()}</g:link></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Budget Line:</td>
+                            
+                            <td valign="top" class="value"><g:link controller="budgetLine" action="show" id="${productBacklogItemInstance?.budgetLine?.id}">${productBacklogItemInstance?.budgetLine?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     

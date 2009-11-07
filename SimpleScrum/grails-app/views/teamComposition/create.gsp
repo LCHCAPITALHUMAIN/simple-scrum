@@ -8,7 +8,7 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
+            <span class="menuButton"><g:link class="home">Home</g:link></span>
             <span class="menuButton"><g:link class="list" action="list">TeamCompositions</g:link></span>
         </div>
         <div class="body">
@@ -58,6 +58,7 @@
                 </div>
                 <div class="buttons">
                     <span class="button"><input class="save" type="submit" value="Create" /></span>
+                    <span class="button"><g:link class="cancel" action="list">Cancel</g:link></span>
                 </div>
             </g:form>
         </div>

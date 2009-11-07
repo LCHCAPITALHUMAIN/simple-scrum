@@ -8,7 +8,7 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
+            <span class="menuButton"><g:link class="home">Home</g:link></span>
             <span class="menuButton"><g:link class="list" action="list">ProductBacklogItems</g:link></span>
         </div>
         <div class="body">
@@ -28,6 +28,15 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                    <label for="product">Product:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'product','errors')}">
+                                    <g:select optionKey="id" from="${com.simplescrum.model.Product.list()}" name="product.id" value="${productBacklogItemInstance?.product?.id}" ></g:select>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                     <label for="label">Label:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'label','errors')}">
@@ -40,7 +49,7 @@
                                     <label for="description">Description:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'description','errors')}">
-                                    <input type="text" id="description" name="description" value="${fieldValue(bean:productBacklogItemInstance,field:'description')}"/>
+                                    <textarea rows="5" cols="40" name="description">${fieldValue(bean:productBacklogItemInstance, field:'description')}</textarea>
                                 </td>
                             </tr> 
                         
@@ -67,16 +76,16 @@
                                     <label for="notes">Notes:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'notes','errors')}">
-                                    <input type="text" id="notes" name="notes" value="${fieldValue(bean:productBacklogItemInstance,field:'notes')}"/>
+                                    <textarea rows="5" cols="40" name="notes">${fieldValue(bean:productBacklogItemInstance, field:'notes')}</textarea>
                                 </td>
                             </tr> 
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="product">Product:</label>
+                                    <label for="howToTest">How To Test:</label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'product','errors')}">
-                                    <g:select optionKey="id" from="${com.simplescrum.model.Product.list()}" name="product.id" value="${productBacklogItemInstance?.product?.id}" ></g:select>
+                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'howToTest','errors')}">
+                                    <textarea rows="5" cols="40" name="howToTest">${fieldValue(bean:productBacklogItemInstance, field:'howToTest')}</textarea>
                                 </td>
                             </tr> 
                         
@@ -91,19 +100,19 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="estimationDate">Estimation Date:</label>
+                                    <label for="estimationType">Estimation Type:</label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'estimationDate','errors')}">
-                                    <g:datePicker name="estimationDate" value="${productBacklogItemInstance?.estimationDate}" precision="minute" noSelection="['':'']"></g:datePicker>
+                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'estimationType','errors')}">
+                                    <g:select  from="${com.simplescrum.model.EstimationType?.values()}" value="${productBacklogItemInstance?.estimationType}" name="estimationType" ></g:select>
                                 </td>
                             </tr> 
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="customRole">Custom Role:</label>
+                                    <label for="estimationDate">Estimation Date:</label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'customRole','errors')}">
-                                    <g:select optionKey="id" from="${com.simplescrum.model.CustomRole.list()}" name="customRole.id" value="${productBacklogItemInstance?.customRole?.id}" noSelection="['null':'']"></g:select>
+                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'estimationDate','errors')}">
+                                    <g:datePicker name="estimationDate" value="${productBacklogItemInstance?.estimationDate}" precision="day" noSelection="['':'']"></g:datePicker>
                                 </td>
                             </tr> 
                         
@@ -118,10 +127,28 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                    <label for="plannedRelease">Planned Release:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'plannedRelease','errors')}">
+                                    <g:select optionKey="id" from="${com.simplescrum.model.Release.list()}" name="plannedRelease.id" value="${productBacklogItemInstance?.plannedRelease?.id}" noSelection="['null':'']"></g:select>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="budgetLine">Budget Line:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'budgetLine','errors')}">
+                                    <g:select optionKey="id" from="${com.simplescrum.model.BudgetLine.list()}" name="budgetLine.id" value="${productBacklogItemInstance?.budgetLine?.id}" noSelection="['null':'']"></g:select>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                     <label for="creationDate">Creation Date:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'creationDate','errors')}">
-                                    <g:datePicker name="creationDate" value="${productBacklogItemInstance?.creationDate}" precision="minute" ></g:datePicker>
+                                    <g:datePicker name="creationDate" value="${productBacklogItemInstance?.creationDate}" precision="day" ></g:datePicker>
                                 </td>
                             </tr> 
                         
@@ -148,6 +175,7 @@
                 </div>
                 <div class="buttons">
                     <span class="button"><input class="save" type="submit" value="Create" /></span>
+                    <span class="button"><g:link class="cancel" action="list">Cancel</g:link></span>
                 </div>
             </g:form>
         </div>

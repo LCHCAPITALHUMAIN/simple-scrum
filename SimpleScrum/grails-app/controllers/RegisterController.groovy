@@ -128,6 +128,43 @@ class RegisterController {
   }
 
   /**
+   * update action for current user's edit page
+   */
+  def updatePhoto = {
+
+    def person
+    def user = authenticateService.userDomain()
+
+    if (params.id) {
+      user = User.get(params.id)
+    }
+    if (user) {
+      person = User.get(user.id)
+    } else {
+      redirect action: index
+      return
+    }
+
+    if (!person) {
+      flash.message = "[Illegal Access] User not found with id ${params.id}"
+      redirect action: index, id: params.id
+      return
+    }
+    if (params.photo) {
+      person.photo = new byte[params.photo.inputStream.available()]
+      params.photo.inputStream.read(person.photo)
+      params.photo.inputStream.close()
+    }
+
+    if (person.save()) {
+      redirect controller: 'user', action: show, id: person.id
+    }
+    else {
+      render view: 'edit', model: [person: person]
+    }
+  }
+
+  /**
    * Person save action.
    */
   def save = {
@@ -149,13 +186,19 @@ class RegisterController {
       }
     }
 
-
-    if (params.captcha.toUpperCase() != session.captcha) {
-      person.password = ''
-      flash.message = 'Access code did not match.'
-      render view: 'index', model: [person: person]
-      return
+    if (params.photo) {
+      person.photo = new byte[params.photo.inputStream.available()]
+      params.photo.inputStream.read(person.photo)
+      params.photo.inputStream.close()
     }
+
+//     Disabled for now
+//    if (params.captcha.toUpperCase() != session.captcha) {
+//      person.password = ''
+//      flash.message = 'Access code did not match.'
+//      render view: 'index', model: [person: person]
+//      return
+//    }
 
     if (params.password != params.repassword) {
       person.password = ''

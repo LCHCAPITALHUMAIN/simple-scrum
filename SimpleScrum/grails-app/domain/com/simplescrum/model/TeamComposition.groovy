@@ -1,17 +1,19 @@
 package com.simplescrum.model
 
 class TeamComposition {
-    Sprint sprint
-    User user
-    Team team
+  final Boolean auditable=true
+  Sprint sprint
+  User user
+  Team team
 
-    String toString() {
-      "${user} in ${team} on Sprint ${sprint}"
-    }
+  String toString() {
+    "${user} in ${team} on Sprint ${sprint}"
+  }
 
-    static constraints = {
-      team()
-      user()
-      sprint()
-    }
+  static transients=['auditable']
+  static constraints = {
+    team()
+    user()
+    sprint()
+  }
 }

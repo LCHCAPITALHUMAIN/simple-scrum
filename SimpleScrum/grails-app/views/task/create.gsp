@@ -8,7 +8,7 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
+            <span class="menuButton"><g:link class="home">Home</g:link></span>
             <span class="menuButton"><g:link class="list" action="list">Tasks</g:link></span>
         </div>
         <div class="body">
@@ -55,6 +55,24 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                    <label for="estimatedPoints">Estimated Points:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'estimatedPoints','errors')}">
+                                    <input type="text" id="estimatedPoints" name="estimatedPoints" value="${fieldValue(bean:taskInstance,field:'estimatedPoints')}" />
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="issueTrackingId">Issue Tracking Id:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'issueTrackingId','errors')}">
+                                    <input type="text" id="issueTrackingId" name="issueTrackingId" value="${fieldValue(bean:taskInstance,field:'issueTrackingId')}"/>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                     <label for="team">Team:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'team','errors')}">
@@ -76,7 +94,7 @@
                                     <label for="notes">Notes:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'notes','errors')}">
-                                    <input type="text" id="notes" name="notes" value="${fieldValue(bean:taskInstance,field:'notes')}"/>
+                                    <textarea rows="5" cols="40" name="notes">${fieldValue(bean:taskInstance, field:'notes')}</textarea>
                                 </td>
                             </tr> 
                         
@@ -103,6 +121,7 @@
                 </div>
                 <div class="buttons">
                     <span class="button"><input class="save" type="submit" value="Create" /></span>
+                    <span class="button"><g:link class="cancel" action="list">Cancel</g:link></span>
                 </div>
             </g:form>
         </div>

@@ -8,7 +8,7 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><g:link class="home" controller="team">Home</g:link></span>
+            <span class="menuButton"><g:link class="home">Home</g:link></span>
             <span class="menuButton"><g:link class="list" action="list">Teams</g:link></span>
         </div>
         <div class="body">
@@ -49,6 +49,7 @@
                 </div>
                 <div class="buttons">
                     <span class="button"><input class="save" type="submit" value="Create" /></span>
+                    <span class="button"><g:link class="cancel" action="list">Cancel</g:link></span>
                 </div>
             </g:form>
         </div>

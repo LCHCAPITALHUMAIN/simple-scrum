@@ -8,9 +8,10 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
+            <span class="menuButton"><g:link class="home">Home</g:link></span>
             <span class="menuButton"><g:link class="list" action="list">TaskActuals</g:link></span>
             <span class="menuButton"><g:link class="create" action="create">New TaskActual</g:link></span>
+            <span class="menuButton"><g:link class="list" controller="auditLog" action="query" params="['auditLogEvent.className':taskActualInstance?.class.name,'auditLogEvent.persistedObjectId':taskActualInstance?.id]">Audit Trail</g:link></span>
         </div>
         <div class="body">
             <h1>Show TaskActual</h1>
@@ -23,16 +24,16 @@
 
                     
                         <tr class="prop">
-                            <td valign="top" class="name">Id:</td>
+                            <td valign="top" class="name">Task:</td>
                             
-                            <td valign="top" class="value">${fieldValue(bean:taskActualInstance, field:'id')}</td>
+                            <td valign="top" class="value"><g:link controller="task" action="show" id="${taskActualInstance?.task?.id}">${taskActualInstance?.task?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name">Actual Points:</td>
+                            <td valign="top" class="name">User:</td>
                             
-                            <td valign="top" class="value">${fieldValue(bean:taskActualInstance, field:'actualPoints')}</td>
+                            <td valign="top" class="value"><g:link controller="user" action="show" id="${taskActualInstance?.user?.id}">${taskActualInstance?.user?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     
@@ -44,16 +45,9 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name">Task:</td>
+                            <td valign="top" class="name">Actual Points:</td>
                             
-                            <td valign="top" class="value"><g:link controller="task" action="show" id="${taskActualInstance?.task?.id}">${taskActualInstance?.task?.encodeAsHTML()}</g:link></td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">User:</td>
-                            
-                            <td valign="top" class="value"><g:link controller="user" action="show" id="${taskActualInstance?.user?.id}">${taskActualInstance?.user?.encodeAsHTML()}</g:link></td>
+                            <td valign="top" class="value">${fieldValue(bean:taskActualInstance, field:'actualPoints')}</td>
                             
                         </tr>
                     

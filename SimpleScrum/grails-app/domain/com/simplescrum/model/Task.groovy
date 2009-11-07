@@ -24,24 +24,32 @@ enum TaskType {
 }
 
 class Task {
+  final Boolean auditable = true
   String label
   String notes
   TaskStatus state
-  TaskType type=TaskType.PLANNED
+  Double estimatedPoints
+  String issueTrackingId
+  TaskType type = TaskType.PLANNED
   Team team
+
+  static transients = ['auditable']
   static hasMany = [taskActuals: TaskActual, remainingEstimations: RemainingEstimation]
   static belongsTo = [creator: User, productBacklogItem: ProductBacklogItem, sprint: Sprint]
   static constraints = {
     label()
     state()
     type()
-    team(nullable:true)
+    estimatedPoints()
+    issueTrackingId(nullable: true)
+    team(nullable: true)
     sprint()
     notes(nullable: true)
     creator()
     productBacklogItem()
     taskActuals()
     remainingEstimations()
+    notes(maxSize: 2000, nullable: true)
   }
 
   String toString() {

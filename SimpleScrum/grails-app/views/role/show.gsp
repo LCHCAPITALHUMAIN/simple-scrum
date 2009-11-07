@@ -8,9 +8,10 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
+            <span class="menuButton"><g:link class="home">Home</g:link></span>
             <span class="menuButton"><g:link class="list" action="list">Roles</g:link></span>
             <span class="menuButton"><g:link class="create" action="create">New Role</g:link></span>
+            <span class="menuButton"><g:link class="list" controller="auditLog" action="query" params="['auditLogEvent.className':roleInstance?.class.name,'auditLogEvent.persistedObjectId':roleInstance?.id]">Audit Trail</g:link></span>
         </div>
         <div class="body">
             <h1>Show Role</h1>
@@ -23,16 +24,16 @@
 
                     
                         <tr class="prop">
-                            <td valign="top" class="name">Id:</td>
+                            <td valign="top" class="name">Name:</td>
                             
-                            <td valign="top" class="value">${fieldValue(bean:roleInstance, field:'id')}</td>
+                            <td valign="top" class="value">${roleInstance?.name?.encodeAsHTML()}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name">Name:</td>
+                            <td valign="top" class="name">Description:</td>
                             
-                            <td valign="top" class="value">${roleInstance?.name?.encodeAsHTML()}</td>
+                            <td valign="top" class="value">${fieldValue(bean:roleInstance, field:'description')}</td>
                             
                         </tr>
                     

@@ -4,15 +4,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
-        <title>Features</title>
+        <title>Feature List</title>
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
+            <span class="menuButton"><g:link class="home">Home</g:link></span>
             <span class="menuButton"><g:link class="create" action="create">New Feature</g:link></span>
         </div>
         <div class="body">
-            <h1>Features</h1>
+            <h1>Feature List</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -35,7 +35,8 @@
                     <g:each in="${featureInstanceList}" status="i" var="featureInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${featureInstance.id}">${fieldValue(bean:featureInstance, field:'id')}</g:link></td>
+
+                            <td>${fieldValue(bean:featureInstance, field:'id')}-><g:link action="show" id="${featureInstance.id}">show</g:link>|<g:link action="edit" id="${featureInstance.id}">edit</g:link></td>
                         
                             <td>${fieldValue(bean:featureInstance, field:'description')}</td>
                         

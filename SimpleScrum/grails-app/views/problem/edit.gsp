@@ -8,9 +8,8 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
+             <span class="menuButton"><g:link class="home">Home</g:link></span>
             <span class="menuButton"><g:link class="list" action="list">Problems</g:link></span>
-            <span class="menuButton"><g:link class="create" action="create">New Problem</g:link></span>
         </div>
         <div class="body">
             <h1>Edit Problem</h1>
@@ -31,19 +30,10 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="closedDate">Closed Date:</label>
+                                    <label for="name">Name:</label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean:problemInstance,field:'closedDate','errors')}">
-                                    <g:datePicker name="closedDate" value="${problemInstance?.closedDate}" precision="minute" ></g:datePicker>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="creationDate">Creation Date:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:problemInstance,field:'creationDate','errors')}">
-                                    <g:datePicker name="creationDate" value="${problemInstance?.creationDate}" precision="minute" ></g:datePicker>
+                                <td valign="top" class="value ${hasErrors(bean:problemInstance,field:'name','errors')}">
+                                    <input type="text" id="name" name="name" value="${fieldValue(bean:problemInstance,field:'name')}"/>
                                 </td>
                             </tr> 
                         
@@ -52,7 +42,25 @@
                                     <label for="impact">Impact:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:problemInstance,field:'impact','errors')}">
-                                    <input type="text" id="impact" name="impact" value="${fieldValue(bean:problemInstance,field:'impact')}"/>
+                                    <textarea rows="5" cols="40" name="impact">${fieldValue(bean:problemInstance, field:'impact')}</textarea>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="solution">Solution:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:problemInstance,field:'solution','errors')}">
+                                    <textarea rows="5" cols="40" name="solution">${fieldValue(bean:problemInstance, field:'solution')}</textarea>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="creationDate">Creation Date:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:problemInstance,field:'creationDate','errors')}">
+                                    <g:datePicker name="creationDate" value="${problemInstance?.creationDate}" precision="day" ></g:datePicker>
                                 </td>
                             </tr> 
                         
@@ -61,16 +69,16 @@
                                     <label for="modificationDate">Modification Date:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:problemInstance,field:'modificationDate','errors')}">
-                                    <g:datePicker name="modificationDate" value="${problemInstance?.modificationDate}" precision="minute" ></g:datePicker>
+                                    <g:datePicker name="modificationDate" value="${problemInstance?.modificationDate}" precision="day" noSelection="['':'']"></g:datePicker>
                                 </td>
                             </tr> 
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="name">Name:</label>
+                                    <label for="closedDate">Closed Date:</label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean:problemInstance,field:'name','errors')}">
-                                    <input type="text" id="name" name="name" value="${fieldValue(bean:problemInstance,field:'name')}"/>
+                                <td valign="top" class="value ${hasErrors(bean:problemInstance,field:'closedDate','errors')}">
+                                    <g:datePicker name="closedDate" value="${problemInstance?.closedDate}" precision="day" noSelection="['':'']"></g:datePicker>
                                 </td>
                             </tr> 
                         
@@ -103,15 +111,6 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="solution">Solution:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:problemInstance,field:'solution','errors')}">
-                                    <input type="text" id="solution" name="solution" value="${fieldValue(bean:problemInstance,field:'solution')}"/>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
                                     <label for="state">State:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:problemInstance,field:'state','errors')}">
@@ -124,7 +123,7 @@
                 </div>
                 <div class="buttons">
                     <span class="button"><g:actionSubmit class="save" value="Update" /></span>
-                    <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
+                    <span class="button"><g:link class="cancel" action="show" id="${problemInstance?.id}">Cancel</g:link></span>
                 </div>
             </g:form>
         </div>

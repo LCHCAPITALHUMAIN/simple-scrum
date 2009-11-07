@@ -8,9 +8,8 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
+             <span class="menuButton"><g:link class="home">Home</g:link></span>
             <span class="menuButton"><g:link class="list" action="list">Roles</g:link></span>
-            <span class="menuButton"><g:link class="create" action="create">New Role</g:link></span>
         </div>
         <div class="body">
             <h1>Edit Role</h1>
@@ -40,6 +39,15 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                    <label for="description">Description:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:roleInstance,field:'description','errors')}">
+                                    <textarea rows="5" cols="40" name="description">${fieldValue(bean:roleInstance, field:'description')}</textarea>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                     <label for="product">Product:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:roleInstance,field:'product','errors')}">
@@ -61,7 +69,7 @@
                 </div>
                 <div class="buttons">
                     <span class="button"><g:actionSubmit class="save" value="Update" /></span>
-                    <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
+                    <span class="button"><g:link class="cancel" action="show" id="${roleInstance?.id}">Cancel</g:link></span>
                 </div>
             </g:form>
         </div>

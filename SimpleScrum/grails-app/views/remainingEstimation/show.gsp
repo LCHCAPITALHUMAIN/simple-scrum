@@ -8,9 +8,10 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
+            <span class="menuButton"><g:link class="home">Home</g:link></span>
             <span class="menuButton"><g:link class="list" action="list">RemainingEstimations</g:link></span>
             <span class="menuButton"><g:link class="create" action="create">New RemainingEstimation</g:link></span>
+            <span class="menuButton"><g:link class="list" controller="auditLog" action="query" params="['auditLogEvent.className':remainingEstimationInstance?.class.name,'auditLogEvent.persistedObjectId':remainingEstimationInstance?.id]">Audit Trail</g:link></span>
         </div>
         <div class="body">
             <h1>Show RemainingEstimation</h1>
@@ -23,16 +24,9 @@
 
                     
                         <tr class="prop">
-                            <td valign="top" class="name">Id:</td>
+                            <td valign="top" class="name">Task:</td>
                             
-                            <td valign="top" class="value">${fieldValue(bean:remainingEstimationInstance, field:'id')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Date:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:remainingEstimationInstance, field:'date')}</td>
+                            <td valign="top" class="value"><g:link controller="task" action="show" id="${remainingEstimationInstance?.task?.id}">${remainingEstimationInstance?.task?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     
@@ -44,9 +38,9 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name">Task:</td>
+                            <td valign="top" class="name">Date:</td>
                             
-                            <td valign="top" class="value"><g:link controller="task" action="show" id="${remainingEstimationInstance?.task?.id}">${remainingEstimationInstance?.task?.encodeAsHTML()}</g:link></td>
+                            <td valign="top" class="value">${fieldValue(bean:remainingEstimationInstance, field:'date')}</td>
                             
                         </tr>
                     

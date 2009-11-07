@@ -8,9 +8,10 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><g:link class="home" controller="sprint">Home</g:link></span>
+            <span class="menuButton"><g:link class="home">Home</g:link></span>
             <span class="menuButton"><g:link class="list" action="list">Sprints</g:link></span>
             <span class="menuButton"><g:link class="create" action="create">New Sprint</g:link></span>
+            <span class="menuButton"><g:link class="list" controller="auditLog" action="query" params="['auditLogEvent.className':sprintInstance?.class.name,'auditLogEvent.persistedObjectId':sprintInstance?.id]">Audit Trail</g:link></span>
         </div>
         <div class="body">
             <h1>Show Sprint</h1>
@@ -21,49 +22,42 @@
                 <table>
                     <tbody>
 
+                    
                         <tr class="prop">
                             <td valign="top" class="name">Number:</td>
-
+                            
                             <td valign="top" class="value">${fieldValue(bean:sprintInstance, field:'number')}</td>
-
+                            
                         </tr>
-
+                    
                         <tr class="prop">
                             <td valign="top" class="name">Goal:</td>
-
+                            
                             <td valign="top" class="value">${fieldValue(bean:sprintInstance, field:'goal')}</td>
-
-                        </tr>
-
-                        <tr class="prop">
-                            <td valign="top" class="name">State:</td>
-
-                            <td valign="top" class="value">${sprintInstance?.state?.encodeAsHTML()}</td>
-
-                        </tr>                        
-
-                        <tr class="prop">
-                            <td valign="top" class="name">Daily Work Time:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:sprintInstance, field:'dailyWorkTime')}</td>
                             
                         </tr>
-
+                    
                         <tr class="prop">
                             <td valign="top" class="name">Start Date:</td>
-
+                            
                             <td valign="top" class="value">${fieldValue(bean:sprintInstance, field:'startDate')}</td>
-
+                            
                         </tr>
-
+                    
                         <tr class="prop">
                             <td valign="top" class="name">End Date:</td>
                             
                             <td valign="top" class="value">${fieldValue(bean:sprintInstance, field:'endDate')}</td>
                             
                         </tr>
-
-
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Velocity:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:sprintInstance, field:'velocity')}</td>
+                            
+                        </tr>
+                    
                         <tr class="prop">
                             <td valign="top" class="name">Estimated Velocity:</td>
                             
@@ -71,7 +65,13 @@
                             
                         </tr>
                     
-
+                        <tr class="prop">
+                            <td valign="top" class="name">Daily Work Time:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:sprintInstance, field:'dailyWorkTime')}</td>
+                            
+                        </tr>
+                    
                         <tr class="prop">
                             <td valign="top" class="name">Product Backlog Items:</td>
                             
@@ -92,11 +92,10 @@
                             
                         </tr>
                     
-
                         <tr class="prop">
-                            <td valign="top" class="name">Velocity:</td>
+                            <td valign="top" class="name">State:</td>
                             
-                            <td valign="top" class="value">${fieldValue(bean:sprintInstance, field:'velocity')}</td>
+                            <td valign="top" class="value">${sprintInstance?.state?.encodeAsHTML()}</td>
                             
                         </tr>
                     

@@ -13,19 +13,28 @@ enum SprintStatus {
 }
 
 class Sprint {
+  final Boolean auditable=true
   Integer number
   SprintStatus state
   String goal
-  Date startDate
-  Date endDate
+  java.sql.Date startDate
+  java.sql.Date endDate
   Double velocity
   Double estimatedVelocity
   Double dailyWorkTime
 
+  static transients=['auditable']
   static belongsTo = [release: Release]
   static hasMany = [productBacklogItems: ProductBacklogItem]
 
   static constraints = {
+    number()
+    goal()
+    startDate()
+    endDate()
+    velocity(nullable:true)
+    estimatedVelocity(nullable:true)
+    dailyWorkTime(nullable:true)
   }
 
   String toString() {

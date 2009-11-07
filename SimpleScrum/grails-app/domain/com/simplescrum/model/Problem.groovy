@@ -13,20 +13,28 @@ enum ProblemStatus {
 }
 
 class Problem {
+  final Boolean auditable = true
   String name
   String impact
   String solution
   Integer rank
   ProblemStatus state
-  Date creationDate
-  Date modificationDate
-  Date closedDate
+  java.sql.Date creationDate
+  java.sql.Date modificationDate
+  java.sql.Date closedDate
 
   String toString() {
     name
   }
 
+  static transients = ['auditable']
   static belongsTo = [poster: User, product: Product]
   static constraints = {
+    name()
+    impact(maxSize: 1000, nullable: true)
+    solution(maxSize: 1000, nullable: true)
+    creationDate()
+    modificationDate(nullable: true)
+    closedDate(nullable: true)
   }
 }
