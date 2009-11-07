@@ -8,25 +8,24 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><g:link class="home" controller="user">Home</g:link></span>
+            <span class="menuButton"><g:link class="home">Home</g:link></span>
             <span class="menuButton"><g:link class="list" action="list">Users</g:link></span>
             <span class="menuButton"><g:link class="create" controller="register">Register New</g:link></span>
+            <span class="menuButton"><g:link class="list" controller="auditLog" action="query" params="['auditLogEvent.className':userInstance?.class.name,'auditLogEvent.persistedObjectId':userInstance?.id]">Audit Trail</g:link></span>
         </div>
         <div class="body">
             <h1>Show User</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
+            <g:if test="${userInstance.photo}">
+              <img src="<g:createLink controller='user' action='renderImage' id='${userInstance?.id}'/>"/>
+            </g:if>
             <div class="dialog">
                 <table>
                     <tbody>
-                        <tr class="prop">
-                            <td valign="top" class="name">User Real Name:</td>
 
-                            <td valign="top" class="value">${fieldValue(bean:userInstance, field:'userRealName')}</td>
-
-                        </tr>
-
+                    
                         <tr class="prop">
                             <td valign="top" class="name">Login:</td>
                             
@@ -40,19 +39,13 @@
                             <td valign="top" class="value">${fieldValue(bean:userInstance, field:'email')}</td>
                             
                         </tr>
-
+                    
                         <tr class="prop">
-                            <td valign="top" class="name">Roles:</td>
-
-                            <td  valign="top" style="text-align:left;" class="value">
-                                <ul>
-                                <g:each var="r" in="${userInstance.roles}">
-                                    <li><g:link controller="role" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
-                                </g:each>
-                                </ul>
-                            </td>
-
-                        </tr>                    
+                            <td valign="top" class="name">User Real Name:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:userInstance, field:'userRealName')}</td>
+                            
+                        </tr>
 
                         <tr class="prop">
                             <td valign="top" class="name">Actuals:</td>
@@ -67,19 +60,47 @@
                             
                         </tr>
                     
-                        %{--<tr class="prop">--}%
-                            %{--<td valign="top" class="name">Authorities:</td>--}%
-                            %{----}%
-                            %{--<td  valign="top" style="text-align:left;" class="value">--}%
-                                %{--<ul>--}%
-                                %{--<g:each var="a" in="${userInstance.authorities}">--}%
-                                    %{--<li><g:link controller="accessRole" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>--}%
-                                %{--</g:each>--}%
-                                %{--</ul>--}%
-                            %{--</td>--}%
-                            %{----}%
-                        %{--</tr>--}%
-
+                        <tr class="prop">
+                            <td valign="top" class="name">Authorities:</td>
+                            
+                            <td  valign="top" style="text-align:left;" class="value">
+                                <ul>
+                                <g:each var="a" in="${userInstance.authorities}">
+                                    <li><g:link controller="accessRole" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
+                                </g:each>
+                                </ul>
+                            </td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Email Show:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:userInstance, field:'emailShow')}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Enabled:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:userInstance, field:'enabled')}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Is Active:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:userInstance, field:'isActive')}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Is Admin:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:userInstance, field:'isAdmin')}</td>
+                            
+                        </tr>
+                    
                         <tr class="prop">
                             <td valign="top" class="name">Problems:</td>
                             
@@ -106,7 +127,19 @@
                             
                         </tr>
                     
-
+                        <tr class="prop">
+                            <td valign="top" class="name">Roles:</td>
+                            
+                            <td  valign="top" style="text-align:left;" class="value">
+                                <ul>
+                                <g:each var="r" in="${userInstance.roles}">
+                                    <li><g:link controller="role" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
+                                </g:each>
+                                </ul>
+                            </td>
+                            
+                        </tr>
+                    
                         <tr class="prop">
                             <td valign="top" class="name">Tasks Created:</td>
                             
@@ -119,7 +152,6 @@
                             </td>
                             
                         </tr>
-                     
                     </tbody>
                 </table>
             </div>

@@ -20,7 +20,7 @@
 		</div>
 		</g:hasErrors>
 
-		<g:form action="save">
+		<g:uploadForm action="save">
 		<div class="dialog">
 		<table>
 		<tbody>
@@ -60,13 +60,22 @@
 				</td>
 			</tr>
 
-			<tr class='prop'>
-				<td valign='bottom' class='name'><label for='code'>Enter Code: </label></td>
-				<td valign='top' class='name'>
-					<input type="text" name="captcha" size="8"/>
-					<img src="${createLink(controller:'captcha', action:'index')}" align="absmiddle"/>
-				</td>
-			</tr>
+            <tr class="prop">
+                <td valign="top" class="name">
+                    <label for="photo">Photo:</label>
+                </td>
+                <td valign="top" class="value ${hasErrors(bean:person,field:'photo','errors')}">
+                    <input type="file" id="photo" name="photo" />
+                </td>
+            </tr>
+
+			%{--<tr class='prop'>--}%
+				%{--<td valign='bottom' class='name'><label for='code'>Enter Code: </label></td>--}%
+				%{--<td valign='top' class='name'>--}%
+					%{--<input type="text" name="captcha" size="8"/>--}%
+					%{--<img src="${createLink(controller:'captcha', action:'index')}" align="absmiddle"/>--}%
+				%{--</td>--}%
+			%{--</tr>--}%
 
 		</tbody>
 		</table>
@@ -78,6 +87,6 @@
 			</span>
 		</div>
 
-		</g:form>
+		</g:uploadForm>
 	</div>
 </body>

@@ -8,9 +8,10 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
+            <span class="menuButton"><g:link class="home">Home</g:link></span>
             <span class="menuButton"><g:link class="list" action="list">Problems</g:link></span>
             <span class="menuButton"><g:link class="create" action="create">New Problem</g:link></span>
+            <span class="menuButton"><g:link class="list" controller="auditLog" action="query" params="['auditLogEvent.className':problemInstance?.class.name,'auditLogEvent.persistedObjectId':problemInstance?.id]">Audit Trail</g:link></span>
         </div>
         <div class="body">
             <h1>Show Problem</h1>
@@ -23,23 +24,9 @@
 
                     
                         <tr class="prop">
-                            <td valign="top" class="name">Id:</td>
+                            <td valign="top" class="name">Name:</td>
                             
-                            <td valign="top" class="value">${fieldValue(bean:problemInstance, field:'id')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Closed Date:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:problemInstance, field:'closedDate')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Creation Date:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:problemInstance, field:'creationDate')}</td>
+                            <td valign="top" class="value">${fieldValue(bean:problemInstance, field:'name')}</td>
                             
                         </tr>
                     
@@ -51,6 +38,20 @@
                         </tr>
                     
                         <tr class="prop">
+                            <td valign="top" class="name">Solution:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:problemInstance, field:'solution')}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Creation Date:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:problemInstance, field:'creationDate')}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
                             <td valign="top" class="name">Modification Date:</td>
                             
                             <td valign="top" class="value">${fieldValue(bean:problemInstance, field:'modificationDate')}</td>
@@ -58,9 +59,9 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name">Name:</td>
+                            <td valign="top" class="name">Closed Date:</td>
                             
-                            <td valign="top" class="value">${fieldValue(bean:problemInstance, field:'name')}</td>
+                            <td valign="top" class="value">${fieldValue(bean:problemInstance, field:'closedDate')}</td>
                             
                         </tr>
                     
@@ -82,13 +83,6 @@
                             <td valign="top" class="name">Rank:</td>
                             
                             <td valign="top" class="value">${fieldValue(bean:problemInstance, field:'rank')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Solution:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:problemInstance, field:'solution')}</td>
                             
                         </tr>
                     

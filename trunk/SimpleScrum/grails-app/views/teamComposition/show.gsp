@@ -8,9 +8,10 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
+            <span class="menuButton"><g:link class="home">Home</g:link></span>
             <span class="menuButton"><g:link class="list" action="list">TeamCompositions</g:link></span>
             <span class="menuButton"><g:link class="create" action="create">New TeamComposition</g:link></span>
+            <span class="menuButton"><g:link class="list" controller="auditLog" action="query" params="['auditLogEvent.className':teamCompositionInstance?.class.name,'auditLogEvent.persistedObjectId':teamCompositionInstance?.id]">Audit Trail</g:link></span>
         </div>
         <div class="body">
             <h1>Show TeamComposition</h1>
@@ -21,13 +22,6 @@
                 <table>
                     <tbody>
 
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Id:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:teamCompositionInstance, field:'id')}</td>
-                            
-                        </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name">Team:</td>

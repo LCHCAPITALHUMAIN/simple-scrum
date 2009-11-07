@@ -1,16 +1,21 @@
 package com.simplescrum.model
 
 class User {
-  static transients = ['pass']
+  final Boolean auditable=true
+  static transients = ['auditable','pass']
   String userRealName
   boolean emailShow = false
   String login
   String password
   String email
+  byte[] photo
+  //Functional team wise
   Boolean isActive = true
   Boolean isAdmin = false
+  //Acegi security access
   Boolean enabled = true
-  /** plain password to create a MD5 password   */
+  
+  /** plain password to create a MD5 password    */
   String pass = '[secret]'
   static hasMany = [authorities: AccessRole, problems: Problem, roles: Role, productBacklogItems: ProductBacklogItem, tasksCreated: Task, actuals: TaskActual]
 
@@ -21,6 +26,7 @@ class User {
     password(blank: false)
     email(email: true, nullable: true, blank: true)
     userRealName(nullable: true, blank: true)
+    photo(nullable: true)
   }
 
   String toString() {

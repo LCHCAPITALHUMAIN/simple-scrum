@@ -14,13 +14,18 @@ enum RoleType {
 }
 
 class Role {
+  final Boolean auditable=true
   RoleType name
+  String description
 
   String toString() {
     name
   }
 
+  static transients=['auditable']
   static belongsTo = [user: User, product: Product]
   static constraints = {
+    name()
+    description(nullable: true,maxSize:1000)
   }
 }

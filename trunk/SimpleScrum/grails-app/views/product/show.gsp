@@ -8,9 +8,11 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><g:link class="home" controller="product">Home</g:link></span>
+            <span class="menuButton"><g:link class="home">Home</g:link></span>
             <span class="menuButton"><g:link class="list" action="list">Products</g:link></span>
+            <span class="menuButton"><g:link class="create" action="create">New Product</g:link></span>
             <span class="menuButton"><g:link class="create" controller="productBacklogItem" action="create" params="['product.id':productInstance?.id]">New Item</g:link></span>
+            <span class="menuButton"><g:link class="list" controller="auditLog" action="query" params="['auditLogEvent.className':productInstance?.class.name,'auditLogEvent.persistedObjectId':productInstance?.id]">Audit Trail</g:link></span>
         </div>
         <div class="body">
             <h1>Show Product</h1>
@@ -23,9 +25,9 @@
 
                     
                         <tr class="prop">
-                            <td valign="top" class="name">Id:</td>
+                            <td valign="top" class="name">Name:</td>
                             
-                            <td valign="top" class="value">${fieldValue(bean:productInstance, field:'id')}</td>
+                            <td valign="top" class="value">${fieldValue(bean:productInstance, field:'name')}</td>
                             
                         </tr>
                     
@@ -33,6 +35,13 @@
                             <td valign="top" class="name">Description:</td>
                             
                             <td valign="top" class="value">${fieldValue(bean:productInstance, field:'description')}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Start Date:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:productInstance, field:'startDate')}</td>
                             
                         </tr>
                     
@@ -50,13 +59,6 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name">Name:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:productInstance, field:'name')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
                             <td valign="top" class="name">Releases:</td>
                             
                             <td  valign="top" style="text-align:left;" class="value">
@@ -69,13 +71,6 @@
                             
                         </tr>
                     
-                        <tr class="prop">
-                            <td valign="top" class="name">Start Date:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:productInstance, field:'startDate')}</td>
-                            
-                        </tr>
-                    
                     </tbody>
                 </table>
             </div>
@@ -83,7 +78,7 @@
                 <g:form>
                     <input type="hidden" name="id" value="${productInstance?.id}" />
                     <span class="button"><g:actionSubmit class="edit" value="Edit" /></span>
-                    <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
+                    %{--<span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>--}%
                 </g:form>
             </div>
         </div>

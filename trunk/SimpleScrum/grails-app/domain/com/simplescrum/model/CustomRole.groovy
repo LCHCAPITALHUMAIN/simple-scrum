@@ -27,6 +27,7 @@ enum UsageFrequency {
 }
 
 class CustomRole {
+  final Boolean auditable=true
   String name
   String description
   Integer instances
@@ -38,6 +39,7 @@ class CustomRole {
     name
   }
 
+  static transients=['auditable']
   static hasMany = [productBacklogItems: ProductBacklogItem]
   static constraints = {
   }

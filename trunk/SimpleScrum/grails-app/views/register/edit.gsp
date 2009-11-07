@@ -19,7 +19,9 @@
 			<g:renderErrors bean="${person}" as="list" />
 		</div>
 		</g:hasErrors>
-
+        <g:if test="${person.photo}">
+          <img src="<g:createLink controller='user' action='renderImage' id='${person?.id}'/>"/>
+        </g:if>
 		<g:form>
 			<input type="hidden" name="id" value="${person.id}" />
 			<input type="hidden" name="version" value="${person.version}" />
@@ -75,9 +77,37 @@
 
 			<div class="buttons">
 				<span class="button"><g:actionSubmit class='save' value="Update" /></span>
+                <span class="button"><g:link class="cancel" controller="user" action="show" id="${person?.id}">Cancel</g:link></span>
 			</div>
 
 		</g:form>
+      <br/>
+      <hr>
+      <br/>
+     <g:uploadForm action="updatePhoto">
+        <input type="hidden" name="id" value="${person.id}"/>
+        <input type="hidden" name="version" value="${person.version}"/>
+
+        <div class="dialog">
+          <table>
+            <tbody>
+            <tr class="prop">
+              <td valign="top" class="name">
+                <label for="photo">Change Photo:</label>
+              </td>
+              <td valign="top" class="value ${hasErrors(bean: person, field: 'photo', 'errors')}">
+                <input type="file" id="photo" name="photo"/>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="buttons">
+          <span class="button"><g:actionSubmit class='save' value="Update Photo"/></span>
+        </div>
+
+      </g:uploadForm>
 
 	</div>
 </body>

@@ -4,15 +4,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
-        <title>Roles</title>
+        <title>Role List</title>
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
+            <span class="menuButton"><g:link class="home">Home</g:link></span>
             <span class="menuButton"><g:link class="create" action="create">New Role</g:link></span>
         </div>
         <div class="body">
-            <h1>Roles</h1>
+            <h1>Role List</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -25,6 +25,8 @@
                         
                    	        <th>Name</th>
                    	    
+                   	        <g:sortableColumn property="description" title="Description" />
+                        
                    	        <th>Product</th>
                    	    
                    	        <th>User</th>
@@ -35,9 +37,12 @@
                     <g:each in="${roleInstanceList}" status="i" var="roleInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${roleInstance.id}">${fieldValue(bean:roleInstance, field:'id')}</g:link></td>
+
+                            <td>${fieldValue(bean:roleInstance, field:'id')}-><g:link action="show" id="${roleInstance.id}">show</g:link>|<g:link action="edit" id="${roleInstance.id}">edit</g:link></td>
                         
                             <td>${fieldValue(bean:roleInstance, field:'name')}</td>
+                        
+                            <td>${fieldValue(bean:roleInstance, field:'description')}</td>
                         
                             <td>${fieldValue(bean:roleInstance, field:'product')}</td>
                         

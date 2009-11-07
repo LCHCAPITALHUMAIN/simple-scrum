@@ -25,23 +25,33 @@ enum ReleaseType {
   }
 }
 class Release {
-
+  final Boolean auditable=true
   String name
   String goal
   ReleaseStatus state
-  Date startDate
-  Date publishDate
+  java.sql.Date startDate
+  java.sql.Date publishDate
   ReleaseType type
-  Integer releaseVelocity
-  Integer estimatedSprintDuration
+  Double releaseVelocity
+  Double estimatedSprintDuration
   Double defaultEstimatedVelocity
 
   String toString() {
     name
   }
 
+  static transients=['auditable']
   static hasMany = [sprints: Sprint]
   static belongsTo = [product: Product]
   static constraints = {
+    name()
+    goal(nullable:true)
+    type()
+    startDate(nullabel:true)
+    publishDate(nullabel:true)
+    state()
+    releaseVelocity(nullabel:true)
+    estimatedSprintDuration(nullabel:true)
+    defaultEstimatedVelocity(nullabel:true)
   }
 }

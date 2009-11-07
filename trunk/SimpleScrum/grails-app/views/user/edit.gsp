@@ -8,7 +8,7 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><g:link class="home" controller="user">Home</g:link></span>
+             <span class="menuButton"><g:link class="home">Home</g:link></span>
             <span class="menuButton"><g:link class="list" action="list">Users</g:link></span>
         </div>
         <div class="body">
@@ -21,7 +21,7 @@
                 <g:renderErrors bean="${userInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <g:form method="post" >
+            <g:form method="post"  enctype="multipart/form-data">
                 <input type="hidden" name="id" value="${userInstance?.id}" />
                 <input type="hidden" name="version" value="${userInstance?.version}" />
                 <div class="dialog">
@@ -61,6 +61,15 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:userInstance,field:'userRealName','errors')}">
                                     <input type="text" id="userRealName" name="userRealName" value="${fieldValue(bean:userInstance,field:'userRealName')}"/>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="photo">Photo:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:userInstance,field:'photo','errors')}">
+                                    <input type="file" id="photo" name="photo" />
                                 </td>
                             </tr> 
                         
@@ -203,7 +212,7 @@
                 </div>
                 <div class="buttons">
                     <span class="button"><g:actionSubmit class="save" value="Update" /></span>
-                    <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
+                    <span class="button"><g:link class="cancel" action="show" id="${userInstance?.id}">Cancel</g:link></span>
                 </div>
             </g:form>
         </div>
