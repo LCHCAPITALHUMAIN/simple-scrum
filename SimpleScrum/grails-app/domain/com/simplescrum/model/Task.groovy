@@ -14,7 +14,7 @@ enum TaskStatus {
 
 enum TaskType {
   PLANNED("Planned"),
-  UN_PLANNED("UN Planned");
+  UN_PLANNED("Unplanned");
 
   final String id;
 
