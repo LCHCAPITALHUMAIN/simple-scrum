@@ -31,7 +31,7 @@
 
     private renderEnumEditor(domainClass,property) {
         if(property.isEnum()) {
-            return "<g:select  from=\"\${${property.type.name}?.values()}\" value=\"\${${domainInstance}?.${property.name}}\" name=\"${property.name}\" ${renderNoSelection(property)}></g:select>"
+            return "<g:select optionValue="id" from=\"\${${property.type.name}?.values()}\" value=\"\${${domainInstance}?.${property.name}}\" name=\"${property.name}\" ${renderNoSelection(property)}></g:select>"
         }
     }
 
