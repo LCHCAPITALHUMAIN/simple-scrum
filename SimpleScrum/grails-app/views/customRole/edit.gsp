@@ -42,7 +42,7 @@
                                     <label for="expertiseLevel">Expertise Level:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:customRoleInstance,field:'expertiseLevel','errors')}">
-                                    <g:select  from="${com.simplescrum.model.ExpertnessLevel?.values()}" value="${customRoleInstance?.expertiseLevel}" name="expertiseLevel" ></g:select>
+                                    <g:select optionValue="id" from="${com.simplescrum.model.ExpertnessLevel?.values()}" value="${customRoleInstance?.expertiseLevel}" name="expertiseLevel" ></g:select>
                                 </td>
                             </tr> 
                         
@@ -94,7 +94,7 @@
                                     <label for="usageFrequency">Usage Frequency:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:customRoleInstance,field:'usageFrequency','errors')}">
-                                    <g:select  from="${com.simplescrum.model.UsageFrequency?.values()}" value="${customRoleInstance?.usageFrequency}" name="usageFrequency" ></g:select>
+                                    <g:select optionValue="id" from="${com.simplescrum.model.UsageFrequency?.values()}" value="${customRoleInstance?.usageFrequency}" name="usageFrequency" ></g:select>
                                 </td>
                             </tr> 
                         

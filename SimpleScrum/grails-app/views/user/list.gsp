@@ -11,6 +11,7 @@
             <span class="menuButton"><g:link class="home" controller="user">Home</g:link></span>
             <span class="menuButton"><g:link class="create" controller="register">Register New</g:link></span>
             <span class="menuButton"><g:link class="list" controller="team">Teams</g:link></span>
+            <span class="menuButton"><g:link class="list" controller="role">Roles</g:link></span>
         </div>
         <div class="body">
             <h1>User List</h1>

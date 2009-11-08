@@ -118,7 +118,7 @@ value="${sprintInstance?.productBacklogItems}" />
                                     <label for="state">State:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:sprintInstance,field:'state','errors')}">
-                                    <g:select  from="${com.simplescrum.model.SprintStatus?.values()}" value="${sprintInstance?.state}" name="state" ></g:select>
+                                    <g:select optionValue="id" from="${com.simplescrum.model.SprintStatus?.values()}" value="${sprintInstance?.state}" name="state" ></g:select>
                                 </td>
                             </tr> 
                         

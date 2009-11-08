@@ -10,8 +10,9 @@
         <div class="nav">
             <span class="menuButton"><g:link class="home">Home</g:link></span>
             <span class="menuButton"><g:link class="list" action="list">Products</g:link></span>
-            <span class="menuButton"><g:link class="create" action="create">New Product</g:link></span>
             <span class="menuButton"><g:link class="create" controller="productBacklogItem" action="create" params="['product.id':productInstance?.id]">New Item</g:link></span>
+            <span class="menuButton"><g:link class="create" controller="release" action="create" params="['product.id':productInstance?.id]">New Release</g:link></span>
+            <span class="menuButton"><g:link class="create" controller="feature" action="create" params="['product.id':productInstance?.id]">New Feature</g:link></span>
             <span class="menuButton"><g:link class="list" controller="auditLog" action="query" params="['auditLogEvent.className':productInstance?.class.name,'auditLogEvent.persistedObjectId':productInstance?.id]">Audit Trail</g:link></span>
         </div>
         <div class="body">

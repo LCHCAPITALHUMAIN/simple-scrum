@@ -42,7 +42,7 @@
                                     <label for="state">State:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'state','errors')}">
-                                    <g:select  from="${com.simplescrum.model.TaskStatus?.values()}" value="${taskInstance?.state}" name="state" ></g:select>
+                                    <g:select optionValue="id" from="${com.simplescrum.model.TaskStatus?.values()}" value="${taskInstance?.state}" name="state" ></g:select>
                                 </td>
                             </tr> 
                         
@@ -51,7 +51,7 @@
                                     <label for="type">Type:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'type','errors')}">
-                                    <g:select  from="${com.simplescrum.model.TaskType?.values()}" value="${taskInstance?.type}" name="type" ></g:select>
+                                    <g:select optionValue="id" from="${com.simplescrum.model.TaskType?.values()}" value="${taskInstance?.type}" name="type" ></g:select>
                                 </td>
                             </tr> 
                         
