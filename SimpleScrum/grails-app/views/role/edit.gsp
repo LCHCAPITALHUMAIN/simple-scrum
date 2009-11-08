@@ -33,7 +33,7 @@
                                     <label for="name">Name:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:roleInstance,field:'name','errors')}">
-                                    <g:select  from="${com.simplescrum.model.RoleType?.values()}" value="${roleInstance?.name}" name="name" ></g:select>
+                                    <g:select optionValue="id" from="${com.simplescrum.model.RoleType?.values()}" value="${roleInstance?.name}" name="name" ></g:select>
                                 </td>
                             </tr> 
                         
@@ -52,6 +52,15 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:roleInstance,field:'product','errors')}">
                                     <g:select optionKey="id" from="${com.simplescrum.model.Product.list()}" name="product.id" value="${roleInstance?.product?.id}" ></g:select>
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="sprint">Sprint:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:roleInstance,field:'sprint','errors')}">
+                                    <g:select optionKey="id" from="${com.simplescrum.model.Sprint.list()}" name="sprint.id" value="${roleInstance?.sprint?.id}" noSelection="['null':'']"></g:select>
                                 </td>
                             </tr> 
                         
