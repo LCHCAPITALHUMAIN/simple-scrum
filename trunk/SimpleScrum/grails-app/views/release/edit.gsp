@@ -51,7 +51,7 @@
                                     <label for="type">Type:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:releaseInstance,field:'type','errors')}">
-                                    <g:select  from="${com.simplescrum.model.ReleaseType?.values()}" value="${releaseInstance?.type}" name="type" ></g:select>
+                                    <g:select optionValue="id" from="${com.simplescrum.model.ReleaseType?.values()}" value="${releaseInstance?.type}" name="type" ></g:select>
                                 </td>
                             </tr> 
                         
@@ -78,7 +78,7 @@
                                     <label for="state">State:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:releaseInstance,field:'state','errors')}">
-                                    <g:select  from="${com.simplescrum.model.ReleaseStatus?.values()}" value="${releaseInstance?.state}" name="state" ></g:select>
+                                    <g:select optionValue="id" from="${com.simplescrum.model.ReleaseStatus?.values()}" value="${releaseInstance?.state}" name="state" ></g:select>
                                 </td>
                             </tr> 
                         

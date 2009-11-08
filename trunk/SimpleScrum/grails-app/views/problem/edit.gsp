@@ -114,7 +114,7 @@
                                     <label for="state">State:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:problemInstance,field:'state','errors')}">
-                                    <g:select  from="${com.simplescrum.model.ProblemStatus?.values()}" value="${problemInstance?.state}" name="state" ></g:select>
+                                    <g:select optionValue="id" from="${com.simplescrum.model.ProblemStatus?.values()}" value="${problemInstance?.state}" name="state" ></g:select>
                                 </td>
                             </tr> 
                         

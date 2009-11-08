@@ -67,7 +67,7 @@
                                     <label for="type">Type:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'type','errors')}">
-                                    <g:select  from="${com.simplescrum.model.ProductBacklogItemType?.values()}" value="${productBacklogItemInstance?.type}" name="type" ></g:select>
+                                    <g:select optionValue="id" from="${com.simplescrum.model.ProductBacklogItemType?.values()}" value="${productBacklogItemInstance?.type}" name="type" ></g:select>
                                 </td>
                             </tr> 
                         
@@ -112,7 +112,7 @@
                                     <label for="estimationType">Estimation Type:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'estimationType','errors')}">
-                                    <g:select  from="${com.simplescrum.model.EstimationType?.values()}" value="${productBacklogItemInstance?.estimationType}" name="estimationType" ></g:select>
+                                    <g:select optionValue="id" from="${com.simplescrum.model.EstimationType?.values()}" value="${productBacklogItemInstance?.estimationType}" name="estimationType" ></g:select>
                                 </td>
                             </tr> 
                         
@@ -184,7 +184,7 @@
                                     <label for="state">State:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:productBacklogItemInstance,field:'state','errors')}">
-                                    <g:select  from="${com.simplescrum.model.ProductBacklogItemStatus?.values()}" value="${productBacklogItemInstance?.state}" name="state" ></g:select>
+                                    <g:select optionValue="id" from="${com.simplescrum.model.ProductBacklogItemStatus?.values()}" value="${productBacklogItemInstance?.state}" name="state" ></g:select>
                                 </td>
                             </tr> 
                         
