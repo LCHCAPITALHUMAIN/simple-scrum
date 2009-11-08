@@ -29,6 +29,8 @@
                         
                    	        <th>Product</th>
                    	    
+                   	        <th>Sprint</th>
+                   	    
                    	        <th>User</th>
                    	    
                         </tr>
@@ -45,6 +47,8 @@
                             <td>${fieldValue(bean:roleInstance, field:'description')}</td>
                         
                             <td>${fieldValue(bean:roleInstance, field:'product')}</td>
+                        
+                            <td>${fieldValue(bean:roleInstance, field:'sprint')}</td>
                         
                             <td>${fieldValue(bean:roleInstance, field:'user')}</td>
                         

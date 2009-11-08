@@ -45,6 +45,13 @@
                         </tr>
                     
                         <tr class="prop">
+                            <td valign="top" class="name">Sprint:</td>
+                            
+                            <td valign="top" class="value"><g:link controller="sprint" action="show" id="${roleInstance?.sprint?.id}">${roleInstance?.sprint?.encodeAsHTML()}</g:link></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
                             <td valign="top" class="name">User:</td>
                             
                             <td valign="top" class="value"><g:link controller="user" action="show" id="${roleInstance?.user?.id}">${roleInstance?.user?.encodeAsHTML()}</g:link></td>
