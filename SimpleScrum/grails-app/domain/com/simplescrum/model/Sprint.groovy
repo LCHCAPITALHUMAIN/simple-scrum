@@ -1,5 +1,9 @@
 package com.simplescrum.model
 
+import com.simplescrum.model.ProductBacklogItem
+import com.simplescrum.model.Release
+import java.sql.Date
+
 enum SprintStatus {
   OPEN("Open"),
   LOCKED("Locked"),
@@ -13,7 +17,7 @@ enum SprintStatus {
 }
 
 class Sprint {
-  final Boolean auditable=true
+  final Boolean auditable = true
   Integer number
   SprintStatus state
   String goal
@@ -23,18 +27,18 @@ class Sprint {
   Double estimatedVelocity
   Double dailyWorkTime
 
-  static transients=['auditable']
+  static transients = ['auditable']
   static belongsTo = [release: Release]
   static hasMany = [productBacklogItems: ProductBacklogItem]
 
   static constraints = {
-    number()
+    number(unique: true)
     goal()
     startDate()
     endDate()
-    velocity(nullable:true)
-    estimatedVelocity(nullable:true)
-    dailyWorkTime(nullable:true)
+    velocity(nullable: true)
+    estimatedVelocity(nullable: true)
+    dailyWorkTime(nullable: true)
   }
 
   String toString() {

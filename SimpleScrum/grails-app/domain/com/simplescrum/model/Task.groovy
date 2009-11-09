@@ -1,5 +1,7 @@
 package com.simplescrum.model
 
+import com.simplescrum.model.*
+
 enum TaskStatus {
   PENDING("Pending"),
   IN_PROGRESS("In Progress"),
@@ -37,7 +39,7 @@ class Task {
   static hasMany = [taskActuals: TaskActual, remainingEstimations: RemainingEstimation]
   static belongsTo = [creator: User, productBacklogItem: ProductBacklogItem, sprint: Sprint]
   static constraints = {
-    label()
+    label(unique: ['productBacklogItem', 'sprint'])
     state()
     type()
     estimatedPoints()
