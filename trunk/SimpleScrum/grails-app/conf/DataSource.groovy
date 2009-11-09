@@ -14,13 +14,14 @@ environments {
   development {
     dataSource {
       dbCreate = "update" // one of 'create', 'create-drop','update'
-      url = "jdbc:hsqldb:file:devDB"
+      url = "jdbc:hsqldb:file:db/devDB"
     }
+    runConsole = false //When true launches Grails console alongside the application. U'll be able to query and modify data live.
   }
   custom {
     dataSource {
-      dbCreate = "create-drop" // one of 'create', 'create-drop','update'
-      url = "jdbc:hsqldb:file:consoleDB"
+      dbCreate = "update" // one of 'create', 'create-drop','update'
+      url = "jdbc:hsqldb:file:db/customDB"
     }
     runConsole = true //When true launches Grails console alongside the application. U'll be able to query and modify data live.
   }
