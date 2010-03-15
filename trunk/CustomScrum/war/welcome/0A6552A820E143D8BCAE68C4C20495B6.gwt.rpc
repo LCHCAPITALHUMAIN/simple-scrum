@@ -1,0 +1,36 @@
+com.google.gwt.i18n.client.impl.DateRecord, true, true, false, false, com.google.gwt.i18n.client.impl.DateRecord/112389920, 112389920
+com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException, true, true, true, true, com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException/3936916533, 3936916533
+com.nazir.customscrum.client.GreetingService, false, false, false, false, _, 2305924250
+com.nazir.customscrum.client.model.Developer, true, true, false, false, com.nazir.customscrum.client.model.Developer/585086924, 585086924
+@ClientFields,com.nazir.customscrum.client.model.Developer
+com.nazir.customscrum.client.model.DomainObject, true, false, false, false, com.nazir.customscrum.client.model.DomainObject/165678469, 165678469
+com.nazir.customscrum.client.model.EstimateType, true, true, false, false, com.nazir.customscrum.client.model.EstimateType/2934652192, 2934652192
+com.nazir.customscrum.client.model.ScrumMaster, true, true, false, false, com.nazir.customscrum.client.model.ScrumMaster/2657368600, 2657368600
+@ClientFields,com.nazir.customscrum.client.model.ScrumMaster
+com.nazir.customscrum.client.model.Sprint, true, true, false, false, com.nazir.customscrum.client.model.Sprint/3738627714, 3738627714
+@ClientFields,com.nazir.customscrum.client.model.Sprint,number,title,fromDate,toDate,description,status,days,teams,globalStandupTime,focusFactor,availability,userStories,tasks
+com.nazir.customscrum.client.model.SprintDay, true, true, false, false, com.nazir.customscrum.client.model.SprintDay/2509568880, 2509568880
+@ClientFields,com.nazir.customscrum.client.model.SprintDay,date,comment
+com.nazir.customscrum.client.model.SprintStatus, true, true, false, false, com.nazir.customscrum.client.model.SprintStatus/1849210600, 1849210600
+com.nazir.customscrum.client.model.Task, true, true, false, false, com.nazir.customscrum.client.model.Task/3311480613, 3311480613
+@ClientFields,com.nazir.customscrum.client.model.Task,id,userStory,title,description,jiraType,jiraNumber,qcNumber,baResponsible,estimateType,estimateInManDays
+com.nazir.customscrum.client.model.Team, true, true, false, false, com.nazir.customscrum.client.model.Team/781571101, 781571101
+@ClientFields,com.nazir.customscrum.client.model.Team,title,scrumMaster,developers
+com.nazir.customscrum.client.model.TeamMember, true, false, false, false, com.nazir.customscrum.client.model.TeamMember/3923042144, 3923042144
+@ClientFields,com.nazir.customscrum.client.model.TeamMember,userName
+com.nazir.customscrum.client.model.UserStory, true, true, false, false, com.nazir.customscrum.client.model.UserStory/872087414, 872087414
+@ClientFields,com.nazir.customscrum.client.model.UserStory,backlogId,title,jiraType,jiraNumber,qcNumber,description,linkToTheSpec,baResponsible,estimateType,estimateInManDays
+com.nazir.customscrum.client.model.common.JiraType, true, true, false, false, com.nazir.customscrum.client.model.common.JiraType/2227117994, 2227117994
+java.lang.Boolean, true, true, false, false, java.lang.Boolean/476441737, 476441737
+java.lang.Exception, true, false, true, false, java.lang.Exception/1920171873, 1920171873
+java.lang.RuntimeException, true, false, true, false, java.lang.RuntimeException/515124647, 515124647
+java.lang.String, true, true, true, true, java.lang.String/2004016611, 2004016611
+java.lang.Throwable, true, false, true, false, java.lang.Throwable/2953622131, 2953622131
+java.sql.Date, true, true, false, false, java.sql.Date/3996530531, 3996530531
+java.sql.Time, true, true, false, false, java.sql.Time/831929183, 831929183
+java.sql.Timestamp, true, true, false, false, java.sql.Timestamp/1769758459, 1769758459
+java.util.Date, true, true, false, false, java.util.Date/1659716317, 1659716317
+java.util.HashSet, true, true, false, false, java.util.HashSet/1594477813, 1594477813
+java.util.LinkedHashSet, true, true, false, false, java.util.LinkedHashSet/3628722029, 3628722029
+java.util.TreeMap, true, true, false, false, java.util.TreeMap/1575826026, 1575826026
+java.util.TreeSet, true, true, false, false, java.util.TreeSet/1002270346, 1002270346

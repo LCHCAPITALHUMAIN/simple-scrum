@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd"
+       default-autowire="byName">
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="annotatedClasses">
+            <list>
+                <value>com.nazir.customscrum.client.model.Developer</value>
+                <value>com.nazir.customscrum.client.model.ScrumMaster</value>
+                <value>com.nazir.customscrum.client.model.Sprint</value>
+                <value>com.nazir.customscrum.client.model.SprintDay</value>
+                <value>com.nazir.customscrum.client.model.Task</value>
+                <value>com.nazir.customscrum.client.model.TaskDetails</value>
+                <value>com.nazir.customscrum.client.model.Team</value>
+                <value>com.nazir.customscrum.client.model.TeamMember</value>
+                <value>com.nazir.customscrum.client.model.UserStory</value>
+            </list>
+        </property>
+        <property name="annotatedPackages">
+            <list>
+                <value>com.nazir.customscrum.client.model</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/world</prop>
+                <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
+                <prop key="hibernate.connection.username">root</prop>
+                <prop key="hibernate.connection.password">letmein</prop>
+                <prop key="hibernate.cache.use_second_level_cache">false</prop>
+                <!-- DB schema will be updated if needed -->
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.use_sql_comments">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+    </bean>
+    <bean id="openSessionInView" class="org.springframework.orm.hibernate3.support.OpenSessionInViewFilter"/>
+</beans>
