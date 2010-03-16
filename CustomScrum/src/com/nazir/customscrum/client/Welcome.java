@@ -31,6 +31,122 @@ public class Welcome implements EntryPoint {
      * This is the entry point method.
      */
     public void onModuleLoad() {
+        final Button btnLogin = createLoginButton();
+
+        final TextBox txtUserName = new TextBox();
+        final PasswordTextBox txtPassword = new PasswordTextBox();
+
+        // We can add style names to widgets
+        btnLogin.addStyleName("sendButton");
+
+        // Add the nameField and sendButton to the RootPanel
+        // Use RootPanel.get() to get the entire body element
+        RootPanel.get("userNameFieldContainer").add(txtUserName);
+        RootPanel.get("passwordFieldContainer").add(txtPassword);
+        RootPanel.get("loginButtonContainer").add(btnLogin);
+
+        // Focus the cursor on the name field when the app loads
+        txtUserName.setFocus(true);
+        txtUserName.selectAll();
+
+    }
+
+    private Button createLoginButton() {
+        final Button btnLogin = new Button("Login");
+        btnLogin.addStyleName("sendButton");
+        ClickHandler clickHandler = new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent clickEvent) {
+                login();
+            }
+        };
+        btnLogin.addClickHandler(clickHandler);
+        KeyUpHandler keyUpHandler = new KeyUpHandler() {
+            @Override
+            public void onKeyUp(KeyUpEvent keyUpEvent) {
+                if (keyUpEvent.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+                    login();
+                }
+
+            }
+        };
+        btnLogin.addKeyUpHandler(keyUpHandler);
+        return btnLogin;
+    }
+
+    private void login() {
+
+    }
+
+    private FlexTable tt() {
+        // Create a Flex Table
+        final FlexTable flexTable = new FlexTable();
+        FlexTable.FlexCellFormatter cellFormatter = flexTable.getFlexCellFormatter();
+        flexTable.addStyleName("cw-FlexTable");
+        flexTable.setWidth("32em");
+        flexTable.setCellSpacing(5);
+        flexTable.setCellPadding(3);
+
+        // Add some text
+        cellFormatter.setHorizontalAlignment(0, 1,
+                HasHorizontalAlignment.ALIGN_LEFT);
+        flexTable.setHTML(0, 0, "table detail");
+        cellFormatter.setColSpan(0, 0, 2);
+
+        // Add a button that will add more rows to the table
+        Button addRowButton = new Button("Add",
+                new ClickHandler() {
+                    public void onClick(ClickEvent event) {
+                        addRow(flexTable);
+                    }
+                });
+        addRowButton.addStyleName("sc-FixedWidthButton");
+
+        Button removeRowButton = new Button("Remove",
+                new ClickHandler() {
+                    public void onClick(ClickEvent event) {
+                        removeRow(flexTable);
+                    }
+                });
+        removeRowButton.addStyleName("sc-FixedWidthButton");
+        VerticalPanel buttonPanel = new VerticalPanel();
+        buttonPanel.setStyleName("cw-FlexTable-buttonPanel");
+        buttonPanel.add(addRowButton);
+        buttonPanel.add(removeRowButton);
+        flexTable.setWidget(0, 1, buttonPanel);
+        cellFormatter.setVerticalAlignment(0, 1, HasVerticalAlignment.ALIGN_TOP);
+
+        // Add two rows to start
+        addRow(flexTable);
+        addRow(flexTable);
+
+        // Return the panel
+        flexTable.ensureDebugId("cwFlexTable");
+        return flexTable;
+    }
+
+    /**
+     * Add a row to the flex table.
+     */
+    private void addRow(FlexTable flexTable) {
+//        int numRows = flexTable.getRowCount();
+//        flexTable.setWidget(numRows, 0, new Image(Showcase.images.gwtLogo()));
+//        flexTable.setWidget(numRows, 1, new Image(Showcase.images.gwtLogo()));
+//        flexTable.getFlexCellFormatter().setRowSpan(0, 1, numRows + 1);
+    }
+
+    /**
+     * Remove a row from the flex table.
+     */
+    private void removeRow(FlexTable flexTable) {
+        int numRows = flexTable.getRowCount();
+        if (numRows > 1) {
+            flexTable.removeRow(numRows - 1);
+            flexTable.getFlexCellFormatter().setRowSpan(0, 1, numRows - 1);
+        }
+    }
+
+    public void onModuleLoad1() {
         Sprint sprint = new Sprint();
         sprint.setDescription("Desc");
 
@@ -131,71 +247,4 @@ public class Welcome implements EntryPoint {
         nameField.addKeyUpHandler(handler);
     }
 
-    private FlexTable tt() {
-        // Create a Flex Table
-        final FlexTable flexTable = new FlexTable();
-        FlexTable.FlexCellFormatter cellFormatter = flexTable.getFlexCellFormatter();
-        flexTable.addStyleName("cw-FlexTable");
-        flexTable.setWidth("32em");
-        flexTable.setCellSpacing(5);
-        flexTable.setCellPadding(3);
-
-        // Add some text
-        cellFormatter.setHorizontalAlignment(0, 1,
-                HasHorizontalAlignment.ALIGN_LEFT);
-        flexTable.setHTML(0, 0, "table detail");
-        cellFormatter.setColSpan(0, 0, 2);
-
-        // Add a button that will add more rows to the table
-        Button addRowButton = new Button("Add",
-                new ClickHandler() {
-                    public void onClick(ClickEvent event) {
-                        addRow(flexTable);
-                    }
-                });
-        addRowButton.addStyleName("sc-FixedWidthButton");
-
-        Button removeRowButton = new Button("Remove",
-                new ClickHandler() {
-                    public void onClick(ClickEvent event) {
-                        removeRow(flexTable);
-                    }
-                });
-        removeRowButton.addStyleName("sc-FixedWidthButton");
-        VerticalPanel buttonPanel = new VerticalPanel();
-        buttonPanel.setStyleName("cw-FlexTable-buttonPanel");
-        buttonPanel.add(addRowButton);
-        buttonPanel.add(removeRowButton);
-        flexTable.setWidget(0, 1, buttonPanel);
-        cellFormatter.setVerticalAlignment(0, 1, HasVerticalAlignment.ALIGN_TOP);
-
-        // Add two rows to start
-        addRow(flexTable);
-        addRow(flexTable);
-
-        // Return the panel
-        flexTable.ensureDebugId("cwFlexTable");
-        return flexTable;
-    }
-
-    /**
-     * Add a row to the flex table.
-     */
-    private void addRow(FlexTable flexTable) {
-//        int numRows = flexTable.getRowCount();
-//        flexTable.setWidget(numRows, 0, new Image(Showcase.images.gwtLogo()));
-//        flexTable.setWidget(numRows, 1, new Image(Showcase.images.gwtLogo()));
-//        flexTable.getFlexCellFormatter().setRowSpan(0, 1, numRows + 1);
-    }
-
-    /**
-     * Remove a row from the flex table.
-     */
-    private void removeRow(FlexTable flexTable) {
-        int numRows = flexTable.getRowCount();
-        if (numRows > 1) {
-            flexTable.removeRow(numRows - 1);
-            flexTable.getFlexCellFormatter().setRowSpan(0, 1, numRows - 1);
-        }
-    }
 }
