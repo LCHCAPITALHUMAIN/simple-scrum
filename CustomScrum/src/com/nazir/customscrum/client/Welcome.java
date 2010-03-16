@@ -26,15 +26,19 @@ public class Welcome implements EntryPoint {
      * Create a remote service proxy to talk to the server-side Greeting service.
      */
     private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
+    private final LoginServiceAsync loginService = GWT.create(LoginService.class);
+    private Button btnLogin;
+    private TextBox txtUserName;
+    private PasswordTextBox txtPassword;
 
     /**
      * This is the entry point method.
      */
     public void onModuleLoad() {
-        final Button btnLogin = createLoginButton();
+        btnLogin = createLoginButton();
 
-        final TextBox txtUserName = new TextBox();
-        final PasswordTextBox txtPassword = new PasswordTextBox();
+        txtUserName = new TextBox();
+        txtPassword = new PasswordTextBox();
 
         // We can add style names to widgets
         btnLogin.addStyleName("sendButton");
@@ -75,6 +79,23 @@ public class Welcome implements EntryPoint {
     }
 
     private void login() {
+        RootPanel.get().add(new Button("de"));
+
+        loginService.login(txtUserName.getText(), txtPassword.getText(), new AsyncCallback<Boolean>() {
+            @Override
+            public void onFailure(Throwable throwable) {
+                RootPanel.get().add(new Button("not logged"));
+            }
+
+            @Override
+            public void onSuccess(Boolean result) {
+                if (result) {
+                    RootPanel.get().add(new Button("logged"));
+                } else {
+                    RootPanel.get().add(new Button("not logged"));
+                }
+            }
+        });
 
     }
 
