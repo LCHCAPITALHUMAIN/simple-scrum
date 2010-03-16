@@ -145,4 +145,9 @@ Test targets suppressed because -junit argument was not specified when running w
     <delete dir="war/welcome" failonerror="false" />
   </target>
 
+  <target name="setupGWT" description="Setup GWT in the proper directory, ie gwt.sdk propertie: ${gwt.sdk} by first cleanning it.">
+    <delete dir="${gwt.sdk}" failonerror="true" />
+    <unzip dest="${gwt.sdk}" src="tools/gwt-2.0.0.zip"/>
+  </target>
+
 </project>
