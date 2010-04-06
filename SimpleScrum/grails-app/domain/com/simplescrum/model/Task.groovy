@@ -2,29 +2,6 @@ package com.simplescrum.model
 
 import com.simplescrum.model.*
 
-enum TaskStatus {
-  PENDING("Pending"),
-  IN_PROGRESS("In Progress"),
-  DONE("Done");
-
-  final String id;
-
-  TaskStatus(String id) {
-    this.id = id;
-  }
-}
-
-enum TaskType {
-  PLANNED("Planned"),
-  UN_PLANNED("Unplanned");
-
-  final String id;
-
-  TaskType(String id) {
-    this.id = id;
-  }
-}
-
 class Task {
   final Boolean auditable = true
   String label

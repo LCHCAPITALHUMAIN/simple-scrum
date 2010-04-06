@@ -1,34 +1,27 @@
 package com.simplescrum.model
 
-enum RoleType {
-  SCRUM_MASTER("Scrum Master"),
-  PRODUCT_OWNER("Product Owner"),
-  STAKE_HOLDER("Stake Holder"),
-  DEVELOPER("Developer");
-
-  final String id;
-
-  RoleType(String id) {
-    this.id = id;
-  }
-}
+import com.simplescrum.model.Product
+import com.simplescrum.model.RoleType
+import com.simplescrum.model.Sprint
+import com.simplescrum.model.User
 
 class Role {
-  final Boolean auditable=true
+  final Boolean auditable = true
   RoleType name
   String description
   Product product
   Sprint sprint
+
   String toString() {
     name
   }
 
-  static transients=['auditable']
+  static transients = ['auditable']
   static belongsTo = [user: User]
   static constraints = {
     name()
-    description(nullable: true,maxSize:1000)
+    description(nullable: true, maxSize: 1000)
     product()
-    sprint(nullable:true)
+    sprint(nullable: true)
   }
 }

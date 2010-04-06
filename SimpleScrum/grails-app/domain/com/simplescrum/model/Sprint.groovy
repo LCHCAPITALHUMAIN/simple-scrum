@@ -2,19 +2,8 @@ package com.simplescrum.model
 
 import com.simplescrum.model.ProductBacklogItem
 import com.simplescrum.model.Release
+import com.simplescrum.model.SprintStatus
 import java.sql.Date
-
-enum SprintStatus {
-  OPEN("Open"),
-  LOCKED("Locked"),
-  DONE("Done");
-
-  final String id;
-
-  SprintStatus(String id) {
-    this.id = id;
-  }
-}
 
 class Sprint {
   final Boolean auditable = true
