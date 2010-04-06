@@ -30,7 +30,7 @@
 
         <g:sortableColumn property="estimatedPoints" title="Estimation"/>
 
-        <g:sortableColumn property="estimationType.id" title="Estim. Type"/>
+        <g:sortableColumn property="estimationType.description" title="Estim. Type"/>
 
         <g:sortableColumn property="estimationDate" title="Estim. Date"/>
 
@@ -50,7 +50,7 @@
 
           <td>${fieldValue(bean: productBacklogItemInstance, field: 'estimatedPoints')}</td>
 
-          <td>${fieldValue(bean: productBacklogItemInstance, field: 'estimationType.id')}</td>
+          <td>${fieldValue(bean: productBacklogItemInstance, field: 'estimationType.description')}</td>
 
           <td>${fieldValue(bean: productBacklogItemInstance, field: 'estimationDate')}</td>
 

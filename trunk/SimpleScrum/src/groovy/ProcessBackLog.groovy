@@ -30,7 +30,7 @@ class BacklogParser {
     item.type = ProductBacklogItemType.USER_STORY
     item.state = ProductBacklogItemStatus.PlANIFIED
     item.estimationType = EstimationType.LOW
-    item.creationDate = new java.sql.Date(new Date().time)
+    item.creationDate = new java.sql.Date(new java.util.Date().time)
     for (Cell cell: row) {
       def content = getCellContent(cell)
       def contentIsNumeric = isNumeric(content)

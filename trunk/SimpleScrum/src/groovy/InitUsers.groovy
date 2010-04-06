@@ -1,5 +1,4 @@
 import com.simplescrum.model.AccessRole
-import com.simplescrum.model.AuditLog
 import com.simplescrum.model.Team
 import com.simplescrum.model.User
 
@@ -31,7 +30,7 @@ User.withTransaction {
   def teamThree = new Team(label: 'Team 3', descritpion: 'Team Three').save()
   def teamFour = new Team(label: 'Team 4', descritpion: 'Team Four').save()
 
-  AuditLog.list()
+  //AuditLog.list()
 }
 
 

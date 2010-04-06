@@ -1,16 +1,9 @@
 package com.simplescrum.model
 
-enum ProblemStatus {
-  UNASSIGNED("Unassigned"),
-  SOLVING("Solving"),
-  SOLVED("Solved");
-
-  final String id;
-
-  ProblemStatus(String id) {
-    this.id = id;
-  }
-}
+import com.simplescrum.model.ProblemStatus
+import com.simplescrum.model.Product
+import com.simplescrum.model.User
+import java.sql.Date
 
 class Problem {
   final Boolean auditable = true
