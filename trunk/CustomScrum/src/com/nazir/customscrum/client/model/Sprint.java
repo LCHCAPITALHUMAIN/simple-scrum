@@ -1,12 +1,12 @@
 package com.nazir.customscrum.client.model;
 import org.hibernate.validator.NotNull;
-import org.hibernate.annotations.LazyToOne;
 
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
+import java.sql.Time;
+
+import com.nazir.customscrum.client.model.util.DomainObject;
 
 /**
  * Created by IntelliJ IDEA.
@@ -17,119 +17,51 @@ import java.util.Set;
  */
 @Entity
 @org.hibernate.annotations.Entity()
-public class Sprint extends DomainObject{
+public class Sprint extends DomainObject {
     @Id
-    private int number;
+    @Column(name = "num")
+    public int number;
+
     @NotNull
-    private String title;
+    public String title;
+
     @NotNull
-    private Date fromDate;
+    public Date fromDate;
+
     @NotNull
-    private Date toDate;
-    private String description;
-    @NotNull
-    private SprintStatus status;
+    public Date toDate;
+
+    public String description;
+
     @OneToMany
-    private Set<SprintDay> days;
-    @OneToMany
-    private Set<Team> teams;
+    public Set<SprintDay> days;
+
+    @OneToMany(mappedBy = "sprint", cascade = CascadeType.ALL)
+    public Set<Team> teams;
+
+    public User productOwner;
+
     @NotNull
-    private Date globalStandupTime;
+    public Time globalStandupTime;
+
     @NotNull
-    private int focusFactor;
+    public float estimatedFocusFactor;
+
     @NotNull
-    private int availability;
+    public float estimatedAvailability;
+
+    public float actualFocusFactor;
+
+    public float actualAvailability;
+
+    //TODO: Try to encapsulate tasks and user stories as sprint backlog item
     @OneToMany
-    private Set<UserStory> userStories;
+    public Set<UserStory> userStories;
     @OneToMany
-    private Set<Task> tasks;
+    public Set<Task> tasks;
 
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Date getFromDate() {
-        return fromDate;
-    }
-
-    public void setFromDate(Date fromDate) {
-        this.fromDate = fromDate;
-    }
-
-    public Date getToDate() {
-        return toDate;
-    }
-
-    public void setToDate(Date toDate) {
-        this.toDate = toDate;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public SprintStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(SprintStatus status) {
-        this.status = status;
-    }
-
-    public Set<SprintDay> getDays() {
-        return days;
-    }
-
-    public void setDays(Set<SprintDay> days) {
-        this.days = days;
-    }
-
-    public Set<Team> getTeams() {
-        return teams;
-    }
-
-    public void setTeams(Set<Team> teams) {
-        this.teams = teams;
-    }
-
-    public Date getGlobalStandupTime() {
-        return globalStandupTime;
-    }
-
-    public void setGlobalStandupTime(Date globalStandupTime) {
+    public void setGlobalStandupTime(Time globalStandupTime) {
         this.globalStandupTime = globalStandupTime;
-    }
-
-    public int getFocusFactor() {
-        return focusFactor;
-    }
-
-    public void setFocusFactor(int focusFactor) {
-        this.focusFactor = focusFactor;
-    }
-
-    public int getAvailability() {
-        return availability;
-    }
-
-    public void setAvailability(int availability) {
-        this.availability = availability;
     }
 
     public Set<UserStory> getUserStories() {
@@ -147,4 +79,5 @@ public class Sprint extends DomainObject{
     public void setTasks(Set<Task> tasks) {
         this.tasks = tasks;
     }
+
 }

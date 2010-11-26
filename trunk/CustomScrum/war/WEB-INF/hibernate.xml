@@ -20,6 +20,16 @@
                 <value>com.nazir.customscrum.client.model.Team</value>
                 <value>com.nazir.customscrum.client.model.TeamMember</value>
                 <value>com.nazir.customscrum.client.model.UserStory</value>
+                <value>com.nazir.customscrum.client.model.Documentation</value>
+                <value>com.nazir.customscrum.client.model.Status</value>
+                <value>com.nazir.customscrum.client.model.BusinessLine</value>
+                <value>com.nazir.customscrum.client.model.BusinessLine</value>
+                <value>com.nazir.customscrum.client.model.Estimate</value>
+                <value>com.nazir.customscrum.client.model.Release</value>
+                <value>com.nazir.customscrum.client.model.User</value>
+                <value>com.nazir.customscrum.client.model.AcceptanceCriteria</value>
+                <value>com.nazir.customscrum.client.model.Remaining</value>
+                <value>com.nazir.customscrum.client.model.RepetativeTask</value>
             </list>
         </property>
         <property name="annotatedPackages">
@@ -30,7 +40,7 @@
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/world</prop>
+                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/scrum</prop>
                 <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
                 <prop key="hibernate.connection.username">root</prop>
                 <prop key="hibernate.connection.password">letmein</prop>

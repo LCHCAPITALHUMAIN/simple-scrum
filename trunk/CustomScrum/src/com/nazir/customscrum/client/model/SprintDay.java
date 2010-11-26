@@ -1,4 +1,6 @@
 package com.nazir.customscrum.client.model;
+import com.nazir.customscrum.client.model.util.DomainObject;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.Date;
@@ -11,8 +13,11 @@ import java.util.Date;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-public class SprintDay  extends DomainObject{
+public class SprintDay  extends DomainObject {
     @Id
-    private Date date;
-    private String comment;
+    private Date t_date;
+
+    private int day;
+
+    private String comments;
 }

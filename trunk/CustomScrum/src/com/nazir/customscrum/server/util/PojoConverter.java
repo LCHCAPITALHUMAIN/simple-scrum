@@ -1,6 +1,6 @@
 package com.nazir.customscrum.server.util;
 
-import com.nazir.customscrum.client.model.DomainObject;
+import com.nazir.customscrum.client.model.util.DomainObject;
 
 import java.beans.BeanInfo;
 import java.beans.Introspector;
@@ -8,7 +8,6 @@ import java.beans.PropertyDescriptor;
 import java.util.Collection;
 import java.util.HashSet;
 
-import org.hibernate.proxy.HibernateProxyHelper;
 import org.hibernate.collection.PersistentSet;
 import org.hibernate.Hibernate;
 

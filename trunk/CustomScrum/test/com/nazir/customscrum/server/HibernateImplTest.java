@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.springframework.test.AbstractTransactionalSpringContextTests;
 import com.nazir.customscrum.client.model.*;
 
+import java.sql.Time;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Date;
@@ -37,17 +38,14 @@ public class HibernateImplTest extends AbstractTransactionalSpringContextTests {
         setComplete();
         
         Sprint sprint = new Sprint();
-        sprint.setDescription("Sprint 1");
-        sprint.setNumber(1);
-        sprint.setTitle("Sprint 1");
-        sprint.setAvailability(60);
+        sprint.description  = ("Sprint 1");
+        sprint.number = (1);
+        sprint.title = ("Sprint 1");
         sprint.setUserStories(createUserStories());
-        sprint.setDays(createDays());
-        sprint.setGlobalStandupTime(new Date());
-        sprint.setStatus(SprintStatus.NOT_STARTED);
+        sprint.setGlobalStandupTime(new Time(System.currentTimeMillis()));
         sprint.setTasks(createTasks());
-        sprint.setFromDate(new Date());
-        sprint.setToDate(new Date());
+        sprint.fromDate = new Date();
+        sprint.toDate = new Date();
         session.saveOrUpdate(sprint);
         session.flush();
         session.close();
