@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+        PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+    <!-- Default page to serve -->
+    <welcome-file-list>
+        <welcome-file>Welcome.html</welcome-file>
+    </welcome-file-list>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>openSessionInView</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+
+    <!-- Servlets -->
+    <servlet>
+        <servlet-name>greetServlet</servlet-name>
+        <servlet-class>com.nazir.customscrum.server.GreetingServiceImpl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>com.nazir.customscrum.Welcome LoginService</servlet-name>
+        <servlet-class>com.nazir.customscrum.server.LoginServiceImpl</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>greetServlet</servlet-name>
+        <url-pattern>/welcome/greet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>com.nazir.customscrum.Welcome LoginService</servlet-name>
+        <url-pattern>/welcome/login</url-pattern>
+    </servlet-mapping>
+
+    <filter-mapping>
+        <filter-name>openSessionInView</filter-name>
+        <url-pattern>/welcome/greet</url-pattern>
+    </filter-mapping>
+
+</web-app>
