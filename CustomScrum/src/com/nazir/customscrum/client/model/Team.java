@@ -1,5 +1,7 @@
 package com.nazir.customscrum.client.model;
 
+import com.nazir.customscrum.client.model.util.DomainObject;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -11,12 +13,14 @@ import java.util.Set;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-public class Team  extends DomainObject{
+public class Team  extends DomainObject {
     @Id
-    private String title;
+    private String name;
 
     @OneToOne
-    private ScrumMaster scrumMaster;
+    private Sprint sprint;
     @OneToMany(cascade = CascadeType.ALL)
-    private Set<TeamMember> developers;
+    private Set<TeamMember> teamMembers;
+
+    private float estimatedFocusFactor;
 }

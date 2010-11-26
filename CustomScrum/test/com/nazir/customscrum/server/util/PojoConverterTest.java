@@ -20,11 +20,11 @@ public class PojoConverterTest extends HibernateImplTest {
 
     public void testSimplePojo() {
         Sprint sprint = new Sprint();
-        sprint.setTitle("Test");
+        sprint.title = ("Test");
 
         Sprint convertedSprint = pojoConverter.convert(sprint);
         assertNotSame(sprint, convertedSprint);
-        assertEquals(sprint.getTitle(), convertedSprint.getTitle());
+        assertEquals(sprint.title, convertedSprint.title);
     }
 
     public void testNestedPojo() {
@@ -34,7 +34,7 @@ public class PojoConverterTest extends HibernateImplTest {
         
         Sprint convertedSprint = pojoConverter.convert(sprint);
         assertNotSame(sprint, convertedSprint);
-        assertEquals(sprint.getTitle(), convertedSprint.getTitle());
+        assertEquals(sprint.title, convertedSprint.title);
         assertNotSame(sprint.getTasks(), convertedSprint.getTasks());
         assertEquals(sprint.getTasks().size(), convertedSprint.getTasks().size());
         //assertEquals("task1", convertedSprint.getTasks().iterator().next().getDescription());
@@ -42,19 +42,19 @@ public class PojoConverterTest extends HibernateImplTest {
 
     public void testNestedPojo1() {
         Sprint sprint = new Sprint();
-        sprint.setTitle("Test");
+        sprint.title = ("Test");
         Set<Task> tasks = new HashSet<Task>();
         Task task1 = new Task();
-        task1.setDescription("task1");
+        task1.description = ("task1");
         tasks.add(task1);
         sprint.setTasks(tasks);
 
 
         Sprint convertedSprint = pojoConverter.convert(sprint);
         assertNotSame(sprint, convertedSprint);
-        assertEquals(sprint.getTitle(), convertedSprint.getTitle());
+        assertEquals(sprint.title, convertedSprint.title);
         assertEquals(sprint.getTasks().size(), convertedSprint.getTasks().size());
         assertNotSame(sprint.getTasks(), convertedSprint.getTasks());
-        assertEquals("task1", convertedSprint.getTasks().iterator().next().getDescription());
+        assertEquals("task1", convertedSprint.getTasks().iterator().next().description);
     }
 }
