@@ -18,7 +18,6 @@
         <mapping class="com.nazir.customscrum.client.model.SprintDay"></mapping>
         <mapping class="com.nazir.customscrum.client.model.Sprint"></mapping>
         <mapping class="com.nazir.customscrum.client.model.Task"></mapping>
-        <mapping class="com.nazir.customscrum.client.model.UserStory"></mapping>
         <mapping class="com.nazir.customscrum.client.model.Team"></mapping>
         <mapping class="com.nazir.customscrum.client.model.TeamMember"></mapping>
         <mapping class="com.nazir.customscrum.client.model.ScrumMaster"></mapping>

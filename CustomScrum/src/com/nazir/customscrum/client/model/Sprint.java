@@ -54,22 +54,11 @@ public class Sprint extends DomainObject {
 
     public float actualAvailability;
 
-    //TODO: Try to encapsulate tasks and user stories as sprint backlog item
-    @OneToMany
-    public Set<UserStory> userStories;
     @OneToMany
     public Set<Task> tasks;
 
     public void setGlobalStandupTime(Time globalStandupTime) {
         this.globalStandupTime = globalStandupTime;
-    }
-
-    public Set<UserStory> getUserStories() {
-        return userStories;
-    }
-
-    public void setUserStories(Set<UserStory> userStories) {
-        this.userStories = userStories;
     }
 
     public Set<Task> getTasks() {

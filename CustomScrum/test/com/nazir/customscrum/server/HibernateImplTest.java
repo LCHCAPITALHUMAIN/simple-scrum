@@ -41,7 +41,6 @@ public class HibernateImplTest extends AbstractTransactionalSpringContextTests {
         sprint.description  = ("Sprint 1");
         sprint.number = (1);
         sprint.title = ("Sprint 1");
-        sprint.setUserStories(createUserStories());
         sprint.setGlobalStandupTime(new Time(System.currentTimeMillis()));
         sprint.setTasks(createTasks());
         sprint.fromDate = new Date();
@@ -57,11 +56,6 @@ public class HibernateImplTest extends AbstractTransactionalSpringContextTests {
 
     private Set<SprintDay> createDays() {
         return null;
-    }
-
-    private Set<UserStory> createUserStories() {
-        Set<UserStory> result = new HashSet<UserStory>();
-        return result;
     }
 
     public void setSessionFactory(SessionFactory sessionFactory) {
