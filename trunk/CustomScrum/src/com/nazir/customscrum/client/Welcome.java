@@ -12,7 +12,6 @@ import javax.persistence.Entity;
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
-@Entity
 public class Welcome implements EntryPoint {
     /**
      * The message displayed to the user when the server cannot be reached or
@@ -30,6 +29,8 @@ public class Welcome implements EntryPoint {
     private Button btnLogin;
     private TextBox txtUserName;
     private PasswordTextBox txtPassword;
+    private Label lblLoginMessage;
+
 
     /**
      * This is the entry point method.
@@ -39,6 +40,7 @@ public class Welcome implements EntryPoint {
 
         txtUserName = new TextBox();
         txtPassword = new PasswordTextBox();
+        lblLoginMessage = new Label();
 
         // We can add style names to widgets
         btnLogin.addStyleName("sendButton");
@@ -48,6 +50,7 @@ public class Welcome implements EntryPoint {
         RootPanel.get("userNameFieldContainer").add(txtUserName);
         RootPanel.get("passwordFieldContainer").add(txtPassword);
         RootPanel.get("loginButtonContainer").add(btnLogin);
+        RootPanel.get("loginMessageContainer").add(lblLoginMessage);
 
         // Focus the cursor on the name field when the app loads
         txtUserName.setFocus(true);
@@ -79,20 +82,18 @@ public class Welcome implements EntryPoint {
     }
 
     private void login() {
-        RootPanel.get().add(new Button("de"));
-
         loginService.login(txtUserName.getText(), txtPassword.getText(), new AsyncCallback<Boolean>() {
             @Override
             public void onFailure(Throwable throwable) {
-                RootPanel.get().add(new Button("not logged"));
+                lblLoginMessage.setText("Login Failed. Technical Error, please contact system administrator.");
             }
 
             @Override
             public void onSuccess(Boolean result) {
                 if (result) {
-                    RootPanel.get().add(new Button("logged"));
+                    lblLoginMessage.setText("logged");
                 } else {
-                    RootPanel.get().add(new Button("not logged"));
+                    lblLoginMessage.setText("not logged");
                 }
             }
         });
@@ -169,9 +170,9 @@ public class Welcome implements EntryPoint {
 
     public void onModuleLoad1() {
         Sprint sprint = new Sprint();
-        sprint.setDescription("Desc");
+        sprint.description = ("Desc");
 
-        final Button sendButton = new Button(sprint.getDescription());
+        final Button sendButton = new Button(sprint.description);
         final TextBox nameField = new TextBox();
         nameField.setText("GWT User");
 
@@ -254,7 +255,7 @@ public class Welcome implements EntryPoint {
                     public void onSuccess(Sprint result) {
                         dialogBox.setText("Remote Procedure Call");
                         serverResponseLabel.removeStyleName("serverResponseLabelError");
-                        serverResponseLabel.setHTML(result.getTitle() + result.getAvailability());
+                        serverResponseLabel.setHTML(result.title);
                         dialogBox.center();
                         closeButton.setFocus(true);
                     }

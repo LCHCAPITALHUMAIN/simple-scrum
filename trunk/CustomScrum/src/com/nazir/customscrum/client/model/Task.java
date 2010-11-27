@@ -23,10 +23,6 @@ import org.hibernate.validator.NotNull;
 public class Task  extends DomainObject {
     @Id
     private long id;
-    public TaskType taskType;
-    @OneToOne
-    public UserStory userStory;
-    @NotNull
     public String title;
     public String description;
     public String itJiraNumber;

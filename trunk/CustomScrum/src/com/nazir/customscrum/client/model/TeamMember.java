@@ -14,6 +14,7 @@ public abstract class TeamMember extends DomainObject {
     private int nonWorkingDaysCount;
     //TODO: range 0...1
     private int developmentAvailability;
+    private String jiraUserName;
 
 
 }

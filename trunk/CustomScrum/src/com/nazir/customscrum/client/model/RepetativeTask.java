@@ -22,7 +22,6 @@ import java.util.Set;
 public class RepetativeTask extends DomainObject{
     @Id
     private long id;
-    public TaskType taskType;
     @NotNull
     public String title;
     public String description;

@@ -19,15 +19,11 @@
                 <value>com.nazir.customscrum.client.model.TaskDetails</value>
                 <value>com.nazir.customscrum.client.model.Team</value>
                 <value>com.nazir.customscrum.client.model.TeamMember</value>
-                <value>com.nazir.customscrum.client.model.UserStory</value>
                 <value>com.nazir.customscrum.client.model.Documentation</value>
                 <value>com.nazir.customscrum.client.model.Status</value>
-                <value>com.nazir.customscrum.client.model.BusinessLine</value>
-                <value>com.nazir.customscrum.client.model.BusinessLine</value>
                 <value>com.nazir.customscrum.client.model.Estimate</value>
                 <value>com.nazir.customscrum.client.model.Release</value>
                 <value>com.nazir.customscrum.client.model.User</value>
-                <value>com.nazir.customscrum.client.model.AcceptanceCriteria</value>
                 <value>com.nazir.customscrum.client.model.Remaining</value>
                 <value>com.nazir.customscrum.client.model.RepetativeTask</value>
             </list>
