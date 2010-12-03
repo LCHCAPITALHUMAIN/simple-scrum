@@ -23,5 +23,6 @@
         <mapping class="com.nazir.customscrum.client.model.ScrumMaster"></mapping>
         <mapping class="com.nazir.customscrum.client.model.Developer"></mapping>
         <mapping class="com.nazir.customscrum.client.model.Documentation"></mapping>
+        <mapping class="com.nazir.customscrum.client.model.Release"></mapping>
     </session-factory>
 </hibernate-configuration>
