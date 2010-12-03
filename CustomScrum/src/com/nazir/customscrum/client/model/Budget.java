@@ -4,6 +4,7 @@ import com.nazir.customscrum.client.model.util.DomainObject;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.UniqueConstraint;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,6 +16,7 @@ import javax.persistence.Id;
 @Entity
 public class Budget extends DomainObject {
     @Id
-    String budgetLine;
-    String projectName;
+    String clarityBLC;
+    //@UniqueConstraint
+    String clarityBLCDesc;
 }

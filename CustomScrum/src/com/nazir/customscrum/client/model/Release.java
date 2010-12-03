@@ -5,21 +5,26 @@ import com.nazir.customscrum.client.model.util.DomainObject;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
 public class Release extends DomainObject {
     @Id
-    private int releaseId;
-    private String applicationVersionNumber;
+    int releaseId;
+    String applicationVersionNumber;
 
-    private String releaseName;
-    private String description;
+    String releaseName;
+    String description;
 
-    private Date contentFreezeDate;
-    private Date codeFreezeDate;
-    private Date functionalTestStartDate;
-    private Date uatStartDate;
-    private Date signOffDate;
-    private Date goLiveDate;
+    Date contentFreezeDate;
+    Date codeFreezeDate;
+    Date functionalTestStartDate;
+    Date uatStartDate;
+    Date signOffDate;
+    Date goLiveDate;
+    //TODO: Need to find a wat to have this set
+    //Set<String> itJiraIds = new HashSet<String>();
+    //Set<String> baJiraIds = new HashSet<String>();
 }

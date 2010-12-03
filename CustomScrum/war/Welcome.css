@@ -32,3 +32,16 @@ h1 {
 #closeButton {
   margin: 15px 6px 6px;
 }
+
+.errorInActual {
+    background:red;
+}
+.plannedTask {
+    background:#adff2f;
+}
+.unplannedTask {
+    background:#a52a2a;
+}
+.nextTask {
+    background:lightgray;
+}
