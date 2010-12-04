@@ -31,7 +31,7 @@ public class Welcome implements EntryPoint {
 public Widget onInitialize1() {
     // Create a tab panel
     DecoratedTabPanel tabPanel = new DecoratedTabPanel();
-    tabPanel.setWidth("400px");
+    tabPanel.setWidth("100%");
     tabPanel.setAnimationEnabled(true);
 
     // Add a home tab
@@ -42,8 +42,8 @@ public Widget onInitialize1() {
     // Add a tab with an image
     tabPanel.add(new WhiteBoard(), "White board");
     tabPanel.add(new SvnView(), "SVN View");
-
     tabPanel.add(new ReleaseView(), "Release View");
+    tabPanel.add(new Holidays(), "Holidays");
 
     // Return the content
     tabPanel.selectTab(0);
