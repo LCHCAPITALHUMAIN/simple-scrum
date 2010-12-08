@@ -33,6 +33,9 @@ h1 {
   margin: 15px 6px 6px;
 }
 
+.holiday {
+    background:red;
+}
 .errorInActual {
     background:red;
 }

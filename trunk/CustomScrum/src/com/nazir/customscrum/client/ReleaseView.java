@@ -14,6 +14,7 @@ public class ReleaseView extends VerticalPanel {
     private FlexTable tableSprintTask;
 
     public ReleaseView() {
+        this.setHorizontalAlignment(ALIGN_CENTER);
         createReleaseDropDown();
         createSprintViewTable();
 
