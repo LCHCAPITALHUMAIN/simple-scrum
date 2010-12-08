@@ -19,6 +19,7 @@ public class SprintBacklog extends VerticalPanel {
     private FlexTable tableLegends;
 
     public SprintBacklog() {
+        this.setHorizontalAlignment(ALIGN_CENTER);
         createSprintDropDown();
         createTeamDropDown();
         createSprintViewTable();

@@ -18,9 +18,10 @@ public class Alerts extends VerticalPanel {
 
     }
 
-    private DecoratorPanel createAlertMessage(String title, String message[]) {
+    private FlexTable createAlertMessage(String title, String message[]) {
         // Create a table to layout the form options
         FlexTable table = new FlexTable();
+        table.setWidth("100%");
         table.setCellSpacing(6);
         FlexTable.FlexCellFormatter cellFormatter = table.getFlexCellFormatter();
 
@@ -37,10 +38,10 @@ public class Alerts extends VerticalPanel {
         table.setHTML(1, 0, consolidatedMessage);
 
         // Wrap the content in a DecoratorPanel
-        DecoratorPanel decPanel = new DecoratorPanel();
-        decPanel.setWidth("100%");
-        decPanel.setWidget(table);
-        return decPanel;
+        //DecoratorPanel decPanel = new DecoratorPanel();
+        //decPanel.setWidth("100%");
+        //decPanel.setWidget(table);
+        return table;
 
     }
 }
