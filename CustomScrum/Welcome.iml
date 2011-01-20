@@ -17,9 +17,9 @@
     </facet>
     <facet type="gwt" name="GWT">
       <configuration>
-        <setting name="compilerMaxHeapSize" value="128" />
+        <setting name="compilerMaxHeapSize" value="512" />
         <setting name="gwtScriptOutputStyle" value="DETAILED" />
-        <setting name="gwtSdkUrl" value="file:///home/nazir/dev/gwt-linux-1.7.0" />
+        <setting name="gwtSdkUrl" value="file://C:/sw/gwt-2.0.3" />
         <packaging>
           <module name="com.nazir.customscrum.Welcome" path="/com.nazir.customscrum.Welcome" />
         </packaging>
@@ -130,6 +130,15 @@
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/dom4j.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/ojdbc5.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

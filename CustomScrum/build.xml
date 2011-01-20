@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <project name="Welcome" default="build" basedir=".">
   <!-- Configure path to GWT SDK -->
-  <property name="gwt.sdk" location="/home/nazir/dev/gwt-2.0.4" />
+  <property name="gwt.sdk" location="C:\sw\gwt-2.0.3" />
 
   <path id="project.class.path">
     <pathelement location="war/WEB-INF/classes"/>
@@ -16,7 +16,7 @@
     <copy todir="war/WEB-INF/lib" file="${gwt.sdk}/gwt-servlet.jar" />
     <!-- Add any additional server libs that need to be copied -->
       <copy todir="war/WEB-INF/lib" file="./lib/javaee.jar" />
-      <copy todir="war/WEB-INF/lib" file="./lib/mysql-connector-java-5.1.6.jar" />
+      <copy todir="war/WEB-INF/lib" file="./lib/ojdbc5.jar" />
       <copy todir="war/WEB-INF/lib" file="./lib/hibernate-annotations.jar" />
       <copy todir="war/WEB-INF/lib" file="./lib/dom4j.jar" />
       <copy todir="war/WEB-INF/lib" file="./lib/hibernate.jar" />
