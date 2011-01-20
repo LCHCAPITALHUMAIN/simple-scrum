@@ -1,6 +1,5 @@
 package com.nazir.customscrum.server;
 
-import  junit.framework.TestCase;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 import org.springframework.test.AbstractTransactionalSpringContextTests;
@@ -8,9 +7,7 @@ import com.nazir.customscrum.client.model.*;
 
 import java.sql.Time;
 import java.util.Set;
-import java.util.HashSet;
 import java.util.Date;
-import java.io.File;
 
 /**
  * Created by IntelliJ IDEA.
