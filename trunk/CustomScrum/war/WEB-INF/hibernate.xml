@@ -33,13 +33,16 @@
                 <value>com.nazir.customscrum.client.model</value>
             </list>
         </property>
+        <property name="namingStrategy">
+            <bean class="com.nazir.customscrum.server.CustomScrumNamingStrategy"/>
+        </property>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
                 <prop key="hibernate.connection.url">jdbc:oracle:thin:@parsl1110378.fr.net.intra:1521:CRDFRDI2</prop>
                 <prop key="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</prop>
-                <prop key="hibernate.connection.username">n_khan</prop>
-                <prop key="hibernate.connection.password">crds</prop>
+                <prop key="hibernate.connection.username">scrum</prop>
+                <prop key="hibernate.connection.password">scrum</prop>
                 <prop key="hibernate.cache.use_second_level_cache">false</prop>
                 <!-- DB schema will be updated if needed -->
                 <prop key="hibernate.hbm2ddl.auto">update</prop>

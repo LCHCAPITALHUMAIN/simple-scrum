@@ -3,7 +3,6 @@ package com.nazir.customscrum.server.util;
 import com.nazir.customscrum.client.model.Sprint;
 import com.nazir.customscrum.client.model.Task;
 import com.nazir.customscrum.server.HibernateImplTest;
-import junit.framework.TestCase;
 
 import java.util.HashSet;
 import java.util.Set;

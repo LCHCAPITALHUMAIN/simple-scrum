@@ -20,7 +20,7 @@ import org.hibernate.validator.NotNull;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-public class Task  extends DomainObject {
+public class Task extends DomainObject {
     @Id
     private long id;
     public String title;
