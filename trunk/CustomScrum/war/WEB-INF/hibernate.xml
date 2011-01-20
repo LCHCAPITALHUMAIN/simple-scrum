@@ -35,11 +35,11 @@
         </property>
         <property name="hibernateProperties">
             <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/scrum</prop>
-                <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
-                <prop key="hibernate.connection.username">root</prop>
-                <prop key="hibernate.connection.password">letmein</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+                <prop key="hibernate.connection.url">jdbc:oracle:thin:@parsl1110378.fr.net.intra:1521:CRDFRDI2</prop>
+                <prop key="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</prop>
+                <prop key="hibernate.connection.username">n_khan</prop>
+                <prop key="hibernate.connection.password">crds</prop>
                 <prop key="hibernate.cache.use_second_level_cache">false</prop>
                 <!-- DB schema will be updated if needed -->
                 <prop key="hibernate.hbm2ddl.auto">update</prop>

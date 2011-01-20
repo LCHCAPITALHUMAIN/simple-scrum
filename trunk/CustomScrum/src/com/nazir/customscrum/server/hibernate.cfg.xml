@@ -4,15 +4,16 @@
 
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:mysql://localhost:3306/world</property>
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">letmein</property>
+        <property name="connection.url">jdbc:oracle:thin:@parsl1110378.fr.net.intra:1521:CRDFRDI2</property>
+        <property name="connection.driver_class">oracle.jdbc.OracleDriver</property>
+        <property name="connection.username">N_KHAN</property>
+        <property name="connection.password">crds</property>
+        <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
         <property name="hibernate.cache.use_second_level_cache">false</property>
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
         <!-- DB schema will be updated if needed -->
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
 
         <mapping package="com.nazir.customscrum.client.model"/>
         <mapping class="com.nazir.customscrum.client.model.SprintDay"></mapping>
