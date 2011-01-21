@@ -24,7 +24,12 @@ public class Release extends DomainObject {
     Date uatStartDate;
     Date signOffDate;
     Date goLiveDate;
-    //TODO: Need to find a wat to have this set
-    //Set<String> itJiraIds = new HashSet<String>();
-    //Set<String> baJiraIds = new HashSet<String>();
+    @org.hibernate.annotations.CollectionOfElements(
+            targetElement = java.lang.String.class
+    )
+    Set<String> itJiraIds = new HashSet<String>();
+    @org.hibernate.annotations.CollectionOfElements(
+            targetElement = java.lang.String.class
+    )
+    Set<String> baJiraIds = new HashSet<String>();
 }

@@ -15,12 +15,13 @@ import java.util.Set;
 @Entity
 public class Team  extends DomainObject {
     @Id
-    private String name;
+    public String name;
 
     @OneToOne
     private Sprint sprint;
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<TeamMember> teamMembers;
 
-    private float estimatedFocusFactor;
+    //@OneToMany(cascade = CascadeType.ALL)
+    //private Set<TeamMember> teamMembers;
+
+    public float estimatedFocusFactor;
 }

@@ -3,6 +3,7 @@ import org.hibernate.validator.NotNull;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import java.sql.Time;
 
@@ -37,9 +38,15 @@ public class Sprint extends DomainObject {
     public Set<SprintDay> days;
 
     @OneToMany(mappedBy = "sprint", cascade = CascadeType.ALL)
-    public Set<Team> teams;
+    public Set<Team> teams = new
 
+            HashSet<Team>();
+
+    @ManyToOne
     public User productOwner;
+
+    @ManyToOne
+    public User globalScrumMaster;
 
     @NotNull
     public Time globalStandupTime;

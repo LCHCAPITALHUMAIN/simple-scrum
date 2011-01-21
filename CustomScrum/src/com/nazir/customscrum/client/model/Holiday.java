@@ -16,7 +16,6 @@ import org.hibernate.validator.Range;
 public class Holiday extends DomainObject {
     User user;
     Date date;
-    //TODO: Values 0.5, 1
-    @Range
+    @Range(min = 0, max=1)
     float unavailability;
 }
