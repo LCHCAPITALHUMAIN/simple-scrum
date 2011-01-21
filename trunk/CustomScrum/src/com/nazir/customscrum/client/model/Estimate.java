@@ -17,7 +17,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-public class Estimate extends DomainObject{
+public class Estimate extends DomainObject {
     @Id
     public int id;
     public Date estimatedDate;
@@ -25,7 +25,9 @@ public class Estimate extends DomainObject{
     public float estimate;
     @OneToMany
     public Set<User> doneBy;
-    //TODO
-//    public List<String> rationales;
+    @org.hibernate.annotations.CollectionOfElements(
+            targetElement = java.lang.String.class
+    )
+    public List<String> rationales;
     public String comments;
 }

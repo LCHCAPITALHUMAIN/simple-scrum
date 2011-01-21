@@ -6,10 +6,10 @@ import javax.persistence.*;
 
 
 @Entity
-public abstract class User extends DomainObject {
+public class User extends DomainObject {
     @Id
-    private String userUid;
-    private String firstName;
-    private String lastName;
-    private String emailAddress;
+    public String userUid;
+    public String firstName;
+    public String lastName;
+    public String emailAddress;
 }

@@ -19,6 +19,8 @@ import java.util.Date;
 public class HibernateImplTest extends AbstractTransactionalSpringContextTests {
     private SessionFactory sessionFactory;
     protected Session session;
+    private User productOwner;
+    private User globalScrumMaster;
 
     @Override
     protected void onSetUpInTransaction() throws Exception {
@@ -33,6 +35,7 @@ public class HibernateImplTest extends AbstractTransactionalSpringContextTests {
 
     public void testCreateData() {
         setComplete();
+        createTestUser();
         
         Sprint sprint = new Sprint();
         sprint.description  = ("Sprint 1");
@@ -42,9 +45,46 @@ public class HibernateImplTest extends AbstractTransactionalSpringContextTests {
         sprint.setTasks(createTasks());
         sprint.fromDate = new Date();
         sprint.toDate = new Date();
+        sprint.productOwner = productOwner;
+        sprint.globalScrumMaster = globalScrumMaster;
+        setTeam(sprint);
         session.saveOrUpdate(sprint);
         session.flush();
         session.close();
+    }
+
+    private void createTestUser() {
+        productOwner = new User();
+        productOwner.userUid = "waltzp";
+        productOwner.firstName = "Patterson";
+        productOwner.lastName = "WALTZ";
+        productOwner.emailAddress = "patterson.waltz@bnpparibas.com";
+        session.saveOrUpdate(productOwner);
+
+
+        globalScrumMaster = new User();
+        globalScrumMaster.userUid = "khann";
+        globalScrumMaster.firstName = "Nazir";
+        globalScrumMaster.lastName = "KHAN";
+        globalScrumMaster.emailAddress = "nazir.khan@bnpparibas.com";
+
+
+        session.saveOrUpdate(globalScrumMaster);
+
+
+    }
+
+    public void testRetrieveData() throws Exception {
+        Sprint sprint = (Sprint) session.get(Sprint.class, 1);
+        assertEquals(1, sprint.teams.size());
+
+    }
+
+    private void setTeam(Sprint sprint) {
+        Team team = new Team();
+        team.estimatedFocusFactor = 23;
+        team.name = "T1";
+        sprint.teams.add(team);
     }
 
     private Set<Task> createTasks() {
