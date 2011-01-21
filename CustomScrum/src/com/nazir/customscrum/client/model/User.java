@@ -1,6 +1,7 @@
 package com.nazir.customscrum.client.model;
 
 import com.nazir.customscrum.client.model.util.DomainObject;
+import org.hibernate.validator.NotNull;
 
 import javax.persistence.*;
 
@@ -12,4 +13,7 @@ public class User extends DomainObject {
     public String firstName;
     public String lastName;
     public String emailAddress;
+    @OneToOne
+    @NotNull
+    public Profile profile;
 }

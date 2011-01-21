@@ -54,11 +54,28 @@ public class HibernateImplTest extends AbstractTransactionalSpringContextTests {
     }
 
     private void createTestUser() {
+        Profile crdsITProfile = new Profile();
+        crdsITProfile.name = "CRDS_IT";
+        session.saveOrUpdate(crdsITProfile);
+
+        Profile maosITProfile = new Profile();
+        maosITProfile.name = "MAOS_IT";
+        session.saveOrUpdate(maosITProfile);
+
+        Profile referentialSupport = new Profile();
+        referentialSupport.name = "REFRENTIAL_SUPPORT";
+        session.saveOrUpdate(referentialSupport);
+
+        Profile crdsBA = new Profile();
+        crdsBA.name = "CRDS_BA";
+        session.saveOrUpdate(crdsBA);
+
         productOwner = new User();
         productOwner.userUid = "waltzp";
         productOwner.firstName = "Patterson";
         productOwner.lastName = "WALTZ";
         productOwner.emailAddress = "patterson.waltz@bnpparibas.com";
+        productOwner.profile = crdsBA;
         session.saveOrUpdate(productOwner);
 
 
@@ -67,6 +84,7 @@ public class HibernateImplTest extends AbstractTransactionalSpringContextTests {
         globalScrumMaster.firstName = "Nazir";
         globalScrumMaster.lastName = "KHAN";
         globalScrumMaster.emailAddress = "nazir.khan@bnpparibas.com";
+        globalScrumMaster.profile = crdsITProfile;
 
 
         session.saveOrUpdate(globalScrumMaster);
