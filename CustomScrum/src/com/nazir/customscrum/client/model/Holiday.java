@@ -6,6 +6,9 @@ import java.util.Date;
 
 import org.hibernate.validator.Range;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Created by IntelliJ IDEA.
  * User: n_khan
@@ -13,9 +16,10 @@ import org.hibernate.validator.Range;
  * Time: 18:16:58
  * To change this template use File | Settings | File Templates.
  */
+@Entity
 public class Holiday extends DomainObject {
-    User user;
-    Date date;
+    @Id
+    public HolidayKey key;
     @Range(min = 0, max=1)
-    float unavailability;
+    public float unavailability;
 }

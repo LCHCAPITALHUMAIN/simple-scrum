@@ -10,8 +10,11 @@ import javax.persistence.*;
 public class User extends DomainObject {
     @Id
     public String userUid;
+    @NotNull
     public String firstName;
+    @NotNull
     public String lastName;
+    @NotNull
     public String emailAddress;
     @OneToOne
     @NotNull

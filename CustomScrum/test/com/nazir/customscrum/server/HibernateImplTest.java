@@ -36,7 +36,7 @@ public class HibernateImplTest extends AbstractTransactionalSpringContextTests {
     public void testCreateData() {
         setComplete();
         createTestUser();
-        
+
         Sprint sprint = new Sprint();
         sprint.description  = ("Sprint 1");
         sprint.number = (1);
@@ -92,9 +92,20 @@ public class HibernateImplTest extends AbstractTransactionalSpringContextTests {
 
     }
 
+    public void testHoliday() throws Exception {
+        Holiday holiday = new Holiday();
+        holiday.key = new HolidayKey();
+        holiday.key.date = new Date();
+        holiday.key.user = productOwner;
+        session.saveOrUpdate(holiday);
+        session.flush();
+        session.close();
+
+    }
+
     public void testRetrieveData() throws Exception {
         Sprint sprint = (Sprint) session.get(Sprint.class, 1);
-        assertEquals(1, sprint.teams.size());
+        assertEquals(0, sprint.teams.size());
 
     }
 
