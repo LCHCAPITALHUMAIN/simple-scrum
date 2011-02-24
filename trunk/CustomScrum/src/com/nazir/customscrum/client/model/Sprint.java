@@ -38,9 +38,7 @@ public class Sprint extends DomainObject {
     public Set<SprintDay> days;
 
     @OneToMany(mappedBy = "sprint", cascade = CascadeType.ALL)
-    public Set<Team> teams = new
-
-            HashSet<Team>();
+    public Set<Team> teams = new HashSet<Team>();
 
     @ManyToOne
     public User productOwner;
