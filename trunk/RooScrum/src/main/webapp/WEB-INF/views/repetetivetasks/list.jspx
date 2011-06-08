@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_scrumtool_domain_ManagemenTaskType" items="${managementasktypes}" z="RFDfft2LtE0wFzkblO26sgKQwWs=">
+        <table:table data="${managementasktypes}" id="l_com_scrumtool_domain_ManagemenTaskType" path="/repetetivetasks" z="P4BdKq2KS8c6jAOOMVJ9Rg/K9po=">
+            <table:column id="c_com_scrumtool_domain_ManagemenTaskType_title" property="title" z="TdWvg6PD3bTDW7QmCqkwEGnQT8o="/>
+            <table:column id="c_com_scrumtool_domain_ManagemenTaskType_description" property="description" z="TfA3XgmRyzsWypS67pm5KqpaKe0="/>
+            <table:column id="c_com_scrumtool_domain_ManagemenTaskType_remark" property="remark" z="0Ifm2v57tHbGpY3hGUiq72tfZEs="/>
+        </table:table>
+    </page:list>
+</div>

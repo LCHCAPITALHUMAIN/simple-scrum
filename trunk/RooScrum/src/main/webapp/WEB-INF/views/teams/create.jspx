@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_scrumtool_domain_Team" modelAttribute="team" path="/teams" render="${empty dependencies}" z="wHcHsppVek3n0Tpig+TwOw5aGwo=">
+        <field:input field="name" id="c_com_scrumtool_domain_Team_name" z="1XAM+02cmM+uTwRV98sPt4n8OkM="/>
+        <field:input field="estimatedFocusFactor" id="c_com_scrumtool_domain_Team_estimatedFocusFactor" validationMessageCode="field_invalid_number" z="wsREfsPp86h3oped6nEMZG/Gi70="/>
+        <field:select field="sprint" id="c_com_scrumtool_domain_Team_sprint" itemLabel="number" itemValue="id" items="${sprints}" path="/sprints" z="user-managed"/>
+        <field:simple field="teamMembers" id="c_com_scrumtool_domain_Team_teamMembers" messageCode="entity_reference_not_managed" messageCodeAttribute="Team Member" z="8ATJytoTTfZEtqUeiU3lQ1y+VSk="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_scrumtool_domain_Team" render="${not empty dependencies}" z="kGvEXwcnwHOHmhNoqnZzKE7SmMA="/>
+</div>

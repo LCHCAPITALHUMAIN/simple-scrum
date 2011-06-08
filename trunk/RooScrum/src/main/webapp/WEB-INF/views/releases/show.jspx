@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_scrumtool_domain_Release" object="${release}" path="/releases" z="hYUR6+cua3jEyJW/lBhvH0D/zrI=">
+        <field:display field="applicationVersionNumber" id="s_com_scrumtool_domain_Release_applicationVersionNumber" object="${release}" z="+3DyIgkMe8FzFls/yUhMwcMlzNw="/>
+        <field:display field="releaseName" id="s_com_scrumtool_domain_Release_releaseName" object="${release}" z="rb5JYpbZStxg/qRru2Ipdm9h8WE="/>
+        <field:display field="description" id="s_com_scrumtool_domain_Release_description" object="${release}" z="9eyxq7jIeiggRVQbKGRwFNr+drs="/>
+        <field:display calendar="true" dateTimePattern="${release_contentfreezedate_date_format}" field="contentFreezeDate" id="s_com_scrumtool_domain_Release_contentFreezeDate" object="${release}" z="UPpY7nSA72VKYMN0H2KDT1gU/EA="/>
+        <field:display calendar="true" dateTimePattern="${release_codefreezedate_date_format}" field="codeFreezeDate" id="s_com_scrumtool_domain_Release_codeFreezeDate" object="${release}" z="h+Ox2O58JKxUKkYt3OjqLu/lyTA="/>
+        <field:display calendar="true" dateTimePattern="${release_functionalteststartdate_date_format}" field="functionalTestStartDate" id="s_com_scrumtool_domain_Release_functionalTestStartDate" object="${release}" z="ab4XiLwBXuDjYXJM0mLokbMB1+0="/>
+        <field:display calendar="true" dateTimePattern="${release_uatstartdate_date_format}" field="uatStartDate" id="s_com_scrumtool_domain_Release_uatStartDate" object="${release}" z="Dwp8Z3aY0/s4VSYxIFaNekT0xHs="/>
+        <field:display calendar="true" dateTimePattern="${release_signoffdate_date_format}" field="signOffDate" id="s_com_scrumtool_domain_Release_signOffDate" object="${release}" z="5Lz0MrYECxlCtcwzha9nXfb5WZ0="/>
+        <field:display calendar="true" dateTimePattern="${release_golivedate_date_format}" field="goLiveDate" id="s_com_scrumtool_domain_Release_goLiveDate" object="${release}" z="vdIoG/+etTqrWauuOopi4An94+I="/>
+        <field:display field="productBacklog" id="s_com_scrumtool_domain_Release_productBacklog" object="${release}" z="f3AYsqLEBbb1WCRUoykjuaXduf4="/>
+    </page:show>
+</div>

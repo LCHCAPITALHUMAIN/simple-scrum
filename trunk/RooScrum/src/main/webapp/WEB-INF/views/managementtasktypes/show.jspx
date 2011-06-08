@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_scrumtool_domain_ManagementTaskType" object="${managementtasktype}" path="/managementtasktypes" z="H/B9S00dGXEx0c2MwAX0etxb8CY=">
+        <field:display field="name" id="s_com_scrumtool_domain_ManagementTaskType_name" object="${managementtasktype}" z="luhJdeohlUXKaaOyujjX8nzAWHE="/>
+        <field:display field="parent" id="s_com_scrumtool_domain_ManagementTaskType_parent" object="${managementtasktype}" z="b5ked2Fw04UPKyjOgv5AAgh5lfE="/>
+    </page:show>
+</div>

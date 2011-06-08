@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="productbacklogs/list">
+        <put-attribute name="body" value="/WEB-INF/views/productbacklogs/list.jspx"/>
+    </definition>
+<definition extends="default" name="productbacklogs/show">
+        <put-attribute name="body" value="/WEB-INF/views/productbacklogs/show.jspx"/>
+    </definition>
+<definition extends="default" name="productbacklogs/create">
+        <put-attribute name="body" value="/WEB-INF/views/productbacklogs/create.jspx"/>
+    </definition>
+<definition extends="default" name="productbacklogs/update">
+        <put-attribute name="body" value="/WEB-INF/views/productbacklogs/update.jspx"/>
+    </definition>
+</tiles-definitions>

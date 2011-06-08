@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_scrumtool_domain_Documentation" modelAttribute="documentation" path="/documentations" versionField="Version" z="usw6n5uiRkENfCJs9nc8JWaYZIo=">
+        <field:input field="documentType" id="c_com_scrumtool_domain_Documentation_documentType" z="yW8358eeHe24/P078TslQVXz/U0="/>
+        <field:input field="location" id="c_com_scrumtool_domain_Documentation_location" z="lu3rnUr14Od6ZsRqmZTaLANEA50="/>
+    </form:update>
+</div>

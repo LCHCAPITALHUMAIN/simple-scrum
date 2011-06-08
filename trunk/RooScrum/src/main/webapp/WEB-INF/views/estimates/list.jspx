@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_scrumtool_domain_Estimate" items="${estimates}" z="tdwzrApevYd0b41ClOf3lyRoKWo=">
+        <table:table data="${estimates}" id="l_com_scrumtool_domain_Estimate" path="/estimates" z="j8C4+0hTEQnRJd/qcUI9mA8XWvY=">
+            <table:column id="c_com_scrumtool_domain_Estimate_type" property="type" z="BznoGREvPwjrll26CnTuPD5Xoxs="/>
+            <table:column id="c_com_scrumtool_domain_Estimate_value" property="value" z="/o1fQMLxAZwwKLAS4GcwcyYF+ZU="/>
+            <table:column id="c_com_scrumtool_domain_Estimate_estimators" property="estimators" z="t2ItBiwo+pP5BafJFzM0OdHxa8Y="/>
+            <table:column id="c_com_scrumtool_domain_Estimate_rationales" property="rationales" z="mCz8nvc2+075uhDdpx/nvNRXNf0="/>
+            <table:column calendar="true" dateTimePattern="${estimate_date_date_format}" id="c_com_scrumtool_domain_Estimate_date" property="date" z="QoyB6ec3nfT0CUOl4YEevpMGPpA="/>
+            <table:column id="c_com_scrumtool_domain_Estimate_task" property="task" z="k9HNbeZO98KH59B/jWyEjcUPxsQ="/>
+        </table:table>
+    </page:list>
+</div>

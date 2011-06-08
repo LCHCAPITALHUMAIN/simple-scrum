@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_scrumtool_domain_SprintDay" object="${sprintday}" path="/sprintdays" z="rAk2qiNWobxfje+8oovQVRbmXcg=">
+        <field:display date="true" dateTimePattern="${sprintDay_date_date_format}" field="date" id="s_com_scrumtool_domain_SprintDay_date" object="${sprintday}" z="v6SRUFXZlqkd5rm9tL/JgIOD1V4="/>
+        <field:display field="day" id="s_com_scrumtool_domain_SprintDay_day" object="${sprintday}" z="qYaTK/RvvmAYwyzHsp9ne10OYQY="/>
+        <field:display field="comments" id="s_com_scrumtool_domain_SprintDay_comments" object="${sprintday}" z="eDoA4XVu0mEqsQMj4W++UG/BSy8="/>
+        <field:display field="sprint" id="s_com_scrumtool_domain_SprintDay_sprint" object="${sprintday}" z="cVCLlBoSSA8URkT10w2AravFfCI="/>
+    </page:show>
+</div>

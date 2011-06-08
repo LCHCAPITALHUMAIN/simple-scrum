@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_scrumtool_domain_ProductBacklog" modelAttribute="productBacklog" path="/productbacklogs" versionField="Version" z="Ndj5S6w0lp552s9dpw5JESrz07I=">
+        <field:input field="productName" id="c_com_scrumtool_domain_ProductBacklog_productName" z="ZTTXkZ5CY6i8J5OzW9aEea1l/VA="/>
+        <field:select field="productOwner" id="c_com_scrumtool_domain_ProductBacklog_productOwner" itemValue="id" items="${users}" path="/users" z="txdsgOmzdIM+LnIKD5e2qBxQ0M0="/>
+    </form:update>
+</div>

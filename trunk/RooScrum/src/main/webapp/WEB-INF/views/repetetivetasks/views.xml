@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="repetetivetasks/list">
+        <put-attribute name="body" value="/WEB-INF/views/repetetivetasks/list.jspx"/>
+    </definition>
+<definition extends="default" name="repetetivetasks/show">
+        <put-attribute name="body" value="/WEB-INF/views/repetetivetasks/show.jspx"/>
+    </definition>
+<definition extends="default" name="repetetivetasks/create">
+        <put-attribute name="body" value="/WEB-INF/views/repetetivetasks/create.jspx"/>
+    </definition>
+<definition extends="default" name="repetetivetasks/update">
+        <put-attribute name="body" value="/WEB-INF/views/repetetivetasks/update.jspx"/>
+    </definition>
+</tiles-definitions>

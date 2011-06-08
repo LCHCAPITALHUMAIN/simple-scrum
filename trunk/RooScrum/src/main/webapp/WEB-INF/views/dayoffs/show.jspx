@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_scrumtool_domain_DayOff" object="${dayoff}" path="/dayoffs" z="bVUY71k7wd7agw7pUR0Q08xaZ78=">
+        <field:display calendar="true" dateTimePattern="${dayOff_date_date_format}" field="date" id="s_com_scrumtool_domain_DayOff_date" object="${dayoff}" z="2hQjZgQzMKOzxCNJEbr5AQmEK1Q="/>
+        <field:display field="teamMember" id="s_com_scrumtool_domain_DayOff_teamMember" object="${dayoff}" z="gwlALHBKEUf14PtADfia0+WkahM="/>
+        <field:display field="category" id="s_com_scrumtool_domain_DayOff_category" object="${dayoff}" z="OTWWM/zitfDr2GYX0GnyMSz5mFU="/>
+    </page:show>
+</div>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_scrumtool_domain_PublicHoliday" modelAttribute="publicHoliday" path="/publicholidays" versionField="Version" z="zhyepER9ix6a2iLzgmxRfFdg+5Y=">
+        <field:datetime dateTimePattern="${publicHoliday_date_date_format}" field="date" id="c_com_scrumtool_domain_PublicHoliday_date" required="true" z="5L6qkUtS/8Ege6kCQaO3b6wC1cE="/>
+        <field:select field="location" id="c_com_scrumtool_domain_PublicHoliday_location" itemValue="id" items="${locations}" path="/locations" z="zGHAGAQyMlNPiZZiA+9vwd/Fb5A="/>
+    </form:update>
+</div>

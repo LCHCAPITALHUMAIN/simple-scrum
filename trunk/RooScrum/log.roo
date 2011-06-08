@@ -1,0 +1,222 @@
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log opened at 2011-06-03 01:37:50
+project --topLevelPackage com.scrumtool
+persistence setup --provider HIBERNATE --database HYPERSONIC_IN_MEMORY
+enum type --class ~.domain.reference.HolidayType
+enum constant --class ~.domain.reference.HolidayType --permitReservedWords --name PUBLIC 
+enum constant --class ~.domain.reference.HolidayType --name PERSONAL 
+enum constant --class ~.domain.reference.HolidayType --name TRAINNING
+enum type --class ~.domain.reference.HolidayDuration 
+enum constant --class ~.domain.reference.HolidayDuration --name WHOLE_DAY
+enum constant --class ~.domain.reference.HolidayDuration --name MORNNING
+enum constant --class ~.domain.reference.HolidayDuration --name AFTERNOON
+enum type --class ~.domain.reference.TeamMemberRole
+enum constant --class ~.domain.reference.TeamMemberRole --name SCRUM_MASTER
+enum constant --class ~.domain.reference.TeamMemberRole --name DEVELOPER
+enum type --class ~.domain.reference.SprintStatus
+enum constant --class ~.domain.reference.SprintStatus --name NOT_STARTED
+enum constant --class ~.domain.reference.SprintStatus --name STARTED
+enum constant --class ~.domain.reference.SprintStatus --name FINISHED
+enum type --class ~.domain.reference.EstimateType
+enum constant --class ~.domain.reference.EstimateType --name HIGH_LEVEL
+enum constant --class ~.domain.reference.EstimateType --name MEDIUM_LEVEL
+enum constant --class ~.domain.reference.EstimateType --name LOW_LEVEL
+entity --class ~.domain.Profile  
+field string --class ~.domain.Profile --fieldName  name --notNull
+entity --class ~.domain.User --permitReservedWords 
+field string --class ~.domain.User --fieldName  uid --notNull --unique
+field string --class ~.domain.User --fieldName  firstName --notNull
+field string --class ~.domain.User --fieldName  lastName --notNull
+field string --class ~.domain.User --fieldName  emailAddress --notNull
+field reference --class ~.domain.User --fieldName profile --type ~.domain.Profile --notNull
+entity --class ~.domain.TeamMember --abstract
+field reference --class ~.domain.TeamMember --fieldName user --type ~.domain.User --permitReservedWords
+field enum --class ~.domain.TeamMember --fieldName role --type ~.domain.reference.TeamMemberRole --permitReservedWords
+field number --class ~.domain.TeamMember --fieldName nonWorkingDaysCount --type java.lang.Integer
+field number --class ~.domain.TeamMember --fieldName developmentAvailability --type java.lang.Float --min 0 --max 1
+field string --class ~.domain.TeamMember --fieldName jiraUserName
+entity --class ~.domain.Team 
+field string --class ~.domain.Team --fieldName name
+field number --class ~.domain.Team --fieldName estimatedFocusFactor --type java.lang.Float
+field set --class ~.domain.Team --fieldName teamMembers --type ~.domain.TeamMember --cardinality ONE_TO_MANY
+field reference --class ~.domain.TeamMember --fieldName team --type ~.domain.Team
+entity --class ~.domain.Documentation 
+field string --class ~.domain.Documentation --fieldName documentType
+field string --class ~.domain.Documentation --fieldName location
+entity --class ~.domain.Budget 
+field string --class ~.domain.Budget --fieldName clarityBLC
+field string --class ~.domain.Budget --fieldName clarityBLCDesc
+entity --class ~.domain.Estimate 
+field date --class ~.domain.Estimate --fieldName date --type java.util.Date --permitReservedWords
+field enum --class ~.domain.Estimate --fieldName type --type ~.domain.reference.EstimateType
+field number --class ~.domain.Estimate --fieldName value --type java.lang.Float --permitReservedWords
+field set --class ~.domain.Estimate --fieldName estimators --type ~.domain.User --cardinality MANY_TO_MANY
+field string --class ~.domain.Estimate --fieldName rationales
+field string --class ~.domain.Estimate --fieldName comments
+entity --class ~.domain.Jira
+field string --class ~.domain.Jira --fieldName  jiraId --notNull --unique
+field string --class ~.domain.Jira --fieldName description
+field string --class ~.domain.Jira --fieldName creator
+field string --class ~.domain.Jira --fieldName assignee
+field string --class ~.domain.Jira --fieldName status
+field number --class ~.domain.Jira --fieldName value --type java.lang.Float --permitReservedWords
+field set --class ~.domain.Jira --fieldName subJiras --type ~.domain.Jira 
+field set --class ~.domain.Jira --fieldName linkedJiras --type ~.domain.Jira 
+entity --class ~.domain.Status 
+field string --class ~.domain.Status --fieldName name
+entity --class ~.domain.Release  --permitReservedWords 
+field string --class ~.domain.Release --fieldName applicationVersionNumber
+field string --class ~.domain.Release --fieldName releaseName
+field string --class ~.domain.Release --fieldName description
+field date --class ~.domain.Release --fieldName contentFreezeDate --type java.util.Date 
+field date --class ~.domain.Release --fieldName codeFreezeDate --type java.util.Date 
+field date --class ~.domain.Release --fieldName functionalTestStartDate --type java.util.Date 
+field date --class ~.domain.Release --fieldName uatStartDate --type java.util.Date 
+field date --class ~.domain.Release --fieldName signOffDate --type java.util.Date 
+field date --class ~.domain.Release --fieldName goLiveDate --type java.util.Date 
+field set --class ~.domain.Release --fieldName itJiras --type ~.domain.Jira --cardinality MANY_TO_MANY
+field set --class ~.domain.Release --fieldName baJiras --type ~.domain.Jira --cardinality MANY_TO_MANY
+entity --class ~.domain.Sprint 
+field number --class ~.domain.Sprint --fieldName number --type java.lang.Integer --permitReservedWords
+field string --class ~.domain.Sprint --fieldName title --notNull
+field date --class ~.domain.Sprint --fieldName fromDate --type java.util.Date  --notNull
+field date --class ~.domain.Sprint --fieldName toDate --type java.util.Date  --notNull
+field string --class ~.domain.Sprint --fieldName description
+field set --class ~.domain.Sprint --fieldName teams --type ~.domain.Team --cardinality ONE_TO_MANY
+field reference --class ~.domain.Sprint --fieldName productOwner --type ~.domain.User 
+field reference --class ~.domain.Sprint --fieldName globalScrumMaster --type ~.domain.User
+field date --class ~.domain.Sprint --fieldName globalStandupTime --type java.util.Calendar --notNull
+field number --class ~.domain.Sprint --fieldName estimatedFocusFactor --type java.lang.Float --notNull
+field number --class ~.domain.Sprint --fieldName estimatedAvailability --type java.lang.Float  --notNull
+field number --class ~.domain.Sprint --fieldName actualFocusFactor --type java.lang.Float 
+field number --class ~.domain.Sprint --fieldName actualAvailability --type java.lang.Float 
+field reference --class ~.domain.Team --fieldName sprint --type ~.domain.Sprint
+entity --class ~.domain.SprintDay 
+field date --class ~.domain.SprintDay --fieldName date --type java.util.Date --permitReservedWords
+field number --class ~.domain.SprintDay --fieldName day --type java.lang.Integer --permitReservedWords
+field string --class ~.domain.SprintDay --fieldName comments
+field set --class ~.domain.Sprint --fieldName days --type ~.domain.SprintDay --cardinality ONE_TO_MANY
+entity --class ~.domain.Actual 
+field reference --class ~.domain.Actual --fieldName sprintDay --type ~.domain.SprintDay
+field reference --class ~.domain.Actual --fieldName teamMember --type ~.domain.TeamMember
+field number --class ~.domain.Actual --type java.lang.Float --fieldName daySpent --min 0 --max 1
+entity --class ~.domain.Task 
+field string --class ~.domain.Task --fieldName title
+field string --class ~.domain.Task --fieldName description
+field string --class ~.domain.Task --fieldName itJiraNumber
+field string --class ~.domain.Task --fieldName baResponsible
+field string --class ~.domain.Task --fieldName remark
+field number --class ~.domain.Task --fieldName itQcNumber --type java.lang.Integer
+field reference --class ~.domain.Task --fieldName status --type ~.domain.Status
+field reference --class ~.domain.Task --fieldName budget --type ~.domain.Budget
+field set --class ~.domain.Task --fieldName teamsInCharge --type ~.domain.Team --cardinality ONE_TO_MANY
+field set --class ~.domain.Task --fieldName estimates --type ~.domain.Estimate --cardinality ONE_TO_MANY     
+field set --class ~.domain.Task --fieldName actuals --type ~.domain.Actual --cardinality ONE_TO_MANY 
+field set --class ~.domain.Sprint --fieldName tasks --type ~.domain.Task --cardinality ONE_TO_MANY
+entity --class ~.domain.Remaining 
+field reference --class ~.domain.Remaining --fieldName sprintDay --type ~.domain.SprintDay
+field reference --class ~.domain.Remaining --fieldName task --type ~.domain.Task
+field number --class ~.domain.Remaining --fieldName remaining --type java.lang.Float
+field set --class ~.domain.Task --fieldName remainings --type ~.domain.Remaining --cardinality ONE_TO_MANY 
+entity --class ~.domain.RepetetiveTask 
+field string --class ~.domain.RepetetiveTask --fieldName title --notNull
+field string --class ~.domain.RepetetiveTask --fieldName description
+field string --class ~.domain.RepetetiveTask --fieldName remark
+entity --class ~.domain.ProductBacklog 
+field string --class ~.domain.ProductBacklog --fieldName productName
+field reference --class ~.domain.ProductBacklog --fieldName productOwner --type ~.domain.User
+entity --class ~.domain.Module  --permitReservedWords
+field string --class ~.domain.Module --fieldName name
+entity --class ~.domain.Location 
+field string --class ~.domain.Location --fieldName code
+field string --class ~.domain.Location --fieldName name --notNull
+entity --class ~.domain.Holiday  --identifierType ~.domain.HolidayKey --identifierField holidayId
+web mvc setup
+web mvc all --package ~.web
+perform eclipse
+// script --file ~/Desktop/roo_script.roo
+field reference --class ~.domain.SprintDay --fieldName sprint --type ~.domain.Sprint --cardinality MANY_TO_ONE
+web mvc all --package ~.web
+quit
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log closed at 2011-06-03 12:13:43
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log opened at 2011-06-03 12:16:15
+enum type --class ~.domain.reference.TaskStatus
+field enum --fieldName status --type ~.domain.reference.TaskStatus --class ~.domain.Task
+// [failed] web mvc all --package ~.web
+// [failed] web mvc all --package ~.web
+web mvc all --package ~.web
+web mvc update tags 
+web mvc all --package ~.web
+web mvc all --package ~.web
+web mvc all --package ~.web
+controller all --package ~.web
+// [failed] controller class --class com.scrumtool.domain.Task
+// [failed] controller class --class com.scrumtool.web.TaskController
+web mvc all --package ~.web
+quit
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log closed at 2011-06-03 14:17:07
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log opened at 2011-06-03 14:17:24
+web mvc all --package ~.web
+quit
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log closed at 2011-06-03 16:56:14
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log opened at 2011-06-03 16:56:28
+web mvc scaffold  --class ~.web.TeamMemberController --backingType com.scrumtool.domain.TeamMember
+enum type --class ~.domain.reference.IssueType
+enum constant --name JIRA
+enum constant --name QC
+field enum --fieldName type --type ~.domain.reference.IssueType --class ~.domain.Issue
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log closed at 2011-06-04 00:15:31
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log opened at 2011-06-04 00:15:56
+quit
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log closed at 2011-06-04 00:49:49
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log opened at 2011-06-04 00:50:06
+persistence setup --database HYPERSONIC_PERSISTENT --provider HIBERNATE 
+quit
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log closed at 2011-06-04 01:30:45
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log opened at 2011-06-04 01:30:59
+entity --class ~.domain.Task
+enum type --class ~.domain.reference.DevelopmentTaskType
+enum constant --name PLANNED
+enum constant --name UNPLANNED
+field enum --fieldName type --type ~.domain.reference.DevelopmentTaskType --class ~.domain.DevelopmentTask
+entity --class ~.domain.ManagementTask --extends ~.domain.Task
+quit
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log closed at 2011-06-04 01:47:04
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log opened at 2011-06-04 01:47:17
+web mvc all --package ~.web
+persistence setup --database HYPERSONIC_PERSISTENT --provider HIBERNATE 
+persistence setup --database HYPERSONIC_IN_MEMORY --provider HIBERNATE 
+persistence setup --database HYPERSONIC_IN_MEMORY --provider HIBERNATE 
+persistence setup --database HYPERSONIC_IN_MEMORY --provider HIBERNATE 
+quit
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log closed at 2011-06-04 02:04:25
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log opened at 2011-06-04 02:04:34
+persistence setup --database HYPERSONIC_IN_MEMORY --provider HIBERNATE 
+persistence setup --database HYPERSONIC_PERSISTENT --provider HIBERNATE 
+date
+quit
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log closed at 2011-06-05 14:08:53
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log opened at 2011-06-05 14:09:16
+quit
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log closed at 2011-06-05 14:33:04
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log opened at 2011-06-05 14:33:29
+entity --class ~.domain.PublicHoliday --extends ~.domain.Holiday
+entity --class ~.domain.DayOff --extends ~.domain.Holiday
+field reference --fieldName teamMember --type ~.domain.TeamMember --notNull 
+field enum --fieldName category --type ~.domain.reference.HolidayDuration
+web mvc all --package ~.web
+quit
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log closed at 2011-06-05 16:52:28
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log opened at 2011-06-05 16:52:42
+persistence setup --database HYPERSONIC_PERSISTENT --provider HIBERNATE 
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log closed at 2011-06-05 17:48:24
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log opened at 2011-06-05 17:59:53
+persistence setup --database DERBY --provider HIBERNATE 
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log opened at 2011-06-07 06:55:03
+quit
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log closed at 2011-06-07 07:47:03
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log opened at 2011-06-07 07:47:17
+field date --fieldName startsAt --type java.util.Date --timeFormat SHORT --dateFormat NONE --class ~.domain.Sprint
+quit
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log closed at 2011-06-07 21:12:46
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log opened at 2011-06-07 21:13:22
+// Spring Roo 1.1.4.RELEASE [rev f787ce7] log closed at 2011-06-08 01:27:41

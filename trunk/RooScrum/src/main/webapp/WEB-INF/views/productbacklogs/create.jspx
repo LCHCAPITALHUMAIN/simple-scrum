@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_scrumtool_domain_ProductBacklog" modelAttribute="productBacklog" path="/productbacklogs" render="${empty dependencies}" z="xlxPug+Kx95duvWAKZQoap7u6PM=">
+        <field:input field="productName" id="c_com_scrumtool_domain_ProductBacklog_productName" z="ZTTXkZ5CY6i8J5OzW9aEea1l/VA="/>
+        <field:select field="productOwner" id="c_com_scrumtool_domain_ProductBacklog_productOwner" itemValue="id" items="${users}" path="/users" z="txdsgOmzdIM+LnIKD5e2qBxQ0M0="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_scrumtool_domain_ProductBacklog" render="${not empty dependencies}" z="mWek1/CIkbabuIxIVp/MrSG/qfY="/>
+</div>

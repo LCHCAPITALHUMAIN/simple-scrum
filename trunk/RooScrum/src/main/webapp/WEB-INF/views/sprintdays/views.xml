@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="sprintdays/list">
+        <put-attribute name="body" value="/WEB-INF/views/sprintdays/list.jspx"/>
+    </definition>
+<definition extends="default" name="sprintdays/show">
+        <put-attribute name="body" value="/WEB-INF/views/sprintdays/show.jspx"/>
+    </definition>
+<definition extends="default" name="sprintdays/create">
+        <put-attribute name="body" value="/WEB-INF/views/sprintdays/create.jspx"/>
+    </definition>
+<definition extends="default" name="sprintdays/update">
+        <put-attribute name="body" value="/WEB-INF/views/sprintdays/update.jspx"/>
+    </definition>
+</tiles-definitions>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="managementasktypes/list">
+        <put-attribute name="body" value="/WEB-INF/views/managementasktypes/list.jspx"/>
+    </definition>
+<definition extends="default" name="managementasktypes/show">
+        <put-attribute name="body" value="/WEB-INF/views/managementasktypes/show.jspx"/>
+    </definition>
+<definition extends="default" name="managementasktypes/create">
+        <put-attribute name="body" value="/WEB-INF/views/managementasktypes/create.jspx"/>
+    </definition>
+<definition extends="default" name="managementasktypes/update">
+        <put-attribute name="body" value="/WEB-INF/views/managementasktypes/update.jspx"/>
+    </definition>
+</tiles-definitions>

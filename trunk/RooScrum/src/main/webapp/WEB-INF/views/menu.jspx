@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" id="menu" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <util:panel id="menuSprint" openPane="false" title="Sprint Configuration">
+        <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+            <menu:category id="c_productbacklog" z="ZBCKMaT8WxkRswVjIRfjNTdyYW0=">
+                <menu:item id="i_productbacklog_new" messageCode="global_menu_new" url="/productbacklogs?form" z="zuhTkwLo14isyPTOK2/9o+p3Px8="/>
+                <menu:item id="i_productbacklog_list" messageCode="global_menu_list" url="/productbacklogs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="WyX8KvxwHBuFDMFxCc5HMO5MQIQ="/>
+            </menu:category>
+            <menu:category id="c_release" z="hd5RXzdfBzAJzuxmZyjany3nIcE=">
+                <menu:item id="i_release_new" messageCode="global_menu_new" url="/releases?form" z="ISdQ0cIuWF13mQ7tism9w48sybc="/>
+                <menu:item id="i_release_list" messageCode="global_menu_list" url="/releases?page=1&amp;size=${empty param.size ? 10 : param.size}" z="0FPOtJ1puryihib0PpGGEs6ZVIQ="/>
+            </menu:category>
+            <menu:category id="c_sprint" z="PvUTWacTAbGviBUiZ2vedqAdjEM=">
+                <menu:item id="i_sprint_new" messageCode="global_menu_new" url="/sprints?form" z="nvj2m7OBArXNRwXV28QGslwwhtc="/>
+                <menu:item id="i_sprint_list" messageCode="global_menu_list" url="/sprints?page=1&amp;size=${empty param.size ? 10 : param.size}" z="8m2/Nza2XCQjsR2oHJDvLdV7qbw="/>
+            </menu:category>
+            <menu:category id="c_sprintday" z="JxHTlusK30ah7cgU14s/eE1xE9U=">
+                <menu:item id="i_sprintday_new" messageCode="global_menu_new" url="/sprintdays?form" z="dH8kvC4Tjikbivoe0bdUFXRnkXk="/>
+                <menu:item id="i_sprintday_list" messageCode="global_menu_list" url="/sprintdays?page=1&amp;size=${empty param.size ? 10 : param.size}" z="4L39KNfv/nW8KW2tBF3OIySouDA="/>
+            </menu:category>
+            <menu:category id="c_team" z="ohZmKV2mHAiozGa+l7W8lVsp36Q=">
+                <menu:item id="i_team_new" messageCode="global_menu_new" url="/teams?form" z="4tXqOwL6AGKXY3eI3MjIlHBiYRc="/>
+                <menu:item id="i_team_list" messageCode="global_menu_list" url="/teams?page=1&amp;size=${empty param.size ? 10 : param.size}" z="e0UEGo6L31cC31D4lgkjPEbpROM="/>
+            </menu:category>
+            <menu:category id="c_teammember" z="C+1R41h+P5K284HedGcHIDBWYM0=">
+                <menu:item id="i_teammember_new" messageCode="global_menu_new" url="/teammembers?form" z="cV5tiEhWzIZ3sxbbm/s/hZodbs8="/>
+                <menu:item id="i_teammember_list" messageCode="global_menu_list" url="/teammembers?page=1&amp;size=${empty param.size ? 10 : param.size}" z="iVnnbLx1IUHpOdnFJWtpIdfO9S8="/>
+            </menu:category>
+        </menu:menu>
+    </util:panel>
+    <util:panel id="menuDaily" openPane="true" title="Daily Sprint">
+        <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+            <menu:category id="c_issue" z="4sjtXrMMtCOxwAetiy8pkWKpUn4=">
+                <menu:item id="i_issue_new" messageCode="global_menu_new" url="/jiras?form" z="N3jmo5VyYnSVR4D+6j3FVeOL8rE="/>
+                <menu:item id="i_issue_list" messageCode="global_menu_list" url="/jiras?page=1&amp;size=${empty param.size ? 10 : param.size}" z="4eRJ0WzdLc/p/+bvPl4DJAyxWxs="/>
+            </menu:category>
+            <menu:category id="c_developmenttask" z="CcIGk+WIE3XfXwLv7Jlk1RrEawc=">
+                <menu:item id="i_developmenttask_new" messageCode="global_menu_new" url="/developmenttasks?form" z="KE1xnhVNmVp0bpHv2afixI3uWCg="/>
+                <menu:item id="i_developmenttask_list" messageCode="global_menu_list" url="/developmenttasks?page=1&amp;size=${empty param.size ? 10 : param.size}" z="9vcIvLqhB03mbjWs+BQKAk0hU58="/>
+            </menu:category>
+            <menu:category id="c_managementtask" z="9QOTiJY7po1w+RUNiQ71cXGa3QA=">
+                <menu:item id="i_managementtask_new" messageCode="global_menu_new" url="/managementtasks?form" z="rNa5SXJCtJz/ZYgLFl2IqMfa1ss="/>
+                <menu:item id="i_managementtask_list" messageCode="global_menu_list" url="/managementtasks?page=1&amp;size=${empty param.size ? 10 : param.size}" z="yW4Js+1F7gQcBHuBtI7dQHHzxPI="/>
+            </menu:category>
+            <menu:category id="c_estimate" z="6TsZy22LTyq0jzplK8i1WnEZX+Y=">
+                <menu:item id="i_estimate_new" messageCode="global_menu_new" url="/estimates?form" z="DaGj+7EBMQrtUhajjwQLWDJzAkE="/>
+                <menu:item id="i_estimate_list" messageCode="global_menu_list" url="/estimates?page=1&amp;size=${empty param.size ? 10 : param.size}" z="Skr7KovG46CJaBgBW3crGbksFzU="/>
+            </menu:category>
+            <menu:category id="c_actual" z="Zda1jZSCCqQmOGPUrdSTOURlyB4=">
+                <menu:item id="i_actual_new" messageCode="global_menu_new" url="/actuals?form" z="/MxIjibAc9o7/n97mj0K+LpQOQo="/>
+                <menu:item id="i_actual_list" messageCode="global_menu_list" url="/actuals?page=1&amp;size=${empty param.size ? 10 : param.size}" z="Hqt9cUKyFQHwkQ9kDE4/9pRYqa4="/>
+            </menu:category>
+            <menu:category id="c_remaining" z="fTIyl+AYQMP4waxYKxFu8gFQ/4U=">
+                <menu:item id="i_remaining_new" messageCode="global_menu_new" url="/remainings?form" z="BpD1YVUE6J+UR99BsotTThBxKXI="/>
+                <menu:item id="i_remaining_list" messageCode="global_menu_list" url="/remainings?page=1&amp;size=${empty param.size ? 10 : param.size}" z="fEsZHTbb49BOW/VvixevHVmY9d0="/>
+            </menu:category>
+            <menu:category id="c_dayoff" z="SBohrr377KujV1KEd/9GWhivUDs=">
+                <menu:item id="i_dayoff_new" messageCode="global_menu_new" url="/dayoffs?form" z="YRwABfPVVFH26I+TJUwYcG9PzsY="/>
+                <menu:item id="i_dayoff_list" messageCode="global_menu_list" url="/dayoffs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="UrCw92HMTUmZCVnfvKnBn+R0xXA="/>
+            </menu:category>            
+        </menu:menu>
+    </util:panel>
+    <util:panel id="menuReference" openPane="false" title="Reference Data">
+        <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+            <menu:category id="c_publicholiday" z="kPYHiYynIYhQuTwDRS3RmH3u7dY=">
+                <menu:item id="i_publicholiday_new" messageCode="global_menu_new" url="/publicholidays?form" z="YWeM9arqE9GJHLcVmgQWcXJSP58="/>
+                <menu:item id="i_publicholiday_list" messageCode="global_menu_list" url="/publicholidays?page=1&amp;size=${empty param.size ? 10 : param.size}" z="KY8/kHvdCcXA3unE5/G/7PQGIf4="/>
+            </menu:category>        
+            <menu:category id="c_profile" z="7+DSGeUy45gwkQx/NptxyQe7XpY=">
+                <menu:item id="i_profile_new" messageCode="global_menu_new" url="/profiles?form" z="5CN+Gy9le00bCK9RJj72N/fBXsM="/>
+                <menu:item id="i_profile_list" messageCode="global_menu_list" url="/profiles?page=1&amp;size=${empty param.size ? 10 : param.size}" z="Xn953x2DUSQIcljOjuowLDd1gRc="/>
+            </menu:category>
+            <menu:category id="c_user" z="uoTSf/uIZ821ZppidzS9aO776yk=">
+                <menu:item id="i_user_new" messageCode="global_menu_new" url="/users?form" z="Zv1m8u2rG+JFKcvJ+AHVVK0ey24="/>
+                <menu:item id="i_user_list" messageCode="global_menu_list" url="/users?page=1&amp;size=${empty param.size ? 10 : param.size}" z="4MY4uybxa60Q1G2rlI5bOwg+sm0="/>
+            </menu:category>
+            <menu:category id="c_location" z="RvMgx8apsPylYygCQ4tMBVfulVw=">
+                <menu:item id="i_location_new" messageCode="global_menu_new" url="/locations?form" z="sW8KSnwNnd9wjssI0lLV1kzOguk="/>
+                <menu:item id="i_location_list" messageCode="global_menu_list" url="/locations?page=1&amp;size=${empty param.size ? 10 : param.size}" z="VdKLEljpeTLil2W6A3GdWmSBzXI="/>
+            </menu:category>
+            <menu:category id="c_module" z="u0mRqU70rcV+LrRVSbNqkd/Zl9o=">
+                <menu:item id="i_module_new" messageCode="global_menu_new" url="/modules?form" z="rGnXvs29V/Xxd39tg91pfx/mEtw="/>
+                <menu:item id="i_module_list" messageCode="global_menu_list" url="/modules?page=1&amp;size=${empty param.size ? 10 : param.size}" z="8Tj6kaQJSuWzOpLBDPE043c09Vk="/>
+            </menu:category>
+            <menu:category id="c_budget" z="HAEDhaOBn9ImR+UWYnwwoCuAYTc=">
+                <menu:item id="i_budget_new" messageCode="global_menu_new" url="/budgets?form" z="MJq5GvraFCR3gy7fkQtsaaGDrIg="/>
+                <menu:item id="i_budget_list" messageCode="global_menu_list" url="/budgets?page=1&amp;size=${empty param.size ? 10 : param.size}" z="Mnin47DSlM5n1IrXNzWEcPN6rCc="/>
+            </menu:category>
+            <menu:category id="c_managementtasktype" z="Rp5haA4BcFUMpv+ZCh0jisSK+jg=">
+                <menu:item id="i_managementtasktype_new" messageCode="global_menu_new" url="/managementasktypes?form" z="RhQ4GqvISwaNJVgt0ziM8BKWCOI="/>
+                <menu:item id="i_managementtasktype_list" messageCode="global_menu_list" url="/managementasktypes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="1pwCn+iBILd4BYz7I72VzWwhO5k="/>
+            </menu:category>
+        </menu:menu>
+    </util:panel>
+</div>

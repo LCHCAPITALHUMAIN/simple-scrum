@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_scrumtool_domain_ManagemenTaskType" modelAttribute="managemenTaskType" path="/repetetivetasks" versionField="Version" z="Gc71vZ0CQqdsTq/jP4xER7H817M=">
+        <field:input field="title" id="c_com_scrumtool_domain_ManagemenTaskType_title" required="true" z="W01UMXvO07RP4cS7dH6wgRPdo4A="/>
+        <field:input field="description" id="c_com_scrumtool_domain_ManagemenTaskType_description" z="Xn79IkK8ngpAMGHnarOl+ApgLtA="/>
+        <field:input field="remark" id="c_com_scrumtool_domain_ManagemenTaskType_remark" z="VIRSZ0m4oUDC6VH1OPKX/k/zoJE="/>
+    </form:update>
+</div>

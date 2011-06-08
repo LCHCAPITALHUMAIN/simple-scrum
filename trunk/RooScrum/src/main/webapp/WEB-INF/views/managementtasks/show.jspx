@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_scrumtool_domain_ManagementTask" object="${managementtask}" path="/managementtasks" z="AkfFP89NQer0T+cFeR4Hqa/Cq+o=">
+        <field:display field="title" id="s_com_scrumtool_domain_ManagementTask_title" object="${managementtask}" z="+QMRlZ+HEgMufU9368yHqLfKAoo="/>
+        <field:display field="description" id="s_com_scrumtool_domain_ManagementTask_description" object="${managementtask}" z="KSwbS86mca9t12X1MWvdCyk2rs4="/>
+        <field:display field="remark" id="s_com_scrumtool_domain_ManagementTask_remark" object="${managementtask}" z="TEc9acEqNd3GRls1hBoRFLCGAqk="/>
+        <field:display field="category" id="s_com_scrumtool_domain_ManagementTask_category" object="${managementtask}" z="40acr/l7viymme22l4mvo5bbPV4="/>
+        <field:display field="budget" id="s_com_scrumtool_domain_ManagementTask_budget" object="${managementtask}" z="OzFRMmjmBiAM97fH1/kpiBAojOA="/>
+        <field:display field="sprint" id="s_com_scrumtool_domain_ManagementTask_sprint" object="${managementtask}" z="N8LyXGhv5n7yWXh8E2TxPxDSSxY="/>
+    </page:show>
+</div>
