@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_scrumtool_domain_Remaining" items="${remainings}" z="CVjuxe4ZfLLlK6pNflyGwEZB6Y4=">
+        <table:table data="${remainings}" id="l_com_scrumtool_domain_Remaining" path="/remainings" z="SWs2wr/cj1IkdEWR4dxqkEzG+v0=">
+            <table:column id="c_com_scrumtool_domain_Remaining_sprintDay" property="sprintDay" z="sXmSeH2fF2ALILPRIZldKSQ3kyo="/>
+            <table:column id="c_com_scrumtool_domain_Remaining_task" property="task" z="kMhH+Yk9400k6v35U2XaOlNOEyM="/>
+            <table:column id="c_com_scrumtool_domain_Remaining_remaining" property="remaining" z="yXWdxJqN4TIe7/OW477m38hccTk="/>
+        </table:table>
+    </page:list>
+</div>

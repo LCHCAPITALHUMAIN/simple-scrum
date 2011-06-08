@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_scrumtool_domain_Profile" items="${profiles}" z="Jlk2TuKtvHsiRxjzptAUxIaMAkk=">
+        <table:table data="${profiles}" id="l_com_scrumtool_domain_Profile" path="/profiles" z="oe8C7YtEx5qyf8oxi6CfHvPSA1c=">
+            <table:column id="c_com_scrumtool_domain_Profile_name" maxLength="-1" property="name" z="user-managed"/>
+        </table:table>
+    </page:list>
+</div>

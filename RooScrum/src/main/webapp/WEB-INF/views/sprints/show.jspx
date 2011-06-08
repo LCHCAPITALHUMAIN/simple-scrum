@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_scrumtool_domain_Sprint" object="${sprint}" path="/sprints" z="eoBr3bGBwZSkxGEOD8O+ExzNWNU=">
+        <field:display field="number" id="s_com_scrumtool_domain_Sprint_number" object="${sprint}" z="026RFLdYoHzXAIAAophLg9smxro="/>
+        <field:display field="title" id="s_com_scrumtool_domain_Sprint_title" object="${sprint}" z="Zm4DGtZBTgDaxxZmi7q+ItiU5Vw="/>
+        <field:display field="description" id="s_com_scrumtool_domain_Sprint_description" object="${sprint}" z="037j5cgv0ZOSgXIMUqmOTg8mIws="/>
+        <field:display field="globalScrumMaster" id="s_com_scrumtool_domain_Sprint_globalScrumMaster" object="${sprint}" z="d76xzTCXTRxkh7EFSoqI3Uy1H9Q="/>
+        <field:display field="estimatedFocusFactor" id="s_com_scrumtool_domain_Sprint_estimatedFocusFactor" object="${sprint}" z="gjc+LUjBR2keqGQvXih5+6uI+40="/>
+        <field:display field="estimatedAvailability" id="s_com_scrumtool_domain_Sprint_estimatedAvailability" object="${sprint}" z="tqjR2GW/Repr9wbpx/u4W5FCl8A="/>
+        <field:display field="actualFocusFactor" id="s_com_scrumtool_domain_Sprint_actualFocusFactor" object="${sprint}" z="Llls7Z80qwBIYj3GBeXaL0SRGAw="/>
+        <field:display field="actualAvailability" id="s_com_scrumtool_domain_Sprint_actualAvailability" object="${sprint}" z="C8ikQj/SzH9KGUA5g5SzUpbiXww="/>
+        <field:display calendar="true" dateTimePattern="${sprint_fromdate_date_format}" field="fromDate" id="s_com_scrumtool_domain_Sprint_fromDate" object="${sprint}" z="bxLUjYOFuC4tuSinCL7d6FZy9aM="/>
+        <field:display calendar="true" dateTimePattern="${sprint_todate_date_format}" field="toDate" id="s_com_scrumtool_domain_Sprint_toDate" object="${sprint}" z="0QIiie4X29GNkCHqz69JdXU44Pg="/>
+        <field:display field="release" id="s_com_scrumtool_domain_Sprint_release" object="${sprint}" z="BySCy09V63WJlBPRV/ffWmGxZms="/>
+        <field:display date="true" dateTimePattern="${sprint_globalstanduptime_date_format}" field="globalStandupTime" id="s_com_scrumtool_domain_Sprint_globalStandupTime" object="${sprint}" z="hKlz4eVh2poewJV+6hpF9sVqZVY="/>
+        <page:list id="pl_com_scrumtool_domain_Team" items="${sprint.teams}" z="Zd4c28Z3f4Eq6Zsx0vwow1nQ2lU=">
+            <table:table data="${sprint.teams}" id="l_com_scrumtool_domain_Team" parentId="${sprint.id}" parentName="sprint" path="/teams" z="O27UJRpM+g+isj91psrzUfB2vhc=">
+                <table:column id="c_com_scrumtool_domain_Team_name" property="name" z="j9QI++CdtezGYpJt90DGr4USoxI="/>
+            	<table:column id="c_com_scrumtool_domain_Team_teamMembers" property="teamMembers" z="Lz9SRpH76evg89ufFdgflXDwcc4="/>
+            </table:table>
+        </page:list>
+        <br/>
+        <br/>
+        <page:list id="pl_com_scrumtool_domain_ManagementTask" items="${sprint.managementTasks}" z="aKMO3vzj5fLQbOmw/OY6+1syHj8=">
+            <table:table data="${sprint.managementTasks}" id="l_com_scrumtool_domain_ManagementTask" parentId="${sprint.id}" parentName="sprint" path="/managementtasks" z="O27UJRpM+g+isj91psrzUfB2vhc=">
+	            <table:column id="c_com_scrumtool_domain_ManagementTask_category" property="category" z="2jJUR70muFiTtlYzcOUEomLbtpg="/>
+	            <table:column id="c_com_scrumtool_domain_ManagementTask_title" property="title" z="ePbyPC9QBEojIeM5aJdXApFLf38="/>
+	            <table:column id="c_com_scrumtool_domain_ManagementTask_description" property="description" z="4iB3/kT4T68P04MvCuRfuSePbpY="/>
+	            <table:column id="c_com_scrumtool_domain_ManagementTask_remark" property="remark" z="7AaOiAHajBvhIkNfZu6kbxhN3Lw="/>
+	            <table:column id="c_com_scrumtool_domain_ManagementTask_budget" property="budget" z="0/skVC+56MuS6QuKgYQxYB3fTsQ="/>
+            </table:table>
+        </page:list>
+        <br/>
+        <br/>
+        <page:list id="pl_com_scrumtool_domain_DevelopmentTask" items="${sprint.developmentTasks}" z="3g2uQNEduLD/nnfnjA2ux5eCDvU=">
+            <table:table data="${sprint.developmentTasks}" id="l_com_scrumtool_domain_DevelopmentTask" parentId="${sprint.id}" parentName="sprint" path="/developmenttasks" z="O27UJRpM+g+isj91psrzUfB2vhc=">
+            <table:column id="c_com_scrumtool_domain_DevelopmentTask_title" property="title" z="NY8E8Bq6oachpsv2MVJNsUbRu/w="/>
+            <table:column id="c_com_scrumtool_domain_DevelopmentTask_description" property="description" z="yl7klvMK2UYwcPprGIGx0WQ0/fw="/>
+            <table:column id="c_com_scrumtool_domain_DevelopmentTask_budget" property="budget" z="h2twznj5//un0ASJsiO4N6wKuHk="/>
+            <table:column id="c_com_scrumtool_domain_DevelopmentTask_issue" property="issue" z="2PMQnEtFLvuWBXbtFen9AoONup0="/>            
+            </table:table>
+        </page:list>
+    </page:show>
+</div>

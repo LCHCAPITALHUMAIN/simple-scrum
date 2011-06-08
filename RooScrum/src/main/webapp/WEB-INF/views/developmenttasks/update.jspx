@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_scrumtool_domain_DevelopmentTask" modelAttribute="developmentTask" path="/developmenttasks" versionField="Version" z="Y8f7sPqJNSWVrtW23KuWZZhK3Q0=">
+        <field:input field="title" id="c_com_scrumtool_domain_DevelopmentTask_title" required="true" z="fY5TTM6Sz1lRCL3pFc2B2gKq5AM="/>
+        <field:input field="description" id="c_com_scrumtool_domain_DevelopmentTask_description" z="rKTQxhrZwRzjWB40EezrMXvA4FU="/>
+        <field:input field="remark" id="c_com_scrumtool_domain_DevelopmentTask_remark" z="uUeKQ3SP7fSWLXTh0nlf51q1MgU="/>
+        <field:select field="budget" id="c_com_scrumtool_domain_DevelopmentTask_budget" itemLabel="clarityBLCDesc" itemValue="id" items="${budgets}" path="/budgets" z="user-managed"/>
+        <field:select field="sprint" id="c_com_scrumtool_domain_DevelopmentTask_sprint" itemLabel="number" itemValue="id" items="${sprints}" path="/sprints" z="user-managed"/>
+        <field:select field="issue" id="c_com_scrumtool_domain_DevelopmentTask_issue" itemValue="id" items="${issues}" path="/jiras" z="PCZwLKosJ2IbBeiBIHQMUC3inZo="/>
+        <field:select field="bussinessAnalyst" id="c_com_scrumtool_domain_DevelopmentTask_bussinessAnalyst" itemLabel="lastName" itemValue="id" items="${users}" path="/users" z="user-managed"/>
+        <field:select field="module" id="c_com_scrumtool_domain_DevelopmentTask_module" itemValue="id" items="${modules}" path="/modules" z="q/zwvTZGKpJsJa78HAlHplcH9K8="/>
+        <field:select field="status" id="c_com_scrumtool_domain_DevelopmentTask_status" items="${taskstatuses}" path="taskstatuses" z="vzgAuo7oy2sBx9JIDkrqLAlOtOQ="/>
+        <field:select field="type" id="c_com_scrumtool_domain_DevelopmentTask_type" items="${developmenttasktypes}" path="developmenttasktypes" z="+NfvEDSKj6uAIiomPhJjRqHUa1I="/>
+        <field:select field="teamsInCharge" id="c_com_scrumtool_domain_DevelopmentTask_teamsInCharge" itemValue="id" itemLabel="name" items="${teams}" multiple="true" path="/teams" z="p1Os1NoBkhVfc5/OnY5M2fTMimQ="/>
+    </form:update>
+</div>

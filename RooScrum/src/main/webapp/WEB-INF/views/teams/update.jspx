@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_scrumtool_domain_Team" modelAttribute="team" path="/teams" versionField="Version" z="sWTHjdivg5zHsuODqA1lm8v8tvE=">
+        <field:input field="name" id="c_com_scrumtool_domain_Team_name" z="1XAM+02cmM+uTwRV98sPt4n8OkM="/>
+        <field:input field="estimatedFocusFactor" id="c_com_scrumtool_domain_Team_estimatedFocusFactor" validationMessageCode="field_invalid_number" z="wsREfsPp86h3oped6nEMZG/Gi70="/>
+        <field:simple field="teamMembers" id="c_com_scrumtool_domain_Team_teamMembers" messageCode="entity_reference_not_managed" messageCodeAttribute="Team Member" z="8ATJytoTTfZEtqUeiU3lQ1y+VSk="/>
+        <field:select field="sprint" id="c_com_scrumtool_domain_Team_sprint" itemValue="id" items="${sprints}" path="/sprints" z="1p1/UzAIaP0cE9HHv6VZiDrjouk="/>
+    </form:update>
+</div>

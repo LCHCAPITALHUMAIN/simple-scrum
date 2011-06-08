@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_scrumtool_domain_TeamMember" object="${teammember}" path="/teammembers" z="AsikEtb8BxnHEHMRNH1eokAFPRo=">
+        <field:display field="role" id="s_com_scrumtool_domain_TeamMember_role" object="${teammember}" z="DvbixzjLR5gbvI4hEzP7poxH2Z0="/>
+        <field:display field="nonWorkingDaysCount" id="s_com_scrumtool_domain_TeamMember_nonWorkingDaysCount" object="${teammember}" z="JApYC0rl/IdEqGo7t5NDWDUu1tM="/>
+        <field:display field="developmentAvailability" id="s_com_scrumtool_domain_TeamMember_developmentAvailability" object="${teammember}" z="blJvMzx7TIEKkh2NPOhX3LHjQiA="/>
+        <field:display field="team" id="s_com_scrumtool_domain_TeamMember_team" object="${teammember}" z="+YlYMv1zmDx6HldeT2GrYa89mpQ="/>
+        <field:display field="srumUser" id="s_com_scrumtool_domain_TeamMember_srumUser" object="${teammember}" z="ZOWJPkFllPKXF4Pzq5iuYMbqPt8="/>
+    </page:show>
+</div>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_scrumtool_domain_Estimate" object="${estimate}" path="/estimates" z="kyQMGPL6kYBD7c0KVtu1Tn4uE3E=">
+        <field:display field="type" id="s_com_scrumtool_domain_Estimate_type" object="${estimate}" z="R3R6jZhSnIca2gX1hmsJAFoHitk="/>
+        <field:display field="value" id="s_com_scrumtool_domain_Estimate_value" object="${estimate}" z="M4LkkT3M6JPJ7hwKsF8EJz272Ww="/>
+        <field:display field="estimators" id="s_com_scrumtool_domain_Estimate_estimators" object="${estimate}" z="VwuWQgiH3jW6RmxtkgdIRN0sPV4="/>
+        <field:display field="rationales" id="s_com_scrumtool_domain_Estimate_rationales" object="${estimate}" z="4vAcqY8zhPmUX1iy8DWiGxkrJCs="/>
+        <field:display field="comments" id="s_com_scrumtool_domain_Estimate_comments" object="${estimate}" z="6fjIwJMKT3ebIYh5hwDR1RX4FTM="/>
+        <field:display calendar="true" dateTimePattern="${estimate_date_date_format}" field="date" id="s_com_scrumtool_domain_Estimate_date" object="${estimate}" z="PdQ/YB/kC0CMcrlxjwN91dEG8hw="/>
+        <field:display field="task" id="s_com_scrumtool_domain_Estimate_task" object="${estimate}" z="qh1XUsqg2mS497pqb80mkBrlk00="/>
+    </page:show>
+</div>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_scrumtool_domain_PublicHoliday" items="${publicholidays}" z="37RJ3id9N9Qys4qe0ODE9LGVnbU=">
+        <table:table data="${publicholidays}" id="l_com_scrumtool_domain_PublicHoliday" path="/publicholidays" z="UW7F/oHgmVQ/iyF4lWlPbfDQit4=">
+            <table:column calendar="true" dateTimePattern="${publicHoliday_date_date_format}" id="c_com_scrumtool_domain_PublicHoliday_date" property="date" z="eUv18fPNRStu68LisBS+qwcN6ug="/>
+            <table:column id="c_com_scrumtool_domain_PublicHoliday_location" property="location" z="DOIOiNF3bbEexdGKMvq6ORdp1yA="/>
+        </table:table>
+    </page:list>
+</div>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_scrumtool_domain_Issue" object="${issue}" path="/issues" z="QaOcVtzdelBUXihE78PDAoYnEco=">
+        <field:display field="issueId" id="s_com_scrumtool_domain_Issue_issueId" object="${issue}" z="DrfVSKx1o++tcC8kGaa+PatC0PQ="/>
+        <field:display field="description" id="s_com_scrumtool_domain_Issue_description" object="${issue}" z="qss6QtqfkeWd3OKS+l51kRdv/T8="/>
+        <field:display field="creator" id="s_com_scrumtool_domain_Issue_creator" object="${issue}" z="OTTxwWXPBn2zRAlKhXt8MaYm2Qc="/>
+        <field:display field="assignee" id="s_com_scrumtool_domain_Issue_assignee" object="${issue}" z="MxbWM9MRnsiXzS7+GlcGuMsgajk="/>
+        <field:display field="status" id="s_com_scrumtool_domain_Issue_status" object="${issue}" z="Yn9b2ojHmVm3PvxT7tDhxubt28E="/>
+        <field:display field="value" id="s_com_scrumtool_domain_Issue_value" object="${issue}" z="prGr1O2MjCl+eBymrJluubYj1fg="/>
+        <field:display field="subIssues" id="s_com_scrumtool_domain_Issue_subIssues" object="${issue}" z="gEz0fn/5bjbSuh6Axcb1HETt2XQ="/>
+        <field:display field="linkedIssues" id="s_com_scrumtool_domain_Issue_linkedIssues" object="${issue}" z="OyDN+DPngGNXYyzYy09LyaFSm3o="/>
+        <field:display field="type" id="s_com_scrumtool_domain_Issue_type" object="${issue}" z="3EPwzem9/W4mUeXp5LZa/TCEmlM="/>
+    </page:show>
+</div>

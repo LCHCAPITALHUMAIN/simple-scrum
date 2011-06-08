@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_scrumtool_domain_Actual" modelAttribute="actual" path="/actuals" render="${empty dependencies}" z="ph75Twa+ltI/yL9+8yf8XAPHXZE=">
+        <field:select field="teamMember" id="c_com_scrumtool_domain_Actual_teamMember" itemValue="id" items="${teammembers}" path="/teammembers" z="6pK+BvvyfqyaxJNlwDxdv9y8bek="/>
+        <field:input field="daySpent" id="c_com_scrumtool_domain_Actual_daySpent" max="1" min="0" validationMessageCode="field_invalid_number" z="w8KSr8/BzU5v3tqmXBQJAUt8Qbs="/>
+        <field:select field="task" id="c_com_scrumtool_domain_Actual_task" itemValue="id" items="${tasks}" path="/tasks" z="4kJBvU3T6AUL55O+HqmdcIsr1G4="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_scrumtool_domain_Actual" render="${not empty dependencies}" z="heqQ8P1y1xtKHdu4xwdnrtMUbc8="/>
+</div>

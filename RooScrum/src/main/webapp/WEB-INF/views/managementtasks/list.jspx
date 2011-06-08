@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_scrumtool_domain_ManagementTask" items="${managementtasks}" z="aKMO3vzj5fLQbOmw/OY6+1syHj8=">
+        <table:table data="${managementtasks}" id="l_com_scrumtool_domain_ManagementTask" path="/managementtasks" z="O27UJRpM+g+isj91psrzUfB2vhc=">
+            <table:column id="c_com_scrumtool_domain_ManagementTask_title" property="title" z="ePbyPC9QBEojIeM5aJdXApFLf38="/>
+            <table:column id="c_com_scrumtool_domain_ManagementTask_description" property="description" z="4iB3/kT4T68P04MvCuRfuSePbpY="/>
+            <table:column id="c_com_scrumtool_domain_ManagementTask_remark" property="remark" z="7AaOiAHajBvhIkNfZu6kbxhN3Lw="/>
+            <table:column id="c_com_scrumtool_domain_ManagementTask_category" property="category" z="2jJUR70muFiTtlYzcOUEomLbtpg="/>
+            <table:column id="c_com_scrumtool_domain_ManagementTask_budget" property="budget" z="0/skVC+56MuS6QuKgYQxYB3fTsQ="/>
+            <table:column id="c_com_scrumtool_domain_ManagementTask_sprint" property="sprint" z="jqc3cETgp2vHVqrnamFiyzmzUBY="/>
+        </table:table>
+    </page:list>
+</div>

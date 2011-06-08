@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_scrumtool_domain_Budget" items="${budgets}" z="wAOQYbLLfumz2mwfexiF6+iPkdE=">
+        <table:table data="${budgets}" id="l_com_scrumtool_domain_Budget" path="/budgets" z="VDDbHLRX8+Fi4p6TYzP02pNggmM=">
+            <table:column id="c_com_scrumtool_domain_Budget_clarityBLC" property="clarityBLC" z="xn1sHYGVGjx7VSvIdhh1dKQHDCk="/>
+            <table:column id="c_com_scrumtool_domain_Budget_clarityBLCDesc" property="clarityBLCDesc" z="ixC845bUvLD921E636VJZ07fGT4="/>
+        </table:table>
+    </page:list>
+</div>

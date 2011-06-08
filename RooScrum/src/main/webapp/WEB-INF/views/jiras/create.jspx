@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_scrumtool_domain_Issue" modelAttribute="issue" path="/jiras" render="${empty dependencies}" z="SUk/9RBjsF/jkPlDSYbfO3do9go=">
+        <field:input field="description" id="c_com_scrumtool_domain_Issue_description" z="6b9KBWNqs9byh70/GkvvJR5+LP0="/>
+        <field:input field="creator" id="c_com_scrumtool_domain_Issue_creator" z="QesQqfikZHTvtuY6JtunOL+JZkk="/>
+        <field:input field="assignee" id="c_com_scrumtool_domain_Issue_assignee" z="pivERn0jVkfxsgoMV6gEOUxXf24="/>
+        <field:input field="status" id="c_com_scrumtool_domain_Issue_status" z="EPCjTFJ2mHQTfxAKKZ1B5AAbRWk="/>
+        <field:input field="value" id="c_com_scrumtool_domain_Issue_value" validationMessageCode="field_invalid_number" z="Q6sJzpH1e1Z9B0bxv0ytj8t6Wfw="/>
+        <field:select field="subIssues" id="c_com_scrumtool_domain_Issue_subIssues" itemValue="id" items="${issues}" multiple="true" path="/issues" z="glnGDaiWaBMUb/oy3r30vnWv+I0="/>
+        <field:select field="linkedIssues" id="c_com_scrumtool_domain_Issue_linkedIssues" itemValue="id" items="${issues}" multiple="true" path="/issues" z="Xn0bQsrSjGStqTovnpZSiEtIWoM="/>
+        <field:input field="issueId" id="c_com_scrumtool_domain_Issue_issueId" required="true" z="pKhrdrkFmlfmk+FSJ3aWLCmY0w0="/>
+        <field:select field="type" id="c_com_scrumtool_domain_Issue_type" items="${issuetypes}" path="issuetypes" z="jlnHz+XrZTHxfx56JAelFUmS8Ng="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_scrumtool_domain_Issue" render="${not empty dependencies}" z="VFFTImlCopSX8AZbchifobVEARs="/>
+</div>

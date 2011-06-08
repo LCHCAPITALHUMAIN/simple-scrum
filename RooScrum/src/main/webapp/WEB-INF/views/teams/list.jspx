@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_scrumtool_domain_Team" items="${teams}" z="Zd4c28Z3f4Eq6Zsx0vwow1nQ2lU=">
+        <table:table data="${teams}" id="l_com_scrumtool_domain_Team" path="/teams" z="flZ8+gs/Q6UppuT13veIJ3w9K60=">
+            <table:column id="c_com_scrumtool_domain_Team_name" property="name" z="j9QI++CdtezGYpJt90DGr4USoxI="/>
+            <table:column id="c_com_scrumtool_domain_Team_estimatedFocusFactor" property="estimatedFocusFactor" z="1R1FAr7rydtPhctstWOft+ItXpA="/>
+            <table:column id="c_com_scrumtool_domain_Team_teamMembers" property="teamMembers" z="Lz9SRpH76evg89ufFdgflXDwcc4="/>
+            <table:column id="c_com_scrumtool_domain_Team_sprint" property="sprint" z="NQvF704nueJ7bbylAz4t1wAb2yc="/>
+        </table:table>
+    </page:list>
+</div>

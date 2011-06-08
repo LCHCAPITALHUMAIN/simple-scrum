@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_scrumtool_domain_DevelopmentTask" object="${developmenttask}" path="/developmenttasks" z="Vc1hsIbMCOBbgZla3aaGvSm/jGw=">
+        <field:display field="title" id="s_com_scrumtool_domain_DevelopmentTask_title" object="${developmenttask}" z="HzIfB+DHxyDZAt780hQ9Tx01jw4="/>
+        <field:display field="description" id="s_com_scrumtool_domain_DevelopmentTask_description" object="${developmenttask}" z="NXpbcpYeZ6C0IsX7mujdvJaB0WM="/>
+        <field:display field="remark" id="s_com_scrumtool_domain_DevelopmentTask_remark" object="${developmenttask}" z="iJHN2eCvV+dk9NJQp6VZ7ATAtwE="/>
+        <field:display field="budget" id="s_com_scrumtool_domain_DevelopmentTask_budget" object="${developmenttask}" z="QrR+AoQWKWHwvMkTeQ26KOzjwkY="/>
+        <field:display field="sprint" id="s_com_scrumtool_domain_DevelopmentTask_sprint" object="${developmenttask}" z="7Z4ZIp6KzuPlhz3tj/iIolRoqmM="/>
+        <field:display field="issue" id="s_com_scrumtool_domain_DevelopmentTask_issue" object="${developmenttask}" z="XhXEzoIo7axkNdal86lma/nwuC4="/>
+        <field:display field="bussinessAnalyst" id="s_com_scrumtool_domain_DevelopmentTask_bussinessAnalyst" object="${developmenttask}" z="5pwIIy3M+MwaIgb0xqftbSW3zok="/>
+        <field:display field="module" id="s_com_scrumtool_domain_DevelopmentTask_module" object="${developmenttask}" z="Lg0mpEVzWU6jRzwbTlFJQijw0fE="/>
+        <field:display field="status" id="s_com_scrumtool_domain_DevelopmentTask_status" object="${developmenttask}" z="mkIUmKk/34fjtdlMqzaUb5eA5CQ="/>
+        <field:display field="type" id="s_com_scrumtool_domain_DevelopmentTask_type" object="${developmenttask}" z="eNcLRshEZXD4hwjEe9iOR/qi4n4="/>
+        <field:display field="teamsInCharge" id="s_com_scrumtool_domain_DevelopmentTask_teamsInCharge" object="${developmenttask}" z="t4U7rscL7tZ02ASAGyfJ6KAQjAk="/>
+    </page:show>
+</div>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="remainings/list">
+        <put-attribute name="body" value="/WEB-INF/views/remainings/list.jspx"/>
+    </definition>
+<definition extends="default" name="remainings/show">
+        <put-attribute name="body" value="/WEB-INF/views/remainings/show.jspx"/>
+    </definition>
+<definition extends="default" name="remainings/create">
+        <put-attribute name="body" value="/WEB-INF/views/remainings/create.jspx"/>
+    </definition>
+<definition extends="default" name="remainings/update">
+        <put-attribute name="body" value="/WEB-INF/views/remainings/update.jspx"/>
+    </definition>
+</tiles-definitions>

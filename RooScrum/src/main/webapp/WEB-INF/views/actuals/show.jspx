@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_scrumtool_domain_Actual" object="${actual}" path="/actuals" z="2jooPe3nxDdnxG/huERWV88b0cc=">
+        <field:display field="teamMember" id="s_com_scrumtool_domain_Actual_teamMember" object="${actual}" z="V3PARWjUeAOEz6sWCVi4lvdQO80="/>
+        <field:display field="daySpent" id="s_com_scrumtool_domain_Actual_daySpent" object="${actual}" z="L3zGmP5i8nAJKmg8unL0q6JqhMk="/>
+        <field:display field="task" id="s_com_scrumtool_domain_Actual_task" object="${actual}" z="xQH+bRkoO5YCaPstPW2+sowOl/E="/>
+    </page:show>
+</div>

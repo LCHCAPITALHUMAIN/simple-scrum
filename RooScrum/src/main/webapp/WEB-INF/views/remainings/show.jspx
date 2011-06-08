@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_scrumtool_domain_Remaining" object="${remaining}" path="/remainings" z="5afpQgBzMlDffLIyVjvjTAsgXPU=">
+        <field:display field="sprintDay" id="s_com_scrumtool_domain_Remaining_sprintDay" object="${remaining}" z="x/XOBDvlOTsaxhmrYBEBdB5z58o="/>
+        <field:display field="task" id="s_com_scrumtool_domain_Remaining_task" object="${remaining}" z="lSVYNGKlfXJ93egQ6tSTtHbyWPg="/>
+        <field:display field="remaining" id="s_com_scrumtool_domain_Remaining_remaining" object="${remaining}" z="h637SVxHMYTSTI9e3/FOO8voloU="/>
+    </page:show>
+</div>

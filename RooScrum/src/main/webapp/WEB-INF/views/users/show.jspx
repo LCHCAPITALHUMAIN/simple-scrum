@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_scrumtool_domain_User" object="${user}" path="/users" z="w/d9khQCg6uwhFTwD20Q67OmtYc=">
+        <field:display field="uid" id="s_com_scrumtool_domain_User_uid" object="${user}" z="KQ8bhDhBHsghV1aI5MCaHTEF8DI="/>
+        <field:display field="firstName" id="s_com_scrumtool_domain_User_firstName" object="${user}" z="EBEi0N7wHgl39J0mIwyYI192+R4="/>
+        <field:display field="lastName" id="s_com_scrumtool_domain_User_lastName" object="${user}" z="n0qEeJewTndUr4LF2Cmg6XBow2M="/>
+        <field:display field="emailAddress" id="s_com_scrumtool_domain_User_emailAddress" object="${user}" z="kIyr2e1NhDzAAMxZdYYh3IINVJA="/>
+        <field:display field="profile" id="s_com_scrumtool_domain_User_profile" object="${user}" z="VnnrYC63X5X+KJxEmaR4QCtuCEs="/>
+        <field:display field="jiraUserName" id="s_com_scrumtool_domain_User_jiraUserName" object="${user}" z="wkijkjCtIawjImXdkPH09uSkO3Y="/>
+        <field:display field="location" id="s_com_scrumtool_domain_User_location" object="${user}" z="46NzvOJqG0PCgju8ahdvpsEhn08="/>
+    </page:show>
+</div>

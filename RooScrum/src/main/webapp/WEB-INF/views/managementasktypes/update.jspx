@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_scrumtool_domain_ManagementTaskType" modelAttribute="managementTaskType" path="/managementasktypes" versionField="Version" z="/x1FaKE8uNvYgwdEKEoH/Yo/ze0=">
+        <field:input field="name" id="c_com_scrumtool_domain_ManagementTaskType_name" required="true" z="eMbgfgK6LYI5OfCY8Nk67II/BGM="/>
+        <field:select field="parent" id="c_com_scrumtool_domain_ManagementTaskType_parent" itemValue="id" items="${managementtasktypes}" path="/managementasktypes" z="lk5DU2FF7LkL1qoeVvlee7tZs6g="/>
+    </form:update>
+</div>
