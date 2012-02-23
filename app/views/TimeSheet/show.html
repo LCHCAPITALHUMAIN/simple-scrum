@@ -1,0 +1,84 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+<form action="/" method="GET" id="frmMain" name="frmMain">
+    <select onchange="$('#frmMain').submit()" name="selectedMonth">
+        #{list items:months, as:'month'}
+            <option value="${month.format('M')}" #{if month.format('M') == selectedMonth.toString()}selected#{/if}>${month.format('MMM')}</option>
+        #{/list}
+    </select>
+
+    <select onchange="$('#frmMain').submit()" name="selectedYear">
+        #{list items:years, as:'year'}
+            <option value="${year}" #{if year == selectedYear}selected#{/if}>${year}</option>
+        #{/list}
+    </select>
+
+    Team
+    <select onchange="$('#frmMain').submit()" name="selectedTeam.id">
+        #{list items:teams, as:'team'}
+            <option value="${team.id}" #{if team.id == selectedTeam?.id}selected#{/if}>${team.name}</option>
+        #{/list}
+    </select>
+</form>
+
+<table>
+    #{list items:allHolidayTypes, as:'holidayType'}
+        <tr><td style="background-color: ${holidayType.color}">${holidayType.code} - ${holidayType.description}</td></tr>
+    #{/list}
+</table>
+
+<script type="text/javascript">
+    var holidayType = {
+    #{list items:holidayTypes, as:'holidayType'}
+        "${holidayType.id}" : "${holidayType.color}",
+    #{/list}
+    };
+</script>
+
+
+<div align="center">${datesBetweenRange.get(0).format("MMM-yyyy")}</div>
+<table border="0">
+
+    <tr>
+        <td>Name</td>
+        #{list items:datesBetweenRange, as:'date'}
+            <td>${date.format('d-EEE')}</td>
+        #{/list}
+    </tr>
+    #{list items:holidayMap, as:'holiday1'}
+        <tr>
+            <td>${holiday1.key}</td>
+            #{list items:holiday1.value, as:'holiday'}
+                <td>
+                    <form action="@{TimeSheet.createOrUpdate()}" method="POST" id="${holiday.user.userName}_${holiday.date.time}_form" name="${holiday.user.userName}_${holiday.date.time}_form">
+                        #{if holiday.id}
+                            <input name="holiday.id" type="hidden" value="${holiday.id}" />
+                        #{/if}
+                        #{else}
+                            <input name="holiday.date" type="hidden" value="${holiday.date.format('yyyy-MM-dd')}" />
+                            <input name="holiday.user.id" type="hidden" value="${holiday.user.id}" />
+                        #{/else}
+                        <select name="holiday.holidayType.id" id="${holiday.user.userName}_${holiday.date.time}_holidayType" onchange="saveHoliday('${holiday.user.userName}_${holiday.date.time}_form', '${holiday.user.userName}_${holiday.date.time}_holidayType')" style="background-color: ${holiday.holidayType.color}" class="holiday-dropdown">
+                                #{list items:holidayTypes, as:'holidayType'}
+                                    <option value="${holidayType.id}" #{if holidayType.id == holiday.holidayType.id}selected#{/if}>${holidayType.code}</option>
+                                #{/list}
+                        </select>
+                    </form>
+                </td>
+            #{/list}
+        </tr>
+    #{/list}
+
+</table>
+
+
+<script type="text/javascript">
+    function saveHoliday(frmId, dropDownId) {
+        //alert("ff" + $('#' + dropDownId).val());
+        //alert("ff" + holidayType[$('#' + dropDownId).val()]);
+        $('#' + dropDownId).css('backgroundColor', holidayType[$('#' + dropDownId).val()]);
+        $.post('/timesheet/createorupdate', $('#' + frmId).serializeArray(), function(data) {
+            alert("done");
+        }, "json");
+    }
+</script>
