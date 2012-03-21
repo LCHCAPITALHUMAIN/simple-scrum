@@ -1,5 +1,7 @@
 package controllers;
 
+import play.mvc.With;
+
 /**
  * Created by IntelliJ IDEA.
  * User: nazir
@@ -7,5 +9,7 @@ package controllers;
  * Time: 2:27 PM
  * To change this template use File | Settings | File Templates.
  */
+@With(Secure.class)
+
 public class Locations extends CRUD{
 }
