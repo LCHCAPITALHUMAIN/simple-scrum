@@ -21,7 +21,6 @@
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
-                <th>Sprint</th>
                 <th>Category</th>
                 <th>Business Jira</th>
                 <th>IT Jira</th>
@@ -38,7 +37,6 @@
     <tbody>
         #{list items:jiraDetails, as:'jiraDetail'}
             <tr>
-                <td>${jiraDetail.sprint}</td>
                 <td>${jiraDetail.category}</td>
                 <td>${jiraDetail.businessJira}</td>
                 <td>${jiraDetail.itJira}</td>
