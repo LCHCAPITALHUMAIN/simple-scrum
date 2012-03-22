@@ -29,16 +29,8 @@ public class SprintBacklog extends Controller{
         if (StringUtils.isNotEmpty(selectedTeam)) {
             jiraDetails = filterTeam(jiraDetails, selectedTeam);
         }
-        List<String> teams = generateTeamList();
+        List<String> teams = JiraUtil.getAllTeam();
         render(selectedTeam, teams, selectedSprint, sprints, columnHeaders, jiraDetails);
-    }
-
-    private static List<String> generateTeamList() {
-
-        List<String> teams = new ArrayList<String>();
-        teams.add("Team1");
-        teams.add("Team2");
-        return teams;
     }
 
     private static List<JiraDetail> filterTeam(List<JiraDetail> jiraDetails, String teamName) {
