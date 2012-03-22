@@ -30,7 +30,6 @@ public class Holiday extends Model {
 
     @Required
     @As("yyyy-MM-dd")
-    @Column(name = "holidayDate")
     public Date date;
 
 
