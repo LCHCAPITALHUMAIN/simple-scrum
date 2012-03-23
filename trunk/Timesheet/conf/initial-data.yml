@@ -1,3 +1,12 @@
+# Profile START
+models.Profile(profileAdmin):
+  profileName: admin
+
+models.Profile(profileUser):
+  profileName: user
+# Profile END
+
+
 # HolidayType START
 models.HolidayType(NormalDay):
   code:   N
@@ -56,16 +65,19 @@ models.User(userNazir):
   userName:   Nazir
   location: PAR
   team:   CrdsITParis
+  profile:   profileAdmin
 
 models.User(userImad):
   userName:   Imad
   location: PAR
   team:   CrdsITParis
+  profile:   profileUser
 
 models.User(userPranav):
   userName:   Pranav
   location: BOM
   team:   CrdsITMumbai
+  profile:   profileAdmin
 
 # User END
 
@@ -133,4 +145,5 @@ models.PublicHoliday(p11):
   description: Noêl
 
 # Public Holiday END
+
 

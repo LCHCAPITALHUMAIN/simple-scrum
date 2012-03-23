@@ -11,7 +11,9 @@ public class JiraDetail {
     public int sprint;
     public String category;
     public String businessJira;
+    public String parentBusinessJira;
     public String itJira;
+    public String parentITJira;
     public String description;
     public String priority;
     public String status;

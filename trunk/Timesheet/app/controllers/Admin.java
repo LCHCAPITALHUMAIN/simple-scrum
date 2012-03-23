@@ -10,7 +10,7 @@ import play.mvc.With;
  * To change this template use File | Settings | File Templates.
  */
 @With(Secure.class)
-
+@Check("admin")
 public class Admin extends CRUD{
 
 }

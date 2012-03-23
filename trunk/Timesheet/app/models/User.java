@@ -31,12 +31,16 @@ public class User extends Model{
     @Required
     public Team team;
 
+    @ManyToOne
+    @Required
+    public Profile profile;
+
     public User(String userName) {
         this.userName = userName;
     }
 
     @Override
     public String toString() {
-        return String.format("%s %s", userName, team);
+        return String.format("%s %s [%s]", userName, team, profile);
     }
 }

@@ -6,6 +6,7 @@ import models.Team;
 import org.apache.commons.lang.StringUtils;
 import play.data.validation.Required;
 import play.mvc.Controller;
+import play.mvc.With;
 
 import javax.print.StreamPrintService;
 import java.util.ArrayList;
@@ -18,6 +19,8 @@ import java.util.List;
  * Time: 10:03
  * To change this template use File | Settings | File Templates.
  */
+@With(Secure.class)
+
 public class SprintBacklog extends Controller{
     public static void show(Integer selectedSprint, String selectedTeam) {
         List<String> columnHeaders = generateColumnHeader();

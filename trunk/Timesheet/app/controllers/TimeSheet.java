@@ -4,9 +4,11 @@ import Utils.*;
 import models.*;
 import org.apache.commons.lang.time.DateUtils;
 import play.mvc.Controller;
+import play.mvc.With;
 
 import java.util.*;
 
+@With(Secure.class)
 public class TimeSheet extends Controller {
 
     public static void show(int selectedYear, int selectedMonth, Team selectedTeam) {
