@@ -103,27 +103,17 @@
 
             </li>
 
-            <li class="">
-                <a class="brand" href="/admin">
-                    Admin
-                </a>
-
-            </li>
+            #{secure.check 'admin'}
+                <li class="">
+                    <a class="brand" href="/admin">
+                        Admin
+                    </a>
+                </li>
+            #{/secure.check}
         </ul>
     </div>
 </div>
-<form action="/login/" class="pull-right" method="post">
-    <div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='49157d6f799832ad6eec17aba02a429e'/>
-    </div>
-
-    <input name="user" maxlength="30" placeholder="Username" type="text" class="input-small" id="id_user"/>
-
-    <input name="password" maxlength="30" placeholder="Password" type="password" class="input-small" id="id_password"/>
-
-
-    <button class="btn primary" type="submit">Login</button>
-    <a class="btn" href="/password_reset/">Forgot password?</a>
-</form>
+    Welcome ${user}! <a href="">Logout</a>
 
 </header>
 

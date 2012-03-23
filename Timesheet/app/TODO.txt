@@ -8,6 +8,8 @@
 8. Admin users
 9. Tester backlog
 10. Oracle
+11. Sub jiras
+12. Utils.JiraDetail.getCssColor
 
 var getMessages = function() {
         $.ajax({
