@@ -1,5 +1,5 @@
-1. Displaying current month in the timesheet by default
-2. Description on the public holiday and displaying it on the screen
+*1. Displaying current month in the timesheet by default
+*2. Description on the public holiday and displaying it on the screen
 3. Displaying tranversal jiras
 4. Clicking on jira
 5. Mumbai public holiday
@@ -7,6 +7,7 @@
 7. Login
 8. Admin users
 9. Tester backlog
+10. Oracle
 
 var getMessages = function() {
         $.ajax({

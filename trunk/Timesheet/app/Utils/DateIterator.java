@@ -1,5 +1,8 @@
 package Utils;
 
+import com.ning.http.util.DateUtil;
+import org.apache.commons.lang.time.DateUtils;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
@@ -32,7 +35,13 @@ public class DateIterator implements Iterator<Date>, Iterable<Date> {
 
     public Date next() {
         this.current.add(Calendar.DATE, 1);
-        return current.getTime();
+
+        Date time = current.getTime();
+        time = DateUtils.setHours(time, 0);
+        time = DateUtils.setMinutes(time, 0);
+        time = DateUtils.setSeconds(time, 0);
+        time = DateUtils.setMilliseconds(time, 0);
+        return time;
     }
 
     public void remove() {

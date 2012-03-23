@@ -32,11 +32,13 @@ public class Holiday extends Model {
     @As("yyyy-MM-dd")
     public Date date;
 
+    public String description;
 
-    public Holiday(User user, HolidayType holidayType, Date date) {
+    public Holiday(User user, HolidayType holidayType, Date date, String description) {
         this.user = user;
         this.holidayType = holidayType;
         this.date = date;
+        this.description = description;
     }
 
     @Override

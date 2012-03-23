@@ -21,7 +21,7 @@ public class CalendarUtil {
             calendar.set(Calendar.DATE, date);
         }
         if (month != 0) {
-            calendar.set(Calendar.MONTH, month);
+            calendar.set(Calendar.MONTH, month - 1);
         }
         if (year != 0) {
             calendar.set(Calendar.YEAR, year);
@@ -57,13 +57,11 @@ public class CalendarUtil {
         return false;
     }
 
-    public static boolean isPublicHoliday(Date date, Location location) {
-        if (PublicHoliday.find("date=? and location=?", date, location).first() != null) {
+    public static PublicHoliday isPublicHoliday(Date date, Location location) {
+        PublicHoliday publicHoliday = PublicHoliday.find("date=? and location=?", date, location).first();
+        if (publicHoliday != null) {
             System.out.println("####Public holiday found: " + date);
-            return true;
         }
-        return false;
-
-
+        return publicHoliday;
     }
 }
