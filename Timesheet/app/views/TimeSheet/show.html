@@ -49,7 +49,7 @@
         <tr>
             <td>${holiday1.key}</td>
             #{list items:holiday1.value, as:'holiday'}
-                <td>
+                <td data-content="${holiday.description}"  class="holidayDiv">
                     <form action="@{TimeSheet.createOrUpdate()}" method="POST" id="${holiday.user.userName}_${holiday.date.time}_form" name="${holiday.user.userName}_${holiday.date.time}_form">
                         #{if holiday.id}
                             <input name="holiday.id" type="hidden" value="${holiday.id}" />
@@ -81,4 +81,8 @@
             alert("done");
         }, "json");
     }
+    $().ready(function (){
+        $("#Imad_1333922400000_div").popover({});
+        $("td.holidayDiv").popover({});;
+    });
 </script>

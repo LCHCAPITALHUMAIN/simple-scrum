@@ -1,10 +1,8 @@
 package controllers;
 
 import Utils.*;
-import models.Holiday;
-import models.HolidayType;
-import models.Team;
-import models.User;
+import models.*;
+import org.apache.commons.lang.time.DateUtils;
 import play.mvc.Controller;
 
 import java.util.*;
@@ -12,7 +10,7 @@ import java.util.*;
 public class TimeSheet extends Controller {
 
     public static void show(int selectedYear, int selectedMonth, Team selectedTeam) {
-        Date startDate = CalendarUtil.createDate(1, selectedMonth - 1, selectedYear);
+        Date startDate = CalendarUtil.createDate(1, selectedMonth , selectedYear);
         if (selectedMonth == 0) {
             selectedMonth = CalendarUtil.getMonth(startDate);
         }
@@ -39,6 +37,11 @@ public class TimeSheet extends Controller {
     }
 
     public static void createOrUpdate(Holiday holiday) {
+        holiday.date = DateUtils.setHours(holiday.date, 0);
+        holiday.date = DateUtils.setMinutes(holiday.date, 0);
+        holiday.date = DateUtils.setSeconds(holiday.date, 0);
+        holiday.date = DateUtils.setMilliseconds(holiday.date, 0);
+
         holiday.save();
         System.out.println("## updated holiday");
         renderJSON("Success");
@@ -103,15 +106,22 @@ public class TimeSheet extends Controller {
         for (Date date : dateIterator) {
             if (!hasHoliday(holidays, date)) {
                 HolidayType holidayType;
+                String holidayDescription;
                 if (CalendarUtil.isWeekend(date)) {
                     holidayType = HolidayTypeUtil.getWeekend();
-                } else if (CalendarUtil.isPublicHoliday(date, user.location)) {
-                    holidayType = HolidayTypeUtil.getPublicHoliday();
+                    holidayDescription = "Weekend";
                 } else {
-                    holidayType = HolidayTypeUtil.getWorkingDay();
+                    PublicHoliday publicHoliday = CalendarUtil.isPublicHoliday(date, user.location);
+                    if (publicHoliday != null) {
+                        holidayType = HolidayTypeUtil.getPublicHoliday();
+                        holidayDescription = publicHoliday.description;
+                    } else {
+                        holidayType = HolidayTypeUtil.getWorkingDay();
+                        holidayDescription = "Working day";
+                    }
                 }
 
-                holidays.add(new Holiday(user, holidayType, date));
+                holidays.add(new Holiday(user, holidayType, date, holidayDescription));
             }
         }
     }

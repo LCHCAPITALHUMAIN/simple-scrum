@@ -23,17 +23,20 @@ public class PublicHoliday extends Model {
     public Location location;
 
     @Required
-    @As("yyyy-MM-dd")
+    @As("dd-MM-yyyy")
     public Date date;
 
+    public String description;
 
-    public PublicHoliday(Location location, Date date) {
+
+    public PublicHoliday(Location location, Date date, String description) {
         this.location = location;
         this.date = date;
+        this.description = description;
     }
 
     @Override
     public String toString() {
-        return String.format("%s [%s]", date, location.code);
+        return String.format("%s [%s] %s", date, location.code, description);
     }
 }

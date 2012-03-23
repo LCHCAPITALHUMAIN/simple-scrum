@@ -57,9 +57,6 @@ public class JiraUtil {
                 jiraDetail.remaining = rs.getInt(columnIndex++);
 
                 jiraDetails.add(jiraDetail);
-
-                System.out.println(jiraDetail);
-
             }
         } catch (Exception e) {
             e.printStackTrace();
