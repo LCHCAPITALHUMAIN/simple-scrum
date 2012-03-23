@@ -79,7 +79,7 @@ models.Holiday(h1):
 # Public Holiday START
 models.PublicHoliday(p1):
   location:  PAR
-  date:   2012-01-01 00:00:00
+  date:   2012-01-01
   description: Jour de l'an
 
 models.PublicHoliday(p2):
