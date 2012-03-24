@@ -47,6 +47,9 @@ models.Team(CrdsITParis):
 models.Team(CrdsITMumbai):
   name:   CRDS IT Mumbai
 
+models.Team(CrdsBA):
+  name:   CRDS BA
+
 # Team END
 
 # Location START
@@ -73,10 +76,60 @@ models.User(userImad):
   team:   CrdsITParis
   profile:   profileUser
 
+
+models.User(userTushar):
+  userName:   Tushar
+  location: PAR
+  team:   CrdsITParis
+  profile:   profileUser
+
+
+models.User(userAgata):
+  userName:   Agata
+  location: PAR
+  team:   CrdsITParis
+  profile:   profileUser
+
 models.User(userPranav):
   userName:   Pranav
   location: BOM
   team:   CrdsITMumbai
+  profile:   profileAdmin
+
+models.User(userKunal):
+  userName:   Kunal
+  location: BOM
+  team:   CrdsITMumbai
+  profile:   profileAdmin
+
+models.User(userKhelendra):
+  userName:   Khelendra
+  location: BOM
+  team:   CrdsITMumbai
+  profile:   profileUser
+
+models.User(userPravin):
+  userName:   Pravin
+  location: BOM
+  team:   CrdsITMumbai
+  profile:   profileUser
+
+models.User(userZubin):
+  userName:   Zubin
+  location: BOM
+  team:   CrdsITMumbai
+  profile:   profileUser
+
+models.User(userChandni):
+  userName:   Chandni
+  location: BOM
+  team:   CrdsITMumbai
+  profile:   profileUser
+
+models.User(userSebastien):
+  userName:   Sebastien
+  location: PAR
+  team:   CrdsBA
   profile:   profileAdmin
 
 # User END
