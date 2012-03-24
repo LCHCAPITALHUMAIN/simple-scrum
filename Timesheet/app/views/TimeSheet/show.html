@@ -15,6 +15,7 @@
 
     Team
     <select onchange="$('#frmMain').submit()" name="selectedTeam.id">
+        <option value="">All</option>
         #{list items:teams, as:'team'}
             <option value="${team.id}" #{if team.id == selectedTeam?.id}selected#{/if}>${team.name}</option>
         #{/list}
