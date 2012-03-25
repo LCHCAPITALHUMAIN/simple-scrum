@@ -11,18 +11,14 @@ public class Security extends Secure.Security {
     }
 
     static boolean check(String profile) {
-        System.out.println("connected user is " + connected());
         if (connected() == null) {
-            System.out.println("User is null");
             return false;
         }
         User user = User.find("byUserName", connected()).<User>first();
         if (user == null) {
-            System.out.println("user is not found");
             return false;
         }
-
-        return profile.equals(user.profile);
+        return profile.equals(user.profile.profileName);
     }
 
 }
