@@ -65,71 +65,82 @@ models.Location(BOM):
 # User START
 
 models.User(userImad):
-  userName:   Imad
+  userName:   525124
+  fullName:   Imad
   location: PAR
   team:   CrdsITParis
   profile:   profileUser
 
 
 models.User(userTushar):
-  userName:   Tushar
+  userName:   347382
+  fullName:   Tushar
   location: PAR
   team:   CrdsITParis
   profile:   profileUser
 
 
 models.User(userAgata):
-  userName:   Agata
+  userName:   351879
+  fullName:   Agata
   location: PAR
   team:   CrdsITParis
   profile:   profileUser
 
 models.User(userNazir):
-  userName:   Nazir
+  userName:   415592
+  fullName:   Nazir
   location: PAR
   team:   CrdsITParis
   profile:   profileAdmin
   managerFor:   [CrdsITParis]
 
 models.User(userPranav):
-  userName:   Pranav
+  userName:   537073
+  fullName:   Pranav
   location: BOM
   team:   CrdsITMumbai
   profile:   profileAdmin
   managerFor:   [CrdsITMumbai]
 
 models.User(userKunal):
-  userName:   Kunal
+  userName:   452910
+  fullName:   Kunal
   location: BOM
   team:   CrdsITMumbai
   profile:   profileAdmin
 
 models.User(userKhelendra):
-  userName:   Khelendra
+  userName:   699988
+  fullName:   Khelendra
   location: BOM
   team:   CrdsITMumbai
   profile:   profileUser
 
 models.User(userPravin):
-  userName:   Pravin
+  userName:   848854
+  fullName:   Pravin
   location: BOM
   team:   CrdsITMumbai
   profile:   profileUser
 
 models.User(userZubin):
-  userName:   Zubin
+  userName:   347382
+  fullName:   867445
   location: BOM
   team:   CrdsITMumbai
   profile:   profileUser
 
 models.User(userChandni):
-  userName:   Chandni
+  userName:   815600
+  fullName:   Chandni
   location: BOM
   team:   CrdsITMumbai
   profile:   profileUser
 
 models.User(userSebastien):
-  userName:   Sebastien
+  userName:   525148
+  fullName:   Sebastien
   location: PAR
   team:   CrdsBA
   profile:   profileAdmin

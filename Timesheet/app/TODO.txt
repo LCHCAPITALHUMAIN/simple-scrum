@@ -10,6 +10,10 @@
 10. Oracle
 11. Sub jiras
 12. Utils.JiraDetail.getCssColor
+13. User.userName as userUID
+14. Default team display
+15. No access on the page of admin init
+16. Bold the month and title, user name instead of uid
 
 var getMessages = function() {
         $.ajax({

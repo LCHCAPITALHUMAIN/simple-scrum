@@ -22,7 +22,10 @@ import java.util.Set;
  */
 @Entity
 public class User extends Model{
+    @Required
     public String userName;
+    @Required
+    public String fullName;
 
     @ManyToOne
     @Required
@@ -45,6 +48,6 @@ public class User extends Model{
 
     @Override
     public String toString() {
-        return String.format("%s %s [%s]", userName, team, profile);
+        return String.format("%s-%s %s [%s]", userName, fullName, team, profile);
     }
 }
