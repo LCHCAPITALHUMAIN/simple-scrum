@@ -39,14 +39,18 @@ public class TimeSheet extends Controller {
     }
 
     public static void createOrUpdate(Holiday holiday) {
-        holiday.date = DateUtils.setHours(holiday.date, 0);
-        holiday.date = DateUtils.setMinutes(holiday.date, 0);
-        holiday.date = DateUtils.setSeconds(holiday.date, 0);
-        holiday.date = DateUtils.setMilliseconds(holiday.date, 0);
-
+        if (!canModify(holiday.user)) {
+            renderJSON("Failure");
+        }
+        holiday.date = CalendarUtil.resetTime(holiday.date);
         holiday.save();
         System.out.println("## updated holiday");
         renderJSON("Success");
+    }
+
+    private static boolean canModify(User user) {
+        User loggedUserDetails = User.find("userName = ?", Security.connected()).first();
+        return loggedUserDetails.managerFor.contains(user.team);
     }
 
     private static List<HolidayType> filterHolidayType(List<HolidayType> allHolidayTypes) {

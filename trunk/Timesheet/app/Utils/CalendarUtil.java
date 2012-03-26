@@ -2,6 +2,7 @@ package Utils;
 
 import models.Location;
 import models.PublicHoliday;
+import org.apache.commons.lang.time.DateUtils;
 import play.db.jpa.GenericModel;
 
 import java.util.Calendar;
@@ -26,7 +27,15 @@ public class CalendarUtil {
         if (year != 0) {
             calendar.set(Calendar.YEAR, year);
         }
-        return calendar.getTime();
+        return resetTime(calendar.getTime());
+    }
+
+    public static Date resetTime(Date date) {
+        date = DateUtils.setHours(date, 0);
+        date = DateUtils.setMinutes(date, 0);
+        date = DateUtils.setSeconds(date, 0);
+        date = DateUtils.setMilliseconds(date, 0);
+        return date;
     }
 
     public static Date createDateWithLastDayOfMonth(Date date) {
