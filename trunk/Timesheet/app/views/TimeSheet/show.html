@@ -59,7 +59,7 @@
                             <input name="holiday.date" type="hidden" value="${holiday.date.format('yyyy-MM-dd')}" />
                             <input name="holiday.user.id" type="hidden" value="${holiday.user.id}" />
                         #{/else}
-                        <select name="holiday.holidayType.id" id="${holiday.user.userName}_${holiday.date.time}_holidayType" onchange="saveHoliday('${holiday.user.userName}_${holiday.date.time}_form', '${holiday.user.userName}_${holiday.date.time}_holidayType')" style="background-color: ${holiday.holidayType.color}" class="holiday-dropdown">
+                        <select name="holiday.holidayType.id" id="${holiday.user.userName}_${holiday.date.time}_holidayType" onchange="saveHoliday('${holiday.user.userName}_${holiday.date.time}_form', '${holiday.user.userName}_${holiday.date.time}_holidayType')" style="background-color: ${holiday.holidayType.color}" class="holiday-dropdown ${managerOf.contains(holiday.user.userName).falseValue('non-editable')}">
                                 #{list items:holidayTypes, as:'holidayType'}
                                     <option value="${holidayType.id}" #{if holidayType.id == holiday.holidayType.id}selected#{/if}>${holidayType.code}</option>
                                 #{/list}
@@ -85,5 +85,6 @@
     $().ready(function (){
         $("#Imad_1333922400000_div").popover({});
         $("td.holidayDiv").popover({});;
+        $("select.non-editable").attr("disabled", true);
     });
 </script>

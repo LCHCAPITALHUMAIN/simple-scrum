@@ -2,11 +2,12 @@ package controllers;
 
 import Utils.*;
 import models.*;
-import org.apache.commons.lang.time.DateUtils;
 import play.mvc.Controller;
 import play.mvc.With;
 
 import java.util.*;
+
+import static controllers.Secure.Security.connected;
 
 @With(Secure.class)
 public class TimeSheet extends Controller {
@@ -28,6 +29,7 @@ public class TimeSheet extends Controller {
             users = User.find("team = ?", selectedTeam).fetch();
         }
         Map<String, List<Holiday>> holidayMap = createHolidayMaps(startDate, endDate, users);
+        Set<String> managerOf = buildManagerAccess(holidayMap.keySet());
         List<Date> datesBetweenRange = generateDatesBetweenRange(startDate, endDate);
         List<Integer> years = generateYearList(startDate);
         List<Date> months = generateMonthList();
@@ -35,20 +37,36 @@ public class TimeSheet extends Controller {
         List<HolidayType> allHolidayTypes = HolidayType.findAll();
         List<HolidayType> holidayTypes = filterHolidayType(allHolidayTypes);
 
-        render(holidayMap, datesBetweenRange, years, selectedYear, months, selectedMonth, teams, selectedTeam, allHolidayTypes, holidayTypes);
+        String connectedUser = connected();
+        render(holidayMap, datesBetweenRange, years, selectedYear, months, selectedMonth, teams, selectedTeam, allHolidayTypes, holidayTypes, connectedUser, managerOf);
+    }
+
+    private static Set<String> buildManagerAccess(Set<String> userNames) {
+        Set<String> result = new HashSet<String>();
+        for (String userName : userNames) {
+            if (userName.equals(connected())) {
+                result.add(userName);
+            } else {
+                User user = User.find("userName = ?", userName).first();
+                if (managerOf(user)) {
+                    result.add(userName);
+                }
+            }
+        }
+        return result;
     }
 
     public static void createOrUpdate(Holiday holiday) {
-        if (!canModify(holiday.user)) {
-            renderJSON("Failure");
-        }
+//        if (!managerOf(holiday.user)) {
+//            renderJSON("Failure");
+//        }
         holiday.date = CalendarUtil.resetTime(holiday.date);
         holiday.save();
         System.out.println("## updated holiday");
         renderJSON("Success");
     }
 
-    private static boolean canModify(User user) {
+    private static boolean managerOf(User user) {
         User loggedUserDetails = User.find("userName = ?", Security.connected()).first();
         return loggedUserDetails.managerFor.contains(user.team);
     }

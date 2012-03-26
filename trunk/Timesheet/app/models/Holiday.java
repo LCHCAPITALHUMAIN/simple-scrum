@@ -43,6 +43,6 @@ public class Holiday extends Model {
 
     @Override
     public String toString() {
-        return String.format("%s %s [%s]", date, user.userName, holidayType);
+        return String.format("%s %s [%s]", date, user, holidayType);
     }
 }
