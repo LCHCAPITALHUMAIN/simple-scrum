@@ -35,13 +35,7 @@ public class DateIterator implements Iterator<Date>, Iterable<Date> {
 
     public Date next() {
         this.current.add(Calendar.DATE, 1);
-
-        Date time = current.getTime();
-        time = DateUtils.setHours(time, 0);
-        time = DateUtils.setMinutes(time, 0);
-        time = DateUtils.setSeconds(time, 0);
-        time = DateUtils.setMilliseconds(time, 0);
-        return time;
+        return CalendarUtil.resetTime(current.getTime());
     }
 
     public void remove() {

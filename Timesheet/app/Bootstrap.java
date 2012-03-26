@@ -1,3 +1,4 @@
+import Utils.CalendarUtil;
 import Utils.HolidayTypeUtil;
 import org.apache.commons.lang.time.DateUtils;
 import play.db.jpa.JPABase;
@@ -5,6 +6,7 @@ import play.test.*;
 import play.jobs.*;
 import models.*;
 
+import java.util.Calendar;
 import java.util.List;
 
 @OnApplicationStart
@@ -27,10 +29,7 @@ public class Bootstrap extends Job {
         List<PublicHoliday> publicHolidays = PublicHoliday.findAll();
         for (PublicHoliday publicHoliday : publicHolidays) {
             System.out.println("# Intitial date: " + publicHoliday.date);
-            publicHoliday.date = DateUtils.setHours(publicHoliday.date, 0);
-            publicHoliday.date = DateUtils.setMinutes(publicHoliday.date, 0);
-            publicHoliday.date = DateUtils.setSeconds(publicHoliday.date, 0);
-            publicHoliday.date = DateUtils.setMilliseconds(publicHoliday.date, 0);
+            publicHoliday.date = CalendarUtil.resetTime(publicHoliday.date);
             System.out.println("# Modi date: " + publicHoliday.date);
 
             publicHoliday.save();
@@ -38,11 +37,7 @@ public class Bootstrap extends Job {
 
         List<Holiday> holidays = Holiday.findAll();
         for (Holiday holiday : holidays) {
-            DateUtils.setHours(holiday.date, 0);
-            DateUtils.setMinutes(holiday.date, 0);
-            DateUtils.setSeconds(holiday.date, 0);
-            DateUtils.setMilliseconds(holiday.date, 0);
-
+            holiday.date = CalendarUtil.resetTime(holiday.date);
             holiday.save();
         }
     }

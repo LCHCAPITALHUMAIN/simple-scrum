@@ -64,12 +64,6 @@ models.Location(BOM):
 
 # User START
 
-models.User(userNazir):
-  userName:   Nazir
-  location: PAR
-  team:   CrdsITParis
-  profile:   profileAdmin
-
 models.User(userImad):
   userName:   Imad
   location: PAR
@@ -90,11 +84,19 @@ models.User(userAgata):
   team:   CrdsITParis
   profile:   profileUser
 
+models.User(userNazir):
+  userName:   Nazir
+  location: PAR
+  team:   CrdsITParis
+  profile:   profileAdmin
+  managerFor:   [CrdsITParis]
+
 models.User(userPranav):
   userName:   Pranav
   location: BOM
   team:   CrdsITMumbai
   profile:   profileAdmin
+  managerFor:   [CrdsITMumbai]
 
 models.User(userKunal):
   userName:   Kunal
@@ -131,6 +133,7 @@ models.User(userSebastien):
   location: PAR
   team:   CrdsBA
   profile:   profileAdmin
+  managerFor:   [CrdsBA, CrdsITMumbai, CrdsITParis]
 
 # User END
 
