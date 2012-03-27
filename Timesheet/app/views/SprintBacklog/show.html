@@ -50,7 +50,7 @@
                 #{list items:jiraDetails, as:'jiraDetail'}
                 <tr>
                     <td>${jiraDetail.category}</td>
-                    <td>${jiraDetail.businessJira}</td>
+                    <td><a href="http://jira.london.echonet/browse/${jiraDetail.businessJira}">${jiraDetail.businessJira}</a></td>
                     <td><a href="http://jira.london.echonet/browse/${jiraDetail.itJira}">${jiraDetail.itJira}</a></td>
                     <td>${jiraDetail.description}</td>
                     <td>${jiraDetail.priority}</td>
