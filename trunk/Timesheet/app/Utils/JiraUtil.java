@@ -14,8 +14,8 @@ import java.util.List;
  */
 public class JiraUtil {
 
-    public static List<JiraDetail> getJiras(int sprintNumber, String sortColumn) {
-        List<JiraDetail> jiraDetails = new ArrayList<JiraDetail>();
+    public static List<JiraDetail> getJiras(final int sprintNumber, String sortColumn) {
+        final List<JiraDetail> jiraDetails = new ArrayList<JiraDetail>();
 
         String query = "SELECT CustomNumberValue( I.id, 'Sprint' ) as SPRINT, CustomStringValue( I.id, 'Category' ) as CATEGORY,\n" +
                 "       (SELECT REFBA.ISSUE_KEY FROM REPORT_ISSUE REFBA WHERE REFBA.ID = L.SOURCE AND REFBA.ISSUE_KEY like 'REFBA%') \"BUSINESS_JIRA\", I.ISSUE_KEY \"IT JIRA\",\n" +
@@ -30,17 +30,13 @@ public class JiraUtil {
         if (sortColumn != null) {
             query += " order by " + sortColumn;
         }
-        String jdbcURL = "jdbc:oracle:thin:@jir2ukl.uk.net.intra:1531:JIR2UKL";
-        String user = "jira_ro";
-        String passwd = "endure";
-        Connection conn = null;
-        try {
-            Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
-            conn = DriverManager.getConnection(jdbcURL, user, passwd);
-            PreparedStatement pstmt = conn.prepareStatement(query);
-            pstmt.setInt(1, sprintNumber);
-            ResultSet rs = pstmt.executeQuery();
-            while (rs.next()) {
+
+        executeQuery(query, new Callback() {
+            public void setParameter(PreparedStatement preparedStatement) throws SQLException {
+                preparedStatement.setInt(1, sprintNumber);
+            }
+
+            public void collectRow(ResultSet rs) throws SQLException {
                 JiraDetail jiraDetail = new JiraDetail();
                 int columnIndex = 1;
                 jiraDetail.sprint = rs.getInt(columnIndex++);
@@ -57,54 +53,42 @@ public class JiraUtil {
                 jiraDetail.remaining = rs.getInt(columnIndex++);
 
                 jiraDetails.add(jiraDetail);
+
+
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-                }
-            }
-        }
+        });
         return jiraDetails;
     }
-
     public static List<Integer> getAllSprint() {
         String query = "select distinct(numbervalue) from REPORT_CUSTOMFIELD_VALUE cf where cfname='SPRINT' and cf.ISSUE_ID in (select id from REPORT_ISSUE r where r.PROJECT_KEY='ENT')";
-        List<Integer> jiraDetails = new ArrayList<Integer>();
+        final List<Integer> jiraDetails = new ArrayList<Integer>();
+        executeQuery(query, new Callback() {
+            public void setParameter(PreparedStatement preparedStatement) throws SQLException {
 
-        String jdbcURL = "jdbc:oracle:thin:@jir2ukl.uk.net.intra:1531:JIR2UKL";
-        String user = "jira_ro";
-        String passwd = "endure";
-        Connection conn = null;
-        try {
-            Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
-            conn = DriverManager.getConnection(jdbcURL, user, passwd);
-            PreparedStatement pstmt = conn.prepareStatement(query);
-            ResultSet rs = pstmt.executeQuery();
-            while (rs.next()) {
+            }
+
+            public void collectRow(ResultSet rs) throws SQLException {
                 jiraDetails.add(rs.getInt(1));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+        });
         return jiraDetails;
     }
+
     public static List<String> getAllTeam() {
         String query = "select distinct(stringvalue) from REPORT_CUSTOMFIELD_VALUE cf where cfname=upper('Implementer team(s)') and cf.ISSUE_ID in (select id from REPORT_ISSUE r where r.PROJECT_KEY='ENT')";
-        List<String> teams = new ArrayList<String>();
+        final List<String> teams = new ArrayList<String>();
 
+        executeQuery(query, new Callback() {
+            public void setParameter(PreparedStatement preparedStatement) throws SQLException {
+            }
+
+            public void collectRow(ResultSet rs) throws SQLException {
+                teams.add(rs.getString(1));
+            }
+        });
+        return teams;
+    }
+    private static void executeQuery(String query, Callback callback) {
         String jdbcURL = "jdbc:oracle:thin:@jir2ukl.uk.net.intra:1531:JIR2UKL";
         String user = "jira_ro";
         String passwd = "endure";
@@ -113,9 +97,10 @@ public class JiraUtil {
             Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
             conn = DriverManager.getConnection(jdbcURL, user, passwd);
             PreparedStatement pstmt = conn.prepareStatement(query);
+            callback.setParameter(pstmt);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                teams.add(rs.getString(1));
+                callback.collectRow(rs);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -128,6 +113,5 @@ public class JiraUtil {
                 }
             }
         }
-        return teams;
     }
 }
