@@ -28,8 +28,8 @@ public class TimeSheet extends Controller {
         } else {
             users = User.find("team = ?", selectedTeam).fetch();
         }
-        Map<String, List<Holiday>> holidayMap = createHolidayMaps(startDate, endDate, users);
-        Set<String> managerOf = buildManagerAccess(holidayMap.keySet());
+        Map<User, List<Holiday>> holidayMap = createHolidayMaps(startDate, endDate, users);
+        Set<User> managerOf = buildManagerAccess(holidayMap.keySet());
         List<Date> datesBetweenRange = generateDatesBetweenRange(startDate, endDate);
         List<Integer> years = generateYearList(startDate);
         List<Date> months = generateMonthList();
@@ -41,15 +41,15 @@ public class TimeSheet extends Controller {
         render(holidayMap, datesBetweenRange, years, selectedYear, months, selectedMonth, teams, selectedTeam, allHolidayTypes, holidayTypes, connectedUser, managerOf);
     }
 
-    private static Set<String> buildManagerAccess(Set<String> userNames) {
-        Set<String> result = new HashSet<String>();
-        for (String userName : userNames) {
-            if (userName.equals(connected())) {
-                result.add(userName);
+    private static Set<User> buildManagerAccess(Set<User> userNames) {
+        Set<User> result = new HashSet<User>();
+        for (User user : userNames) {
+            if (user.equals(connected())) {
+                result.add(user);
             } else {
-                User user = User.find("userName = ?", userName).first();
-                if (managerOf(user)) {
-                    result.add(userName);
+                User user1 = User.find("userName = ?", user.userName).first();
+                if (managerOf(user1)) {
+                    result.add(user);
                 }
             }
         }
@@ -81,14 +81,14 @@ public class TimeSheet extends Controller {
         return filteredHolidayTypes;
     }
 
-    private static Map<String, List<Holiday>> createHolidayMaps(Date startDate, Date endDate, List<User> users) {
-        Map<String, List<Holiday>> holidayMap = new HashMap<String, List<Holiday>>(users.size());
+    private static Map<User, List<Holiday>> createHolidayMaps(Date startDate, Date endDate, List<User> users) {
+        Map<User, List<Holiday>> holidayMap = new HashMap<User, List<Holiday>>(users.size());
 
         for (User user : users) {
             List<Holiday> currentHolidays = Holiday.find("user = ? and date >= ? and date <= ?", user, startDate, endDate).fetch();
             fillMissingDays(currentHolidays, startDate, endDate, user);
             Collections.sort(currentHolidays, new DateCompare());
-            holidayMap.put(user.userName, currentHolidays);
+            holidayMap.put(user, currentHolidays);
         }
         return holidayMap;
     }

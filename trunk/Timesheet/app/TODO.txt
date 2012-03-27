@@ -14,6 +14,7 @@
 14. Default team display
 15. No access on the page of admin init
 16. Bold the month and title, user name instead of uid
+17. Selecting the menu based on the current page
 
 var getMessages = function() {
         $.ajax({
