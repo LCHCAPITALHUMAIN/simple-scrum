@@ -49,12 +49,12 @@
                 <tbody>
                 #{list items:jiraDetails, as:'jiraDetail'}
                 <tr>
-                    <td>${jiraDetail.category}</td>
+                    <td><span class="${jiraDetail.cssClassByCategory}">${jiraDetail.category}</span></td>
                     <td><a href="http://jira.london.echonet/browse/${jiraDetail.businessJira}">${jiraDetail.businessJira}</a></td>
                     <td><a href="http://jira.london.echonet/browse/${jiraDetail.itJira}">${jiraDetail.itJira}</a></td>
                     <td>${jiraDetail.description}</td>
                     <td>${jiraDetail.priority}</td>
-                    <td nowrap><span class="${jiraDetail.cssColor}">${jiraDetail.status}</span></td>
+                    <td nowrap><span class="${jiraDetail.cssClassByStatus}">${jiraDetail.status}</span></td>
                     <td>${jiraDetail.assignee}</td>
                     <td>${jiraDetail.team}</td>
                     <td>${jiraDetail.estimate}</td>
