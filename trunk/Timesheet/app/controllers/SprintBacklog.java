@@ -29,6 +29,7 @@ public class SprintBacklog extends Controller{
             selectedSprint = sprints.get(sprints.size()-1);
         }
         List<JiraDetail> jiraDetails = JiraUtil.getJiras(selectedSprint, "BUSINESS_JIRA");
+        jiraDetails.addAll(JiraUtil.getTranversalJiras("BUSINESS_JIRA"));
         if (StringUtils.isNotEmpty(selectedTeam)) {
             jiraDetails = filterTeam(jiraDetails, selectedTeam);
         }
@@ -36,6 +37,7 @@ public class SprintBacklog extends Controller{
         render(selectedTeam, teams, selectedSprint, sprints, columnHeaders, jiraDetails);
     }
 
+    //TODO: this method can be removed, instead apply filter in SQL query
     private static List<JiraDetail> filterTeam(List<JiraDetail> jiraDetails, String teamName) {
         List<JiraDetail> filterdTeam = new ArrayList<JiraDetail>();
         for (JiraDetail jiraDetail : jiraDetails) {

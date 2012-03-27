@@ -23,15 +23,26 @@ public class JiraDetail {
     public int actual;
     public int remaining;
 
-    public String getCssColor() {
-        if (status.equals("1-To be estimated")) {
+    public String getCssClassByStatus() {
+        if ("1-To be estimated".equals(status)) {
             return "label label-important";
-        }else if (status.equals("3-To be developed")) {
+        }else if ("3-To be developed".equals(status)) {
             return "label label-info";
-        }else if (status.equals("4-Dev in progress")) {
+        }else if ("4-Dev in progress".equals(status)) {
             return "label label-warning";
-        }else if (status.equals("5-To be Tested")) {
+        }else if ("5-To be Tested".equals(status)) {
             return "label label-inverse";
+        }
+        return "label";
+    }
+
+    public String getCssClassByCategory() {
+        if ("Unplanned".equals(category)) {
+            return "label label-important";
+        }else if ("Planned".equals(category)) {
+            return "label label-info";
+        }else if ("Transversal".equals(category)) {
+            return "label label-warning";
         }
         return "label";
     }
