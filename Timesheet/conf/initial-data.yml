@@ -174,57 +174,57 @@ models.User(userSebastien):
 # User END
 
 # Public Holiday START
-models.PublicHoliday(p1):
+models.PublicHoliday(parisHoliday1):
   location:  PAR
   date:   2012-01-01
   description: Jour de l'an
 
-models.PublicHoliday(p2):
+models.PublicHoliday(parisHoliday2):
   location:  PAR
   date:   2012-04-09
   description: Lundi de Paques
 
-models.PublicHoliday(p3):
+models.PublicHoliday(parisHoliday3):
   location:  PAR
   date:   2012-05-01
   description: Fête du Travail
 
-models.PublicHoliday(p4):
+models.PublicHoliday(parisHoliday4):
   location:  PAR
   date:   2012-05-08
   description: 8 Mai 1945
 
-models.PublicHoliday(p5):
+models.PublicHoliday(parisHoliday5):
   location:  PAR
   date:   2012-05-17
   description: Jeudi de l'Ascension
 
-models.PublicHoliday(p6):
+models.PublicHoliday(parisHoliday6):
   location:  PAR
   date:   2012-05-28
   description: Lundi de Pentecôte
 
-models.PublicHoliday(p7):
+models.PublicHoliday(parisHoliday7):
   location:  PAR
   date:   2012-07-14
   description: Fête Nationale
 
-models.PublicHoliday(p8):
+models.PublicHoliday(parisHoliday8):
   location:  PAR
   date:   2012-08-15
   description: Assomption
 
-models.PublicHoliday(p9):
+models.PublicHoliday(parisHoliday9):
   location:  PAR
   date:   2012-11-01
   description: La Toussaint
 
-models.PublicHoliday(p10):
+models.PublicHoliday(parisHoliday10):
   location:  PAR
   date:   2012-11-11
   description: Armistice
 
-models.PublicHoliday(p11):
+models.PublicHoliday(parisHoliday11):
   location:  PAR
   date:   2012-12-25
   description: Noêl
