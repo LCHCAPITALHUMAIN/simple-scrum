@@ -173,13 +173,6 @@ models.User(userSebastien):
 
 # User END
 
-# Holiday START
-models.Holiday(h1):
-  user:    userNazir
-  holidayType: Full
-  date:   2012-02-14
-# Holiday END
-
 # Public Holiday START
 models.PublicHoliday(p1):
   location:  PAR
