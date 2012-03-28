@@ -1,11 +1,11 @@
 *1. Displaying current month in the timesheet by default
 *2. Description on the public holiday and displaying it on the screen
-3. Displaying tranversal jiras
-4. Clicking on jira
+*3. Displaying tranversal jiras
+*4. Clicking on jira
 5. Mumbai public holiday
-6. All IT team members
-7. Login
-8. Admin users
+*6. All IT team members
+*7. Login
+*8. Admin users
 9. Tester backlog
 10. Oracle
 11. Sub jiras
@@ -14,7 +14,8 @@
 14. Default team display
 15. No access on the page of admin init
 16. Bold the month and title, user name instead of uid
-17. Selecting the menu based on the current page
+*17. Selecting the menu based on the current page
+ 18. AJAX response
 
 var getMessages = function() {
         $.ajax({
