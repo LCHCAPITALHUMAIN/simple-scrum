@@ -73,4 +73,26 @@ public class CalendarUtil {
         }
         return publicHoliday;
     }
+
+    public static Date createNextFriday(Date startDate) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(startDate);
+        while (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.FRIDAY) {
+            calendar.add(Calendar.DAY_OF_MONTH, 1);
+        }
+        do {
+            calendar.add(Calendar.DAY_OF_MONTH, 1);
+        } while (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.FRIDAY);
+
+        return resetTime(calendar.getTime());
+    }
+    public static Date createLastMonday() {
+        Calendar calendar = Calendar.getInstance();
+
+        while (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.MONDAY) {
+            calendar.add(Calendar.DAY_OF_MONTH, -1);
+        }
+        return resetTime(calendar.getTime());
+    }
+
 }
