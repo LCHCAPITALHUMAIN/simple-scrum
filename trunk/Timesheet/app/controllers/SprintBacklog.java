@@ -5,6 +5,7 @@ import Utils.JiraUtil;
 import models.Team;
 import org.apache.commons.lang.StringUtils;
 import play.data.validation.Required;
+import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.With;
 
@@ -21,7 +22,7 @@ import java.util.List;
  */
 @With(Secure.class)
 
-public class SprintBacklog extends Controller{
+public class SprintBacklog extends TimesheetController{
     public static void show(Integer selectedSprint, String selectedTeam) {
         List<String> columnHeaders = generateColumnHeader();
         List<Integer> sprints = JiraUtil.getAllSprint();

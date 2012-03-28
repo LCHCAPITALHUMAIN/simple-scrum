@@ -2,7 +2,6 @@ package controllers;
 
 import Utils.*;
 import models.*;
-import play.mvc.Controller;
 import play.mvc.With;
 
 import java.util.*;
@@ -10,10 +9,57 @@ import java.util.*;
 import static controllers.Secure.Security.connected;
 
 @With(Secure.class)
-public class TimeSheet extends Controller {
+public class TimeSheet extends TimesheetController {
+    public static void velocityCalculator1(Team selectedTeam, Date startDate, Date endDate, Float focusFactor) {
+        render();
+    }
+    public static void velocityCalculator(Team selectedTeam, Date startDate, Date endDate, Float focusFactor) {
+        if (focusFactor == null) {
+            focusFactor = 0.6F;
+        }
+        if (startDate == null || endDate == null) {
+            startDate = CalendarUtil.createLastMonday();
+            endDate = CalendarUtil.createNextFriday(startDate);
+        }
+        List<User> users;
+        if (selectedTeam.id == null) {
+            selectedTeam = ((User)User.find("userName=?", connected()).first()).team;
+        }
+        users = User.find("team = ?", selectedTeam).fetch();
+
+        Map<User, List<Holiday>> holidayMap = createHolidayMaps(startDate, endDate, users);
+        List<VelocityDetail> velocityDetails = new ArrayList<VelocityDetail>();
+
+        float totalVelocity = 0.0F;
+        for (User user : holidayMap.keySet()) {
+            VelocityDetail velocityDetail = new VelocityDetail();
+            velocityDetail.name = user.fullName;
+            velocityDetail.devPart = user.devPart;
+            velocityDetail.team = user.team;
+
+            for (Holiday holiday : holidayMap.get(user)) {
+                if (HolidayTypeUtil.getWorkingDay().equals(holiday.holidayType)) {
+                    velocityDetail.availability++;
+                } else if (HolidayTypeUtil.getAfternoonAbsent().equals(holiday.holidayType) || HolidayTypeUtil.getMorningAbsent().equals(holiday.holidayType)) {
+                    velocityDetail.unavailability += 0.5F;
+                } else if (HolidayTypeUtil.getFullDayAbsent().equals(holiday.holidayType) ) {
+                    velocityDetail.unavailability++;
+                }
+            }
+
+            velocityDetail.focusFactor = focusFactor;
+            velocityDetail.velocity = velocityDetail.availability * velocityDetail.devPart * focusFactor;
+            velocityDetails.add(velocityDetail);
+
+            totalVelocity += velocityDetail.velocity;
+        }
+        List<Team> teams = Team.findAll();
+
+        render(focusFactor, selectedTeam, teams, startDate, endDate, users, velocityDetails, totalVelocity);
+    }
 
     public static void show(int selectedYear, int selectedMonth, Team selectedTeam) {
-        Date startDate = CalendarUtil.createDate(1, selectedMonth , selectedYear);
+        Date startDate = CalendarUtil.createDate(1, selectedMonth, selectedYear);
         if (selectedMonth == 0) {
             selectedMonth = CalendarUtil.getMonth(startDate);
         }
@@ -164,3 +210,4 @@ public class TimeSheet extends Controller {
         return false;
     }
 }
+

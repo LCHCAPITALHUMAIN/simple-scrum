@@ -1,3 +1,16 @@
+# Criticality START
+
+models.Criticality(criticalityMinor):
+  description: Minor
+
+models.Criticality(criticalityCritical):
+  description: Critical
+
+models.Criticality(criticalityBlocker):
+  description: Blocker
+
+# Criticality END
+
 # Profile START
 models.Profile(profileAdmin):
   profileName: admin
@@ -70,6 +83,7 @@ models.User(userImad):
   location: PAR
   team:   CrdsITParis
   profile:   profileUser
+  devPart: 1
 
 
 models.User(userTushar):
@@ -78,6 +92,7 @@ models.User(userTushar):
   location: PAR
   team:   CrdsITParis
   profile:   profileUser
+  devPart: 0.8
 
 
 models.User(userAgata):
@@ -86,6 +101,7 @@ models.User(userAgata):
   location: PAR
   team:   CrdsITParis
   profile:   profileUser
+  devPart: 0
 
 models.User(userNazir):
   userName:   415592
@@ -94,6 +110,8 @@ models.User(userNazir):
   team:   CrdsITParis
   profile:   profileAdmin
   managerFor:   [CrdsITParis]
+  devPart: 0.5
+
 
 models.User(userPranav):
   userName:   537073
@@ -102,6 +120,8 @@ models.User(userPranav):
   team:   CrdsITMumbai
   profile:   profileAdmin
   managerFor:   [CrdsITMumbai]
+  devPart: 0.5
+
 
 models.User(userKunal):
   userName:   452910
@@ -109,6 +129,7 @@ models.User(userKunal):
   location: BOM
   team:   CrdsITMumbai
   profile:   profileAdmin
+  devPart: 1
 
 models.User(userKhelendra):
   userName:   699988
@@ -116,6 +137,7 @@ models.User(userKhelendra):
   location: BOM
   team:   CrdsITMumbai
   profile:   profileUser
+  devPart: 1
 
 models.User(userPravin):
   userName:   848854
@@ -123,13 +145,15 @@ models.User(userPravin):
   location: BOM
   team:   CrdsITMumbai
   profile:   profileUser
+  devPart: 1
 
 models.User(userZubin):
   userName:   347382
-  fullName:   867445
+  fullName:   Zubin
   location: BOM
   team:   CrdsITMumbai
   profile:   profileUser
+  devPart: 1
 
 models.User(userChandni):
   userName:   815600
@@ -137,6 +161,7 @@ models.User(userChandni):
   location: BOM
   team:   CrdsITMumbai
   profile:   profileUser
+  devPart: 1
 
 models.User(userSebastien):
   userName:   525148
@@ -212,5 +237,4 @@ models.PublicHoliday(p11):
   description: Noêl
 
 # Public Holiday END
-
 
