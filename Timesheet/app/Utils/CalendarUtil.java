@@ -68,9 +68,6 @@ public class CalendarUtil {
 
     public static PublicHoliday isPublicHoliday(Date date, Location location) {
         PublicHoliday publicHoliday = PublicHoliday.find("date=? and location=?", date, location).first();
-        if (publicHoliday != null) {
-            System.out.println("####Public holiday found: " + date);
-        }
         return publicHoliday;
     }
 

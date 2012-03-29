@@ -10,9 +10,6 @@ import static controllers.Secure.Security.connected;
 
 @With(Secure.class)
 public class TimeSheet extends TimesheetController {
-    public static void velocityCalculator1(Team selectedTeam, Date startDate, Date endDate, Float focusFactor) {
-        render();
-    }
     public static void velocityCalculator(Team selectedTeam, Date startDate, Date endDate, Float focusFactor) {
         if (focusFactor == null) {
             focusFactor = 0.6F;
@@ -81,7 +78,7 @@ public class TimeSheet extends TimesheetController {
         List<Date> months = generateMonthList();
         List<Team> teams = Team.findAll();
         List<HolidayType> allHolidayTypes = HolidayType.findAll();
-        List<HolidayType> holidayTypes = filterHolidayType(allHolidayTypes);
+        List<HolidayType> holidayTypes = allHolidayTypes;
 
         String connectedUser = connected();
         render(holidayMap, datesBetweenRange, years, selectedYear, months, selectedMonth, teams, selectedTeam, allHolidayTypes, holidayTypes, connectedUser, managerOf);
@@ -106,6 +103,12 @@ public class TimeSheet extends TimesheetController {
 //        if (!managerOf(holiday.user)) {
 //            renderJSON("Failure");
 //        }
+        if (HolidayTypeUtil.getPublicHoliday().equals(holiday.holidayType)) {
+            renderJSON("Public holiday can be set only by the administrator using the admin module");
+        }
+        if (HolidayTypeUtil.getWeekend().equals(holiday.holidayType) && !CalendarUtil.isWeekend(holiday.date)) {
+            renderJSON("The selected day is not a weekend.");
+        }
         holiday.date = CalendarUtil.resetTime(holiday.date);
         holiday.save();
         System.out.println("## updated holiday");
@@ -115,16 +118,6 @@ public class TimeSheet extends TimesheetController {
     private static boolean managerOf(User user) {
         User loggedUserDetails = User.find("userName = ?", Security.connected()).first();
         return loggedUserDetails.managerFor.contains(user.team);
-    }
-
-    private static List<HolidayType> filterHolidayType(List<HolidayType> allHolidayTypes) {
-        List<HolidayType> filteredHolidayTypes = new ArrayList<HolidayType>();
-        for (HolidayType holidayType : allHolidayTypes) {
-            if (!holidayType.equals(HolidayTypeUtil.getPublicHoliday()) && !holidayType.equals(HolidayTypeUtil.getWeekend())) {
-                filteredHolidayTypes.add(holidayType);
-            }
-        }
-        return filteredHolidayTypes;
     }
 
     private static Map<User, List<Holiday>> createHolidayMaps(Date startDate, Date endDate, List<User> users) {
