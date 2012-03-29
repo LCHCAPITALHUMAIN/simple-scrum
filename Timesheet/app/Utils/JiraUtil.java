@@ -47,7 +47,7 @@ public class JiraUtil {
     public static List<JiraDetail> getTranversalJiras(String sortColumn) {
         final List<JiraDetail> jiraDetails = new ArrayList<JiraDetail>();
         String query = getJiraDetailsQuery() +
-                "   i.ISSUE_KEY in ('ENT-3461','ENT-3462','ENT-3463','ENT-3464','ENT-3465','ENT-3466','ENT-3467')";
+                " I.PROJECT_KEY = 'ENT' AND i.ISSUE_KEY in ('ENT-3461','ENT-3462','ENT-3463','ENT-3464','ENT-3465','ENT-3466','ENT-3467')";
 
         if (sortColumn != null) {
             query += " order by " + sortColumn;
@@ -70,8 +70,7 @@ public class JiraUtil {
 
     public static List<JiraDetail> getJiras(final int sprintNumber, String sortColumn) {
         final List<JiraDetail> jiraDetails = new ArrayList<JiraDetail>();
-        String query = getJiraDetailsQuery() +
-                "   CustomNumberValue( I.id, 'Sprint')  = ?";
+        String query = getJiraDetailsQuery() + " I.PROJECT_KEY = 'ENT' AND CustomNumberValue( I.id, 'Sprint')  = ?";
 
         if (sortColumn != null) {
             query += " order by " + sortColumn;
@@ -84,10 +83,7 @@ public class JiraUtil {
 
             public void collectRow(ResultSet rs) throws SQLException {
                 JiraDetail jiraDetail = collectJiraDetails(rs);
-
                 jiraDetails.add(jiraDetail);
-
-
             }
         });
         return jiraDetails;
@@ -123,16 +119,25 @@ public class JiraUtil {
         return teams;
     }
 
+    public static void main(String[] args) {
+        List<JiraDetail> res = getJiras(90, null);
+        for (JiraDetail re : res) {
+            System.out.println(re);
+        }
+    }
+
     private static String getJiraDetailsQuery() {
         return
         "SELECT CustomNumberValue( I.id, 'Sprint' ) as SPRINT, CustomStringValue( I.id, 'Category' ) as CATEGORY,\n" +
-                "       (SELECT REFBA.ISSUE_KEY FROM REPORT_ISSUE REFBA WHERE REFBA.ID = L.SOURCE AND REFBA.ISSUE_KEY like 'REFBA%') \"BUSINESS_JIRA\", I.ISSUE_KEY \"IT JIRA\",\n" +
+                "       (SELECT REFBA.ISSUE_KEY FROM REPORT_ISSUE REFBA WHERE REFBA.ID = L.SOURCE AND REFBA.ISSUE_KEY like 'REFBA%') \"BUSINESS_JIRA\", " +
+                "       (SELECT REFBA.SUMMARY FROM REPORT_ISSUE REFBA WHERE REFBA.ID = L.SOURCE AND REFBA.ISSUE_KEY like 'REFBA%') \"BUSINESS_JIRA_DESC\", " +
+                "       I.ISSUE_KEY \"IT JIRA\",\n" +
                 "       I.SUMMARY as DESCRIPTION, I.PRIORITY, CustomStringValue( I.id, 'Current Phase') as STATUS,\n" +
                 "       (SELECT U.FULL_NAME FROM REPORT_USER U WHERE U.USER_NAME = I.ASSIGNEE and rownum=1) as ASSIGNEE,\n" +
                 "       CustomStringValue( I.id, 'Implementer team(s)') as \"Team\",\n" +
                 "       round(I.TIMEORIGINALESTIMATE/3600,1) as ESTIMATE, round(I.TIMESPENT/3600,1) as ACTUAL, round(I.TIMEESTIMATE/3600,1) as REMAINING\n" +
                 "FROM REPORT_ISSUE I left outer join ISSUELINK L on I.ID = L.DESTINATION\n" +
-                "WHERE I.PROJECT_KEY = 'ENT' AND\n";
+                "WHERE ";
     }
 
     private static JiraDetail collectJiraDetails(ResultSet rs) throws SQLException {
@@ -140,8 +145,12 @@ public class JiraUtil {
         int columnIndex = 1;
         jiraDetail.sprint = rs.getInt(columnIndex++);
         jiraDetail.category = rs.getString(columnIndex++);
-        jiraDetail.businessJira = rs.getString(columnIndex++);
-        jiraDetail.itJira = rs.getString(columnIndex++);
+
+        jiraDetail.counterpartJira = new JiraDetail();
+        jiraDetail.counterpartJira.jiraNumber = rs.getString(columnIndex++);
+        jiraDetail.counterpartJira.description = rs.getString(columnIndex++);
+        jiraDetail.jiraNumber = rs.getString(columnIndex++);
+//        jiraDetail.parentJira = getJira(rs.getString(columnIndex++));
         jiraDetail.description = rs.getString(columnIndex++);
         jiraDetail.priority = rs.getString(columnIndex++);
         jiraDetail.status = rs.getString(columnIndex++);
@@ -151,6 +160,27 @@ public class JiraUtil {
         jiraDetail.actual = rs.getInt(columnIndex++);
         jiraDetail.remaining = rs.getInt(columnIndex++);
         return jiraDetail;
+    }
+
+    private static JiraDetail getJira(final String jiraNumber) {
+//        if(1 ==1)
+//        return null;
+
+        if (StringUtils.isEmpty(jiraNumber)) {
+            return null;
+        }
+        System.out.println("*** hitting " + jiraNumber);
+        final JiraDetail[] jira = new JiraDetail[1];
+        executeQuery(getJiraDetailsQuery() + " I.PROJECT_KEY IN ('ENT','REFBA') AND I.ISSUE_KEY=?", new Callback() {
+            public void setParameter(PreparedStatement preparedStatement) throws SQLException {
+                preparedStatement.setString(1, jiraNumber);
+            }
+
+            public void collectRow(ResultSet rs) throws SQLException {
+                jira[0] = collectJiraDetails(rs);
+            }
+        });
+        return jira[0];
     }
 
     private static void executeQuery(String query, Callback callback) {

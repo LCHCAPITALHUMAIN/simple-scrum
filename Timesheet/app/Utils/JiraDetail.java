@@ -10,10 +10,9 @@ package Utils;
 public class JiraDetail {
     public int sprint;
     public String category;
-    public String businessJira;
-    public String parentBusinessJira;
-    public String itJira;
-    public String parentITJira;
+    public JiraDetail counterpartJira; //This can be either IT jira of Business jira
+    public String jiraNumber;
+    public JiraDetail parentJira;
     public String description;
     public String priority;
     public String status;
@@ -22,6 +21,9 @@ public class JiraDetail {
     public int estimate;
     public int actual;
     public int remaining;
+
+    public JiraDetail() {
+    }
 
     public String getCssClassByStatus() {
         if ("1-To be estimated".equals(status)) {
@@ -52,8 +54,6 @@ public class JiraDetail {
         return "JiraDetail{" +
                 "sprint=" + sprint +
                 ", category='" + category + '\'' +
-                ", businessJira='" + businessJira + '\'' +
-                ", itJira='" + itJira + '\'' +
                 ", description='" + description + '\'' +
                 ", priority='" + priority + '\'' +
                 ", status='" + status + '\'' +
