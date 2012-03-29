@@ -51,16 +51,26 @@
                 <tr>
                     <td><span class="${jiraDetail.cssClassByCategory}">${jiraDetail.category}</span></td>
                     <td>
-
-                        <a href="http://jira.london.echonet/browse/${jiraDetail.businessJira}">${jiraDetail.businessJira}</a>
-                        #{if jiraDetail.parentBusinessJira?}
-                            <br>&nbsp;&nbsp;<a href="http://jira.london.echonet/browse/${jiraDetail.parentBusinessJira}">${jiraDetail.parentBusinessJira}</a>
+                        #{if jiraDetail?.counterpartJira}
+                            #{if jiraDetail.counterpartJira?.jiraNumber}
+                                #{if jiraDetail.counterpartJira?.parentJira}
+                                    #{if jiraDetail.counterpartJira.parentJira?.jiraNumber}
+                            <a href="http://jira.london.echonet/browse/${jiraDetail.counterpartJira.jiraNumber}" data-content="${jiraDetail.counterpartJira.description}" class="jiraLink">${jiraDetail.counterpartJira.jiraNumber}</a><br>&nbsp;&nbsp;
+                                    #{/if}
+                                #{/if}
+                            #{/if}
+                        #{/if}
+                        #{if jiraDetail?.counterpartJira}
+                            #{if jiraDetail.counterpartJira?.jiraNumber}
+                                <a href="http://jira.london.echonet/browse/${jiraDetail.counterpartJira.jiraNumber}" title="${jiraDetail.counterpartJira.jiraNumber}" data-content="${jiraDetail.counterpartJira.description}" class="jiraLink">${jiraDetail.counterpartJira.jiraNumber}</a>
+                            #{/if}
                         #{/if}
                     </td>
                     <td>
-                        #{if jiraDetail.parentITJira?}
-                            <br>&nbsp;&nbsp;<a href="http://jira.london.echonet/browse/${jiraDetail.parentITJira}">${jiraDetail.parentITJira}</a>
+                        #{if jiraDetail?.parentJira}
+                            <a href="http://jira.london.echonet/browse/${jiraDetail.parentJira.jiraNumber}" data-content="${jiraDetail.parentJira.description}" class="jiraLink">${jiraDetail.parentJira.jiraNumber}</a><br>&nbsp;&nbsp;
                         #{/if}
+                        <a href="http://jira.london.echonet/browse/${jiraDetail.jiraNumber}">${jiraDetail.jiraNumber}</a>
                     </td>
                     <td>${jiraDetail.description}</td>
                     <td>${jiraDetail.priority}</td>
@@ -94,3 +104,10 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $().ready(function () {
+        $("a.jiraLink").popover({});;
+
+    });
+
+</script>

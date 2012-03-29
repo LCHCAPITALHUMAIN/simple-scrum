@@ -171,6 +171,55 @@ models.User(userSebastien):
   profile:   profileAdmin
   managerFor:   [CrdsBA, CrdsITMumbai, CrdsITParis]
 
+
+models.User(userHuutho):
+  userName:   297252
+  fullName:   Huu tho
+  location: PAR
+  team:   CrdsBA
+  profile:   profileAdmin
+  managerFor:   [CrdsBA, CrdsITMumbai, CrdsITParis]
+
+
+models.User(userYann):
+  userName:   319547
+  fullName:   Yann
+  location: PAR
+  team:   CrdsBA
+  profile:   profileUser
+
+
+models.User(userCatalina):
+  userName:   471691
+  fullName:   Catalina
+  location: PAR
+  team:   CrdsBA
+  profile:   profileUser
+
+
+models.User(userStephane):
+  userName:   485055
+  fullName:   Stephane
+  location: PAR
+  team:   CrdsBA
+  profile:   profileUser
+
+
+models.User(userCedric):
+  userName:   475714
+  fullName:   Cedric
+  location: PAR
+  team:   CrdsBA
+  profile:   profileUser
+
+
+models.User(userFrancis):
+  userName:   115152
+  fullName:   Francis
+  location: PAR
+  team:   CrdsBA
+  profile:   profileUser
+
 # User END
 
 # Public Holiday START
