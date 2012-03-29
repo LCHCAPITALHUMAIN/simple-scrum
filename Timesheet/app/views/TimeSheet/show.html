@@ -22,11 +22,15 @@
     </select>
 </form>
 
-<table>
-    #{list items:allHolidayTypes, as:'holidayType'}
-        <tr><td style="background-color: ${holidayType.color}">${holidayType.code} - ${holidayType.description}</td></tr>
-    #{/list}
-</table>
+<div align=center>
+    <table>
+        #{list items:allHolidayTypes, as:'holidayType'}
+        <tr>
+            <td style="background-color: ${holidayType.color}">${holidayType.code} - ${holidayType.description}</td>
+        </tr>
+        #{/list}
+    </table>
+</div>
 
 <script type="text/javascript">
     var holidayType = {
@@ -37,7 +41,6 @@
 </script>
 
 
-<div align="center">${datesBetweenRange.get(0).format("MMM-yyyy")}</div>
 <table border="0">
 
     <tr>
@@ -50,7 +53,7 @@
         <tr>
             <td>${holiday1.key.fullName}</td>
             #{list items:holiday1.value, as:'holiday'}
-                <td data-content="${holiday.description}"  class="holidayDiv">
+                <td data-content="${holiday.description}"  class="${holiday.holidayType.code.equals("P").trueValue('holidayDiv')}">
                     <form action="@{TimeSheet.createOrUpdate()}" method="POST" id="${holiday.user.userName}_${holiday.date.time}_form" name="${holiday.user.userName}_${holiday.date.time}_form">
                         #{if holiday.id}
                             <input name="holiday.id" type="hidden" value="${holiday.id}" />

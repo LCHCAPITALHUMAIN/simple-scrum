@@ -14,4 +14,7 @@ public class BooleanExtention extends JavaExtensions {
     public static String falseValue(Boolean aBoolean, String falseValue) {
         return aBoolean ? "" : falseValue;
     }
+    public static String trueValue(Boolean aBoolean, String trueValue) {
+        return aBoolean ? trueValue: "";
+    }
 }
