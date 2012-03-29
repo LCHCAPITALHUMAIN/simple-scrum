@@ -87,7 +87,7 @@ public class TimeSheet extends TimesheetController {
     private static Set<User> buildManagerAccess(Set<User> userNames) {
         Set<User> result = new HashSet<User>();
         for (User user : userNames) {
-            if (user.equals(connected())) {
+            if (user.userName.equals(connected())) {
                 result.add(user);
             } else {
                 User user1 = User.find("userName = ?", user.userName).first();
