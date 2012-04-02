@@ -1,5 +1,7 @@
 package models;
 
+import play.data.validation.Required;
+import play.data.validation.Unique;
 import play.db.jpa.Model;
 
 import javax.persistence.Entity;
@@ -13,6 +15,8 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Profile extends Model {
+    @Unique(message = "This profileName is already used.")
+    @Required
     public String profileName;
 
     @Override

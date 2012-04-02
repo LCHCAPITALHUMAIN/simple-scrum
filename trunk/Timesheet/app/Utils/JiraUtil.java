@@ -90,7 +90,7 @@ public class JiraUtil {
     }
 
     public static List<Integer> getAllSprint() {
-        String query = "select distinct(numbervalue) from REPORT_CUSTOMFIELD_VALUE cf where cfname='SPRINT' and cf.ISSUE_ID in (select id from REPORT_ISSUE r where r.PROJECT_KEY='ENT')";
+        String query = "select distinct(numbervalue) from REPORT_CUSTOMFIELD_VALUE cf where cfname='SPRINT' and cf.ISSUE_ID in (select id from REPORT_ISSUE r where r.PROJECT_KEY='ENT')  order by 1";
         final List<Integer> jiraDetails = new ArrayList<Integer>();
         executeQuery(query, new Callback() {
             public void setParameter(PreparedStatement preparedStatement) throws SQLException {

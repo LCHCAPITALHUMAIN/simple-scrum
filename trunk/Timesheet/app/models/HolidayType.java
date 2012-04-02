@@ -1,6 +1,7 @@
 package models;
 
 import play.data.validation.Required;
+import play.data.validation.Unique;
 import play.db.jpa.Model;
 
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ import javax.persistence.Entity;
  */
 @Entity
 public class HolidayType extends Model{
+    @Unique(message = "This code is already used.")
     @Required
     public String code;
 

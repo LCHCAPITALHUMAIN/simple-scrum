@@ -2,6 +2,7 @@ package models;
 
 import org.hibernate.annotations.ManyToAny;
 import play.data.validation.Required;
+import play.data.validation.Unique;
 import play.db.jpa.Model;
 import play.jobs.On;
 
@@ -23,8 +24,10 @@ import java.util.Set;
 @Entity
 public class User extends Model{
     @Required
+    @Unique(message = "This username is already used.")
     public String userName;
     @Required
+    @Unique
     public String fullName;
 
     @ManyToOne
@@ -50,6 +53,6 @@ public class User extends Model{
 
     @Override
     public String toString() {
-        return String.format("%s-%s %s [%s]", userName, fullName, team, profile);
+        return String.format("%s-%s %s [%s]", fullName, userName, team, profile);
     }
 }
