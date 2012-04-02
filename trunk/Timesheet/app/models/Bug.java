@@ -28,6 +28,6 @@ public class Bug extends Model {
 
     @Override
     public String toString() {
-        return String.format("[%s] %s", user.fullName, description);
+        return String.format("%s[%s] %s", criticality, user.fullName, description);
     }
 }
