@@ -1,5 +1,6 @@
 package models;
 
+import play.data.validation.MaxSize;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
@@ -16,6 +17,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Bug extends Model {
     @Required
+    @MaxSize(255)
     public String description;
 
     @OneToOne
