@@ -35,7 +35,17 @@ public class SprintBacklog extends TimesheetController{
             jiraDetails = filterTeam(jiraDetails, selectedTeam);
         }
         List<String> teams = JiraUtil.getAllTeam();
-        render(selectedTeam, teams, selectedSprint, sprints, columnHeaders, jiraDetails);
+        double totalRemainingInDays = calcualteTotalRemaining(jiraDetails)/8;
+        render(totalRemainingInDays, selectedTeam, teams, selectedSprint, sprints, columnHeaders, jiraDetails);
+    }
+
+
+    private static double calcualteTotalRemaining(List<JiraDetail> jiraDetails) {
+        double totalRemaining = 0;
+        for (JiraDetail jiraDetail : jiraDetails) {
+            totalRemaining += jiraDetail.remaining;
+        }
+        return totalRemaining;
     }
 
     //TODO: this method can be removed, instead apply filter in SQL query
