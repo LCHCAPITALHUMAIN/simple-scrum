@@ -28,8 +28,12 @@ public class Bug extends Model {
     @Required
     public Criticality criticality;
 
+    @OneToOne
+    @Required
+    public BugStatus status;
+
     @Override
     public String toString() {
-        return String.format("%s[%s] %s", criticality, user.fullName, description);
+        return String.format("%s-%s[%s] %s", status, criticality, user.fullName, description);
     }
 }
