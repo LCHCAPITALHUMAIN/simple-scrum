@@ -5,6 +5,7 @@
 # Home page
 GET     /                                       TimeSheet.show
 GET     /admin                                  Admin.index
+GET     /crud/index                              Admin.index
 
 
 # Ignore favicon requests
