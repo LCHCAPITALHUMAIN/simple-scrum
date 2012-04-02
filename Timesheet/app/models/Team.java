@@ -1,5 +1,7 @@
 package models;
 
+import play.data.validation.Required;
+import play.data.validation.Unique;
 import play.db.jpa.Model;
 
 import javax.persistence.Entity;
@@ -12,7 +14,9 @@ import javax.persistence.Entity;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-public class Team extends Model{
+public class Team extends Model {
+    @Unique(message = "This Profile Name is already used.")
+    @Required
     public String name;
 
     @Override
