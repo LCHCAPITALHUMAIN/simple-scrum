@@ -16,6 +16,8 @@
 *16. Bold the month and title, user name instead of uid
 *17. Selecting the menu based on the current page
  18. AJAX response
+19. Date component
+20. Multiple team selection
 
 var getMessages = function() {
         $.ajax({
