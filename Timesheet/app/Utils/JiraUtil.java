@@ -19,6 +19,14 @@ import java.util.Set;
  */
 public class JiraUtil {
 
+    public void getActuals(String jiraReference) {
+        String query = "SELECT W.STARTDATE \"WORK DATE\", I.ISSUE_KEY JIRA, I.SUMMARY, W.WORKLOGBODY \"COMMENT\", round(W.TIMEWORKED/3600,1) \"TIME IN HOUR\"\n" +
+                "FROM WORKLOG W join REPORT_ISSUE I on W.ISSUEID = I.id\n" +
+                "WHERE I.PROJECT_KEY = 'ENT'\n" +
+                "      and W.AUTHOR = 'desaip'  -- your JIRA ID (refer REPORT_USER table)\n" +
+                "      and W.STARTDATE between TO_DATE('12/03/2012', 'dd/mm/yyyy') and TO_DATE('18/03/2012', 'dd/mm/yyyy')\n" +
+                "ORDER BY W.STARTDATE DESC";
+    }
     public static Set<String> getReleases() {
         Set<String> result = new HashSet<String> ();
         final StringBuffer componentValues = new StringBuffer();
