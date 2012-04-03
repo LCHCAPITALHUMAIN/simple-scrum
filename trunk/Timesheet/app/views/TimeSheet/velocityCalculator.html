@@ -53,6 +53,12 @@
             }
     );
     $(function() {
-        //$("#startDatepicker").datepicker();
+        $("#startDatepicker").datepicker();
+        $("#startDatepicker" ).datepicker( "option", "dateFormat", "dd-mm-yy" );
+        $("#startDatepicker" ).datepicker( "setDate" , '${startDate.format("dd-MM-yyyy")}' );
+
+        $("#endDatepicker").datepicker();
+        $("#endDatepicker" ).datepicker( "option", "dateFormat", "dd-mm-yy" );
+        $("#endDatepicker" ).datepicker( "setDate" , '${endDate.format("dd-MM-yyyy")}' );
     });
 </script>
