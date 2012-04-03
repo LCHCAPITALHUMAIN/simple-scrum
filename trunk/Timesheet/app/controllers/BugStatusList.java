@@ -1,5 +1,6 @@
 package controllers;
 
+import models.BugStatus;
 import play.mvc.With;
 
 /**
@@ -11,5 +12,6 @@ import play.mvc.With;
  */
 @With(Secure.class)
 @Check("admin")
-public class BugStatuss extends CRUD{
+@CRUD.For(models.BugStatus.class)
+public class BugStatusList extends CRUD{
 }
