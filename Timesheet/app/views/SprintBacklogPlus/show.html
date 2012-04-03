@@ -28,7 +28,9 @@
 
                 </select>
             </form>
-
+<button class="btn btn-success" href="#">Day 1</button>
+<button class="btn btn-warning" href="#">Day 2</button>
+<button class="btn btn-danger" href="#">Day 3</button>
             <b>Total Remaining: ${totalRemainingInDays} day(s)</b>
             <table class="table table-striped table-bordered tablesorter" id="tableJiraList">
                 <thead>
@@ -47,9 +49,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                #{list items:jiras, as:'jira'}
+                #{list items:sprintJiras, as:'jira'}
                 <tr>
-                    <td><span class="${jira.jiraDetail.cssClassByCategory}">${jira.jiraDetail.category}</span></td>
+                    <td><span class="${jira.jiraDetail.cssClassByCategory}">${jira.jiraCategory}</span></td>
                     <td>
                         #{if jiraDetail?.counterpartJira}
                             #{if jira.jiraDetail.counterpartJira?.jiraNumber}
@@ -77,14 +79,37 @@
                     <td nowrap><span class="${jira.jiraDetail.cssClassByStatus}">${jira.jiraDetail.status}</span></td>
                     <td>${jira.jiraDetail.assignee}</td>
                     <td>${jira.jiraDetail.team}</td>
-                    <td>${jira.jiraDetail.estimate}</td>
-                    <td>${jira.jiraDetail.actual}</td>
-                    <td>${jira.jiraDetail.remaining}</td>
+                    <td>${jira.sprintEstimate}</td>
+                    <td>
+                        ${jira.actual}
+                        &nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-mini btn-primary"><i class="icon-plus icon-white"></i> Add</a>
+                    </td>
+                    <td>
+                        ${jira.remaining}
+                        &nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-mini btn-primary"><i class="icon-pencil icon-white"></i> Set</a>
+                    </td>
                 </tr>
                 #{/list}
 
                 </tbody>
             </table>
+
+            <a class="btn" data-toggle="modal" href="#myModal" >Launch Modal</a>
+
+            <div class="modal" id="myModal" style="visibility: hidden;">
+                <div class="modal-header">
+                    <a class="close" data-dismiss="modal">×</a>
+
+                    <h3>Modal header</h3>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body…</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn">Close</a>
+                    <a href="#" class="btn btn-primary">Save changes</a>
+                </div>
+            </div>
 
             <script type="text/javascript">
                 $(document).ready(function()
