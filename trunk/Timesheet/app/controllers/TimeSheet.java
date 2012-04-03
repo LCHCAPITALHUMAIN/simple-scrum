@@ -56,6 +56,9 @@ public class TimeSheet extends TimesheetController {
     }
 
     public static void show(int selectedYear, int selectedMonth, Team selectedTeam) {
+        String connectedUser = connected();
+        User user = User.find("userName=?", connected()).first();
+
         Date startDate = CalendarUtil.createDate(1, selectedMonth, selectedYear);
         if (selectedMonth == 0) {
             selectedMonth = CalendarUtil.getMonth(startDate);
@@ -67,10 +70,9 @@ public class TimeSheet extends TimesheetController {
 
         List<User> users;
         if (selectedTeam.id == null) {
-            users = User.all().fetch();
-        } else {
-            users = User.find("team = ?", selectedTeam).fetch();
+            selectedTeam = user.team;
         }
+        users = User.find("team = ?", selectedTeam).fetch();
         Map<User, List<Holiday>> holidayMap = createHolidayMaps(startDate, endDate, users);
         Set<User> managerOf = buildManagerAccess(holidayMap.keySet());
         List<Date> datesBetweenRange = generateDatesBetweenRange(startDate, endDate);
@@ -80,7 +82,6 @@ public class TimeSheet extends TimesheetController {
         List<HolidayType> allHolidayTypes = HolidayType.findAll();
         List<HolidayType> holidayTypes = allHolidayTypes;
 
-        String connectedUser = connected();
         render(holidayMap, datesBetweenRange, years, selectedYear, months, selectedMonth, teams, selectedTeam, allHolidayTypes, holidayTypes, connectedUser, managerOf);
     }
 
