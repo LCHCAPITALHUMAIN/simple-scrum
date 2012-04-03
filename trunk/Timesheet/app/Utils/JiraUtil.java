@@ -170,7 +170,7 @@ public class JiraUtil {
         return jiraDetail;
     }
 
-    private static JiraDetail getJira(final String jiraNumber) {
+    public static JiraDetail getJira(final String jiraNumber) {
 //        if(1 ==1)
 //        return null;
 

@@ -23,6 +23,11 @@ public class Bootstrap extends Job {
 
         }
         HolidayTypeUtil.initIfReqiured();
+
+        if (Sprint.count() == 0) {
+            System.out.println("######## Loaded sprint-data.ym");
+            Fixtures.loadModels("sprint-data.yml");
+        }
     }
 
     private void resetTimeForAllHolidays() {

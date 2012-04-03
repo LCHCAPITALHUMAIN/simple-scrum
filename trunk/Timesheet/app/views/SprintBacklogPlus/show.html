@@ -1,0 +1,113 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<div class="tabbable">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#SprintbacklogIT" data-toggle="tab">Sprintbacklog (IT)</a></li>
+        <li><a href="#SprintbacklogBA" data-toggle="tab">Sprintbacklog (BA)</a></li>
+        <li><a href="#Burndown" data-toggle="tab">Burndown</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="SprintbacklogIT">
+            <form action="/SprintBacklogPlus/show" method="GET" id="frmMain" name="frmMain">
+                Sprint
+                <select name="selectedSprint.id" onchange="$('#frmMain').submit()">
+                    #{list items:sprints, as:'sprint'}
+                    <option value="${sprint.id}"
+                    #{if selectedSprint == sprint}selected#{/if}> ${sprint.sprintName}</option>
+                    #{/list}
+                </select>
+
+                Team
+                <select name="selectedTeam" onchange="$('#frmMain').submit()">
+                    <option value=""> All</option>
+                    #{list items:teams, as:'team'}
+                    <option value="${team}"
+                    #{if selectedTeam == team}selected#{/if}> ${team}</option>
+                    #{/list}
+
+                </select>
+            </form>
+
+            <b>Total Remaining: ${totalRemainingInDays} day(s)</b>
+            <table class="table table-striped table-bordered tablesorter" id="tableJiraList">
+                <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Business Jira</th>
+                    <th>IT Jira</th>
+                    <th>Description</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Assignee</th>
+                    <th>Team</th>
+                    <th>Estimate</th>
+                    <th>Actual</th>
+                    <th>Remaining</th>
+                </tr>
+                </thead>
+                <tbody>
+                #{list items:jiras, as:'jira'}
+                <tr>
+                    <td><span class="${jira.jiraDetail.cssClassByCategory}">${jira.jiraDetail.category}</span></td>
+                    <td>
+                        #{if jiraDetail?.counterpartJira}
+                            #{if jira.jiraDetail.counterpartJira?.jiraNumber}
+                                #{if jira.jiraDetail.counterpartJira?.parentJira}
+                                    #{if jira.jiraDetail.counterpartJira.parentJira?.jiraNumber}
+                            <a href="http://jira.london.echonet/browse/${jira.jiraDetail.counterpartJira.jiraNumber}" data-content="${jira.jiraDetail.counterpartJira.description}" class="jiraLink">${jira.jiraDetail.counterpartJira.jiraNumber}</a><br>&nbsp;&nbsp;
+                                    #{/if}
+                                #{/if}
+                            #{/if}
+                        #{/if}
+                        #{if jiraDetail?.counterpartJira}
+                            #{if jira.jiraDetail.counterpartJira?.jiraNumber}
+                                <a href="http://jira.london.echonet/browse/${jira.jiraDetail.counterpartJira.jiraNumber}" title="${jira.jiraDetail.counterpartJira.jiraNumber}" data-content="${jira.jiraDetail.counterpartJira.description}" class="jiraLink">${jira.jiraDetail.counterpartJira.jiraNumber}</a>
+                            #{/if}
+                        #{/if}
+                    </td>
+                    <td>
+                        #{if jiraDetail?.parentJira}
+                            <a href="http://jira.london.echonet/browse/${jira.jiraDetail.parentJira.jiraNumber}" data-content="${jira.jiraDetail.parentJira.description}" class="jiraLink">${jira.jiraDetail.parentJira.jiraNumber}</a><br>&nbsp;&nbsp;
+                        #{/if}
+                        <a href="http://jira.london.echonet/browse/${jira.jiraDetail.jiraNumber}">${jira.jiraDetail.jiraNumber}</a>
+                    </td>
+                    <td>${jira.jiraDetail.description}</td>
+                    <td>${jira.jiraDetail.priority}</td>
+                    <td nowrap><span class="${jira.jiraDetail.cssClassByStatus}">${jira.jiraDetail.status}</span></td>
+                    <td>${jira.jiraDetail.assignee}</td>
+                    <td>${jira.jiraDetail.team}</td>
+                    <td>${jira.jiraDetail.estimate}</td>
+                    <td>${jira.jiraDetail.actual}</td>
+                    <td>${jira.jiraDetail.remaining}</td>
+                </tr>
+                #{/list}
+
+                </tbody>
+            </table>
+
+            <script type="text/javascript">
+                $(document).ready(function()
+                    {
+                        $("#tableJiraList").tablesorter();
+                        $("#SprintBacklogPlus").addClass("active");
+
+                    }
+                );
+            </script>
+        </div>
+        <div class="tab-pane" id="SprintbacklogBA">
+            <p>Yet to come.</p>
+        </div>
+        <div class="tab-pane" id="Burndown">
+            <p>Yet to come.</p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $().ready(function () {
+        $("a.jiraLink").popover({});;
+
+    });
+
+</script>
