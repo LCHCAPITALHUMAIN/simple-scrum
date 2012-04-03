@@ -1,0 +1,35 @@
+# JIRA START
+models.SprintJira(jiraENT3416):
+  jiraNumber: ENT-3416
+  initialEstimate: 10
+
+models.SprintJira(jiraENT3411):
+  jiraNumber: ENT-3411
+  initialEstimate: 10
+
+models.SprintJira(jiraENT3520):
+  jiraNumber: ENT-3520
+  initialEstimate: 10
+
+
+models.SprintJira(jiraENT3526):
+  jiraNumber: ENT-3526
+  initialEstimate: 10
+
+# JIRA END
+
+# Sprint START
+
+models.Sprint(sprint90):
+  sprintNumber: 90
+  startDate: 2012-03-19
+  endDate: 2012-03-30
+  jiras:  [jiraENT3416, jiraENT3411]
+
+models.Sprint(sprint91):
+  sprintNumber: 91
+  startDate: 2012-04-02
+  endDate: 2012-04-13
+  jiras:  [jiraENT3520, jiraENT3526]
+
+# Sprint END

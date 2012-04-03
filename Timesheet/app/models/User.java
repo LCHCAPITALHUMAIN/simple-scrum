@@ -45,7 +45,7 @@ public class User extends Model{
     @ManyToMany
     public Set<Team> managerFor = new HashSet<Team>();
 
-    public float devPart;
+    public Float devPart;
 
     public User(String userName) {
         this.userName = userName;

@@ -5,6 +5,7 @@ import models.PublicHoliday;
 import org.apache.commons.lang.time.DateUtils;
 import play.db.jpa.GenericModel;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -92,4 +93,7 @@ public class CalendarUtil {
         return resetTime(calendar.getTime());
     }
 
+    public static String formatDate(Date date) {
+        return new SimpleDateFormat("MM-dd-yyyy").format(date);
+    }
 }
