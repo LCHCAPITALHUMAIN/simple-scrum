@@ -28,10 +28,21 @@
 
                 </select>
             </form>
+
+
+
+    <table>
+    <tr>
+    <td><div class="progress progress-success progress-striped" style="width: 60px;"><div class="bar" style="width: 100%;" >Day 1</div></div></td>
+    <td><div class="progress progress-warning progress-striped" style="width: 60px;"><div class="bar" style="width: 70%;" >Day 2</div></div></td>
+    <td><div class="progress progress-danger progress-striped" style="width: 60px;"><div class="bar" style="width: 100%;" >Day 3</div></div></td>
+    </tr>
+        </table>
+
 <button class="btn btn-success" href="#">Day 1</button>
-<button class="btn btn-warning" href="#">Day 2</button>
+<button class="btn btn-warning" href="#">Day 2 (4 Hrs)</button>
 <button class="btn btn-danger" href="#">Day 3</button>
-            <b>Total Remaining: ${totalRemainingInDays} day(s)</b>
+            <p>Total Remaining: ${totalRemainingInDays} day(s)</p>
             <table class="table table-striped table-bordered tablesorter" id="tableJiraList">
                 <thead>
                 <tr>
@@ -101,8 +112,22 @@
                     <h3>Add actuals</h3>
                 </div>
                 <div class="modal-body">
-                    <p>Date: <input id="datepicker" type="text">
+                    <p>Kunal: 1 Day</p>
+                    <p>Pranav: 2.5 Day</p>
+                    <p>
                     <select>
+                        <option>Day 1</option>
+                        <option>Day 2</option>
+                        <option>Day 3</option>
+                        <option>Day 4</option>
+                        <option>Day 5</option>
+                        <option>Day 6</option>
+                        <option>Day 7</option>
+                        <option>Day 8</option>
+                        <option>Day 9</option>
+                        <option>Day 10</option>
+                    </select>
+                    Time<select>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -115,8 +140,8 @@
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" class="btn">Close</a>
-                    <a href="#" class="btn btn-primary">Save changes</a>
+                    <a href="#" class="btn"  data-dismiss="modal">Close</a>
+                    <a href="#" class="btn btn-primary">Save</a>
                 </div>
             </div>
 
@@ -144,10 +169,4 @@
 
     });
 
-</script>
-
-<script>
-	$(function() {
-		$( "#datepicker" ).datepicker();
-	});
 </script>
