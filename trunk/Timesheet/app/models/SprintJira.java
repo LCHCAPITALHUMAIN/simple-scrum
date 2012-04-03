@@ -2,7 +2,6 @@ package models;
 
 import Utils.JiraDetail;
 import Utils.JiraUtil;
-import org.hibernate.annotations.CollectionOfElements;
 import play.data.validation.Required;
 import play.data.validation.Unique;
 import play.db.jpa.Model;
@@ -11,7 +10,6 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.
@@ -25,10 +23,14 @@ public class SprintJira extends Model {
     public String jiraNumber;
 
     @Required
-    public Float SprintEstimate;
+    @ManyToOne
+    public JiraCategory jiraCategory;
+
+    @Required
+    public Float sprintEstimate;
 
     @Transient
-    private JiraDetail jiraDetail;
+    private JiraDetail jiraDetail ;
 
     @ManyToOne
     @Unique(message = "This jira is already linked with the sprint.")
@@ -36,26 +38,59 @@ public class SprintJira extends Model {
 
 
 
-//    @ManyToMany
-//    public Map<Date, Float> remaining;
-
     @OneToMany
     public List<Actual> actuals = new ArrayList<Actual>();
+
+    @OneToMany
+    public List<Remaining> remainings = new ArrayList<Remaining>();
 
 
     @Override
     public String toString() {
-        return String.format("%s %s", sprint.getSprintName(), jiraNumber);
+        return String.format("%s %s", sprint, jiraNumber);
+        //return String.format("%s %s", sprint.getSprintName(), jiraNumber);
     }
 
     public JiraDetail getJiraDetail() {
         if (jiraDetail == null) {
-            jiraDetail = JiraUtil.getJira(jiraNumber);
+            jiraDetail = new JiraDetail();
+            //jiraDetail = JiraUtil.getJira(jiraNumber);
         }
         return jiraDetail;
     }
 
     public void setJiraDetail(JiraDetail jiraDetail) {
         this.jiraDetail = jiraDetail;
+    }
+
+    public Float getRemaining() {
+        if (remainings.isEmpty()) {
+            return calculateRemaining();
+        }
+        Float finalRemaining = remainings.get(0).remaining;
+        Date finalRemainingDate = remainings.get(0).date;
+
+        for (Remaining remaining : remainings) {
+            if (remaining.date.after(finalRemainingDate)) {
+                finalRemaining = remaining.remaining;
+                finalRemainingDate = remaining.date;
+            }
+        }
+        return finalRemaining;
+
+    }
+
+    private Float calculateRemaining() {
+        //return sprintEstimate - getActual();
+        return 0.0F;
+    }
+
+    private Float getActual() {
+        Float cumulatedActual=0F;
+        for (Actual actual : actuals) {
+            cumulatedActual += actual.actual;
+        }
+
+        return cumulatedActual;
     }
 }

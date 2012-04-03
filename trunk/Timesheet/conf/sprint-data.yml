@@ -1,20 +1,37 @@
+# JiraCategory START
+models.JiraCategory(JiraCategoryPlanned):
+  name: Planned
+
+models.JiraCategory(JiraCategoryUnPlanned):
+  name: Unplanned
+
+models.JiraCategory(JiraCategoryTransversal):
+  name: Transversal
+# JiraCategory END
+
+
+
 # JIRA START
 models.SprintJira(jiraENT3416):
   jiraNumber: ENT-3416
-  initialEstimate: 10
+  jiraCategory:  JiraCategoryUnPlanned
+  sprintEstimate: 10
 
 models.SprintJira(jiraENT3411):
   jiraNumber: ENT-3411
-  initialEstimate: 10
+  jiraCategory:  JiraCategoryPlanned
+  sprintEstimate: 10
 
 models.SprintJira(jiraENT3520):
   jiraNumber: ENT-3520
-  initialEstimate: 10
+  jiraCategory:  JiraCategoryPlanned
+  sprintEstimate: 10
 
 
 models.SprintJira(jiraENT3526):
   jiraNumber: ENT-3526
-  initialEstimate: 10
+  jiraCategory:  JiraCategoryPlanned
+  sprintEstimate: 10
 
 # JIRA END
 
