@@ -102,18 +102,18 @@ public class TimeSheet extends TimesheetController {
 
     public static void createOrUpdate(Holiday holiday) {
 //        if (!managerOf(holiday.user)) {
-//            renderJSON("Failure");
+//            renderJSONResult("Failure");
 //        }
         if (HolidayTypeUtil.getPublicHoliday().equals(holiday.holidayType)) {
-            renderJSON("Public holiday can be set only by the administrator using the admin module");
+            renderJSONResult("Public holiday can be set only by the administrator using the admin module");
         }
         if (HolidayTypeUtil.getWeekend().equals(holiday.holidayType) && !CalendarUtil.isWeekend(holiday.date)) {
-            renderJSON("The selected day is not a weekend.");
+            renderJSONResult("The selected day is not a weekend.");
         }
         holiday.date = CalendarUtil.resetTime(holiday.date);
         holiday.save();
         System.out.println("## updated holiday");
-        renderJSON("Success");
+        renderJSONSuccessResult();
     }
 
     private static boolean managerOf(User user) {

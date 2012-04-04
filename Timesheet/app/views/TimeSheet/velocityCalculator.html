@@ -2,9 +2,9 @@
 #{set title:'Velocity Calculator' /}
 <form action="/Timesheet/velocityCalculator" method="GET" id="frmMain" name="frmMain">
     <div class="demo">
-        Start date: <input id="startDatepicker" type="text" value="${startDate.format(" dd-MM-yyyy")}" onchange="$('#frmMain').submit()" name="startDate">
+        Start date: <input id="startDatepicker" type="text" value="${startDate.format("dd-MM-yyyy")}" onchange="$('#frmMain').submit()" name="startDate">
 
-        End date: <input id="endDatepicker" type="text" value="${endDate.format(" dd-MM-yyyy")}" onchange="$('#frmMain').submit()" name="endDate">
+        End date: <input id="endDatepicker" type="text" value="${endDate.format("dd-MM-yyyy")}" onchange="$('#frmMain').submit()" name="endDate">
         Team
         <select name="selectedTeam.id" onchange="$('#frmMain').submit()">
             #{list items:teams, as:'team'}

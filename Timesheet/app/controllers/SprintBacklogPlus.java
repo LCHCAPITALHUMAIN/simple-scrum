@@ -1,12 +1,14 @@
 package controllers;
 
+import Utils.CalendarUtil;
+import Utils.DateIterator;
 import Utils.JiraDetail;
-import models.SprintJira;
-import models.Sprint;
+import models.*;
 import play.mvc.With;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
+import static controllers.Secure.Security.connected;
 
 /**
  * Created by IntelliJ IDEA.
@@ -18,6 +20,41 @@ import java.util.List;
 @With(Secure.class)
 
 public class SprintBacklogPlus extends TimesheetController{
+    public static void saveRemaining(SprintJira jira, Date date,Float timeInHours) {
+        if (jira.id == null) {
+            System.out.println("Failed...missing jira ino");
+            renderJSONResult("Failed");
+        }
+        Remaining remaining = new Remaining();
+        remaining.remaining = timeInHours;
+        remaining.date = date;
+        remaining.save();
+
+        jira.remainings.add(remaining);
+        jira.save();
+
+        System.out.println(String.format("Saved actual: %s %s %s", remaining.date, remaining.remaining, jira.jiraNumber));
+        renderJSONSuccessResult();
+    }
+
+    public static void saveActual(SprintJira jira, Date date, Float timeInHours) {
+        if (jira.id == null) {
+            System.out.println("Failed...missing jira ino");
+            renderJSONResult("Failed");
+        }
+        Actual actual = new Actual();
+        actual.user = User.find("userName=?", connected()).first();
+        actual.actual = timeInHours;
+        actual.date = date;
+        actual.save();
+
+        jira.actuals.add(actual);
+        jira.save();
+
+        System.out.println(String.format("Saved actual: %s %s %s %s", actual.user.fullName, actual.date, actual.actual, jira.jiraNumber));
+        renderJSONSuccessResult();
+    }
+
     public static void show(Sprint selectedSprint, String selectedTeam) {
         List<String> columnHeaders = generateColumnHeader();
         List<Sprint> sprints = Sprint.findAll();
@@ -29,7 +66,20 @@ public class SprintBacklogPlus extends TimesheetController{
 //            jiraDetails = filterTeam(jiraDetails, selectedTeam);
 //        }
         double totalRemainingInDays = calcualteTotalRemaining(sprintJiras);
-        render(totalRemainingInDays, selectedTeam, selectedSprint, sprints, columnHeaders, sprintJiras);
+        Map<Date, String> sprintDays = generateSprintDays(selectedSprint);
+        render(totalRemainingInDays, selectedTeam, selectedSprint, sprints, columnHeaders, sprintJiras, sprintDays);
+    }
+
+    private static Map<Date, String> generateSprintDays(Sprint sprint) {
+        TreeMap<Date, String> sprintDays = new TreeMap<Date, String>();
+        DateIterator dateIterator = new DateIterator(sprint.startDate, sprint.endDate);
+        int i=1;
+        for (Date date : dateIterator) {
+            if (!CalendarUtil.isWeekend(date)) {
+                sprintDays.put(date, "Day " + i++);
+            }
+        }
+        return sprintDays;
     }
 
 
