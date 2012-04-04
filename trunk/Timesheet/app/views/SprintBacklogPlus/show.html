@@ -134,6 +134,17 @@
                 </div>
 
                 <div class="modal hide" id="setRemainingModal${jira.jiraNumber}">
+                    <div id="remainingDiv${jira.jiraNumber}" style="height:400px;width:300px; visibility: visible; "></div>
+                    <script type="text/javascript">
+                        $('#setRemainingModal${jira.jiraNumber}').on('shown', function (e) {
+                            $.jqplot('remainingDiv${jira.jiraNumber}',  [
+                                                        [[0, 100],[1, 90],[2,80],[3,70],[4,60],[5,50],[6,40],[7,30],[8,20],[9,10],[10,0]],
+                                                        [[0, 100],[1, 95],[2,85],[3,75],[4,65],[5,50],[6,40],[7,30],[8,25],[9,10],[10,0]]
+                                                    ]);
+
+                        });
+                    </script>
+
                     <form id="remainingForm${jira.jiraNumber}">
                         <input name="jira.id" value="${jira.id}" type="hidden">
                         <div class="modal-header">
@@ -179,8 +190,7 @@
             <p>Yet to come.</p>
         </div>
         <div class="tab-pane" id="Burndown">
-            <div id="chartdiv" style="height:400px;width:300px; visibility: visible; "></div>
-
+            <div id="burnDownDiv" style="height:400px;width:300px; visibility: visible; "></div>
         </div>
     </div>
 </div>
@@ -189,8 +199,7 @@
         $("a.jiraLink").popover({});
 
         $('#BurndownTabTitle').on('shown', function (e) {
-//            $.jqplot('chartdiv',  [[[1, 2],[3,5.12],[5,13.1],[7,33.6],[9,85.9],[11,219.9]]]);
-            $.jqplot('chartdiv',  [
+            $.jqplot('burnDownDiv',  [
                                         [[0, 100],[1, 90],[2,80],[3,70],[4,60],[5,50],[6,40],[7,30],[8,20],[9,10],[10,0]],
                                         [[0, 100],[1, 95],[2,85],[3,75],[4,65],[5,50],[6,40],[7,30],[8,25],[9,10],[10,0]]
                                     ]);
