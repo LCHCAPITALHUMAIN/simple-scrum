@@ -1099,7 +1099,7 @@ table .span24 {
 [class^="icon-"]:last-child, [class*=" icon-"]:last-child {
 }
 .icon-white {
-    background-image: url("../img/glyphicons-halflings-white.png");
+    background-image: url("../images/glyphicons-halflings-white.png");
 }
 .icon-glass {
     background-position: 0 0;
