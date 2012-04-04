@@ -5,7 +5,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a href="#SprintbacklogIT" data-toggle="tab">Sprintbacklog (IT)</a></li>
         <li><a href="#SprintbacklogBA" data-toggle="tab">Sprintbacklog (BA)</a></li>
-        <li><a href="#Burndown" data-toggle="tab">Burndown</a></li>
+        <li><a href="#Burndown" data-toggle="tab" id="BurndownTabTitle"">Burndown</a></li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane active" id="SprintbacklogIT">
@@ -178,14 +178,22 @@
             <p>Yet to come.</p>
         </div>
         <div class="tab-pane" id="Burndown">
-            <p>Yet to come.</p>
+            <div id="chartdiv" style="height:400px;width:300px; visibility: visible; "></div>
+
         </div>
     </div>
 </div>
 <script type="text/javascript">
     $().ready(function () {
-        $("a.jiraLink").popover({});;
+        $("a.jiraLink").popover({});
 
+        $('#BurndownTabTitle').on('shown', function (e) {
+//            $.jqplot('chartdiv',  [[[1, 2],[3,5.12],[5,13.1],[7,33.6],[9,85.9],[11,219.9]]]);
+            $.jqplot('chartdiv',  [
+                                        [[0, 100],[1, 90],[2,80],[3,70],[4,60],[5,50],[6,40],[7,30],[8,20],[9,10],[10,0]],
+                                        [[0, 100],[1, 95],[2,85],[3,75],[4,65],[5,50],[6,40],[7,30],[8,25],[9,10],[10,0]]
+                                    ]);
+        });
     });
 
 </script>
