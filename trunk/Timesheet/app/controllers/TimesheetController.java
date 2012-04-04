@@ -10,7 +10,14 @@ import play.mvc.Controller;
  * Time: 11:51
  * To change this template use File | Settings | File Templates.
  */
-public class TimesheetController extends Controller{
+public class TimesheetController extends Controller {
+    public static void renderJSONSuccessResult() {
+        renderJSONResult("Success");
+    }
+    public static void renderJSONResult(String result) {
+        renderJSON(new JSONResult(result));
+    }
+
     @Before
     public static void setVariables() {
 //        renderArgs.put("selectedMenu", "Naz");

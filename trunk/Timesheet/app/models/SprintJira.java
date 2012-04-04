@@ -53,8 +53,8 @@ public class SprintJira extends Model {
 
     public JiraDetail getJiraDetail() {
         if (jiraDetail == null) {
-            jiraDetail = new JiraDetail();
-            //jiraDetail = JiraUtil.getJira(jiraNumber);
+//            jiraDetail = new JiraDetail();
+            jiraDetail = JiraUtil.getJira(jiraNumber);
         }
         return jiraDetail;
     }
@@ -81,8 +81,7 @@ public class SprintJira extends Model {
     }
 
     private Float calculateRemaining() {
-        //return sprintEstimate - getActual();
-        return 0.0F;
+        return sprintEstimate - getActual();
     }
 
     private Float getActual() {

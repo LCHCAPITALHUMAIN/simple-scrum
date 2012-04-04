@@ -33,15 +33,12 @@
 
     <table>
     <tr>
-    <td><div class="progress progress-success progress-striped" style="width: 60px;"><div class="bar" style="width: 100%;" >Day 1</div></div></td>
-    <td><div class="progress progress-warning progress-striped" style="width: 60px;"><div class="bar" style="width: 70%;" >Day 2</div></div></td>
-    <td><div class="progress progress-danger progress-striped" style="width: 60px;"><div class="bar" style="width: 100%;" >Day 3</div></div></td>
+    <td><div class="progress progress-success progress-striped" style="width: 60px;"><div class="bar" style="width: 100%; color: #000000;" >Day&nbsp;1</div></div></td>
+    <td><div class="progress progress-warning progress-striped" style="width: 60px;"><div class="bar" style="width: 20%; color: #000000;" >Day&nbsp;2</div></div></td>
+    <td><div class="progress progress-danger progress-striped" style="width: 60px;"><div class="bar" style="width: 100%; color: #000000;" >Day&nbsp;3</div></div></td>
     </tr>
-        </table>
+    </table>
 
-<button class="btn btn-success" href="#">Day 1</button>
-<button class="btn btn-warning" href="#">Day 2 (4 Hrs)</button>
-<button class="btn btn-danger" href="#">Day 3</button>
             <p>Total Remaining: ${totalRemainingInDays} day(s)</p>
             <table class="table table-striped table-bordered tablesorter" id="tableJiraList">
                 <thead>
@@ -83,7 +80,7 @@
                         #{if jiraDetail?.parentJira}
                             <a href="http://jira.london.echonet/browse/${jira.jiraDetail.parentJira.jiraNumber}" data-content="${jira.jiraDetail.parentJira.description}" class="jiraLink">${jira.jiraDetail.parentJira.jiraNumber}</a><br>&nbsp;&nbsp;
                         #{/if}
-                        <a href="http://jira.london.echonet/browse/${jira.jiraDetail.jiraNumber}">${jira.jiraDetail.jiraNumber}</a>
+                        <a href="http://jira.london.echonet/browse/${jira.jiraDetail.jiraNumber}">${jira.jiraNumber}</a>
                     </td>
                     <td>${jira.jiraDetail.description}</td>
                     <td>${jira.jiraDetail.priority}</td>
@@ -93,76 +90,80 @@
                     <td>${jira.sprintEstimate}</td>
                     <td>
                         ${jira.actual}
-                        &nbsp;&nbsp;&nbsp;<a class="btn btn-mini btn-primary" data-toggle="modal" href="#addActualModal"><i class="icon-plus icon-white"></i> Add</a>
+                        &nbsp;&nbsp;&nbsp;<a class="btn btn-mini btn-primary" data-toggle="modal" href="#addActualModal${jira.jiraNumber}"><i class="icon-plus icon-white"></i> Add</a>
                     </td>
                     <td>
                         ${jira.remaining}
-                        &nbsp;&nbsp;&nbsp;<a class="btn btn-mini btn-primary" data-toggle="modal" href="#setRemainingModal"><i class="icon-pencil icon-white"></i> Set</a>
+                        &nbsp;&nbsp;&nbsp;<a class="btn btn-mini btn-primary" data-toggle="modal" href="#setRemainingModal${jira.jiraNumber}"><i class="icon-pencil icon-white"></i> Set</a>
                     </td>
                 </tr>
+
+                <div class="modal hide" id="addActualModal${jira.jiraNumber}">
+                    <form id="actualForm${jira.jiraNumber}">
+                        <input name="jira.id" value="${jira.id}" type="hidden">
+                        <div class="modal-header">
+                            <a class="close" data-dismiss="modal">×</a>
+                            <h3>Add actuals: ${jira.jiraNumber} Fit test correction</h3>
+                        </div>
+                        <div class="modal-body">
+                            <p>Kunal: 1 Day</p>
+                            <p>Pranav: 2.5 Day</p>
+                            <p>
+                            <select name="date">
+                                #{list items:sprintDays, as:'sprintDay'}
+                                    <option value='${sprintDay.key.format("dd-MM-yyyy")}'>${sprintDay.value}</option>
+                                #{/list}
+                            </select>
+                            Time<select name="timeInHours">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                            </select>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#" class="btn"  data-dismiss="modal">Close</a>
+                            <a href="#" class="btn btn-primary" onclick="saveActual('${jira.jiraNumber}')">Save</a>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal hide" id="setRemainingModal${jira.jiraNumber}">
+                    <form id="remainingForm${jira.jiraNumber}">
+                        <input name="jira.id" value="${jira.id}" type="hidden">
+                        <div class="modal-header">
+                            <a class="close" data-dismiss="modal">×</a>
+
+                            <h3>Set Remaining: ENT-2313 Fit test correction</h3>
+                        </div>
+                        <div class="modal-body">
+                            <p>Day 1: 1 Day</p>
+                            <p>Day 4: 2.5 Day</p>
+                            <p>
+                            Day
+                                <select name="date">
+                                #{list items:sprintDays, as:'sprintDay'}
+                                    <option value='${sprintDay.key.format("dd-MM-yyyy")}'>${sprintDay.value}</option>
+                                #{/list}
+                                </select>
+                                <input type="text" name="timeInHours"/>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#" class="btn"  data-dismiss="modal">Close</a>
+                            <a href="#" class="btn btn-primary" onclick="saveRemaining('${jira.jiraNumber}')">Save</a>
+                        </div>
+                    </form>
+                </div>
                 #{/list}
 
                 </tbody>
             </table>
-
-            <div class="modal hide" id="addActualModal">
-                <div class="modal-header">
-                    <a class="close" data-dismiss="modal">×</a>
-
-                    <h3>Add actuals: ENT-2313 Fit test correction</h3>
-                </div>
-                <div class="modal-body">
-                    <p>Kunal: 1 Day</p>
-                    <p>Pranav: 2.5 Day</p>
-                    <p>
-                    <select>
-                        <option>Day 1</option>
-                        <option>Day 2</option>
-                        <option>Day 3</option>
-                        <option>Day 4</option>
-                        <option>Day 5</option>
-                        <option>Day 6</option>
-                        <option>Day 7</option>
-                        <option>Day 8</option>
-                        <option>Day 9</option>
-                        <option>Day 10</option>
-                    </select>
-                    Time<select>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                    </select>
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <a href="#" class="btn"  data-dismiss="modal">Close</a>
-                    <a href="#" class="btn btn-primary">Save</a>
-                </div>
-            </div>
-
-            <div class="modal hide" id="setRemainingModal">
-                <div class="modal-header">
-                    <a class="close" data-dismiss="modal">×</a>
-
-                    <h3>Set Remaining: ENT-2313 Fit test correction</h3>
-                </div>
-                <div class="modal-body">
-                    <p>Day 1: 1 Day</p>
-                    <p>Day 4: 2.5 Day</p>
-                    <p>
-                    Remaining <input type="text" />
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <a href="#" class="btn"  data-dismiss="modal">Close</a>
-                    <a href="#" class="btn btn-primary">Save</a>
-                </div>
-            </div>
 
             <script type="text/javascript">
                 $(document).ready(function()
@@ -196,4 +197,15 @@
         });
     });
 
+    function saveActual(jiraReference) {
+         $.post('/SprintBacklogPlus/saveActual', $('#actualForm' + jiraReference).serializeArray(), function(data) {
+             $("#addActualModal" + jiraReference).modal('hide');
+        }, "json");
+    }
+
+    function saveRemaining(jiraReference) {
+         $.post('/SprintBacklogPlus/saveRemaining', $('#remainingForm' + jiraReference).serializeArray(), function(data) {
+             $("#setRemainingModal" + jiraReference).modal('hide');
+        }, "json");
+    }
 </script>

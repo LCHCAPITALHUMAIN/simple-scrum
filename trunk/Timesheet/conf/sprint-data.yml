@@ -9,44 +9,88 @@ models.JiraCategory(JiraCategoryTransversal):
   name: Transversal
 # JiraCategory END
 
-
-
-# JIRA START
-models.SprintJira(jiraENT3416):
-  jiraNumber: ENT-3416
-  jiraCategory:  JiraCategoryUnPlanned
-  sprintEstimate: 10
-
-models.SprintJira(jiraENT3411):
-  jiraNumber: ENT-3411
-  jiraCategory:  JiraCategoryPlanned
-  sprintEstimate: 10
-
-models.SprintJira(jiraENT3520):
-  jiraNumber: ENT-3520
-  jiraCategory:  JiraCategoryPlanned
-  sprintEstimate: 10
-
-
-models.SprintJira(jiraENT3526):
-  jiraNumber: ENT-3526
-  jiraCategory:  JiraCategoryPlanned
-  sprintEstimate: 10
-
-# JIRA END
-
 # Sprint START
 
 models.Sprint(sprint90):
   sprintNumber: 90
   startDate: 2012-03-19
   endDate: 2012-03-30
-  jiras:  [jiraENT3416, jiraENT3411]
 
 models.Sprint(sprint91):
   sprintNumber: 91
   startDate: 2012-04-02
   endDate: 2012-04-13
-  jiras:  [jiraENT3520, jiraENT3526]
 
 # Sprint END
+
+# JIRA START
+models.SprintJira(jiraENT3416):
+  jiraNumber: ENT-3416
+  jiraCategory:  JiraCategoryUnPlanned
+  sprintEstimate: 10
+  sprint: sprint90
+
+models.SprintJira(jiraENT3411):
+  jiraNumber: ENT-3411
+  jiraCategory:  JiraCategoryPlanned
+  sprintEstimate: 10
+  sprint: sprint90
+
+models.SprintJira(jiraENT3520):
+  jiraNumber: ENT-3520
+  jiraCategory:  JiraCategoryPlanned
+  sprintEstimate: 4
+  sprint: sprint91
+
+models.SprintJira(jiraENT3526):
+  jiraNumber: ENT-3526
+  jiraCategory:  JiraCategoryPlanned
+  sprintEstimate: 4
+  sprint: sprint91
+
+models.SprintJira(jiraENT3524):
+  jiraNumber: ENT-3524
+  jiraCategory:  JiraCategoryPlanned
+  sprintEstimate: 4
+  sprint: sprint91
+
+
+models.SprintJira(jiraENT3490):
+  jiraNumber: ENT-3490
+  jiraCategory:  JiraCategoryPlanned
+  sprintEstimate: 2
+  sprint: sprint91
+
+models.SprintJira(jiraENT3488):
+  jiraNumber: ENT-3488
+  jiraCategory:  JiraCategoryPlanned
+  sprintEstimate: 12
+  sprint: sprint91
+
+models.SprintJira(jiraENT3528):
+  jiraNumber: ENT-3528
+  jiraCategory:  JiraCategoryPlanned
+  sprintEstimate: 72
+  sprint: sprint91
+
+models.SprintJira(jiraENT3492):
+  jiraNumber: ENT-3492
+  jiraCategory:  JiraCategoryPlanned
+  sprintEstimate: 12
+  sprint: sprint91
+
+models.SprintJira(jiraENT3489):
+  jiraNumber: ENT-3489
+  jiraCategory:  JiraCategoryPlanned
+  sprintEstimate: 6
+  sprint: sprint91
+
+models.SprintJira(jiraENT3525):
+  jiraNumber: ENT-3525
+  jiraCategory:  JiraCategoryPlanned
+  sprintEstimate: 2
+  sprint: sprint91
+
+# JIRA END
+
+
