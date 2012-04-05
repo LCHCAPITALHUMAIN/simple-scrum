@@ -35,7 +35,7 @@
     <tr>
         #{list items:acutalsOfLoggedUser, as:'acutalsOfLoggedUser'}
              <td>
-                 <div class="popoverMarker progress progress-${acutalsOfLoggedUser.value.color()} progress-striped" style="width: 60px;" data-content="${acutalsOfLoggedUser.value} hours">
+                 <div class="popoverMarker progress progress-${acutalsOfLoggedUser.value.color()} progress-striped" style="width: 60px;" data-content="${acutalsOfLoggedUser.value}">
                      <div class="bar" style="width: ${acutalsOfLoggedUser.value.inPercentage()}%; color: #000000;" >#{verbatim}${selectedSprint.sprintDays.get(acutalsOfLoggedUser.key).htmlSpace()} #{/verbatim}</div>
                  </div>
              </td>
@@ -94,10 +94,10 @@
                     <td>${jira.jiraDetail.team}</td>
                     <td>${jira.sprintEstimate}</td>
                     <td>
-                        ${jira.actual.inDays()}
+                        ${jira.actual}
                     </td>
                     <td>
-                        ${jira.getActual(loggedUser).inDays()}
+                        ${jira.getActual(loggedUser)}
                         &nbsp;&nbsp;&nbsp;<a class="btn btn-mini btn-primary" data-toggle="modal" href="#addActualModal${jira.jiraNumber}"><i class="icon-plus icon-white"></i> Add</a>
                     </td>
                     <td>
@@ -123,15 +123,15 @@
                                     <option value='${sprintDay.key.format("dd-MM-yyyy")}'>${sprintDay.value}</option>
                                 #{/list}
                             </select>
-                            Time<select name="timeInHours">
-                                <option value="1">1 Hour</option>
-                                <option value="2">2 Hours</option>
-                                <option value="3">3 Hours</option>
-                                <option value="4">4 Hours</option>
-                                <option value="5">5 Hours</option>
-                                <option value="6">6 Hours</option>
-                                <option value="7">7 Hours</option>
-                                <option value="8">8 Hours</option>
+                            Time<select name="timeInDays">
+                                <option value="0.125">1 Hour</option>
+                                <option value="0.25">2 Hours</option>
+                                <option value="0.375">3 Hours</option>
+                                <option value="0.5">4 Hours</option>
+                                <option value="0.625">5 Hours</option>
+                                <option value="0.75">6 Hours</option>
+                                <option value="0.875">7 Hours</option>
+                                <option value="1">8 Hours</option>
                             </select>
                             </p>
                         </div>
@@ -160,7 +160,7 @@
                                     <option value='${sprintDay.key.format("dd-MM-yyyy")}' ${sprintDay.key.equals(currentDay)?"selected":""}>${sprintDay.value}</option>
                                 #{/list}
                                 </select>
-                                <input type="text" name="timeInHours" value="${jira.remaining}"/>
+                                <input type="text" name="timeInDays" value="${jira.remaining}"/>
                             </p>
                         </div>
                         <div class="modal-footer">
