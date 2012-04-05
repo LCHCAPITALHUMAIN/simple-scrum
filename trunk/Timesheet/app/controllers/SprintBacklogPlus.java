@@ -18,31 +18,31 @@ import static controllers.Secure.Security.connected;
 @With(Secure.class)
 
 public class SprintBacklogPlus extends TimesheetController{
-    public static void saveRemaining(SprintJira jira, Date date,Float timeInHours) {
+    public static void saveRemaining(SprintJira jira, Date date,Float timeInDays) {
         if (jira.id == null) {
             System.out.println("Failed...missing jira ino");
             renderJSONResult("Failed");
         }
         Remaining remaining = new Remaining();
-        remaining.remaining = timeInHours;
+        remaining.remaining = timeInDays;
         remaining.date = date;
         remaining.save();
 
         jira.remainings.add(remaining);
         jira.save();
 
-        System.out.println(String.format("Saved actual: %s %s %s", remaining.date, remaining.remaining, jira.jiraNumber));
+        System.out.println(String.format("Saved remaining: %s %s %s", remaining.date, remaining.remaining, jira.jiraNumber));
         renderJSONSuccessResult();
     }
 
-    public static void saveActual(SprintJira jira, Date date, Float timeInHours) {
+    public static void saveActual(SprintJira jira, Date date, Float timeInDays) {
         if (jira.id == null) {
             System.out.println("Failed...missing jira ino");
             renderJSONResult("Failed");
         }
         Actual actual = new Actual();
         actual.user = User.find("userName=?", connected()).first();
-        actual.actual = timeInHours;
+        actual.actual = timeInDays;
         actual.date = date;
         actual.save();
 
@@ -61,7 +61,7 @@ public class SprintBacklogPlus extends TimesheetController{
         List<SprintJira> sprintJiras = SprintJira.find("sprint=?", selectedSprint).fetch();
         selectedSprint.sprintJiras = sprintJiras;
 
-        double totalRemainingInDays = selectedSprint.calcualteTotalRemaining();
+        double totalRemainingInDays = selectedSprint.getRemaining();
         Date currentDay = CalendarUtil.resetTime(new Date());
 
         User loggedUser = User.find("userName=?", connected()).first();

@@ -37,7 +37,7 @@ public class Sprint extends Model {
         return String.format("Sprint %s", sprintNumber);
     }
 
-    public double calcualteTotalRemaining() {
+    public double getRemaining() {
         double totalRemaining = 0;
         for (SprintJira sprintJira : sprintJiras) {
             totalRemaining += sprintJira.getRemaining();
