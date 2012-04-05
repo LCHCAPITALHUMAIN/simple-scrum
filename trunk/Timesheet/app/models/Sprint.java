@@ -46,6 +46,14 @@ public class Sprint extends Model {
         return totalRemaining;
     }
 
+    public Float getRemaining(int day) {
+        Float remainingOfTheDay = 0F;
+        for (SprintJira sprintJira : sprintJiras) {
+            remainingOfTheDay += sprintJira.getRemaining(day);
+        }
+        return remainingOfTheDay;
+    }
+
 
     public Map<Date, String> getSprintDays() {
         if (sprintDays == null) {
@@ -101,23 +109,43 @@ public class Sprint extends Model {
     public Map<Float, Float> getDataForBurnDownchart() {
         Float estimate = getEstimate();
         int numberOfDays = getNumberOfDays();
-
+        Float caloriesPerDay = estimate / numberOfDays;
 
         Map<Float, Float> result = new TreeMap<Float, Float>();
-        //TODO
+
+        for (Date date : getSprintDays().keySet()) {
+            int i = getDayIndex(date);
+            result.put(estimate, getRemaining(i));
+            estimate -= (i * caloriesPerDay);
+        }
+
         return result;
 
     }
 
-    private int getNumberOfDays() {
+    private int getDayIndex(Date date) {
+        int index = 0;
+
+        for (Date date1 : getSprintDays().keySet()) {
+            index++;
+            if (DateUtils.isSameDay(date1, date)) {
+                return index ;
+            }
+        }
+        throw new IllegalArgumentException(String.format("Invalid date passed to find the index. Date: %s, SprintDays", date, getSprintDays().keySet()));
+    }
+
+    public int getNumberOfDays() {
         return getSprintDays().size();
     }
 
-    private Float getEstimate() {
-        Float totalEstimate = 0;
+    public Float getEstimate() {
+        Float totalEstimate = 0F;
         for (SprintJira sprintJira : sprintJiras) {
-            if(sprintJira.jiraCategory.name.equals())
+            if (sprintJira.jiraCategory.name.equals("Planned")) {
+                totalEstimate += sprintJira.sprintEstimate;
+            }
         }
-        return null;  //To change body of created methods use File | Settings | File Templates.
+        return totalEstimate;  //To change body of created methods use File | Settings | File Templates.
     }
 }
