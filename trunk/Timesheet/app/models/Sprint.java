@@ -7,6 +7,7 @@ import play.db.jpa.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.Transient;
+import javax.xml.transform.Result;
 import java.util.*;
 
 import static Utils.CalendarUtil.formatDate;
@@ -85,4 +86,38 @@ public class Sprint extends Model {
         return totalActual;
     }
 
+    public String getMessageForDay(Date day, User user, Float totalActualsOfTheDay) {
+        StringBuffer result = new StringBuffer();
+        result.append("Total: ").append(totalActualsOfTheDay).append(" Day(s)");
+        result.append("<br>");
+        for (SprintJira sprintJira : sprintJiras) {
+            if (sprintJira.getActual(user, day) != 0F) {
+                result.append(sprintJira.jiraNumber).append(" - ").append(sprintJira.getActual(user)).append(" Day(s)").append("<br>");
+            }
+        }
+        return result.toString();
+    }
+
+    public Map<Float, Float> getDataForBurnDownchart() {
+        Float estimate = getEstimate();
+        int numberOfDays = getNumberOfDays();
+
+
+        Map<Float, Float> result = new TreeMap<Float, Float>();
+        //TODO
+        return result;
+
+    }
+
+    private int getNumberOfDays() {
+        return getSprintDays().size();
+    }
+
+    private Float getEstimate() {
+        Float totalEstimate = 0;
+        for (SprintJira sprintJira : sprintJiras) {
+            if(sprintJira.jiraCategory.name.equals())
+        }
+        return null;  //To change body of created methods use File | Settings | File Templates.
+    }
 }

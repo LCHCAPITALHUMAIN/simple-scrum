@@ -35,7 +35,7 @@
     <tr>
         #{list items:acutalsOfLoggedUser, as:'acutalsOfLoggedUser'}
              <td>
-                 <div class="popoverMarker progress progress-${acutalsOfLoggedUser.value.color()} progress-striped" style="width: 60px;" data-content="${acutalsOfLoggedUser.value}">
+                 <div class="popoverMarker progress progress-${acutalsOfLoggedUser.value.color()} progress-striped" style="width: 60px;" data-content="${selectedSprint.getMessageForDay(acutalsOfLoggedUser.key, loggedUser, acutalsOfLoggedUser.value)}">
                      <div class="bar" style="width: ${acutalsOfLoggedUser.value.inPercentage()}%; color: #000000;" >#{verbatim}${selectedSprint.sprintDays.get(acutalsOfLoggedUser.key).htmlSpace()} #{/verbatim}</div>
                  </div>
              </td>

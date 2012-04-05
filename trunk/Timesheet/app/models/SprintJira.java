@@ -3,6 +3,7 @@ package models;
 import Utils.JiraDetail;
 import Utils.JiraUtil;
 import controllers.Actuals;
+import org.apache.commons.lang.time.DateUtils;
 import play.data.validation.Required;
 import play.data.validation.Unique;
 import play.db.jpa.Model;
@@ -83,7 +84,17 @@ public class SprintJira extends Model {
         return sprintEstimate - getActual();
     }
 
-    private Float getActual(User user) {
+    public Float getActual(User user, Date day) {
+        Float userActual = 0F;
+        for (Actual actual : actuals) {
+            if (user.userName.equals(actual.user.userName) && DateUtils.isSameDay(day, actual.date)) {
+                userActual += actual.actual;
+            }
+        }
+        return userActual;
+    }
+
+    public Float getActual(User user) {
         Float userActual = 0F;
         for (Actual actual : actuals) {
             if (user.userName.equals(actual.user.userName)) {
