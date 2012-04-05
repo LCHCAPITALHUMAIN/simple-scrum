@@ -33,9 +33,13 @@
 
     <table>
     <tr>
-    <td><div class="progress progress-success progress-striped" style="width: 60px;"><div class="bar" style="width: 100%; color: #000000;" >Day&nbsp;1</div></div></td>
-    <td><div class="progress progress-warning progress-striped" style="width: 60px;"><div class="bar" style="width: 20%; color: #000000;" >Day&nbsp;2</div></div></td>
-    <td><div class="progress progress-danger progress-striped" style="width: 60px;"><div class="bar" style="width: 100%; color: #000000;" >Day&nbsp;3</div></div></td>
+        #{list items:acutalsOfLoggedUser, as:'acutalsOfLoggedUser'}
+             <td>
+                 <div class="popoverMarker progress progress-${acutalsOfLoggedUser.value.color()} progress-striped" style="width: 60px;" data-content="${acutalsOfLoggedUser.value} hours">
+                     <div class="bar" style="width: ${acutalsOfLoggedUser.value.inPercentage()}%; color: #000000;" >#{verbatim}${selectedSprint.sprintDays.get(acutalsOfLoggedUser.key).htmlSpace()} #{/verbatim}</div>
+                 </div>
+             </td>
+        #{/list}
     </tr>
     </table>
 
@@ -53,6 +57,7 @@
                     <th>Team</th>
                     <th>Estimate</th>
                     <th>Actual</th>
+                    <th>Your Actual</th>
                     <th>Remaining</th>
                 </tr>
                 </thead>
@@ -65,20 +70,20 @@
                             #{if jira.jiraDetail.counterpartJira?.jiraNumber}
                                 #{if jira.jiraDetail.counterpartJira?.parentJira}
                                     #{if jira.jiraDetail.counterpartJira.parentJira?.jiraNumber}
-                            <a href="http://jira.london.echonet/browse/${jira.jiraDetail.counterpartJira.jiraNumber}" data-content="${jira.jiraDetail.counterpartJira.description}" class="jiraLink">${jira.jiraDetail.counterpartJira.jiraNumber}</a><br>&nbsp;&nbsp;
+                            <a href="http://jira.london.echonet/browse/${jira.jiraDetail.counterpartJira.jiraNumber}" data-content="${jira.jiraDetail.counterpartJira.description}" class="popoverMarker">${jira.jiraDetail.counterpartJira.jiraNumber}</a><br>&nbsp;&nbsp;
                                     #{/if}
                                 #{/if}
                             #{/if}
                         #{/if}
                         #{if jiraDetail?.counterpartJira}
                             #{if jira.jiraDetail.counterpartJira?.jiraNumber}
-                                <a href="http://jira.london.echonet/browse/${jira.jiraDetail.counterpartJira.jiraNumber}" title="${jira.jiraDetail.counterpartJira.jiraNumber}" data-content="${jira.jiraDetail.counterpartJira.description}" class="jiraLink">${jira.jiraDetail.counterpartJira.jiraNumber}</a>
+                                <a href="http://jira.london.echonet/browse/${jira.jiraDetail.counterpartJira.jiraNumber}" title="${jira.jiraDetail.counterpartJira.jiraNumber}" data-content="${jira.jiraDetail.counterpartJira.description}" class="popoverMarker">${jira.jiraDetail.counterpartJira.jiraNumber}</a>
                             #{/if}
                         #{/if}
                     </td>
                     <td>
                         #{if jiraDetail?.parentJira}
-                            <a href="http://jira.london.echonet/browse/${jira.jiraDetail.parentJira.jiraNumber}" data-content="${jira.jiraDetail.parentJira.description}" class="jiraLink">${jira.jiraDetail.parentJira.jiraNumber}</a><br>&nbsp;&nbsp;
+                            <a href="http://jira.london.echonet/browse/${jira.jiraDetail.parentJira.jiraNumber}" data-content="${jira.jiraDetail.parentJira.description}" class="popoverMarker">${jira.jiraDetail.parentJira.jiraNumber}</a><br>&nbsp;&nbsp;
                         #{/if}
                         <a href="http://jira.london.echonet/browse/${jira.jiraDetail.jiraNumber}">${jira.jiraNumber}</a>
                     </td>
@@ -89,7 +94,10 @@
                     <td>${jira.jiraDetail.team}</td>
                     <td>${jira.sprintEstimate}</td>
                     <td>
-                        ${jira.actual}
+                        ${jira.actual.inDays()}
+                    </td>
+                    <td>
+                        ${jira.getActual(loggedUser).inDays()}
                         &nbsp;&nbsp;&nbsp;<a class="btn btn-mini btn-primary" data-toggle="modal" href="#addActualModal${jira.jiraNumber}"><i class="icon-plus icon-white"></i> Add</a>
                     </td>
                     <td>
@@ -106,23 +114,24 @@
                             <h3>Add actuals: ${jira.jiraNumber} ${jira.jiraDetail.description}</h3>
                         </div>
                         <div class="modal-body">
-                            <p>Kunal: 1 Day</p>
-                            <p>Pranav: 2.5 Day</p>
+                            #{list items:jira.consolidatedActuals, as:'consolidatedActual'}
+                                <p>${consolidatedActual.key.fullName}: ${consolidatedActual.value.inDaysWithUnit()}</p>
+                            #{/list}
                             <p>
                             <select name="date">
-                                #{list items:sprintDays, as:'sprintDay'}
+                                #{list items:selectedSprint.sprintDays, as:'sprintDay'}
                                     <option value='${sprintDay.key.format("dd-MM-yyyy")}'>${sprintDay.value}</option>
                                 #{/list}
                             </select>
                             Time<select name="timeInHours">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
+                                <option value="1">1 Hour</option>
+                                <option value="2">2 Hours</option>
+                                <option value="3">3 Hours</option>
+                                <option value="4">4 Hours</option>
+                                <option value="5">5 Hours</option>
+                                <option value="6">6 Hours</option>
+                                <option value="7">7 Hours</option>
+                                <option value="8">8 Hours</option>
                             </select>
                             </p>
                         </div>
@@ -134,17 +143,6 @@
                 </div>
 
                 <div class="modal hide" id="setRemainingModal${jira.jiraNumber}">
-                    <div id="remainingDiv${jira.jiraNumber}" style="height:400px;width:300px; visibility: visible; "></div>
-                    <script type="text/javascript">
-                        $('#setRemainingModal${jira.jiraNumber}').on('shown', function (e) {
-                            $.jqplot('remainingDiv${jira.jiraNumber}',  [
-                                                        [[0, 100],[1, 90],[2,80],[3,70],[4,60],[5,50],[6,40],[7,30],[8,20],[9,10],[10,0]],
-                                                        [[0, 100],[1, 95],[2,85],[3,75],[4,65],[5,50],[6,40],[7,30],[8,25],[9,10],[10,0]]
-                                                    ]);
-
-                        });
-                    </script>
-
                     <form id="remainingForm${jira.jiraNumber}">
                         <input name="jira.id" value="${jira.id}" type="hidden">
                         <div class="modal-header">
@@ -158,11 +156,11 @@
                             <p>
                             Day
                                 <select name="date">
-                                #{list items:sprintDays, as:'sprintDay'}
-                                    <option value='${sprintDay.key.format("dd-MM-yyyy")}'>${sprintDay.value}</option>
+                                #{list items:selectedSprint.sprintDays, as:'sprintDay'}
+                                    <option value='${sprintDay.key.format("dd-MM-yyyy")}' ${sprintDay.key.equals(currentDay)?"selected":""}>${sprintDay.value}</option>
                                 #{/list}
                                 </select>
-                                <input type="text" name="timeInHours"/>
+                                <input type="text" name="timeInHours" value="${jira.remaining}"/>
                             </p>
                         </div>
                         <div class="modal-footer">
@@ -196,7 +194,7 @@
 </div>
 <script type="text/javascript">
     $().ready(function () {
-        $("a.jiraLink").popover({});
+        $(".popoverMarker").popover({});
 
         $('#BurndownTabTitle').on('shown', function (e) {
             $.jqplot('burnDownDiv',  [
@@ -209,12 +207,14 @@
     function saveActual(jiraReference) {
          $.post('/SprintBacklogPlus/saveActual', $('#actualForm' + jiraReference).serializeArray(), function(data) {
              $("#addActualModal" + jiraReference).modal('hide');
+             location.reload();
         }, "json");
     }
 
     function saveRemaining(jiraReference) {
          $.post('/SprintBacklogPlus/saveRemaining', $('#remainingForm' + jiraReference).serializeArray(), function(data) {
              $("#setRemainingModal" + jiraReference).modal('hide');
+             location.reload();
         }, "json");
     }
 </script>

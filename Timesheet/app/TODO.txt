@@ -34,3 +34,16 @@ var getMessages = function() {
 
 
 
+1. Defualt value for remaining
+2. Displaying previously logged remaining
+3. Displaying acutals by user name
+4. Displaying total remaining properly
+5. Displaying day1..day2... with different color
+6. Adding team to the sprintjira
+7. Burndown chart using sprint
+8. Burndown chart using release
+9. BA backlog
+10. Update jira query
+11. Remaining calculation to take the latest remaining
+12. Displaying error from ajax call - Check actuals more than 8 hrs
+

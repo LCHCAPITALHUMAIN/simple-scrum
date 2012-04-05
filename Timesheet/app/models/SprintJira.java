@@ -2,14 +2,13 @@ package models;
 
 import Utils.JiraDetail;
 import Utils.JiraUtil;
+import controllers.Actuals;
 import play.data.validation.Required;
 import play.data.validation.Unique;
 import play.db.jpa.Model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -84,6 +83,16 @@ public class SprintJira extends Model {
         return sprintEstimate - getActual();
     }
 
+    private Float getActual(User user) {
+        Float userActual = 0F;
+        for (Actual actual : actuals) {
+            if (user.userName.equals(actual.user.userName)) {
+                userActual += actual.actual;
+
+            }
+        }
+        return userActual;
+    }
     private Float getActual() {
         Float cumulatedActual=0F;
         for (Actual actual : actuals) {
@@ -91,5 +100,16 @@ public class SprintJira extends Model {
         }
 
         return cumulatedActual;
+    }
+
+    public Map<User, Float> getConsolidatedActuals() {
+        Map<User, Float> consolidatedActuals = new HashMap<User, Float>();
+        for (Actual actual : actuals) {
+            if (!consolidatedActuals.containsKey(actual.user)) {
+                consolidatedActuals.put(actual.user, 0F);
+            }
+            consolidatedActuals.put(actual.user, consolidatedActuals.get(actual.user) + actual.actual);
+        }
+        return consolidatedActuals;
     }
 }
