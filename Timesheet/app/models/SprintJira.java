@@ -63,6 +63,16 @@ public class SprintJira extends Model {
         this.jiraDetail = jiraDetail;
     }
 
+    public Float getRemaining(Date date) {
+        Float result = calculateRemaining();
+        for (Remaining remaining : remainings) {
+            if (!remaining.date.after(date)) {
+                result = remaining.remaining;
+            }
+        }
+        return result;
+    }
+
     public Float getRemaining() {
         if (remainings.isEmpty()) {
             return calculateRemaining();
