@@ -9,6 +9,7 @@ package controllers;
  */
 public class JSONResult {
     private String result;
+    public static final String SUCCESS = "Success";
 
     public JSONResult(String result) {
         this.result = result;

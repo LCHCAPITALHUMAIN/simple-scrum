@@ -17,11 +17,11 @@ import static controllers.Secure.Security.connected;
  */
 @With(Secure.class)
 
-public class SprintBacklogPlus extends TimesheetController{
+public class SprintBacklogIT extends TimesheetController{
     public static void saveRemaining(SprintJira jira, Date date,Float timeInDays) {
         if (jira.id == null) {
             System.out.println("Failed...missing jira ino");
-            renderJSONResult("Failed");
+            renderJSON(new JSONResult("Failed"));
         }
         Remaining remaining = new Remaining();
         remaining.remaining = timeInDays;
@@ -32,13 +32,13 @@ public class SprintBacklogPlus extends TimesheetController{
         jira.save();
 
         System.out.println(String.format("Saved remaining: %s %s %s", remaining.date, remaining.remaining, jira.jiraNumber));
-        renderJSONSuccessResult();
+        renderJSON(new JSONResult(JSONResult.SUCCESS));
     }
 
     public static void saveActual(SprintJira jira, Date date, Float timeInDays) {
         if (jira.id == null) {
             System.out.println("Failed...missing jira ino");
-            renderJSONResult("Failed");
+            renderJSON(new JSONResult("Failed"));
         }
         User loggedUser = User.find("userName=?", connected()).first();
         Actual actual = jira.getActualObject(loggedUser, date);
@@ -59,11 +59,17 @@ public class SprintBacklogPlus extends TimesheetController{
         jira.save();
 
         System.out.println(String.format("Saved actual: %s %s %s %s", actual.user.fullName, actual.date, actual.actual, jira.jiraNumber));
-        renderJSONSuccessResult();
+        renderJSON(new JSONResult(JSONResult.SUCCESS));
     }
 
     public static void show(Sprint selectedSprint, String selectedTeam) {
-        List<Sprint> sprints = Sprint.findAll();
+        List<Sprint> allSprints = Sprint.findAll();
+        List<Sprint> sprints = new ArrayList<Sprint>();
+        for (Sprint sprint : allSprints) {
+            if (sprint.isFeatureSprint()) {
+                sprints.add(sprint);
+            }
+        }
         if (selectedSprint.id == null) {
             selectedSprint = sprints.get(sprints.size()-1);
         }

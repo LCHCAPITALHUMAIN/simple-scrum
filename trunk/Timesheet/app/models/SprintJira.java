@@ -162,4 +162,12 @@ public class SprintJira extends Model {
         return PLANNED.equals(jiraCategory.name);
     }
 
+    public boolean isTransversal() {
+        return TRANSVERSAL.equals(jiraCategory.name);
+    }
+
+    public boolean isUnplanned() {
+        return UNPLANNED.equals(jiraCategory.name);
+    }
+
 }

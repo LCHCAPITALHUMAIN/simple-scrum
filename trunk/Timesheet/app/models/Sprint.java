@@ -4,12 +4,10 @@ import Utils.CalendarUtil;
 import Utils.DateIterator;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
-import org.omg.CORBA.FloatSeqHelper;
 import play.db.jpa.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.Transient;
-import javax.xml.transform.Result;
 import java.text.DecimalFormat;
 import java.util.*;
 
@@ -69,18 +67,25 @@ public class Sprint extends Model {
         return remainingOfTheDay;
     }
 
+    /**
+     * @return current day of the day, if the sprint is a past sprint then returns the last day of the sprint
+     *         If the sprint dates are feature, then returns null
+     */
     public Date getCurrentDay() {
         if (currentDay == null) {
             Date today = CalendarUtil.resetTime(new Date());
-            for (Date sprintDay : getSprintDays().keySet()) {
-                if (DateUtils.isSameDay(sprintDay, today)) {
-                    return sprintDay;
+            if (!startDate.after(today)) {
+                for (Date sprintDay : getSprintDays().keySet()) {
+                    if (DateUtils.isSameDay(sprintDay, today)) {
+                        return sprintDay;
+                    }
+                    currentDay = sprintDay;
                 }
-                currentDay = sprintDay;
             }
         }
         return currentDay;
     }
+
     public Map<Date, String> getSprintDaysUntilCurrentDay() {
         Map<Date, String> filteredSprintDays = new TreeMap<Date, String>();
         for (Date sprintDay : getSprintDays().keySet()) {
@@ -175,7 +180,7 @@ public class Sprint extends Model {
         for (Date date1 : getSprintDays().keySet()) {
             index++;
             if (DateUtils.isSameDay(date1, date)) {
-                return index ;
+                return index;
             }
         }
         throw new IllegalArgumentException(String.format("Invalid date passed to find the index. Date: %s, SprintDays", date, getSprintDays().keySet()));
@@ -214,10 +219,16 @@ public class Sprint extends Model {
         }
         return plannedSprintJiras;
     }
+
     public List<SprintJira> getSprintJiras() {
         if (sprintJiras == null) {
             sprintJiras = SprintJira.find("sprint=?", this).fetch();
         }
         return sprintJiras;
+    }
+
+    public boolean isFeatureSprint() {
+        Date today = CalendarUtil.resetTime(new Date());
+        return startDate.after(today);
     }
 }

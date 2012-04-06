@@ -1,0 +1,211 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+<form action="/SprintBacklogBA/show" method="GET" id="frmMain" name="frmMain">
+    Release
+    <select name="selectedSprint.id" onchange="$('#frmMain').submit()">
+        #{list items:sprints, as:'sprint'}
+        <option value="${sprint.id}"
+        #{if selectedSprint == sprint}selected#{/if}> ${sprint.sprintName}</option>
+        #{/list}
+    </select>
+</form>
+
+<div class="tabbable">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#Sprintbacklog" data-toggle="tab">Sprintbacklog (IT)</a></li>
+        <li><a href="#Burndown" data-toggle="tab" id="BurndownTabTitle"">Burndown</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="Sprintbacklog">
+            <table>
+            <tr>
+                #{list items:acutalsOfLoggedUser, as:'acutalsOfLoggedUser'}
+                     <td>
+                         <div class="popoverMarker progress progress-${acutalsOfLoggedUser.value.color()} progress-striped" style="width: 60px;" data-content="${selectedSprint.getMessageForDay(acutalsOfLoggedUser.key, loggedUser, acutalsOfLoggedUser.value)}">
+                             <div class="bar" style="width: ${acutalsOfLoggedUser.value.inPercentage()}%; color: #000000;" >#{verbatim}${selectedSprint.sprintDays.get(acutalsOfLoggedUser.key).htmlSpace()} #{/verbatim}</div>
+                         </div>
+                     </td>
+                #{/list}
+            </tr>
+            </table>
+
+            <p>Total Remaining: ${totalRemainingInDays} day(s)</p>
+            <table class="table table-striped table-bordered tablesorter" id="tableJiraList">
+                <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Business Jira</th>
+                    <th>IT Jira</th>
+                    <th>Description</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Assignee</th>
+                    <th>Team</th>
+                    <th>Estimate</th>
+                    <th>Actual</th>
+                    <th>Your Actual</th>
+                    <th>Remaining</th>
+                </tr>
+                </thead>
+                <tbody>
+                #{list items:selectedSprint.sprintJiras, as:'jira'}
+                <tr>
+                    <td><span class="${jira.cssClassForCategory}">${jira.jiraCategory}</span></td>
+                    <td>
+                        #{if jiraDetail?.counterpartJira}
+                            #{if jira.jiraDetail.counterpartJira?.jiraNumber}
+                                #{if jira.jiraDetail.counterpartJira?.parentJira}
+                                    #{if jira.jiraDetail.counterpartJira.parentJira?.jiraNumber}
+                            <a href="http://jira.london.echonet/browse/${jira.jiraDetail.counterpartJira.jiraNumber}" data-content="${jira.jiraDetail.counterpartJira.description}" class="popoverMarker">${jira.jiraDetail.counterpartJira.jiraNumber}</a><br>&nbsp;&nbsp;
+                                    #{/if}
+                                #{/if}
+                            #{/if}
+                        #{/if}
+                        #{if jiraDetail?.counterpartJira}
+                            #{if jira.jiraDetail.counterpartJira?.jiraNumber}
+                                <a href="http://jira.london.echonet/browse/${jira.jiraDetail.counterpartJira.jiraNumber}" title="${jira.jiraDetail.counterpartJira.jiraNumber}" data-content="${jira.jiraDetail.counterpartJira.description}" class="popoverMarker">${jira.jiraDetail.counterpartJira.jiraNumber}</a>
+                            #{/if}
+                        #{/if}
+                    </td>
+                    <td>
+                        #{if jiraDetail?.parentJira}
+                            <a href="http://jira.london.echonet/browse/${jira.jiraDetail.parentJira.jiraNumber}" data-content="${jira.jiraDetail.parentJira.description}" class="popoverMarker">${jira.jiraDetail.parentJira.jiraNumber}</a><br>&nbsp;&nbsp;
+                        #{/if}
+                        <a href="http://jira.london.echonet/browse/${jira.jiraDetail.jiraNumber}">${jira.jiraNumber}</a>
+                    </td>
+                    <td>${jira.jiraDetail.description}</td>
+                    <td>${jira.jiraDetail.priority}</td>
+                    <td nowrap><span class="${jira.jiraDetail.cssClassByStatus}">${jira.jiraDetail.status}</span></td>
+                    <td>${jira.jiraDetail.assignee}</td>
+                    <td>${jira.jiraDetail.team}</td>
+                    <td>${jira.sprintEstimate}</td>
+                    <td>
+                        ${jira.actual}
+                    </td>
+                    <td>
+                        ${jira.getActual(loggedUser)}
+                        &nbsp;&nbsp;&nbsp;<a class="btn btn-mini btn-primary" data-toggle="modal" href="#addActualModal${jira.jiraNumber}"><i class="icon-plus icon-white"></i> Add</a>
+                    </td>
+                    <td>
+                        ${jira.remaining}
+                        &nbsp;&nbsp;&nbsp;<a class="btn btn-mini btn-primary" data-toggle="modal" href="#setRemainingModal${jira.jiraNumber}"><i class="icon-pencil icon-white"></i> Set</a>
+                    </td>
+                </tr>
+
+                <div class="modal hide" id="addActualModal${jira.jiraNumber}">
+                    <form id="actualForm${jira.jiraNumber}">
+                        <input name="jira.id" value="${jira.id}" type="hidden">
+                        <div class="modal-header">
+                            <a class="close" data-dismiss="modal">×</a>
+                            <h3>Add actuals: ${jira.jiraNumber} ${jira.jiraDetail.description}</h3>
+                        </div>
+                        <div class="modal-body">
+                            #{list items:jira.consolidatedActuals, as:'consolidatedActual'}
+                                <p>${consolidatedActual.key.fullName}: ${consolidatedActual.value.inDaysWithUnit()}</p>
+                            #{/list}
+                            <p>
+                            <select name="date">
+                                #{list items:selectedSprint.sprintDaysUntilCurrentDay, as:'sprintDay'}
+                                    <option value='${sprintDay.key.format("dd-MM-yyyy")}'>${sprintDay.value}</option>
+                                #{/list}
+                            </select>
+                            Time<select name="timeInDays" id="actualModalTime${jira.jiraNumber}">
+                                <option value="0.125">1 Hour</option>
+                                <option value="0.25">2 Hours</option>
+                                <option value="0.375">3 Hours</option>
+                                <option value="0.5">4 Hours</option>
+                                <option value="0.625">5 Hours</option>
+                                <option value="0.75">6 Hours</option>
+                                <option value="0.875">7 Hours</option>
+                                <option value="1">8 Hours</option>
+                            </select>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <div id="actualModalErrMsg${jira.jiraNumber}" style="color: red; " align="left"></div>
+                            <a href="#" class="btn"  data-dismiss="modal">Close</a>
+                            <a href="#" class="btn btn-primary" onclick="saveActual('${jira.jiraNumber}')">Save</a>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal hide" id="setRemainingModal${jira.jiraNumber}">
+                    <form id="remainingForm${jira.jiraNumber}">
+                        <input name="jira.id" value="${jira.id}" type="hidden">
+                        <div class="modal-header">
+                            <a class="close" data-dismiss="modal">×</a>
+
+                            <h3>Set Remaining: ENT-2313 Fit test correction</h3>
+                        </div>
+                        <div class="modal-body">
+                            #{list items:selectedSprint.sprintDaysUntilCurrentDay, as:'sprintDay'}
+                                <p>${sprintDay.value}: ${jira.getRemaining(sprintDay.key)} Day(s)</p>
+                            #{/list}
+                            <p>
+                            Day
+                                <select name="date">
+                                #{list items:selectedSprint.sprintDaysUntilCurrentDay, as:'sprintDay'}
+                                    <option value='${sprintDay.key.format("dd-MM-yyyy")}' ${sprintDay.key.equals(selectedSprint.currentDay)?"selected":""}>${sprintDay.value}</option>
+                                #{/list}
+                                </select>
+                                <input type="text" name="timeInDays" value="${jira.remaining}"/>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <div id="remainingModalErrMsg${jira.jiraNumber}" style="color: red; " align="left"></div>
+                            <a href="#" class="btn"  data-dismiss="modal">Close</a>
+                            <a href="#" class="btn btn-primary" onclick="saveRemaining('${jira.jiraNumber}')">Save</a>
+                        </div>
+                    </form>
+                </div>
+                #{/list}
+
+                </tbody>
+            </table>
+
+            <script type="text/javascript">
+                $(document).ready(function()
+                    {
+                        $("#tableJiraList").tablesorter();
+                        $("#SprintBacklogBA").addClass("active");
+
+                    }
+                );
+            </script>
+        </div>
+        <div class="tab-pane" id="Burndown">
+            <div id="burnDownDiv" style="height:400px;width:300px; visibility: visible; "></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $().ready(function () {
+        $(".popoverMarker").popover({});
+
+        $('#BurndownTabTitle').on('shown', function (e) {
+            $.jqplot('burnDownDiv',  ${selectedSprint.dataForBurnDownchart});
+        });
+    });
+
+    function saveActual(jiraReference) {
+         $.post('/SprintBacklogBA/saveActual', $('#actualForm' + jiraReference).serializeArray(), function(data) {
+             if(data.result != 'Success'){
+                 console.log("Error message" + data.result);
+                 $('#actualModalErrMsg' + jiraReference).html(data.result);
+             } else {
+                 location.reload();
+             }
+        }, "json");
+    }
+
+    function saveRemaining(jiraReference) {
+         $.post('/SprintBacklogBA/saveRemaining', $('#remainingForm' + jiraReference).serializeArray(), function(data) {
+             if(data.result != 'Success'){
+                 console.log("Error message" + data.result)
+                 $('#remainingModalErrMsg' + jiraReference).html( data.result);
+             } else {
+                 location.reload();
+             }
+        }, "json");
+    }
+</script>
