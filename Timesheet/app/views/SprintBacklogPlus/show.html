@@ -64,7 +64,7 @@
                 <tbody>
                 #{list items:selectedSprint.sprintJiras, as:'jira'}
                 <tr>
-                    <td><span class="${jira.jiraDetail.cssClassByCategory}">${jira.jiraCategory}</span></td>
+                    <td><span class="${jira.cssClassForCategory}">${jira.jiraCategory}</span></td>
                     <td>
                         #{if jiraDetail?.counterpartJira}
                             #{if jira.jiraDetail.counterpartJira?.jiraNumber}
@@ -119,11 +119,11 @@
                             #{/list}
                             <p>
                             <select name="date">
-                                #{list items:selectedSprint.sprintDays, as:'sprintDay'}
+                                #{list items:selectedSprint.sprintDaysUntilCurrentDay, as:'sprintDay'}
                                     <option value='${sprintDay.key.format("dd-MM-yyyy")}'>${sprintDay.value}</option>
                                 #{/list}
                             </select>
-                            Time<select name="timeInDays">
+                            Time<select name="timeInDays" id="actualModalTime${jira.jiraNumber}">
                                 <option value="0.125">1 Hour</option>
                                 <option value="0.25">2 Hours</option>
                                 <option value="0.375">3 Hours</option>
@@ -136,6 +136,7 @@
                             </p>
                         </div>
                         <div class="modal-footer">
+                            <div id="actualModalErrMsg${jira.jiraNumber}" style="color: red; " align="left"></div>
                             <a href="#" class="btn"  data-dismiss="modal">Close</a>
                             <a href="#" class="btn btn-primary" onclick="saveActual('${jira.jiraNumber}')">Save</a>
                         </div>
@@ -156,14 +157,15 @@
                             <p>
                             Day
                                 <select name="date">
-                                #{list items:selectedSprint.sprintDays, as:'sprintDay'}
-                                    <option value='${sprintDay.key.format("dd-MM-yyyy")}' ${sprintDay.key.equals(currentDay)?"selected":""}>${sprintDay.value}</option>
+                                #{list items:selectedSprint.sprintDaysUntilCurrentDay, as:'sprintDay'}
+                                    <option value='${sprintDay.key.format("dd-MM-yyyy")}' ${sprintDay.key.equals(selectedSprint.currentDay)?"selected":""}>${sprintDay.value}</option>
                                 #{/list}
                                 </select>
                                 <input type="text" name="timeInDays" value="${jira.remaining}"/>
                             </p>
                         </div>
                         <div class="modal-footer">
+                            <div id="remainingModalErrMsg${jira.jiraNumber}" style="color: red; " align="left"></div>
                             <a href="#" class="btn"  data-dismiss="modal">Close</a>
                             <a href="#" class="btn btn-primary" onclick="saveRemaining('${jira.jiraNumber}')">Save</a>
                         </div>
@@ -203,15 +205,23 @@
 
     function saveActual(jiraReference) {
          $.post('/SprintBacklogPlus/saveActual', $('#actualForm' + jiraReference).serializeArray(), function(data) {
-             $("#addActualModal" + jiraReference).modal('hide');
-             location.reload();
+             if(data.result != 'Success'){
+                 console.log("Error message" + data.result);
+                 $('#actualModalErrMsg' + jiraReference).html(data.result);
+             } else {
+                 location.reload();
+             }
         }, "json");
     }
 
     function saveRemaining(jiraReference) {
          $.post('/SprintBacklogPlus/saveRemaining', $('#remainingForm' + jiraReference).serializeArray(), function(data) {
-             $("#setRemainingModal" + jiraReference).modal('hide');
-             location.reload();
+             if(data.result != 'Success'){
+                 console.log("Error message" + data.result)
+                 $('#remainingModalErrMsg' + jiraReference).html( data.result);
+             } else {
+                 location.reload();
+             }
         }, "json");
     }
 </script>

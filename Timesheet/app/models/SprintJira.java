@@ -20,6 +20,9 @@ import java.util.*;
  */
 @Entity
 public class SprintJira extends Model {
+    public static final String UNPLANNED = "Unplanned";
+    public static final String PLANNED = "Planned";
+    public static final String TRANSVERSAL = "Transversal";
     public String jiraNumber;
 
     @Required
@@ -94,6 +97,16 @@ public class SprintJira extends Model {
         return sprintEstimate - getActual();
     }
 
+    public Actual getActualObject(User user, Date day) {
+        for (Actual actual : actuals) {
+            if (user.userName.equals(actual.user.userName) && DateUtils.isSameDay(day, actual.date)) {
+                return actual;
+            }
+        }
+        return null;
+
+    }
+
     public Float getActual(User user, Date day) {
         Float userActual = 0F;
         for (Actual actual : actuals) {
@@ -133,4 +146,20 @@ public class SprintJira extends Model {
         }
         return consolidatedActuals;
     }
+
+    public String getCssClassForCategory() {
+        if (UNPLANNED.equals(jiraCategory.name)) {
+            return "label label-important";
+        }else if (PLANNED.equals(jiraCategory.name)) {
+            return "label label-info";
+        }else if (TRANSVERSAL.equals(jiraCategory.name)) {
+            return "label label-warning";
+        }
+        return "label";
+    }
+
+    public boolean isPlanned() {
+        return PLANNED.equals(jiraCategory.name);
+    }
+
 }
