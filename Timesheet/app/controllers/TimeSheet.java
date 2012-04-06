@@ -105,15 +105,15 @@ public class TimeSheet extends TimesheetController {
 //            renderJSONResult("Failure");
 //        }
         if (HolidayTypeUtil.getPublicHoliday().equals(holiday.holidayType)) {
-            renderJSONResult("Public holiday can be set only by the administrator using the admin module");
+            renderJSON(new JSONResult("Public holiday can be set only by the administrator using the admin module"));
         }
         if (HolidayTypeUtil.getWeekend().equals(holiday.holidayType) && !CalendarUtil.isWeekend(holiday.date)) {
-            renderJSONResult("The selected day is not a weekend.");
+            renderJSON(new JSONResult("The selected day is not a weekend."));
         }
         holiday.date = CalendarUtil.resetTime(holiday.date);
         holiday.save();
         System.out.println("## updated holiday");
-        renderJSONSuccessResult();
+        renderJSON(new JSONResult(JSONResult.SUCCESS));
     }
 
     private static boolean managerOf(User user) {

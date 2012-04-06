@@ -1,0 +1,86 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<form action="/SprintManagement/add" method="GET" id="frmMain" name="frmMain">
+    Sprint Number: <input type="text" name="sprint.sprintNumber" value="${selectedSprint.sprintNumber + 1}">
+    <br>Start date: <input type="text" name="sprint.startDate" id="startDatepicker">
+    <br>End date: <input type="text" name="sprint.endDate" id="endDatepicker">
+    <br>
+
+<div class="tab-pane active" id="Sprintbacklog">
+    <table class="table table-striped table-bordered tablesorter" id="tableJiraList">
+        <thead>
+        <tr>
+            <th>Category</th>
+            <th>Business Jira</th>
+            <th>IT Jira</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Assignee</th>
+            <th>Team</th>
+            <th>Estimate</th>
+            <th>Actual</th>
+        </tr>
+        </thead>
+        <tbody>
+        #{list items:selectedSprint.sprintJiras, as:'jira'}
+        <tr>
+            <td><span class="${jira.cssClassForCategory}">${jira.jiraCategory}</span></td>
+            <td>
+                #{if jiraDetail?.counterpartJira}
+                #{if jira.jiraDetail.counterpartJira?.jiraNumber}
+                #{if jira.jiraDetail.counterpartJira?.parentJira}
+                #{if jira.jiraDetail.counterpartJira.parentJira?.jiraNumber}
+                <a href="http://jira.london.echonet/browse/${jira.jiraDetail.counterpartJira.jiraNumber}"
+                   data-content="${jira.jiraDetail.counterpartJira.description}" class="popoverMarker">${jira.jiraDetail.counterpartJira.jiraNumber}</a><br>&nbsp;&nbsp;
+                #{/if}
+                #{/if}
+                #{/if}
+                #{/if}
+                #{if jiraDetail?.counterpartJira}
+                #{if jira.jiraDetail.counterpartJira?.jiraNumber}
+                <a href="http://jira.london.echonet/browse/${jira.jiraDetail.counterpartJira.jiraNumber}"
+                   title="${jira.jiraDetail.counterpartJira.jiraNumber}"
+                   data-content="${jira.jiraDetail.counterpartJira.description}" class="popoverMarker">${jira.jiraDetail.counterpartJira.jiraNumber}</a>
+                #{/if}
+                #{/if}
+            </td>
+            <td>
+                #{if jiraDetail?.parentJira}
+                <a href="http://jira.london.echonet/browse/${jira.jiraDetail.parentJira.jiraNumber}"
+                   data-content="${jira.jiraDetail.parentJira.description}" class="popoverMarker">${jira.jiraDetail.parentJira.jiraNumber}</a><br>&nbsp;&nbsp;
+                #{/if}
+                <a href="http://jira.london.echonet/browse/${jira.jiraDetail.jiraNumber}">${jira.jiraNumber}</a>
+            </td>
+            <td>${jira.jiraDetail.description}</td>
+            <td>${jira.jiraDetail.priority}</td>
+            <td nowrap><span class="${jira.jiraDetail.cssClassByStatus}">${jira.jiraDetail.status}</span></td>
+            <td>${jira.jiraDetail.assignee}</td>
+            <td>${jira.jiraDetail.team}</td>
+            <td>${jira.sprintEstimate}</td>
+            <td>
+                ${jira.actual}
+            </td>
+        </tr>
+        #{/list}
+        </tbody>
+    </table>
+    <input type="submit" value="Add Sprint">
+</div>
+</form>
+<script type="text/javascript">
+    $().ready(function () {
+        $(".popoverMarker").popover({});
+        $("#tableJiraList").tablesorter();
+        $("#SprintManagement").addClass("active");
+    });
+
+    $(function() {
+        $("#startDatepicker").datepicker();
+        $("#startDatepicker").datepicker("option", "dateFormat", "dd-mm-yy");
+
+        $("#endDatepicker").datepicker();
+        $("#endDatepicker").datepicker("option", "dateFormat", "dd-mm-yy");
+    });
+</script>
