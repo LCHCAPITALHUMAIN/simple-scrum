@@ -40,10 +40,19 @@ public class SprintBacklogPlus extends TimesheetController{
             System.out.println("Failed...missing jira ino");
             renderJSONResult("Failed");
         }
-        Actual actual = new Actual();
-        actual.user = User.find("userName=?", connected()).first();
-        actual.actual = timeInDays;
-        actual.date = date;
+        User loggedUser = User.find("userName=?", connected()).first();
+        Actual actual = jira.getActualObject(loggedUser, date);
+        if (actual == null) {
+            actual = new Actual();
+            actual.user = loggedUser;
+            actual.date = date;
+            actual.actual = 0F;
+        }
+        actual.actual += timeInDays;
+        if (actual.actual > 1F) {
+            //renderJSONResult("Actuals cannot be more than 8 hours per day");
+            renderJSON(new JSONResult("Actuals cannot be more than 8 hours per day"));
+        }
         actual.save();
 
         jira.actuals.add(actual);
@@ -59,10 +68,8 @@ public class SprintBacklogPlus extends TimesheetController{
             selectedSprint = sprints.get(sprints.size()-1);
         }
         double totalRemainingInDays = selectedSprint.getRemaining();
-        Date currentDay = CalendarUtil.resetTime(new Date());
-
         User loggedUser = User.find("userName=?", connected()).first();
-        Map<Date, Float> acutalsOfLoggedUser = selectedSprint.calculateActuals(currentDay, loggedUser);
-        render(totalRemainingInDays, selectedTeam, selectedSprint, sprints, currentDay, acutalsOfLoggedUser, loggedUser);
+        Map<Date, Float> acutalsOfLoggedUser = selectedSprint.calculateActuals(loggedUser);
+        render(totalRemainingInDays, selectedTeam, selectedSprint, sprints, acutalsOfLoggedUser, loggedUser);
     }
 }

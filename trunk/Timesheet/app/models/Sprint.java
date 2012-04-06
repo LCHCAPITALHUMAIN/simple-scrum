@@ -34,6 +34,7 @@ public class Sprint extends Model {
     private TreeMap<Date, String> sprintDays;
     @Transient
     private Date currentDay;
+    private ArrayList<SprintJira> plannedSprintJiras;
 
     @Override
     public String toString() {
@@ -60,6 +61,14 @@ public class Sprint extends Model {
         return remainingOfTheDay;
     }
 
+    public Float getRemainingOnPlannedJiras(Date day) {
+        Float remainingOfTheDay = 0F;
+        for (SprintJira sprintJira : getPlannedSprintJiras()) {
+            remainingOfTheDay += sprintJira.getRemaining(day);
+        }
+        return remainingOfTheDay;
+    }
+
     public Date getCurrentDay() {
         if (currentDay == null) {
             Date today = CalendarUtil.resetTime(new Date());
@@ -73,7 +82,7 @@ public class Sprint extends Model {
         return currentDay;
     }
     public Map<Date, String> getSprintDaysUntilCurrentDay() {
-        Map<Date, String> filteredSprintDays = getSprintDays();
+        Map<Date, String> filteredSprintDays = new TreeMap<Date, String>();
         for (Date sprintDay : getSprintDays().keySet()) {
             filteredSprintDays.put(sprintDay, getSprintDays().get(sprintDay));
             if (sprintDay.equals(getCurrentDay())) {
@@ -98,10 +107,10 @@ public class Sprint extends Model {
     }
 
 
-    public Map<Date, Float> calculateActuals(Date currentDay, User user) {
+    public Map<Date, Float> calculateActuals(User user) {
         Map<Date, Float> actuals = new TreeMap<Date, Float>();
 
-        for (Date sprintDay : getSprintDays().keySet()) {
+        for (Date sprintDay : getSprintDaysUntilCurrentDay().keySet()) {
             if (sprintDay.before(currentDay)) {
                 actuals.put(sprintDay, calculateActual(user, sprintDay));
             }
@@ -135,7 +144,7 @@ public class Sprint extends Model {
     }
 
     public String getDataForBurnDownchart() {
-        Float estimate = getEstimate();
+        Float estimate = getEstimateOfPlannedJira();
         int numberOfDays = getNumberOfDays();
         Float caloriesPerDay = estimate / numberOfDays;
         System.out.println("caloriesPerDay" + caloriesPerDay);
@@ -149,7 +158,7 @@ public class Sprint extends Model {
             estimate -= caloriesPerDay;
             expectedRemainingChartPoints.add(String.format("[%s,%s]", dayIndex, new DecimalFormat("##.##").format(estimate)));
             if (date.equals(getCurrentDay()) || date.before(getCurrentDay())) {
-                actualRemainingChartPoints.add(String.format("[%s,%s]", dayIndex, new DecimalFormat("##.##").format(getRemaining(date))));
+                actualRemainingChartPoints.add(String.format("[%s,%s]", dayIndex, new DecimalFormat("##.##").format(getRemainingOnPlannedJiras(date))));
             }
             dayIndex++;
         }
@@ -176,16 +185,35 @@ public class Sprint extends Model {
         return getSprintDays().size();
     }
 
+    public Float getEstimateOfPlannedJira() {
+        Float totalEstimate = 0F;
+        for (SprintJira sprintJira : getPlannedSprintJiras()) {
+            totalEstimate += sprintJira.sprintEstimate;
+        }
+        return totalEstimate;
+    }
+
     public Float getEstimate() {
         Float totalEstimate = 0F;
         for (SprintJira sprintJira : getSprintJiras()) {
-            if (sprintJira.jiraCategory.name.equals("Planned")) {
+            if (!SprintJira.TRANSVERSAL.equals(sprintJira.jiraCategory.name)) {
                 totalEstimate += sprintJira.sprintEstimate;
             }
         }
-        return totalEstimate;  //To change body of created methods use File | Settings | File Templates.
+        return totalEstimate;
     }
 
+    public List<SprintJira> getPlannedSprintJiras() {
+        if (plannedSprintJiras == null) {
+            plannedSprintJiras = new ArrayList<SprintJira>();
+            for (SprintJira sprintJira : getSprintJiras()) {
+                if (sprintJira.isPlanned()) {
+                    plannedSprintJiras.add(sprintJira);
+                }
+            }
+        }
+        return plannedSprintJiras;
+    }
     public List<SprintJira> getSprintJiras() {
         if (sprintJiras == null) {
             sprintJiras = SprintJira.find("sprint=?", this).fetch();
