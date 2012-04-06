@@ -58,14 +58,11 @@ public class SprintBacklogPlus extends TimesheetController{
         if (selectedSprint.id == null) {
             selectedSprint = sprints.get(sprints.size()-1);
         }
-        List<SprintJira> sprintJiras = SprintJira.find("sprint=?", selectedSprint).fetch();
-        selectedSprint.sprintJiras = sprintJiras;
-
         double totalRemainingInDays = selectedSprint.getRemaining();
         Date currentDay = CalendarUtil.resetTime(new Date());
 
         User loggedUser = User.find("userName=?", connected()).first();
         Map<Date, Float> acutalsOfLoggedUser = selectedSprint.calculateActuals(currentDay, loggedUser);
-        render(totalRemainingInDays, selectedTeam, selectedSprint, sprints, sprintJiras,  currentDay, acutalsOfLoggedUser, loggedUser);
+        render(totalRemainingInDays, selectedTeam, selectedSprint, sprints, currentDay, acutalsOfLoggedUser, loggedUser);
     }
 }
