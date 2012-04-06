@@ -62,7 +62,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                #{list items:sprintJiras, as:'jira'}
+                #{list items:selectedSprint.sprintJiras, as:'jira'}
                 <tr>
                     <td><span class="${jira.jiraDetail.cssClassByCategory}">${jira.jiraCategory}</span></td>
                     <td>
@@ -197,10 +197,7 @@
         $(".popoverMarker").popover({});
 
         $('#BurndownTabTitle').on('shown', function (e) {
-            $.jqplot('burnDownDiv',  [
-                                        [[0, 100],[1, 90],[2,80],[3,70],[4,60],[5,50],[6,40],[7,30],[8,20],[9,10],[10,0]],
-                                        [[0, 100],[1, 95],[2,85],[3,75],[4,65],[5,50],[6,40],[7,30],[8,25],[9,10],[10,0]]
-                                    ]);
+            $.jqplot('burnDownDiv',  ${selectedSprint.dataForBurnDownchart});
         });
     });
 
