@@ -152,8 +152,9 @@
                             <h3>Set Remaining: ENT-2313 Fit test correction</h3>
                         </div>
                         <div class="modal-body">
-                            <p>Day 1: 1 Day</p>
-                            <p>Day 4: 2.5 Day</p>
+                            #{list items:selectedSprint.sprintDaysUntilCurrentDay, as:'sprintDay'}
+                                <p>${sprintDay.value}: ${jira.getRemaining(sprintDay.key)} Day(s)</p>
+                            #{/list}
                             <p>
                             Day
                                 <select name="date">
