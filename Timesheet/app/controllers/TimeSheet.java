@@ -39,7 +39,7 @@ public class TimeSheet extends TimesheetController {
                     velocityDetail.availability++;
                 } else if (HolidayTypeUtil.getAfternoonAbsent().equals(holiday.holidayType) || HolidayTypeUtil.getMorningAbsent().equals(holiday.holidayType)) {
                     velocityDetail.unavailability += 0.5F;
-                } else if (HolidayTypeUtil.getFullDayAbsent().equals(holiday.holidayType) ) {
+                } else if (HolidayTypeUtil.getFullDayAbsent().equals(holiday.holidayType) || HolidayTypeUtil.getTraining().equals(holiday.holidayType) || HolidayTypeUtil.getPublicHoliday().equals(holiday.holidayType)) {
                     velocityDetail.unavailability++;
                 }
             }
