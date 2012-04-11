@@ -22,12 +22,6 @@ public class Bootstrap extends Job {
             System.out.println("############ Loaded yml END" + Team.count());
 
         }
-        HolidayTypeUtil.initIfReqiured();
-
-        if (Sprint.count() == 0) {
-            System.out.println("######## Loaded sprint-data.ym");
-            Fixtures.loadModels("sprint-data.yml");
-        }
     }
 
     private void resetTimeForAllHolidays() {
