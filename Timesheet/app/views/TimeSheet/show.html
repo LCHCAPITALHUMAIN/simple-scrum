@@ -1,5 +1,5 @@
 #{extends 'main.html' /}
-#{set title:'Home' /}
+#{set title:'Timesheet' /}
 <form action="/" method="GET" id="frmMain" name="frmMain">
     <select onchange="$('#frmMain').submit()" name="selectedMonth">
         #{list items:months, as:'month'}
@@ -55,13 +55,9 @@
             #{list items:holiday1.value, as:'holiday'}
                 <td data-content="${holiday.description}"  class="${holiday.holidayType.code.equals("P").trueValue('holidayDiv')}">
                     <form action="@{TimeSheet.createOrUpdate()}" method="POST" id="${holiday.user.userName}_${holiday.date.time}_form" name="${holiday.user.userName}_${holiday.date.time}_form">
-                        #{if holiday.id}
-                            <input name="holiday.id" type="hidden" value="${holiday.id}" />
-                        #{/if}
-                        #{else}
+                            <input name="holiday.id" type="hidden" value="${holiday.id}" id="${holiday.user.userName}_${holiday.date.time}_form_holidayId"/>
                             <input name="holiday.date" type="hidden" value="${holiday.date.format('yyyy-MM-dd')}" />
                             <input name="holiday.user.id" type="hidden" value="${holiday.user.id}" />
-                        #{/else}
                         <select name="holiday.holidayType.id" id="${holiday.user.userName}_${holiday.date.time}_holidayType" onchange="saveHoliday('${holiday.user.userName}_${holiday.date.time}_form', '${holiday.user.userName}_${holiday.date.time}_holidayType')" style="background-color: ${holiday.holidayType.color}" class="holiday-dropdown ${managerOf.contains(holiday.user).falseValue('non-editable')}">
                                 #{list items:holidayTypes, as:'holidayType'}
                                     <option value="${holidayType.id}" #{if holidayType.id == holiday.holidayType.id}selected#{/if}>${holidayType.code}</option>
@@ -78,11 +74,14 @@
 
 <script type="text/javascript">
     function saveHoliday(frmId, dropDownId) {
-        //alert("ff" + $('#' + dropDownId).val());
-        //alert("ff" + holidayType[$('#' + dropDownId).val()]);
         $('#' + dropDownId).css('backgroundColor', holidayType[$('#' + dropDownId).val()]);
         $.post('/timesheet/createorupdate', $('#' + frmId).serializeArray(), function(data) {
-            alert("done");
+            if(data.result == "Success"){
+                $('#' + frmId + "_holidayId").val(data.holidayId);
+            } else {
+                alert("Error saving holiday:" + data.result);
+                $('#frmMain').submit();
+            }
         }, "json");
     }
     $().ready(function (){

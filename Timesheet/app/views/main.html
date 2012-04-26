@@ -139,6 +139,10 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+        if( $.browser.msie) {
+            alert("Sorry this application will not work fine with Internet Explorer. Please use some Firefox ");
+            return;
+        }
         $(".fg-button").hover(
                 function() {
                     $(this).addClass("ui-state-hover");

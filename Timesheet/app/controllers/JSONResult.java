@@ -9,8 +9,14 @@ package controllers;
  */
 public class JSONResult {
     private String result;
+    private long holidayId;
     public static final String SUCCESS = "Success";
 
+    public JSONResult(String result, long holidayId) {
+        this(result);
+
+        this.holidayId = holidayId;
+    }
     public JSONResult(String result) {
         this.result = result;
     }
