@@ -99,21 +99,26 @@ public class TimeSheet extends TimesheetController {
         }
         return result;
     }
-
     public static void createOrUpdate(Holiday holiday) {
-//        if (!managerOf(holiday.user)) {
-//            renderJSONResult("Failure");
-//        }
+        if (holiday.holidayType.equals(HolidayTypeUtil.getWorkingDay())) {
+            holiday.delete();
+            System.out.println("Holiday removed");
+            renderJSON(new JSONResult(JSONResult.SUCCESS));
+        }
         if (HolidayTypeUtil.getPublicHoliday().equals(holiday.holidayType)) {
-            renderJSON(new JSONResult("Public holiday can be set only by the administrator using the admin module"));
+            String result = "Public holiday can be set only by the administrator using the admin module";
+            System.out.println(result);
+            renderJSON(new JSONResult(result));
         }
         if (HolidayTypeUtil.getWeekend().equals(holiday.holidayType) && !CalendarUtil.isWeekend(holiday.date)) {
-            renderJSON(new JSONResult("The selected day is not a weekend."));
+            String result = "The selected day is not a weekend.";
+            System.out.println(result);
+            renderJSON(new JSONResult(result));
         }
         holiday.date = CalendarUtil.resetTime(holiday.date);
+        System.out.println(String.format("## updated holiday %s, %s, %s", holiday.id, holiday.date, holiday.user.fullName));
         holiday.save();
-        System.out.println("## updated holiday");
-        renderJSON(new JSONResult(JSONResult.SUCCESS));
+        renderJSON(new JSONResult("Success", holiday.id));
     }
 
     private static boolean managerOf(User user) {
